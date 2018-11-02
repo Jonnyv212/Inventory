@@ -28,5 +28,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

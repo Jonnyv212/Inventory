@@ -62,6 +62,7 @@
             this.addButton.TabIndex = 2;
             this.addButton.Text = "Add Data";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // deleteButton
             // 
