@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class Main : Form
     {
+        AddItem aItem = new AddItem();
         public Main()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace WindowsFormsApp1
 
         private void addButton_Click(object sender, EventArgs e)
         {
-
+            aItem.Show();
         }
     }
 }

@@ -12,9 +12,16 @@ namespace WindowsFormsApp1
 {
     public partial class AddItem : Form
     {
+        CreateItem cItem = new CreateItem();
         public AddItem()
         {
             InitializeComponent();
+        }
+
+        private void createItemButton_Click(object sender, EventArgs e)
+        {
+            cItem.Show();
+            this.Hide();
         }
     }
 }

@@ -159,6 +159,7 @@
             this.previewButton.TabIndex = 13;
             this.previewButton.Text = "Preview";
             this.previewButton.UseVisualStyleBackColor = true;
+            this.previewButton.Click += new System.EventHandler(this.previewButton_Click);
             // 
             // CreateItem
             // 
