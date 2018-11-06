@@ -27,12 +27,19 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Form1 sa = new Form1();
+            sa.Show();
+            this.Hide();
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
             aItem.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Refresh();
         }
     }
 }

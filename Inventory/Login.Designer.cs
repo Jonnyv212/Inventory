@@ -76,6 +76,7 @@
             this.usernameTextbox.Name = "usernameTextbox";
             this.usernameTextbox.Size = new System.Drawing.Size(286, 26);
             this.usernameTextbox.TabIndex = 3;
+            this.usernameTextbox.TextChanged += new System.EventHandler(this.usernameTextbox_TextChanged);
             // 
             // passwordTextbox
             // 
@@ -151,7 +152,7 @@
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.Label loginLabel;
-        private System.Windows.Forms.TextBox usernameTextbox;
+        public System.Windows.Forms.TextBox usernameTextbox;
         private System.Windows.Forms.TextBox passwordTextbox;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Button exitButton;

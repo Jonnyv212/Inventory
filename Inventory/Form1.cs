@@ -120,5 +120,15 @@ namespace WindowsFormsApp1
         {
             comboBox1.Items.Insert(0, "Copenhagen");
         }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -41,7 +41,9 @@ namespace WindowsFormsApp1
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM INVENTORY";
+            cmd.CommandText = "SELECT * FROM INVENTORY WHERE NAME LIKE '" + searchBox.Text + "%' "; // SQL Command
+            //cmd.CommandText = "SELECT * FROM INVENTORY WHERE Item_Category LIKE '" + searchBox.Text + "%' ";
+            Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -65,7 +67,12 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            display_test(textBox4.Text);
+            display_test(searchBox.Text);
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

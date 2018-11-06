@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
 {
     public partial class Login : Form
     {
+        public string user;
         Main menu = new Main();
 
         OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
@@ -46,7 +47,7 @@ namespace WindowsFormsApp1
             {
                 this.Hide();
 
-                
+                user = usernameTextbox.Text;
                 connection.Close();
                 menu.Show();
             }
@@ -60,6 +61,11 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             //menu.Show();
+        }
+
+        public void usernameTextbox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

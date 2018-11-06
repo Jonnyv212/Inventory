@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuButton = new System.Windows.Forms.Button();
@@ -36,12 +36,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox4
+            // searchBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(93, 83);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(721, 26);
-            this.textBox4.TabIndex = 7;
+            this.searchBox.Location = new System.Drawing.Point(93, 83);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(721, 26);
+            this.searchBox.TabIndex = 7;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // searchButton
             // 
@@ -91,7 +92,7 @@
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.searchBox);
             this.Name = "Search";
             this.Text = "Search";
             this.Load += new System.EventHandler(this.Search_Load);
@@ -103,7 +104,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button menuButton;

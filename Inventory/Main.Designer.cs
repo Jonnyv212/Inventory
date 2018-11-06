@@ -33,13 +33,15 @@
             this.addButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(192, 86);
+            this.searchButton.Location = new System.Drawing.Point(44, 12);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(98, 49);
+            this.searchButton.Size = new System.Drawing.Size(106, 72);
             this.searchButton.TabIndex = 0;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -47,18 +49,18 @@
             // 
             // barcodeButton
             // 
-            this.barcodeButton.Location = new System.Drawing.Point(343, 86);
+            this.barcodeButton.Location = new System.Drawing.Point(362, 12);
             this.barcodeButton.Name = "barcodeButton";
-            this.barcodeButton.Size = new System.Drawing.Size(100, 49);
+            this.barcodeButton.Size = new System.Drawing.Size(117, 72);
             this.barcodeButton.TabIndex = 1;
             this.barcodeButton.Text = "Barcode Scan";
             this.barcodeButton.UseVisualStyleBackColor = true;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(506, 86);
+            this.addButton.Location = new System.Drawing.Point(201, 12);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(103, 49);
+            this.addButton.Size = new System.Drawing.Size(112, 72);
             this.addButton.TabIndex = 2;
             this.addButton.Text = "Add Data";
             this.addButton.UseVisualStyleBackColor = true;
@@ -66,28 +68,39 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(247, 194);
+            this.deleteButton.Location = new System.Drawing.Point(524, 12);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(108, 42);
+            this.deleteButton.Size = new System.Drawing.Size(122, 72);
             this.deleteButton.TabIndex = 3;
             this.deleteButton.Text = "Delete Data";
             this.deleteButton.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(449, 194);
+            this.button5.Location = new System.Drawing.Point(696, 12);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(110, 42);
+            this.button5.Size = new System.Drawing.Size(126, 72);
             this.button5.TabIndex = 4;
             this.button5.Text = "button5";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 181);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(848, 286);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 479);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addButton);
@@ -95,6 +108,7 @@
             this.Controls.Add(this.searchButton);
             this.Name = "Main";
             this.Text = "Main";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -106,5 +120,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
