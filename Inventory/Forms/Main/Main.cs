@@ -46,5 +46,10 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
