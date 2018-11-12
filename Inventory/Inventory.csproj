@@ -71,6 +71,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Main\DeleteData\DeleteData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\DeleteData\DeleteData.Designer.cs">
+      <DependentUpon>DeleteData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Test\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\AddData\CreateItemPreview.resx">
       <DependentUpon>CreateItemPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\DeleteData\DeleteData.resx">
+      <DependentUpon>DeleteData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Test\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -153,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Main\Barcode\" />
-    <Folder Include="Forms\Main\DeleteData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

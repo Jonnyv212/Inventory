@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     public partial class Main : Form
     {
         AddItem aItem = new AddItem();
+        DeleteData dItem = new DeleteData();
         public Main()
         {
             InitializeComponent();
@@ -49,7 +50,7 @@ namespace WindowsFormsApp1
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-
+            dItem.Show();
         }
     }
 }
