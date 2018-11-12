@@ -41,5 +41,10 @@ namespace WindowsFormsApp1
         {
             dataGridView1.Refresh();
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

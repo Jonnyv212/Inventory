@@ -20,10 +20,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void Search_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void menuButton_Click(object sender, EventArgs e)
         {
@@ -41,7 +37,7 @@ namespace WindowsFormsApp1
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM INVENTORY WHERE NAME LIKE '" + searchBox.Text + "%' "; // SQL Command
+            cmd.CommandText = "SELECT * FROM INVENTORY WHERE ITEM_NAME LIKE '" + searchBox.Text + "%' "; // SQL Command
             //cmd.CommandText = "SELECT * FROM INVENTORY WHERE Item_Category LIKE '" + searchBox.Text + "%' ";
             Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();

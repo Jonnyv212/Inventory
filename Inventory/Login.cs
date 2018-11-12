@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             connection.Open(); // Connects to DB
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text; //Command to send to DB
-            cmd.CommandText = "SELECT COUNT(*) FROM LOGIN WHERE USERNAME= '" + usernameTextbox.Text + "' AND PASSWORD= '" + passwordTextbox.Text + "' "; // SQL Command
+            cmd.CommandText = "SELECT COUNT(*) FROM LOGIN WHERE USER_NAME= '" + usernameTextbox.Text + "' AND PASSWORD= '" + passwordTextbox.Text + "' "; // SQL Command
             cmd.ExecuteNonQuery(); //Execute command
             OracleDataAdapter sda = new OracleDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -50,6 +50,8 @@ namespace WindowsFormsApp1
                 user = usernameTextbox.Text;
                 connection.Close();
                 menu.Show();
+
+                Console.WriteLine(dt.Rows[0][0].ToString());
             }
             else
             {
@@ -64,6 +66,11 @@ namespace WindowsFormsApp1
         }
 
         public void usernameTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void registerButton_Click(object sender, EventArgs e)
         {
 
         }

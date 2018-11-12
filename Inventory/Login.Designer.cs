@@ -36,7 +36,7 @@
             this.loginButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,9 +87,9 @@
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(521, 222);
+            this.loginButton.Location = new System.Drawing.Point(547, 225);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(172, 56);
+            this.loginButton.Size = new System.Drawing.Size(153, 56);
             this.loginButton.TabIndex = 5;
             this.loginButton.Text = "LOGIN";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -114,15 +114,15 @@
             this.panel1.Size = new System.Drawing.Size(294, 385);
             this.panel1.TabIndex = 7;
             // 
-            // button1
+            // registerButton
             // 
-            this.button1.Location = new System.Drawing.Point(464, 359);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.registerButton.Location = new System.Drawing.Point(436, 338);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(151, 59);
+            this.registerButton.TabIndex = 9;
+            this.registerButton.Text = "REGISTER";
+            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // Login
             // 
@@ -130,7 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(865, 409);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.loginButton);
@@ -157,6 +157,6 @@
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button registerButton;
     }
 }
