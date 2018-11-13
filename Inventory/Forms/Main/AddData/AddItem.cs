@@ -24,8 +24,19 @@ namespace WindowsFormsApp1
 
         private void createItemButton_Click(object sender, EventArgs e)
         {
-            cItem.Show();
-            this.Hide();
+            connection.Open(); // Connects to DB
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text; //Command to send to DB
+            cmd.CommandText = "insert into INVENTORY (ITEM_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY) values " + "('"+textBox1.Text+"','"+textBox2.Text+"','"+textBox3.Text+"', 'Jonnyv', 'Item Added')"; // SQL Command
+            cmd.Parameters.Add(new OracleParameter("dateParam", OracleDbType.Date)).Value = DateTime.Now;
+            cmd.ExecuteNonQuery(); //Execute command
+            connection.Close(); //Close connection to DB
+
+            textBox1.Text = ""; //Clear textboxes
+            textBox2.Text = "";
+            textBox3.Text = "";
+            display_data();
+            MessageBox.Show("Data inserted successfully!");
         }
 
         private void label1_Click(object sender, EventArgs e)
