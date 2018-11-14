@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace Inventory
 {
     partial class Main
     {
@@ -28,31 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.searchButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
+            this.inventoryButton = new System.Windows.Forms.Button();
+            this.addEquipmentButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.takeInventoryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // searchButton
+            // inventoryButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(84, 375);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(106, 72);
-            this.searchButton.TabIndex = 0;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.inventoryButton.Location = new System.Drawing.Point(84, 375);
+            this.inventoryButton.Name = "inventoryButton";
+            this.inventoryButton.Size = new System.Drawing.Size(106, 72);
+            this.inventoryButton.TabIndex = 0;
+            this.inventoryButton.Text = "Inventory";
+            this.inventoryButton.UseVisualStyleBackColor = true;
+            this.inventoryButton.Click += new System.EventHandler(this.inventoryButton_Click);
             // 
-            // addButton
+            // addEquipmentButton
             // 
-            this.addButton.Location = new System.Drawing.Point(270, 375);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(106, 72);
-            this.addButton.TabIndex = 2;
-            this.addButton.Text = "Add Data";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.addEquipmentButton.Location = new System.Drawing.Point(492, 284);
+            this.addEquipmentButton.Name = "addEquipmentButton";
+            this.addEquipmentButton.Size = new System.Drawing.Size(106, 72);
+            this.addEquipmentButton.TabIndex = 2;
+            this.addEquipmentButton.Text = "Add Equipment";
+            this.addEquipmentButton.UseVisualStyleBackColor = true;
+            this.addEquipmentButton.Click += new System.EventHandler(this.addEquipmentButton_Click);
             // 
             // deleteButton
             // 
@@ -74,15 +75,26 @@
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // takeInventoryButton
+            // 
+            this.takeInventoryButton.Location = new System.Drawing.Point(279, 375);
+            this.takeInventoryButton.Name = "takeInventoryButton";
+            this.takeInventoryButton.Size = new System.Drawing.Size(120, 61);
+            this.takeInventoryButton.TabIndex = 7;
+            this.takeInventoryButton.Text = "Take Inventory";
+            this.takeInventoryButton.UseVisualStyleBackColor = true;
+            this.takeInventoryButton.Click += new System.EventHandler(this.takeInventoryButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 479);
+            this.Controls.Add(this.takeInventoryButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.addButton);
-            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.addEquipmentButton);
+            this.Controls.Add(this.inventoryButton);
             this.Name = "Main";
             this.Text = "Main";
             this.ResumeLayout(false);
@@ -91,9 +103,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button inventoryButton;
+        private System.Windows.Forms.Button addEquipmentButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button takeInventoryButton;
     }
 }

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AEC68466-783B-4241-BB41-4993544C5B98}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WindowsFormsApp1</RootNamespace>
-    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <RootNamespace>Inventory</RootNamespace>
+    <AssemblyName>Inventory</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,28 +48,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Main\AddData\AddItem.cs">
+    <Compile Include="Forms\Main\AddData\CreateItem\CreateItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main\AddData\AddItem.Designer.cs">
-      <DependentUpon>AddItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Main\AddData\CreateItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Main\AddData\CreateItem.Designer.cs">
+    <Compile Include="Forms\Main\AddData\CreateItem\CreateItem.Designer.cs">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main\AddData\CreateItemPreview.cs">
+    <Compile Include="Forms\Main\AddData\CreateItem\CreateItemPreview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main\AddData\CreateItemPreview.Designer.cs">
+    <Compile Include="Forms\Main\AddData\CreateItem\CreateItemPreview.Designer.cs">
       <DependentUpon>CreateItemPreview.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\AddData\TakeInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\AddData\TakeInventory.Designer.cs">
+      <DependentUpon>TakeInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main\DeleteData\DeleteData.cs">
       <SubType>Form</SubType>
@@ -103,14 +103,14 @@
     <Compile Include="Forms\Main\Search\Search.Designer.cs">
       <DependentUpon>Search.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Main\AddData\AddItem.resx">
-      <DependentUpon>AddItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main\AddData\CreateItem.resx">
+    <EmbeddedResource Include="Forms\Main\AddData\CreateItem\CreateItem.resx">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main\AddData\CreateItemPreview.resx">
+    <EmbeddedResource Include="Forms\Main\AddData\CreateItem\CreateItemPreview.resx">
       <DependentUpon>CreateItemPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\AddData\TakeInventory.resx">
+      <DependentUpon>TakeInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\DeleteData\DeleteData.resx">
       <DependentUpon>DeleteData.cs</DependentUpon>
@@ -132,6 +132,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\Main\Search\Search.resx">
       <DependentUpon>Search.cs</DependentUpon>

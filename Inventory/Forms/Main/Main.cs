@@ -8,18 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace Inventory
 {
     public partial class Main : Form
     {
-        AddItem aItem = new AddItem();
+        CreateItem aItem = new CreateItem();
         DeleteData dItem = new DeleteData();
+        TakeInventory tInv = new TakeInventory();
         public Main()
         {
             InitializeComponent();
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void inventoryButton_Click(object sender, EventArgs e)
         {
             Search sr = new Search();
             sr.Show();
@@ -33,14 +34,14 @@ namespace WindowsFormsApp1
             this.Hide();
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        private void addEquipmentButton_Click(object sender, EventArgs e)
         {
             aItem.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.Refresh();
+            
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -51,6 +52,11 @@ namespace WindowsFormsApp1
         private void deleteButton_Click(object sender, EventArgs e)
         {
             dItem.Show();
+        }
+
+        private void takeInventoryButton_Click(object sender, EventArgs e)
+        {
+            tInv.Show();
         }
     }
 }

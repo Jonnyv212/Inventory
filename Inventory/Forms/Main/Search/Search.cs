@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using Oracle.ManagedDataAccess.Types;
 
-namespace WindowsFormsApp1
+namespace Inventory
 {
     public partial class Search : Form
     {

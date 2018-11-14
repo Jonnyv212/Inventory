@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace WindowsFormsApp1 {
+namespace Inventory {
     
     
     /// <summary>
@@ -1881,7 +1881,7 @@ namespace WindowsFormsApp1 {
         }
     }
 }
-namespace WindowsFormsApp1.DataSet3TableAdapters {
+namespace Inventory.DataSet3TableAdapters {
     
     
     /// <summary>
@@ -2110,7 +2110,7 @@ namespace WindowsFormsApp1.DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::Inventory.Properties.Settings.Default.ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2574,7 +2574,7 @@ namespace WindowsFormsApp1.DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::Inventory.Properties.Settings.Default.ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2957,7 +2957,7 @@ namespace WindowsFormsApp1.DataSet3TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::Oracle.ManagedDataAccess.Client.OracleConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::Inventory.Properties.Settings.Default.ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
