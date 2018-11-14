@@ -25,12 +25,12 @@ namespace Inventory
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void locationCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void equipmentCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -47,18 +47,28 @@ namespace Inventory
             //cmd.CommandType = CommandType.Text;
             //cmd.CommandText = "SELECT EQUIPMENT_NAME FROM EQUIPMENT";
             string q = "SELECT * FROM EQUIPMENT";
+            string w = "SELECT * FROM LOCATION";
             //cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             OracleDataAdapter da = new OracleDataAdapter(q, connection);
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                comboBox1.DataSource = dt;
-                comboBox1.DisplayMember = "EQUIPMENT_NAME";
-                comboBox1.ValueMember = "EQUIPMENT_ID";
+                equipmentCombobox.DataSource = dt;
+                equipmentCombobox.DisplayMember = "EQUIPMENT_NAME";
+                equipmentCombobox.ValueMember = "EQUIPMENT_ID";
+                connection.Close();
             }
-            connection.Close();
-
+            DataTable dt2 = new DataTable();
+            OracleDataAdapter de = new OracleDataAdapter(w, connection);
+            de.Fill(dt2);
+            if (dt2.Rows.Count > 0)
+            {
+                locationCombobox.DataSource = dt2;
+                locationCombobox.DisplayMember = "ROOM";
+                locationCombobox.ValueMember = "LOCATION_ID";
+                connection.Close();
+            }
         }
     }
 }

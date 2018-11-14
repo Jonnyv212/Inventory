@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.equipmentCombobox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.locationCombobox = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Insert = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // equipmentCombobox
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.equipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(75, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(333, 28);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.equipmentCombobox.FormattingEnabled = true;
+            this.equipmentCombobox.Location = new System.Drawing.Point(75, 73);
+            this.equipmentCombobox.Name = "equipmentCombobox";
+            this.equipmentCombobox.Size = new System.Drawing.Size(333, 28);
+            this.equipmentCombobox.TabIndex = 0;
+            this.equipmentCombobox.SelectedIndexChanged += new System.EventHandler(this.locationCombobox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -80,17 +80,17 @@
             this.label2.Text = "Location";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // comboBox2
+            // locationCombobox
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.locationCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(530, 73);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(310, 28);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.locationCombobox.FormattingEnabled = true;
+            this.locationCombobox.Location = new System.Drawing.Point(530, 73);
+            this.locationCombobox.Name = "locationCombobox";
+            this.locationCombobox.Size = new System.Drawing.Size(310, 28);
+            this.locationCombobox.TabIndex = 2;
+            this.locationCombobox.SelectedIndexChanged += new System.EventHandler(this.equipmentCombobox_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -137,9 +137,9 @@
             this.Controls.Add(this.Insert);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.locationCombobox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.equipmentCombobox);
             this.Name = "TakeInventory";
             this.Text = "ManualInventory";
             this.Load += new System.EventHandler(this.TakeInventory_Load);
@@ -151,10 +151,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox equipmentCombobox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox locationCombobox;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Insert;
         private System.Windows.Forms.Button Clear;
