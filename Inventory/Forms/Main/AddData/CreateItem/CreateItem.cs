@@ -27,12 +27,12 @@ namespace Inventory
             {
                 MessageBox.Show("Please fill in the the data.");
             }
-            else {
+            else
+            {
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                //cmd.CommandText = "insert into INVENTORY (ITEM_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "', 'Jonnyv', 'Item Added')"; // SQL Command
-                cmd.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, BARCODE) values " + "('" + textBox1.Text + "','" + textBox2.Text + "')"; // SQL Command
+                //cmd.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, BARCODE, CATEGORY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + categoryTextbox.Text + "')"; // SQL Command
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close(); //Close connection to DB
 
@@ -76,6 +76,34 @@ namespace Inventory
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void categoryTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CategoryCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void CreateItem_Load(object sender, EventArgs e)
+        {
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            string q = "SELECT * FROM CATEGORY";
+            DataTable dt = new DataTable();
+            OracleDataAdapter da = new OracleDataAdapter(q, connection);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                categoryCombobox.DataSource = dt;
+                categoryCombobox.DisplayMember = "CAT_NAME";
+                categoryCombobox.ValueMember = "CAT_ID";
+                connection.Close();
+            }
         }
     }
 }

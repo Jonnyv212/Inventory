@@ -20,35 +20,13 @@ namespace Inventory
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void locationCombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void equipmentCombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void TakeInventory_Load(object sender, EventArgs e)
         {
             connection.Open();
-            OracleCommand cmd = connection.CreateCommand();
-            //cmd.CommandType = CommandType.Text;
-            //cmd.CommandText = "SELECT EQUIPMENT_NAME FROM EQUIPMENT";
             string q = "SELECT * FROM EQUIPMENT";
             string w = "SELECT * FROM LOCATION";
-            //cmd.ExecuteNonQuery();
+            string d = "SELECT * FROM CATEGORY";
+
             DataTable dt = new DataTable();
             OracleDataAdapter da = new OracleDataAdapter(q, connection);
             da.Fill(dt);
@@ -59,9 +37,10 @@ namespace Inventory
                 equipmentCombobox.ValueMember = "EQUIPMENT_ID";
                 connection.Close();
             }
+
             DataTable dt2 = new DataTable();
-            OracleDataAdapter de = new OracleDataAdapter(w, connection);
-            de.Fill(dt2);
+            OracleDataAdapter da2 = new OracleDataAdapter(w, connection);
+            da2.Fill(dt2);
             if (dt2.Rows.Count > 0)
             {
                 locationCombobox.DataSource = dt2;
@@ -69,6 +48,51 @@ namespace Inventory
                 locationCombobox.ValueMember = "LOCATION_ID";
                 connection.Close();
             }
+
+            DataTable dt3 = new DataTable();
+            OracleDataAdapter da3 = new OracleDataAdapter(d, connection);
+            da3.Fill(dt3);
+            if (dt3.Rows.Count > 0)
+            {
+                locationCombobox.DataSource = dt3;
+                locationCombobox.DisplayMember = "CAT_NAME";
+                locationCombobox.ValueMember = "CAT_ID";
+                connection.Close();
+            }
+        }
+
+        private void Insert_Click(object sender, EventArgs e)
+        {
+
+            if (String.IsNullOrEmpty(equipmentCombobox.Text) || String.IsNullOrEmpty(locationCombobox.Text) || String.IsNullOrEmpty(quantityTextbox.Text))
+            {
+                MessageBox.Show("Please fill in the the data.");
+            }
+            else
+            {
+                string equipment = equipmentCombobox.SelectedItem.ToString();
+                string location = locationCombobox.SelectedItem.ToString();
+                string quantity = quantityTextbox.SelectedText.ToString();
+
+                connection.Open(); // Connects to DB
+                OracleCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text; //Command to send to DB
+                //cmd.CommandText = "insert into INVENTORY (ITEM_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "', 'Jonnyv', 'Item Added')"; // SQL Command
+                cmd.CommandText = "insert into INVENTORY_PREVIEW (EQUIPMENT_NAME, CATEGORY, LOCATION ) values " + "('" + equipment + "','', '" + location + "')"; // SQL Command
+                cmd.ExecuteNonQuery(); //Execute command
+                connection.Close(); //Close connection to DB
+
+                //textBox1.Text = ""; //Clear textboxes
+                //textBox2.Text = "";
+
+                //display_data();
+                MessageBox.Show("Data inserted successfully!");
+            }
+        }
+
+        private void categoryCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

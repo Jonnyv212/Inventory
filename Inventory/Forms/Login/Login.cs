@@ -112,5 +112,11 @@ namespace Inventory
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            TakeInventory tInv = new TakeInventory();
+            tInv.Show();
+        }
     }
 }

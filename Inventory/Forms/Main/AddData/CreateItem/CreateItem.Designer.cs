@@ -30,6 +30,8 @@
         {
             this.createItemButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.categoryCombobox = new System.Windows.Forms.ComboBox();
+            this.categoryLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -42,7 +44,7 @@
             // 
             // createItemButton
             // 
-            this.createItemButton.Location = new System.Drawing.Point(202, 124);
+            this.createItemButton.Location = new System.Drawing.Point(490, 148);
             this.createItemButton.Name = "createItemButton";
             this.createItemButton.Size = new System.Drawing.Size(112, 37);
             this.createItemButton.TabIndex = 0;
@@ -56,6 +58,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.panel1.Controls.Add(this.categoryCombobox);
+            this.panel1.Controls.Add(this.categoryLabel);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.textBox2);
@@ -68,9 +72,28 @@
             this.panel1.Size = new System.Drawing.Size(792, 450);
             this.panel1.TabIndex = 1;
             // 
+            // categoryCombobox
+            // 
+            this.categoryCombobox.FormattingEnabled = true;
+            this.categoryCombobox.Location = new System.Drawing.Point(63, 111);
+            this.categoryCombobox.Name = "categoryCombobox";
+            this.categoryCombobox.Size = new System.Drawing.Size(251, 28);
+            this.categoryCombobox.TabIndex = 16;
+            this.categoryCombobox.SelectedIndexChanged += new System.EventHandler(this.CategoryCombobox_SelectedIndexChanged);
+            // 
+            // categoryLabel
+            // 
+            this.categoryLabel.AutoSize = true;
+            this.categoryLabel.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.categoryLabel.Location = new System.Drawing.Point(63, 87);
+            this.categoryLabel.Name = "categoryLabel";
+            this.categoryLabel.Size = new System.Drawing.Size(73, 20);
+            this.categoryLabel.TabIndex = 15;
+            this.categoryLabel.Text = "Category";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(450, 124);
+            this.button1.Location = new System.Drawing.Point(632, 148);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 37);
             this.button1.TabIndex = 14;
@@ -145,6 +168,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "CreateItem";
             this.Text = "CreateItem";
+            this.Load += new System.EventHandler(this.CreateItem_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -162,5 +186,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label categoryLabel;
+        private System.Windows.Forms.ComboBox categoryCombobox;
     }
 }
