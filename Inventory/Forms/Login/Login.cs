@@ -28,7 +28,35 @@ namespace Inventory
 
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        private void BarcodeLoginButton_Click(object sender, EventArgs e)
+        {
+            connection.Open(); // Connects to DB
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text; //Command to send to DB
+            cmd.CommandText = "SELECT COUNT(*) FROM LOGIN WHERE L_BARCODE='" + barcodeTextbox.Text + "' "; // SQL Command
+            cmd.ExecuteNonQuery(); //Execute command
+            OracleDataAdapter sda = new OracleDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            Console.WriteLine(dt.Rows[0][0].ToString());
+            if (dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
+            {
+                this.Hide();
+
+                //user = usernameTextbox.Text;
+                connection.Close();
+                menu.Show();
+
+                Console.WriteLine(dt.Rows[0][0].ToString());
+            }
+            else
+            {
+                connection.Close();
+                MessageBox.Show("Please check your username and password");
+            }
+        }
+
+            private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -71,6 +99,16 @@ namespace Inventory
         }
 
         private void registerButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usernameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barcodeTextbox_TextChanged(object sender, EventArgs e)
         {
 
         }

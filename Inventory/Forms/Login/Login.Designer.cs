@@ -37,22 +37,25 @@
             this.exitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.registerButton = new System.Windows.Forms.Button();
+            this.BarcodeLoginButton = new System.Windows.Forms.Button();
+            this.barcodeTextbox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(312, 95);
+            this.usernameLabel.Location = new System.Drawing.Point(312, 27);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(101, 20);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "USERNAME";
+            this.usernameLabel.Click += new System.EventHandler(this.usernameLabel_Click);
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(312, 172);
+            this.passwordLabel.Location = new System.Drawing.Point(312, 95);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(103, 20);
             this.passwordLabel.TabIndex = 1;
@@ -64,7 +67,7 @@
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loginLabel.Location = new System.Drawing.Point(56, 63);
+            this.loginLabel.Location = new System.Drawing.Point(74, 77);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(133, 40);
             this.loginLabel.TabIndex = 2;
@@ -72,7 +75,7 @@
             // 
             // usernameTextbox
             // 
-            this.usernameTextbox.Location = new System.Drawing.Point(481, 89);
+            this.usernameTextbox.Location = new System.Drawing.Point(469, 27);
             this.usernameTextbox.Name = "usernameTextbox";
             this.usernameTextbox.Size = new System.Drawing.Size(286, 26);
             this.usernameTextbox.TabIndex = 3;
@@ -80,16 +83,16 @@
             // 
             // passwordTextbox
             // 
-            this.passwordTextbox.Location = new System.Drawing.Point(481, 166);
+            this.passwordTextbox.Location = new System.Drawing.Point(469, 89);
             this.passwordTextbox.Name = "passwordTextbox";
             this.passwordTextbox.Size = new System.Drawing.Size(286, 26);
             this.passwordTextbox.TabIndex = 4;
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(547, 225);
+            this.loginButton.Location = new System.Drawing.Point(534, 136);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(153, 56);
+            this.loginButton.Size = new System.Drawing.Size(153, 49);
             this.loginButton.TabIndex = 5;
             this.loginButton.Text = "LOGIN";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -97,9 +100,9 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(698, 343);
+            this.exitButton.Location = new System.Drawing.Point(647, 355);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(155, 54);
+            this.exitButton.Size = new System.Drawing.Size(155, 42);
             this.exitButton.TabIndex = 6;
             this.exitButton.Text = "EXIT";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -116,13 +119,31 @@
             // 
             // registerButton
             // 
-            this.registerButton.Location = new System.Drawing.Point(436, 338);
+            this.registerButton.Location = new System.Drawing.Point(446, 355);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(151, 59);
+            this.registerButton.Size = new System.Drawing.Size(151, 42);
             this.registerButton.TabIndex = 9;
             this.registerButton.Text = "REGISTER";
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
+            // 
+            // BarcodeLoginButton
+            // 
+            this.BarcodeLoginButton.Location = new System.Drawing.Point(333, 273);
+            this.BarcodeLoginButton.Name = "BarcodeLoginButton";
+            this.BarcodeLoginButton.Size = new System.Drawing.Size(160, 36);
+            this.BarcodeLoginButton.TabIndex = 10;
+            this.BarcodeLoginButton.Text = "CHECK BARCODE";
+            this.BarcodeLoginButton.UseVisualStyleBackColor = true;
+            this.BarcodeLoginButton.Click += new System.EventHandler(this.BarcodeLoginButton_Click);
+            // 
+            // barcodeTextbox
+            // 
+            this.barcodeTextbox.Location = new System.Drawing.Point(516, 283);
+            this.barcodeTextbox.Name = "barcodeTextbox";
+            this.barcodeTextbox.Size = new System.Drawing.Size(252, 26);
+            this.barcodeTextbox.TabIndex = 11;
+            this.barcodeTextbox.TextChanged += new System.EventHandler(this.barcodeTextbox_TextChanged);
             // 
             // Login
             // 
@@ -130,6 +151,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(865, 409);
+            this.Controls.Add(this.barcodeTextbox);
+            this.Controls.Add(this.BarcodeLoginButton);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.exitButton);
@@ -158,5 +181,7 @@
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.Button BarcodeLoginButton;
+        private System.Windows.Forms.TextBox barcodeTextbox;
     }
 }

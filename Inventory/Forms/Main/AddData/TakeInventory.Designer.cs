@@ -35,6 +35,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Insert = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.equipmentCombobox.FormattingEnabled = true;
-            this.equipmentCombobox.Location = new System.Drawing.Point(75, 73);
+            this.equipmentCombobox.Location = new System.Drawing.Point(12, 65);
             this.equipmentCombobox.Name = "equipmentCombobox";
             this.equipmentCombobox.Size = new System.Drawing.Size(333, 28);
             this.equipmentCombobox.TabIndex = 0;
@@ -58,7 +60,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(71, 50);
+            this.label1.Location = new System.Drawing.Point(8, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 20);
             this.label1.TabIndex = 1;
@@ -73,7 +75,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(530, 50);
+            this.label2.Location = new System.Drawing.Point(387, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 3;
@@ -86,7 +88,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.locationCombobox.FormattingEnabled = true;
-            this.locationCombobox.Location = new System.Drawing.Point(530, 73);
+            this.locationCombobox.Location = new System.Drawing.Point(387, 65);
             this.locationCombobox.Name = "locationCombobox";
             this.locationCombobox.Size = new System.Drawing.Size(310, 28);
             this.locationCombobox.TabIndex = 2;
@@ -109,7 +111,7 @@
             this.Insert.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Insert.Location = new System.Drawing.Point(878, 55);
+            this.Insert.Location = new System.Drawing.Point(928, 65);
             this.Insert.Name = "Insert";
             this.Insert.Size = new System.Drawing.Size(100, 46);
             this.Insert.TabIndex = 5;
@@ -121,18 +123,41 @@
             this.Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Clear.Location = new System.Drawing.Point(1020, 55);
+            this.Clear.Location = new System.Drawing.Point(1050, 65);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(100, 46);
             this.Clear.TabIndex = 6;
             this.Clear.Text = "Clear";
             this.Clear.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label3.Location = new System.Drawing.Point(737, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Quantity";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(741, 67);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(124, 26);
+            this.textBox1.TabIndex = 8;
+            // 
             // TakeInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 536);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.Insert);
             this.Controls.Add(this.dataGridView1);
@@ -158,5 +183,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button Insert;
         private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
