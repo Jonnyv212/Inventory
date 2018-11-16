@@ -54,9 +54,9 @@ namespace Inventory
             da3.Fill(dt3);
             if (dt3.Rows.Count > 0)
             {
-                locationCombobox.DataSource = dt3;
-                locationCombobox.DisplayMember = "CAT_NAME";
-                locationCombobox.ValueMember = "CAT_ID";
+                categoryCombobox.DataSource = dt3;
+                categoryCombobox.DisplayMember = "CAT_NAME";
+                categoryCombobox.ValueMember = "CAT_ID";
                 connection.Close();
             }
         }
@@ -70,16 +70,16 @@ namespace Inventory
             }
             else
             {
-                string equipment = equipmentCombobox.SelectedItem.ToString();
-                string location = locationCombobox.SelectedItem.ToString();
-                string quantity = quantityTextbox.SelectedText.ToString();
+                int quantity = Convert.ToInt32(quantityTextbox.Text);
 
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                //cmd.CommandText = "insert into INVENTORY (ITEM_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "', 'Jonnyv', 'Item Added')"; // SQL Command
-                cmd.CommandText = "insert into INVENTORY_PREVIEW (EQUIPMENT_NAME, CATEGORY, LOCATION ) values " + "('" + equipment + "','', '" + location + "')"; // SQL Command
-                cmd.ExecuteNonQuery(); //Execute command
+                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "')"; // SQL Command
+                for (int i = 0; i < quantity; i++)
+                {
+                    cmd.ExecuteNonQuery(); //Execute command
+                }
                 connection.Close(); //Close connection to DB
 
                 //textBox1.Text = ""; //Clear textboxes
@@ -90,6 +90,19 @@ namespace Inventory
             }
         }
 
+        private void display_data()
+        {
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM INVENTORY_PREVIEW";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta);
+            dataGridView1.DataSource = dta;
+            connection.Close();
+        }
         private void categoryCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
 

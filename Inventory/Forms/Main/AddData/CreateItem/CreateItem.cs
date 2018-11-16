@@ -23,7 +23,7 @@ namespace Inventory
 
         private void createItemButton_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBox1.Text) || String.IsNullOrEmpty(textBox2.Text))
+            if (String.IsNullOrEmpty(textBox1.Text) || String.IsNullOrEmpty(categoryCombobox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
@@ -32,7 +32,7 @@ namespace Inventory
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                //cmd.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, BARCODE, CATEGORY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + categoryTextbox.Text + "')"; // SQL Command
+                cmd.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, BARCODE, CATEGORY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + categoryCombobox.Text + "')"; // SQL Command
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close(); //Close connection to DB
 
@@ -59,7 +59,7 @@ namespace Inventory
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT EQUIPMENT_NAME, BARCODE FROM EQUIPMENT";
+            cmd.CommandText = "SELECT EQUIPMENT_NAME, BARCODE, CATEGORY FROM EQUIPMENT";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -70,7 +70,7 @@ namespace Inventory
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
