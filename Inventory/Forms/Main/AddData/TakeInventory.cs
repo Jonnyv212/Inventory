@@ -22,6 +22,7 @@ namespace Inventory
 
         private void TakeInventory_Load(object sender, EventArgs e)
         {
+            display_data();
             connection.Open();
             string q = "SELECT * FROM EQUIPMENT";
             string w = "SELECT * FROM LOCATION";
@@ -63,39 +64,45 @@ namespace Inventory
 
         private void Insert_Click(object sender, EventArgs e)
         {
-
             if (String.IsNullOrEmpty(equipmentCombobox.Text) || String.IsNullOrEmpty(locationCombobox.Text) || String.IsNullOrEmpty(quantityTextbox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
             else
             {
+                Login loginC = new Login();
+                string tempUser = loginC.user;
                 int quantity = Convert.ToInt32(quantityTextbox.Text);
 
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "')"; // SQL Command
+                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "', '" + tempUser + "', 'Inventory')"; // SQL Command
                 for (int i = 0; i < quantity; i++)
                 {
                     cmd.ExecuteNonQuery(); //Execute command
                 }
                 connection.Close(); //Close connection to DB
 
-                //textBox1.Text = ""; //Clear textboxes
-                //textBox2.Text = "";
+                clear_data();
 
-                //display_data();
+                display_data();
                 MessageBox.Show("Data inserted successfully!");
             }
         }
-
+        private void clear_data()
+        {
+            equipmentCombobox.Text = ""; //Clear textboxes
+            locationCombobox.Text = "";
+            categoryCombobox.Text = "";
+            quantityTextbox.Text = "";
+        }
         private void display_data()
         {
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM INVENTORY_PREVIEW";
+            cmd.CommandText = "SELECT * FROM INVENTORY";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -106,6 +113,16 @@ namespace Inventory
         private void categoryCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            clear_data();
         }
     }
 }

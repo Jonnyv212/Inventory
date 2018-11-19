@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
-using Oracle.ManagedDataAccess.Types;
 
 namespace Inventory
 {
     public partial class Login : Form
     {
-        public string user;
+        
         Main menu = new Main();
+        public string user;
 
         OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
         public Login()
@@ -43,7 +37,7 @@ namespace Inventory
             {
                 this.Hide();
 
-                //user = usernameTextbox.Text;
+                user = usernameTextbox.Text;
                 connection.Close();
                 menu.Show();
 
@@ -74,8 +68,8 @@ namespace Inventory
             if(dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
             {
                 this.Hide();
-
                 user = usernameTextbox.Text;
+                
                 connection.Close();
                 menu.Show();
 

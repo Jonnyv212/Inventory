@@ -37,19 +37,19 @@
             // 
             // inventoryButton
             // 
-            this.inventoryButton.Location = new System.Drawing.Point(84, 375);
+            this.inventoryButton.Location = new System.Drawing.Point(32, 375);
             this.inventoryButton.Name = "inventoryButton";
-            this.inventoryButton.Size = new System.Drawing.Size(106, 72);
+            this.inventoryButton.Size = new System.Drawing.Size(124, 72);
             this.inventoryButton.TabIndex = 0;
-            this.inventoryButton.Text = "Inventory";
+            this.inventoryButton.Text = "Search Inventory";
             this.inventoryButton.UseVisualStyleBackColor = true;
             this.inventoryButton.Click += new System.EventHandler(this.inventoryButton_Click);
             // 
             // addEquipmentButton
             // 
-            this.addEquipmentButton.Location = new System.Drawing.Point(492, 284);
+            this.addEquipmentButton.Location = new System.Drawing.Point(348, 375);
             this.addEquipmentButton.Name = "addEquipmentButton";
-            this.addEquipmentButton.Size = new System.Drawing.Size(106, 72);
+            this.addEquipmentButton.Size = new System.Drawing.Size(124, 72);
             this.addEquipmentButton.TabIndex = 2;
             this.addEquipmentButton.Text = "Add Equipment";
             this.addEquipmentButton.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(492, 375);
+            this.deleteButton.Location = new System.Drawing.Point(505, 375);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(106, 72);
+            this.deleteButton.Size = new System.Drawing.Size(124, 72);
             this.deleteButton.TabIndex = 3;
             this.deleteButton.Text = "Delete Data";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // 
             // takeInventoryButton
             // 
-            this.takeInventoryButton.Location = new System.Drawing.Point(279, 375);
+            this.takeInventoryButton.Location = new System.Drawing.Point(194, 375);
             this.takeInventoryButton.Name = "takeInventoryButton";
-            this.takeInventoryButton.Size = new System.Drawing.Size(120, 61);
+            this.takeInventoryButton.Size = new System.Drawing.Size(124, 72);
             this.takeInventoryButton.TabIndex = 7;
             this.takeInventoryButton.Text = "Take Inventory";
             this.takeInventoryButton.UseVisualStyleBackColor = true;
