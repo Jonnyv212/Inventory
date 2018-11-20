@@ -37,52 +37,66 @@
             // 
             // inventoryButton
             // 
-            this.inventoryButton.Location = new System.Drawing.Point(32, 375);
+            this.inventoryButton.BackColor = System.Drawing.Color.Snow;
+            this.inventoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inventoryButton.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.inventoryButton.Location = new System.Drawing.Point(51, 24);
             this.inventoryButton.Name = "inventoryButton";
-            this.inventoryButton.Size = new System.Drawing.Size(124, 72);
+            this.inventoryButton.Size = new System.Drawing.Size(264, 179);
             this.inventoryButton.TabIndex = 0;
             this.inventoryButton.Text = "Search Inventory";
-            this.inventoryButton.UseVisualStyleBackColor = true;
+            this.inventoryButton.UseVisualStyleBackColor = false;
             this.inventoryButton.Click += new System.EventHandler(this.inventoryButton_Click);
             // 
             // addEquipmentButton
             // 
-            this.addEquipmentButton.Location = new System.Drawing.Point(348, 375);
+            this.addEquipmentButton.BackColor = System.Drawing.Color.Snow;
+            this.addEquipmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEquipmentButton.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.addEquipmentButton.Location = new System.Drawing.Point(441, 24);
             this.addEquipmentButton.Name = "addEquipmentButton";
-            this.addEquipmentButton.Size = new System.Drawing.Size(124, 72);
+            this.addEquipmentButton.Size = new System.Drawing.Size(264, 179);
             this.addEquipmentButton.TabIndex = 2;
-            this.addEquipmentButton.Text = "Add Equipment";
-            this.addEquipmentButton.UseVisualStyleBackColor = true;
+            this.addEquipmentButton.Text = "Create New Equipment";
+            this.addEquipmentButton.UseVisualStyleBackColor = false;
             this.addEquipmentButton.Click += new System.EventHandler(this.addEquipmentButton_Click);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(505, 375);
+            this.deleteButton.BackColor = System.Drawing.Color.Snow;
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.deleteButton.Location = new System.Drawing.Point(441, 230);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(124, 72);
+            this.deleteButton.Size = new System.Drawing.Size(264, 178);
             this.deleteButton.TabIndex = 3;
             this.deleteButton.Text = "Delete Data";
-            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(718, 399);
+            this.exitButton.BackColor = System.Drawing.Color.Snow;
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(738, 382);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(106, 48);
+            this.exitButton.Size = new System.Drawing.Size(122, 65);
             this.exitButton.TabIndex = 6;
             this.exitButton.Text = "EXIT";
-            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // takeInventoryButton
             // 
-            this.takeInventoryButton.Location = new System.Drawing.Point(194, 375);
+            this.takeInventoryButton.BackColor = System.Drawing.Color.Snow;
+            this.takeInventoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.takeInventoryButton.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.takeInventoryButton.Location = new System.Drawing.Point(51, 230);
             this.takeInventoryButton.Name = "takeInventoryButton";
-            this.takeInventoryButton.Size = new System.Drawing.Size(124, 72);
+            this.takeInventoryButton.Size = new System.Drawing.Size(264, 178);
             this.takeInventoryButton.TabIndex = 7;
             this.takeInventoryButton.Text = "Take Inventory";
-            this.takeInventoryButton.UseVisualStyleBackColor = true;
+            this.takeInventoryButton.UseVisualStyleBackColor = false;
             this.takeInventoryButton.Click += new System.EventHandler(this.takeInventoryButton_Click);
             // 
             // Main
