@@ -44,11 +44,6 @@ namespace Inventory
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void refreshButton_Click(object sender, EventArgs e)
         {
             display_data();
@@ -67,27 +62,6 @@ namespace Inventory
             dataGridView1.DataSource = dta;
             connection.Close();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void categoryTextbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CategoryCombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void CreateItem_Load(object sender, EventArgs e)
         {

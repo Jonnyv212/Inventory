@@ -51,7 +51,6 @@
             this.usernameLabel.Size = new System.Drawing.Size(101, 20);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "USERNAME";
-            this.usernameLabel.Click += new System.EventHandler(this.usernameLabel_Click);
             // 
             // passwordLabel
             // 
@@ -61,7 +60,6 @@
             this.passwordLabel.Size = new System.Drawing.Size(103, 20);
             this.passwordLabel.TabIndex = 1;
             this.passwordLabel.Text = "PASSWORD";
-            this.passwordLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // loginLabel
             // 
@@ -80,7 +78,6 @@
             this.usernameTextbox.Name = "usernameTextbox";
             this.usernameTextbox.Size = new System.Drawing.Size(286, 26);
             this.usernameTextbox.TabIndex = 3;
-            this.usernameTextbox.TextChanged += new System.EventHandler(this.usernameTextbox_TextChanged);
             // 
             // passwordTextbox
             // 
@@ -126,7 +123,6 @@
             this.registerButton.TabIndex = 9;
             this.registerButton.Text = "REGISTER";
             this.registerButton.UseVisualStyleBackColor = true;
-            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // BarcodeLoginButton
             // 
@@ -144,7 +140,6 @@
             this.barcodeTextbox.Name = "barcodeTextbox";
             this.barcodeTextbox.Size = new System.Drawing.Size(252, 26);
             this.barcodeTextbox.TabIndex = 11;
-            this.barcodeTextbox.TextChanged += new System.EventHandler(this.barcodeTextbox_TextChanged);
             // 
             // button1
             // 

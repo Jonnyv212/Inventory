@@ -65,10 +65,5 @@ namespace Inventory
         {
             display_test(searchBox.Text);
         }
-
-        private void searchBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

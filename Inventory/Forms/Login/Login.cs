@@ -17,11 +17,6 @@ namespace Inventory
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BarcodeLoginButton_Click(object sender, EventArgs e)
         {
             connection.Open(); // Connects to DB
@@ -80,31 +75,6 @@ namespace Inventory
                 connection.Close();
                 MessageBox.Show("Please check your username and password");
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //menu.Show();
-        }
-
-        public void usernameTextbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void registerButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void usernameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void barcodeTextbox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)

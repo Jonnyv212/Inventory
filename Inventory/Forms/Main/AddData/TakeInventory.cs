@@ -110,15 +110,6 @@ namespace Inventory
             dataGridView1.DataSource = dta;
             connection.Close();
         }
-        private void categoryCombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void Clear_Click(object sender, EventArgs e)
         {
