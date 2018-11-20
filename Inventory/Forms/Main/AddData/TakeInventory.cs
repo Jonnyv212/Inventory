@@ -71,13 +71,13 @@ namespace Inventory
             else
             {
                 Login loginC = new Login();
-                string tempUser = loginC.user;
+                string loginUser = Login.user;
                 int quantity = Convert.ToInt32(quantityTextbox.Text);
 
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "', '" + tempUser + "', 'Inventory')"; // SQL Command
+                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "', '" + loginUser + "', 'Inventory')"; // SQL Command
                 for (int i = 0; i < quantity; i++)
                 {
                     cmd.ExecuteNonQuery(); //Execute command
@@ -113,6 +113,9 @@ namespace Inventory
 
         private void Clear_Click(object sender, EventArgs e)
         {
+            string tempUser = Login.user;
+            Console.WriteLine(tempUser);
+            Console.WriteLine(Login.user);
             clear_data();
         }
     }

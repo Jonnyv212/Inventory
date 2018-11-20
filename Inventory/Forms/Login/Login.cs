@@ -9,7 +9,7 @@ namespace Inventory
     {
         
         Main menu = new Main();
-        public string user;
+        public static string user;
 
         OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
         public Login()
@@ -45,7 +45,7 @@ namespace Inventory
             }
         }
 
-            private void exitButton_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -62,13 +62,13 @@ namespace Inventory
             sda.Fill(dt);
             if(dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
             {
-                this.Hide();
+                
                 user = usernameTextbox.Text;
                 
                 connection.Close();
                 menu.Show();
 
-                Console.WriteLine(dt.Rows[0][0].ToString());
+                Console.WriteLine(user);
             }
             else
             {

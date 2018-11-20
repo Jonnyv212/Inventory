@@ -29,7 +29,7 @@ namespace Inventory
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Form1 sa = new Form1();
+            FormTest sa = new FormTest();
             sa.Show();
             this.Hide();
         }

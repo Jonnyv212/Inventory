@@ -12,10 +12,10 @@ using Oracle.ManagedDataAccess.Types;
 
 namespace Inventory
 {
-    public partial class Form1 : Form
+    public partial class FormTest : Form
     {
         OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
-        public Form1()
+        public FormTest()
         {
             InitializeComponent();
         }
@@ -127,6 +127,11 @@ namespace Inventory
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

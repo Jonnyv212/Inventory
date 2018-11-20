@@ -77,11 +77,11 @@
     <Compile Include="Forms\Main\DeleteData\DeleteData.Designer.cs">
       <DependentUpon>DeleteData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Test\Form1.cs">
+    <Compile Include="Forms\Test\FormTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Test\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\Test\FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login\Login.cs">
       <SubType>Form</SubType>
@@ -115,8 +115,8 @@
     <EmbeddedResource Include="Forms\Main\DeleteData\DeleteData.resx">
       <DependentUpon>DeleteData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Test\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Test\FormTest.resx">
+      <DependentUpon>FormTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
