@@ -70,7 +70,7 @@
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(264, 178);
             this.deleteButton.TabIndex = 3;
-            this.deleteButton.Text = "Delete Data";
+            this.deleteButton.Text = "Delete From Inventory";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
