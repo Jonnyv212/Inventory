@@ -15,6 +15,7 @@ namespace Inventory
     public partial class Search : Form
     {
         OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
+        DataTable dtas = new DataTable();
         public Search()
         {
             InitializeComponent();
@@ -64,6 +65,43 @@ namespace Inventory
         private void button1_Click(object sender, EventArgs e)
         {
             display_test(searchBox.Text);
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM INVENTORY WHERE '"+ tableComboBox.Text +"' LIKE '" + searchBox.Text + "%' "; // SQL Command
+            //cmd.CommandText = "SELECT * FROM INVENTORY WHERE Item_Category LIKE '" + searchBox.Text + "%' ";
+            Console.WriteLine(cmd.CommandText);
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta);
+            dataGridView1.DataSource = dta;
+            connection.Close();
+        }
+
+        private void tableComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+            /*string d = "SELECT * FROM INVENTORY";
+
+            DataTable dt = new DataTable();
+            OracleDataAdapter da = new OracleDataAdapter(d, connection);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                tableComboBox.DataSource = dt;
+                tableComboBox. = "EQUIPMENT_NAME";
+                tableComboBox.ValueMember = "INVENTORY_ID";
+                connection.Close();
+            }*/
         }
     }
 }

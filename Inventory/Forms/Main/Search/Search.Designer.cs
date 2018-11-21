@@ -32,6 +32,8 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuButton = new System.Windows.Forms.Button();
+            this.tableComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,6 +43,7 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(721, 26);
             this.searchBox.TabIndex = 7;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // searchButton
             // 
@@ -74,18 +77,46 @@
             this.menuButton.UseVisualStyleBackColor = true;
             this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
             // 
+            // tableComboBox
+            // 
+            this.tableComboBox.FormattingEnabled = true;
+            this.tableComboBox.Items.AddRange(new object[] {
+            "EQUIPMENT_NAME",
+            "CATEGORY",
+            "LOCATION",
+            "ACTIVITY_BY",
+            "DATE",
+            "INVENTORY_ID",
+            "ACTIVITY"});
+            this.tableComboBox.Location = new System.Drawing.Point(61, 115);
+            this.tableComboBox.Name = "tableComboBox";
+            this.tableComboBox.Size = new System.Drawing.Size(121, 28);
+            this.tableComboBox.TabIndex = 15;
+            this.tableComboBox.SelectedIndexChanged += new System.EventHandler(this.tableComboBox_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(61, 89);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Column";
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 519);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tableComboBox);
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchBox);
             this.Name = "Search";
             this.Text = "Search";
-            
+            this.Load += new System.EventHandler(this.Search_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -98,5 +129,7 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button menuButton;
+        private System.Windows.Forms.ComboBox tableComboBox;
+        private System.Windows.Forms.Label label1;
     }
 }

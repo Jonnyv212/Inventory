@@ -118,5 +118,15 @@ namespace Inventory
             Console.WriteLine(Login.user);
             clear_data();
         }
+
+        private void categoryCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void equipmentCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -52,6 +52,7 @@
             this.equipmentCombobox.Name = "equipmentCombobox";
             this.equipmentCombobox.Size = new System.Drawing.Size(333, 28);
             this.equipmentCombobox.TabIndex = 0;
+            this.equipmentCombobox.SelectedIndexChanged += new System.EventHandler(this.equipmentCombobox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -175,6 +176,7 @@
             this.categoryCombobox.Name = "categoryCombobox";
             this.categoryCombobox.Size = new System.Drawing.Size(333, 28);
             this.categoryCombobox.TabIndex = 9;
+            this.categoryCombobox.SelectedIndexChanged += new System.EventHandler(this.categoryCombobox_SelectedIndexChanged);
             // 
             // TakeInventory
             // 
