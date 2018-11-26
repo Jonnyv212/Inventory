@@ -67,13 +67,15 @@ namespace Inventory
             display_test(searchBox.Text);
         }
 
+
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
+            string tableCB = tableComboBox.Text;
+            Console.WriteLine(tableCB);
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM INVENTORY WHERE '"+ tableComboBox.Text +"' LIKE '" + searchBox.Text + "%' "; // SQL Command
-            //cmd.CommandText = "SELECT * FROM INVENTORY WHERE Item_Category LIKE '" + searchBox.Text + "%' ";
+            cmd.CommandText = "SELECT * FROM INVENTORY WHERE REGEXP_LIKE(" + tableCB + ", '(" + searchBox.Text + ")', 'i')"; // SQL Command
             Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
@@ -81,6 +83,7 @@ namespace Inventory
             dataadp.Fill(dta);
             dataGridView1.DataSource = dta;
             connection.Close();
+
         }
 
         private void tableComboBox_SelectedIndexChanged(object sender, EventArgs e)
