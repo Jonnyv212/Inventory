@@ -32,15 +32,33 @@ namespace Inventory
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, BARCODE, CATEGORY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + categoryCombobox.Text + "')"; // SQL Command
+                cmd.CommandText = "SELECT COUNT(*) FROM EQUIPMENT WHERE EQUIPMENT_NAME= '" + textBox1.Text + "' OR PRODUCT_NO= '" + textBox2.Text + "' "; // SQL Command
                 cmd.ExecuteNonQuery(); //Execute command
-                connection.Close(); //Close connection to DB
+                OracleDataAdapter sda = new OracleDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
+                {
+                    MessageBox.Show("Already exists!");
+                    connection.Close();
+                    display_data();
+                }
+                else
+                {
+                    //connection.Open(); // Connects to DB
+                    OracleCommand cmd2 = connection.CreateCommand();
+                    cmd2.CommandType = CommandType.Text; //Command to send to DB
+                    cmd2.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, PRODUCT_NO, CATEGORY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" + categoryCombobox.Text + "')"; // SQL Command
+                    cmd2.ExecuteNonQuery(); //Execute command
+                    //connection.Close(); //Close connection to DB
 
-                textBox1.Text = ""; //Clear textboxes
-                textBox2.Text = "";
+                    textBox1.Text = ""; //Clear textboxes
+                    textBox2.Text = "";
+                    connection.Close();
 
-                display_data();
-                MessageBox.Show("Data inserted successfully!");
+                    display_data();
+                    MessageBox.Show("Data inserted");
+                }
             }
         }
 
@@ -54,7 +72,7 @@ namespace Inventory
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT EQUIPMENT_NAME, BARCODE, CATEGORY FROM EQUIPMENT";
+            cmd.CommandText = "SELECT EQUIPMENT_NAME, PRODUCT_NO, CATEGORY FROM EQUIPMENT";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
