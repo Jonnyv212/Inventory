@@ -62,9 +62,9 @@ namespace Inventory
             }
         }
 
-        private void Insert_Click(object sender, EventArgs e)
+        public void Insert_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(equipmentCombobox.Text) || String.IsNullOrEmpty(locationCombobox.Text) || String.IsNullOrEmpty(quantityTextbox.Text))
+            if (String.IsNullOrEmpty(equipmentCombobox.Text) || String.IsNullOrEmpty(locationCombobox.Text) || String.IsNullOrEmpty(categoryCombobox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
@@ -72,22 +72,25 @@ namespace Inventory
             {
                 Login loginC = new Login();
                 string loginUser = Login.user;
-                int quantity = Convert.ToInt32(quantityTextbox.Text);
+                //int quantity = Convert.ToInt32(quantityTextbox.Text);
 
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "', '" + loginUser + "', 'Inventory')"; // SQL Command
-                for (int i = 0; i < quantity; i++)
+                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY, SERIAL_NUMBER ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + serialTextbox.Text + "')"; // SQL Command
+                Console.WriteLine(cmd.CommandText);
+                /*for (int i = 0; i < quantity; i++)
                 {
                     cmd.ExecuteNonQuery(); //Execute command
-                }
+                }*/
+                cmd.ExecuteNonQuery(); //Execute command
                 connection.Close(); //Close connection to DB
 
-                clear_data();
+                //clear_data();
 
                 display_data();
-                MessageBox.Show("Data inserted successfully!");
+                //MessageBox.Show("Data inserted successfully!");
+
             }
         }
         private void clear_data()
@@ -95,7 +98,7 @@ namespace Inventory
             equipmentCombobox.Text = ""; //Clear textboxes
             locationCombobox.Text = "";
             categoryCombobox.Text = "";
-            quantityTextbox.Text = "";
+            //quantityTextbox.Text = "";
         }
         private void display_data()
         {
@@ -113,9 +116,6 @@ namespace Inventory
 
         private void Clear_Click(object sender, EventArgs e)
         {
-            string tempUser = Login.user;
-            Console.WriteLine(tempUser);
-            Console.WriteLine(Login.user);
             clear_data();
         }
 
@@ -127,6 +127,20 @@ namespace Inventory
         private void equipmentCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void serialTextbox_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void serialTextbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Insert_Click(sender, e);
+                serialTextbox.Text = "";
+                Console.WriteLine("Inserted");
+            }
         }
     }
 }

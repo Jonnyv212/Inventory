@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +65,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\AddData\SerialNumbers\SerialNumbers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\AddData\SerialNumbers\SerialNumbers.Designer.cs">
+      <DependentUpon>SerialNumbers.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main\AddData\TakeInventory.cs">
       <SubType>Form</SubType>
@@ -108,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\AddData\CreateItem\CreateItemPreview.resx">
       <DependentUpon>CreateItemPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\AddData\SerialNumbers\SerialNumbers.resx">
+      <DependentUpon>SerialNumbers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\AddData\TakeInventory.resx">
       <DependentUpon>TakeInventory.cs</DependentUpon>
@@ -161,8 +171,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Main\Barcode\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
