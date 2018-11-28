@@ -14,14 +14,15 @@ namespace Inventory
 {
     public partial class Search : Form
     {
-        OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
+        /*OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
         DataTable dtas = new DataTable();
+        Main mainForm = new Main();*/
         public Search()
         {
             InitializeComponent();
         }
 
-
+        /*
         private void menuButton_Click(object sender, EventArgs e)
         {
             Main menu = new Main();
@@ -68,7 +69,7 @@ namespace Inventory
         }
 
 
-        private void searchBox_TextChanged(object sender, EventArgs e)
+        public void searchBox_TextChanged(object sender, EventArgs e)
         {
             string tableCB = tableComboBox.Text;
             Console.WriteLine(tableCB);
@@ -93,7 +94,7 @@ namespace Inventory
 
         private void Search_Load(object sender, EventArgs e)
         {
-            /*string d = "SELECT * FROM INVENTORY";
+            string d = "SELECT * FROM INVENTORY";
 
             DataTable dt = new DataTable();
             OracleDataAdapter da = new OracleDataAdapter(d, connection);
@@ -104,7 +105,7 @@ namespace Inventory
                 tableComboBox. = "EQUIPMENT_NAME";
                 tableComboBox.ValueMember = "INVENTORY_ID";
                 connection.Close();
-            }*/
-        }
+            }
+        }*/
     }
 }

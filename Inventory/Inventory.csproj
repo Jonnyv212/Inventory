@@ -72,12 +72,6 @@
     <Compile Include="Forms\Main\AddData\SerialNumbers\SerialNumbers.Designer.cs">
       <DependentUpon>SerialNumbers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main\AddData\TakeInventory.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Main\AddData\TakeInventory.Designer.cs">
-      <DependentUpon>TakeInventory.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Main\DeleteData\DeleteData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,12 +98,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\Main\Search\Search.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Main\Search\Search.Designer.cs">
-      <DependentUpon>Search.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\Main\AddData\CreateItem\CreateItem.resx">
       <DependentUpon>CreateItem.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,9 +106,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\AddData\SerialNumbers\SerialNumbers.resx">
       <DependentUpon>SerialNumbers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main\AddData\TakeInventory.resx">
-      <DependentUpon>TakeInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\DeleteData\DeleteData.resx">
       <DependentUpon>DeleteData.cs</DependentUpon>
@@ -144,9 +129,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Forms\Main\Search\Search.resx">
-      <DependentUpon>Search.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="DataSet3.xsc">
       <DependentUpon>DataSet3.xsd</DependentUpon>
     </None>
@@ -171,6 +153,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\Main\Search\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
