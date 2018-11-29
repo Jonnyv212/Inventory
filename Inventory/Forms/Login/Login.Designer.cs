@@ -39,7 +39,6 @@
             this.registerButton = new System.Windows.Forms.Button();
             this.BarcodeLoginButton = new System.Windows.Forms.Button();
             this.barcodeTextbox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,22 +140,12 @@
             this.barcodeTextbox.Size = new System.Drawing.Size(252, 26);
             this.barcodeTextbox.TabIndex = 11;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(766, 211);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(865, 409);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.barcodeTextbox);
             this.Controls.Add(this.BarcodeLoginButton);
             this.Controls.Add(this.registerButton);
@@ -189,6 +178,5 @@
         private System.Windows.Forms.Button registerButton;
         private System.Windows.Forms.Button BarcodeLoginButton;
         private System.Windows.Forms.TextBox barcodeTextbox;
-        private System.Windows.Forms.Button button1;
     }
 }

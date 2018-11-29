@@ -45,9 +45,9 @@ namespace Inventory
             }
         }
 
-        private void exitButton_Click(object sender, EventArgs e)
+        public void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace Inventory
                 
                 connection.Close();
                 menu.Show();
-
+                this.Hide();
                 Console.WriteLine(user);
             }
             else

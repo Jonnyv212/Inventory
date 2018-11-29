@@ -15,12 +15,13 @@ namespace Inventory
     public partial class Main : Form
     {
         OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
+       
         public Main()
         {
             InitializeComponent();
 
         }
-        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        private void inventoryTabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             var g = e.Graphics;
             var text = this.inventoryTabControl.TabPages[e.Index].Text;
@@ -131,7 +132,6 @@ namespace Inventory
             connection.Close();
         }
 
-       
         private void serialTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -177,5 +177,14 @@ namespace Inventory
             clear_data();
         }
 
+        private void searchTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
