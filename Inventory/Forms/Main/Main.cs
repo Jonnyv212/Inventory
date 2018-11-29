@@ -54,6 +54,7 @@ namespace Inventory
         private void Main_Load_1(object sender, EventArgs e)
         {
             InventoryComboBoxData();
+            CreateItemData();
         }
 
         private void InventoryComboBoxData()
@@ -109,6 +110,19 @@ namespace Inventory
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
             dataadp.Fill(dta);
             dataGridView2.DataSource = dta;
+            connection.Close();
+        }
+        private void display_create_data()
+        {
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM EQUIPMENT";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta);
+            dataGridView3.DataSource = dta;
             connection.Close();
         }
         private void clear_data()
@@ -177,14 +191,72 @@ namespace Inventory
             clear_data();
         }
 
-        private void searchTab_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void createButton_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBox1.Text) || String.IsNullOrEmpty(categoryCombobox.Text))
+            {
+                MessageBox.Show("Please fill in the the data.");
+            }
+            else
+            {
+                connection.Open(); // Connects to DB
+                OracleCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text; //Command to send to DB
+                cmd.CommandText = "SELECT COUNT(*) FROM EQUIPMENT WHERE EQUIPMENT_NAME= '" + textBox1.Text + "' OR PRODUCT_NO= '" + textBox2.Text + "' "; // SQL Command
+                cmd.ExecuteNonQuery(); //Execute command
+                OracleDataAdapter sda = new OracleDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
+                {
+                    MessageBox.Show("Already exists!");
+                    connection.Close();
+                    display_data();
+                }
+                else
+                {
+                    //connection.Open(); // Connects to DB
+                    OracleCommand cmd2 = connection.CreateCommand();
+                    cmd2.CommandType = CommandType.Text; //Command to send to DB
+                    cmd2.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, PRODUCT_NO, CATEGORY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" +  createCategoryCombobox.Text + "')"; // SQL Command
+                    cmd2.ExecuteNonQuery(); //Execute command
+                    //connection.Close(); //Close connection to DB
+
+                    textBox1.Text = ""; //Clear textboxes
+                    textBox2.Text = "";
+                    connection.Close();
+
+                    display_data();
+                    MessageBox.Show("Data inserted");
+                }
+            }
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            display_create_data();
+        }
+
+        private void CreateItemData()
+        {
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            string q = "SELECT * FROM CATEGORY";
+            DataTable dt = new DataTable();
+            OracleDataAdapter da = new OracleDataAdapter(q, connection);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                createCategoryCombobox.DataSource = dt;
+                createCategoryCombobox.DisplayMember = "CAT_NAME";
+                createCategoryCombobox.ValueMember = "CAT_ID";
+                connection.Close();
+            }
         }
     }
 }
