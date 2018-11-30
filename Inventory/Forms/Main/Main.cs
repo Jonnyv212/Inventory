@@ -53,8 +53,11 @@ namespace Inventory
 
         private void Main_Load_1(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dataSet1.INVENTORY' table. You can move, or remove it, as needed.
+            this.iNVENTORYTableAdapter.Fill(this.dataSet1.INVENTORY);
             InventoryComboBoxData();
             CreateItemData();
+            EditInventoryData();
         }
 
         private void InventoryComboBoxData()
@@ -260,6 +263,80 @@ namespace Inventory
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditInventoryData()
+        {
+            //connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '"+inventoryEditCombobox.Text+"' ";
+            string q = "SELECT SERIAL_NUMBER FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
+
+            DataTable dt1 = new DataTable();
+            OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+            da1.Fill(dt1);
+            if (dt1.Rows.Count > 0)
+            {
+                nameEditCombobox.DataSource = dt1;
+                nameEditCombobox.DisplayMember = "EQUIPMENT_NAME";
+                nameEditCombobox.ValueMember = "INVENTORY_ID";
+                connection.Close();
+            }
+            DataTable dt2 = new DataTable();
+            OracleDataAdapter da2 = new OracleDataAdapter(w, connection);
+            da2.Fill(dt2);
+            if (dt2.Rows.Count > 0)
+            {
+                locationEditCombobox.DataSource = dt2;
+                locationEditCombobox.DisplayMember = "LOCATION";
+                locationEditCombobox.ValueMember = "INVENTORY_ID";
+                connection.Close();
+            }
+            DataTable dt3 = new DataTable();
+            OracleDataAdapter da3 = new OracleDataAdapter(w, connection);
+            da3.Fill(dt3);
+            if (dt3.Rows.Count > 0)
+            {
+                userEditCombobox.DataSource = dt3;
+                userEditCombobox.DisplayMember = "ACTIVITY_BY";
+                userEditCombobox.ValueMember = "INVENTORY_ID";
+                connection.Close();
+            }
+            DataTable dt4 = new DataTable();
+            OracleDataAdapter da4 = new OracleDataAdapter(w, connection);
+            da4.Fill(dt4);
+            if (dt4.Rows.Count > 0)
+            {
+                categoryEditCombobox.DataSource = dt4;
+                categoryEditCombobox.DisplayMember = "CATEGORY";
+                categoryEditCombobox.ValueMember = "INVENTORY_ID";
+                connection.Close();
+            }
+        }
+
+        private void inventoryEditCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            EditInventoryData();
+            readSerialEdit();
+        }
+
+        private void readSerialEdit()
+        {
+            connection.Open();
+
+            string q = "SELECT SERIAL_NUMBER FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
+            OracleCommand cmd2 = new OracleCommand(q, connection);
+            OracleDataReader dr = cmd2.ExecuteReader();
+            if (dr.Read())
+            {
+                serialEditTextbox.Text = (dr["SERIAL_NUMBER"].ToString());
+            }
+            connection.Close();
+        }
+        private void quantityTextbox_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.inventoryTabControl = new System.Windows.Forms.TabControl();
             this.searchTab = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
@@ -54,8 +55,21 @@
             this.categoryCombobox = new System.Windows.Forms.ComboBox();
             this.quantityTextbox = new System.Windows.Forms.TextBox();
             this.editTab = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.categoryEditCombobox = new System.Windows.Forms.ComboBox();
+            this.serialEditTextbox = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.userEditCombobox = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.locationEditCombobox = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.nameEditCombobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.inventoryEditCombobox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.createTab = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -72,30 +86,22 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.nameEditCombobox = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dataSet1 = new Inventory.DataSet1();
+            this.iNVENTORYBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.iNVENTORYTableAdapter = new Inventory.DataSet1TableAdapters.INVENTORYTableAdapter();
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.takeTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.editTab.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.createTab.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // inventoryTabControl
@@ -413,12 +419,13 @@
             this.quantityTextbox.Name = "quantityTextbox";
             this.quantityTextbox.Size = new System.Drawing.Size(124, 33);
             this.quantityTextbox.TabIndex = 8;
+            this.quantityTextbox.TextChanged += new System.EventHandler(this.quantityTextbox_TextChanged);
             // 
             // editTab
             // 
             this.editTab.Controls.Add(this.groupBox1);
             this.editTab.Controls.Add(this.label14);
-            this.editTab.Controls.Add(this.comboBox1);
+            this.editTab.Controls.Add(this.inventoryEditCombobox);
             this.editTab.Controls.Add(this.label11);
             this.editTab.Location = new System.Drawing.Point(134, 4);
             this.editTab.Name = "editTab";
@@ -426,22 +433,150 @@
             this.editTab.TabIndex = 2;
             this.editTab.Text = "Edit Inventory";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.categoryEditCombobox);
+            this.groupBox1.Controls.Add(this.serialEditTextbox);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.userEditCombobox);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.locationEditCombobox);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.nameEditCombobox);
+            this.groupBox1.Location = new System.Drawing.Point(28, 49);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(749, 475);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(493, 108);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(134, 25);
+            this.label21.TabIndex = 15;
+            this.label21.Text = "CATEGORY";
+            // 
+            // categoryEditCombobox
+            // 
+            this.categoryEditCombobox.FormattingEnabled = true;
+            this.categoryEditCombobox.Location = new System.Drawing.Point(409, 136);
+            this.categoryEditCombobox.Name = "categoryEditCombobox";
+            this.categoryEditCombobox.Size = new System.Drawing.Size(303, 33);
+            this.categoryEditCombobox.TabIndex = 14;
+            // 
+            // serialEditTextbox
+            // 
+            this.serialEditTextbox.Location = new System.Drawing.Point(409, 249);
+            this.serialEditTextbox.Name = "serialEditTextbox";
+            this.serialEditTextbox.Size = new System.Drawing.Size(303, 33);
+            this.serialEditTextbox.TabIndex = 13;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(409, 366);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(303, 33);
+            this.dateTimePicker1.TabIndex = 12;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(503, 221);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(109, 25);
+            this.label20.TabIndex = 11;
+            this.label20.Text = "SERIAL #";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(509, 335);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(71, 25);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "DATE";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(118, 338);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(70, 25);
+            this.label17.TabIndex = 5;
+            this.label17.Text = "USER";
+            // 
+            // userEditCombobox
+            // 
+            this.userEditCombobox.FormattingEnabled = true;
+            this.userEditCombobox.Location = new System.Drawing.Point(23, 366);
+            this.userEditCombobox.Name = "userEditCombobox";
+            this.userEditCombobox.Size = new System.Drawing.Size(283, 33);
+            this.userEditCombobox.TabIndex = 4;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(90, 221);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(130, 25);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "LOCATION";
+            // 
+            // locationEditCombobox
+            // 
+            this.locationEditCombobox.FormattingEnabled = true;
+            this.locationEditCombobox.Location = new System.Drawing.Point(23, 249);
+            this.locationEditCombobox.Name = "locationEditCombobox";
+            this.locationEditCombobox.Size = new System.Drawing.Size(283, 33);
+            this.locationEditCombobox.TabIndex = 2;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(118, 108);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 25);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "NAME";
+            // 
+            // nameEditCombobox
+            // 
+            this.nameEditCombobox.FormattingEnabled = true;
+            this.nameEditCombobox.Location = new System.Drawing.Point(23, 136);
+            this.nameEditCombobox.Name = "nameEditCombobox";
+            this.nameEditCombobox.Size = new System.Drawing.Size(283, 33);
+            this.nameEditCombobox.TabIndex = 0;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(61, 35);
+            this.label14.Location = new System.Drawing.Point(822, 44);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(135, 25);
             this.label14.TabIndex = 2;
             this.label14.Text = "Inventory ID";
             // 
-            // comboBox1
+            // inventoryEditCombobox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(46, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(195, 33);
-            this.comboBox1.TabIndex = 1;
+            this.inventoryEditCombobox.DataSource = this.iNVENTORYBindingSource1;
+            this.inventoryEditCombobox.DisplayMember = "INVENTORY_ID";
+            this.inventoryEditCombobox.FormattingEnabled = true;
+            this.inventoryEditCombobox.Location = new System.Drawing.Point(783, 72);
+            this.inventoryEditCombobox.Name = "inventoryEditCombobox";
+            this.inventoryEditCombobox.Size = new System.Drawing.Size(218, 33);
+            this.inventoryEditCombobox.TabIndex = 1;
+            this.inventoryEditCombobox.ValueMember = "INVENTORY_ID";
+            this.inventoryEditCombobox.SelectedIndexChanged += new System.EventHandler(this.inventoryEditCombobox_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -609,130 +744,19 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // groupBox1
+            // dataSet1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.comboBox6);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.nameEditCombobox);
-            this.groupBox1.Location = new System.Drawing.Point(351, 105);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(752, 395);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // nameEditCombobox
+            // iNVENTORYBindingSource1
             // 
-            this.nameEditCombobox.FormattingEnabled = true;
-            this.nameEditCombobox.Location = new System.Drawing.Point(23, 77);
-            this.nameEditCombobox.Name = "nameEditCombobox";
-            this.nameEditCombobox.Size = new System.Drawing.Size(283, 33);
-            this.nameEditCombobox.TabIndex = 0;
+            this.iNVENTORYBindingSource1.DataMember = "INVENTORY";
+            this.iNVENTORYBindingSource1.DataSource = this.dataSet1;
             // 
-            // label15
+            // iNVENTORYTableAdapter
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(18, 49);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 25);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "NAME";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(18, 142);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(130, 25);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "LOCATION";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(23, 186);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(283, 33);
-            this.comboBox2.TabIndex = 2;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(18, 259);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(70, 25);
-            this.label17.TabIndex = 5;
-            this.label17.Text = "USER";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(23, 299);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(283, 33);
-            this.comboBox3.TabIndex = 4;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(404, 49);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 25);
-            this.label18.TabIndex = 7;
-            this.label18.Text = "EVENT";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(409, 77);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(303, 33);
-            this.comboBox4.TabIndex = 6;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(404, 259);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(71, 25);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "DATE";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(404, 142);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(93, 25);
-            this.label20.TabIndex = 11;
-            this.label20.Text = "SERIAL";
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(409, 186);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(303, 33);
-            this.comboBox6.TabIndex = 10;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(409, 296);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(303, 33);
-            this.dateTimePicker1.TabIndex = 12;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.iNVENTORYTableAdapter.ClearBeforeFill = true;
             // 
             // Main
             // 
@@ -753,14 +777,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.editTab.ResumeLayout(false);
             this.editTab.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.createTab.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -809,20 +835,23 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox inventoryEditCombobox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox userEditCombobox;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox locationEditCombobox;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox nameEditCombobox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox categoryEditCombobox;
+        private System.Windows.Forms.TextBox serialEditTextbox;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.BindingSource iNVENTORYBindingSource1;
+        private DataSet1TableAdapters.INVENTORYTableAdapter iNVENTORYTableAdapter;
     }
 }
