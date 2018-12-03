@@ -14,6 +14,7 @@ namespace Inventory
 {
     public partial class Main : Form
     {
+        //Establish Oracle database connection using my username and password.
         OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
        
         public Main()
@@ -21,6 +22,7 @@ namespace Inventory
             InitializeComponent();
 
         }
+        //GUI for Inventory Tab Control (text, layout, size)
         private void inventoryTabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             var g = e.Graphics;
@@ -33,13 +35,14 @@ namespace Inventory
             g.DrawString(text, this.inventoryTabControl.Font, Brushes.Black, x, y);
         }
 
+        //Search tab - Runs cmd.CommandText query with every keystroke within searchTextbox.
         private void searchTextbox_TextChanged(object sender, EventArgs e)
         {
             string tableCB = searchCombobox.Text;
-            Console.WriteLine(tableCB);
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
+            //Query
             cmd.CommandText = "SELECT * FROM INVENTORY WHERE REGEXP_LIKE(" + tableCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
             Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
@@ -51,57 +54,61 @@ namespace Inventory
 
         }
 
+        //Loads these functions on main form load
         private void Main_Load_1(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet1.INVENTORY' table. You can move, or remove it, as needed.
-            this.iNVENTORYTableAdapter.Fill(this.dataSet1.INVENTORY);
-            InventoryComboBoxData();
+            TakeInventoryComboBoxData();
             CreateItemData();
             EditInventoryData();
         }
 
-        private void InventoryComboBoxData()
+        //TakeInventory tab - Function that loads data into TakeInventory tab comboboxes
+        private void TakeInventoryComboBoxData()
         {
+            //Call display data function
             display_inventory_data();
             connection.Open();
+            //Queries for adapters
             string q = "SELECT * FROM EQUIPMENT";
             string w = "SELECT * FROM LOCATION";
             string d = "SELECT * FROM CATEGORY";
 
+            //Display queried data within combobox
             DataTable dt = new DataTable();
             OracleDataAdapter da = new OracleDataAdapter(q, connection);
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
-                equipmentCombobox.DataSource = dt;
-                equipmentCombobox.DisplayMember = "EQUIPMENT_NAME";
-                equipmentCombobox.ValueMember = "EQUIPMENT_ID";
+                tInvenEquipmentCombobox.DataSource = dt;
+                tInvenEquipmentCombobox.DisplayMember = "EQUIPMENT_NAME";
+                tInvenEquipmentCombobox.ValueMember = "EQUIPMENT_ID";
                 connection.Close();
             }
-
+            //Display queried data within combobox
             DataTable dt2 = new DataTable();
             OracleDataAdapter da2 = new OracleDataAdapter(w, connection);
             da2.Fill(dt2);
             if (dt2.Rows.Count > 0)
             {
-                locationCombobox.DataSource = dt2;
-                locationCombobox.DisplayMember = "ROOM";
-                locationCombobox.ValueMember = "LOCATION_ID";
+                tInvenLocationCombobox.DataSource = dt2;
+                tInvenLocationCombobox.DisplayMember = "ROOM";
+                tInvenLocationCombobox.ValueMember = "LOCATION_ID";
                 connection.Close();
             }
-
+            //Display queried data within combobox
             DataTable dt3 = new DataTable();
             OracleDataAdapter da3 = new OracleDataAdapter(d, connection);
             da3.Fill(dt3);
             if (dt3.Rows.Count > 0)
             {
-                categoryCombobox.DataSource = dt3;
-                categoryCombobox.DisplayMember = "CAT_NAME";
-                categoryCombobox.ValueMember = "CAT_ID";
+                tInvenCategoryCombobox.DataSource = dt3;
+                tInvenCategoryCombobox.DisplayMember = "CAT_NAME";
+                tInvenCategoryCombobox.ValueMember = "CAT_ID";
                 connection.Close();
             }
         }
 
+        //TakeInventory tab - Display data function with datagridview2
         private void display_inventory_data()
         {
             connection.Open();
@@ -115,6 +122,8 @@ namespace Inventory
             dataGridView2.DataSource = dta;
             connection.Close();
         }
+
+        //Create tab - Display data function with datagridview3
         private void display_create_data()
         {
             connection.Open();
@@ -128,13 +137,16 @@ namespace Inventory
             dataGridView3.DataSource = dta;
             connection.Close();
         }
+        //Inventory tab - Function that clears data in comboboxes.
         private void clear_data()
         {
-            equipmentCombobox.Text = ""; //Clear textboxes
-            locationCombobox.Text = "";
-            categoryCombobox.Text = "";
-            //quantityTextbox.Text = "";
+            tInvenEquipmentCombobox.Text = ""; //Clear textboxes
+            tInvenLocationCombobox.Text = "";
+            tInvenCategoryCombobox.Text = "";
+            //tInvenQuantityTextbox.Text = "";
         }
+
+        //Inventory tab - Display data function with datagridview1
         private void display_data()
         {
             connection.Open();
@@ -149,33 +161,36 @@ namespace Inventory
             connection.Close();
         }
 
+        //Inventory tab - If Enter is pressed(scanners have the Enter keystroke per scan) serialTextbox calls insertButton function
         private void serialTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 insertButton_Click(sender, e);
-                serialTextbox.Text = "";
+                tInvenSerialTextbox.Text = "";
                 Console.WriteLine("Inserted");
             }
         }
 
+        //Inventory tab - Use combobox text and insert that data into database with insert query
         private void insertButton_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(equipmentCombobox.Text) || String.IsNullOrEmpty(locationCombobox.Text) || String.IsNullOrEmpty(categoryCombobox.Text))
+            //Inventory tab - If any of the comboboxes are empty then show messagebox
+            if (String.IsNullOrEmpty(tInvenEquipmentCombobox.Text) || String.IsNullOrEmpty(tInvenLocationCombobox.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
             else
             {
-                Login loginC = new Login();
                 string loginUser = Login.user;
                 //int quantity = Convert.ToInt32(quantityTextbox.Text);
 
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY, SERIAL_NUMBER ) values " + "('" + equipmentCombobox.Text + "','" + categoryCombobox.Text + "', '" + locationCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + serialTextbox.Text + "')"; // SQL Command
+                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY, SERIAL_NUMBER ) values " + "('" + tInvenEquipmentCombobox.Text + "','" + tInvenCategoryCombobox.Text + "', '" + tInvenLocationCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + tInvenSerialTextbox.Text + "')"; // SQL Command
                 Console.WriteLine(cmd.CommandText);
+                //For Loop to execute command multiple times for multiple inserts
                 /*for (int i = 0; i < quantity; i++)
                 {
                     cmd.ExecuteNonQuery(); //Execute command
@@ -189,19 +204,22 @@ namespace Inventory
             }
         }
 
+        //Call clear_data() function
         private void clearButton_Click(object sender, EventArgs e)
         {
             clear_data();
         }
 
+        //Exit application from Menu toolstrip
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        //Create tab - Use combobox text and insert that data into database with insert query
         private void createButton_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBox1.Text) || String.IsNullOrEmpty(categoryCombobox.Text))
+            if (String.IsNullOrEmpty(textBox1.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
@@ -240,11 +258,13 @@ namespace Inventory
             }
         }
 
+        //Create tab - Call display_create_data() function
         private void refreshButton_Click(object sender, EventArgs e)
         {
             display_create_data();
         }
 
+        //Create tab - display category table data into createCategoryCombobox
         private void CreateItemData()
         {
             connection.Open();
@@ -262,6 +282,85 @@ namespace Inventory
             }
         }
 
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        private void nameEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (nameEditCheckbox.Checked == true)
+            {
+                nameEditCombobox.Enabled = true;
+            }
+            else
+            {
+                nameEditCombobox.Enabled = false;
+            }
+        }
+
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        private void locationEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (locationEditCheckbox.Checked == true)
+            {
+                locationEditCombobox.Enabled = true;
+            }
+            else
+            {
+                locationEditCombobox.Enabled = false;
+            }
+        }
+
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        private void userEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (userEditCheckbox.Checked == true)
+            {
+                userEditCombobox.Enabled = true;
+            }
+            else
+            {
+                userEditCombobox.Enabled = false;
+            }
+        }
+
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        private void categoryEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (categoryEditCheckbox.Checked == true)
+            {
+                categoryEditCombobox.Enabled = true;
+            }
+            else
+            {
+                categoryEditCombobox.Enabled = false;
+            }
+        }
+
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        private void serialEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (serialEditCheckbox.Checked == true)
+            {
+                serialEditTextbox.Enabled = true;
+            }
+            else
+            {
+                serialEditTextbox.Enabled = false;
+            }
+        }
+
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        private void dateEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dateEditCheckbox.Checked == true)
+            {
+                dateTimePicker1.Enabled = true;
+            }
+            else
+            {
+                dateTimePicker1.Enabled = false;
+            }
+        }
+
+        //Edit Inventory tab - 
         private void EditInventoryData()
         {
             //connection.Open();
@@ -330,78 +429,6 @@ namespace Inventory
                 serialEditTextbox.Text = (dr["SERIAL_NUMBER"].ToString());
             }
             connection.Close();
-        }
-
-        private void editNameCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (nameEditCheckbox.Checked == true)
-            {
-                nameEditCombobox.Enabled = true;
-            }
-            else
-            {
-                nameEditCombobox.Enabled = false;
-            }
-        }
-
-        private void locationEditCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (locationEditCheckbox.Checked == true)
-            {
-                locationEditCombobox.Enabled = true;
-            }
-            else
-            {
-                locationEditCombobox.Enabled = false;
-            }
-        }
-
-        private void userEditCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (userEditCheckbox.Checked == true)
-            {
-                userEditCombobox.Enabled = true;
-            }
-            else
-            {
-                userEditCombobox.Enabled = false;
-            }
-        }
-
-        private void categoryEditCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (categoryEditCheckbox.Checked == true)
-            {
-                categoryEditCombobox.Enabled = true;
-            }
-            else
-            {
-                categoryEditCombobox.Enabled = false;
-            }
-        }
-
-        private void serialEditCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (serialEditCheckbox.Checked == true)
-            {
-                serialEditTextbox.Enabled = true;
-            }
-            else
-            {
-                serialEditTextbox.Enabled = false;
-            }
-        }
-
-        private void dateEditCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (dateEditCheckbox.Checked == true)
-            {
-                dateTimePicker1.Enabled = true;
-            }
-            else
-            {
-                dateTimePicker1.Enabled = false;
-            }
         }
     }
 }

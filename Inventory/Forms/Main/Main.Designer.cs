@@ -40,20 +40,20 @@
             this.takeTab = new System.Windows.Forms.TabPage();
             this.label13 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.serialTextbox = new System.Windows.Forms.TextBox();
-            this.equipmentCombobox = new System.Windows.Forms.ComboBox();
+            this.tInvenSerialTextbox = new System.Windows.Forms.TextBox();
+            this.tInvenEquipmentCombobox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.locationCombobox = new System.Windows.Forms.ComboBox();
+            this.tInvenLocationCombobox = new System.Windows.Forms.ComboBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.insertButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.categoryCombobox = new System.Windows.Forms.ComboBox();
-            this.quantityTextbox = new System.Windows.Forms.TextBox();
+            this.tInvenCategoryCombobox = new System.Windows.Forms.ComboBox();
+            this.tInvenQuantityTextbox = new System.Windows.Forms.TextBox();
             this.editTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateEditCheckbox = new System.Windows.Forms.CheckBox();
@@ -220,20 +220,20 @@
             // 
             this.takeTab.Controls.Add(this.label13);
             this.takeTab.Controls.Add(this.label6);
-            this.takeTab.Controls.Add(this.serialTextbox);
-            this.takeTab.Controls.Add(this.equipmentCombobox);
+            this.takeTab.Controls.Add(this.tInvenSerialTextbox);
+            this.takeTab.Controls.Add(this.tInvenEquipmentCombobox);
             this.takeTab.Controls.Add(this.label7);
             this.takeTab.Controls.Add(this.label2);
             this.takeTab.Controls.Add(this.checkBox1);
-            this.takeTab.Controls.Add(this.locationCombobox);
+            this.takeTab.Controls.Add(this.tInvenLocationCombobox);
             this.takeTab.Controls.Add(this.clearButton);
             this.takeTab.Controls.Add(this.label3);
             this.takeTab.Controls.Add(this.insertButton);
             this.takeTab.Controls.Add(this.label5);
             this.takeTab.Controls.Add(this.label4);
             this.takeTab.Controls.Add(this.dataGridView2);
-            this.takeTab.Controls.Add(this.categoryCombobox);
-            this.takeTab.Controls.Add(this.quantityTextbox);
+            this.takeTab.Controls.Add(this.tInvenCategoryCombobox);
+            this.takeTab.Controls.Add(this.tInvenQuantityTextbox);
             this.takeTab.Location = new System.Drawing.Point(134, 4);
             this.takeTab.Name = "takeTab";
             this.takeTab.Padding = new System.Windows.Forms.Padding(3);
@@ -261,26 +261,26 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "BARCODE";
             // 
-            // serialTextbox
+            // tInvenSerialTextbox
             // 
-            this.serialTextbox.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.serialTextbox.Location = new System.Drawing.Point(600, 173);
-            this.serialTextbox.Multiline = true;
-            this.serialTextbox.Name = "serialTextbox";
-            this.serialTextbox.Size = new System.Drawing.Size(236, 33);
-            this.serialTextbox.TabIndex = 13;
-            this.serialTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.serialTextbox_KeyDown);
+            this.tInvenSerialTextbox.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.tInvenSerialTextbox.Location = new System.Drawing.Point(600, 173);
+            this.tInvenSerialTextbox.Multiline = true;
+            this.tInvenSerialTextbox.Name = "tInvenSerialTextbox";
+            this.tInvenSerialTextbox.Size = new System.Drawing.Size(236, 33);
+            this.tInvenSerialTextbox.TabIndex = 13;
+            this.tInvenSerialTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.serialTextbox_KeyDown);
             // 
-            // equipmentCombobox
+            // tInvenEquipmentCombobox
             // 
-            this.equipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tInvenEquipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.equipmentCombobox.FormattingEnabled = true;
-            this.equipmentCombobox.Location = new System.Drawing.Point(11, 67);
-            this.equipmentCombobox.Name = "equipmentCombobox";
-            this.equipmentCombobox.Size = new System.Drawing.Size(310, 33);
-            this.equipmentCombobox.TabIndex = 0;
+            this.tInvenEquipmentCombobox.FormattingEnabled = true;
+            this.tInvenEquipmentCombobox.Location = new System.Drawing.Point(11, 67);
+            this.tInvenEquipmentCombobox.Name = "tInvenEquipmentCombobox";
+            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(310, 33);
+            this.tInvenEquipmentCombobox.TabIndex = 0;
             // 
             // label7
             // 
@@ -316,16 +316,16 @@
             this.checkBox1.Text = "Auto Insert";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // locationCombobox
+            // tInvenLocationCombobox
             // 
-            this.locationCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tInvenLocationCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.locationCombobox.FormattingEnabled = true;
-            this.locationCombobox.Location = new System.Drawing.Point(365, 67);
-            this.locationCombobox.Name = "locationCombobox";
-            this.locationCombobox.Size = new System.Drawing.Size(291, 33);
-            this.locationCombobox.TabIndex = 2;
+            this.tInvenLocationCombobox.FormattingEnabled = true;
+            this.tInvenLocationCombobox.Location = new System.Drawing.Point(365, 67);
+            this.tInvenLocationCombobox.Name = "tInvenLocationCombobox";
+            this.tInvenLocationCombobox.Size = new System.Drawing.Size(291, 33);
+            this.tInvenLocationCombobox.TabIndex = 2;
             // 
             // clearButton
             // 
@@ -407,24 +407,24 @@
             this.dataGridView2.Size = new System.Drawing.Size(1117, 335);
             this.dataGridView2.TabIndex = 4;
             // 
-            // categoryCombobox
+            // tInvenCategoryCombobox
             // 
-            this.categoryCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tInvenCategoryCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.categoryCombobox.FormattingEnabled = true;
-            this.categoryCombobox.Location = new System.Drawing.Point(8, 173);
-            this.categoryCombobox.Name = "categoryCombobox";
-            this.categoryCombobox.Size = new System.Drawing.Size(306, 33);
-            this.categoryCombobox.TabIndex = 9;
+            this.tInvenCategoryCombobox.FormattingEnabled = true;
+            this.tInvenCategoryCombobox.Location = new System.Drawing.Point(8, 173);
+            this.tInvenCategoryCombobox.Name = "tInvenCategoryCombobox";
+            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(306, 33);
+            this.tInvenCategoryCombobox.TabIndex = 9;
             // 
-            // quantityTextbox
+            // tInvenQuantityTextbox
             // 
-            this.quantityTextbox.Enabled = false;
-            this.quantityTextbox.Location = new System.Drawing.Point(365, 173);
-            this.quantityTextbox.Name = "quantityTextbox";
-            this.quantityTextbox.Size = new System.Drawing.Size(124, 33);
-            this.quantityTextbox.TabIndex = 8;
+            this.tInvenQuantityTextbox.Enabled = false;
+            this.tInvenQuantityTextbox.Location = new System.Drawing.Point(365, 173);
+            this.tInvenQuantityTextbox.Name = "tInvenQuantityTextbox";
+            this.tInvenQuantityTextbox.Size = new System.Drawing.Size(124, 33);
+            this.tInvenQuantityTextbox.TabIndex = 8;
             // 
             // editTab
             // 
@@ -529,7 +529,6 @@
             this.nameEditCheckbox.TabIndex = 16;
             this.nameEditCheckbox.Text = "Edit";
             this.nameEditCheckbox.UseVisualStyleBackColor = true;
-            this.nameEditCheckbox.CheckedChanged += new System.EventHandler(this.editNameCheckbox_CheckedChanged);
             // 
             // label21
             // 
@@ -886,17 +885,17 @@
         private System.Windows.Forms.TextBox searchTextbox;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.ComboBox equipmentCombobox;
+        private System.Windows.Forms.ComboBox tInvenEquipmentCombobox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox locationCombobox;
+        private System.Windows.Forms.ComboBox tInvenLocationCombobox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox categoryCombobox;
-        private System.Windows.Forms.TextBox quantityTextbox;
+        private System.Windows.Forms.ComboBox tInvenCategoryCombobox;
+        private System.Windows.Forms.TextBox tInvenQuantityTextbox;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox serialTextbox;
+        private System.Windows.Forms.TextBox tInvenSerialTextbox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button clearButton;
