@@ -56,6 +56,12 @@
             this.quantityTextbox = new System.Windows.Forms.TextBox();
             this.editTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateEditCheckbox = new System.Windows.Forms.CheckBox();
+            this.serialEditCheckbox = new System.Windows.Forms.CheckBox();
+            this.categoryEditCheckbox = new System.Windows.Forms.CheckBox();
+            this.userEditCheckbox = new System.Windows.Forms.CheckBox();
+            this.locationEditCheckbox = new System.Windows.Forms.CheckBox();
+            this.nameEditCheckbox = new System.Windows.Forms.CheckBox();
             this.label21 = new System.Windows.Forms.Label();
             this.categoryEditCombobox = new System.Windows.Forms.ComboBox();
             this.serialEditTextbox = new System.Windows.Forms.TextBox();
@@ -70,6 +76,8 @@
             this.nameEditCombobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.inventoryEditCombobox = new System.Windows.Forms.ComboBox();
+            this.iNVENTORYBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Inventory.DataSet1();
             this.label11 = new System.Windows.Forms.Label();
             this.createTab = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -86,8 +94,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataSet1 = new Inventory.DataSet1();
-            this.iNVENTORYBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.iNVENTORYTableAdapter = new Inventory.DataSet1TableAdapters.INVENTORYTableAdapter();
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
@@ -96,12 +102,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.editTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.createTab.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // inventoryTabControl
@@ -419,7 +425,6 @@
             this.quantityTextbox.Name = "quantityTextbox";
             this.quantityTextbox.Size = new System.Drawing.Size(124, 33);
             this.quantityTextbox.TabIndex = 8;
-            this.quantityTextbox.TextChanged += new System.EventHandler(this.quantityTextbox_TextChanged);
             // 
             // editTab
             // 
@@ -435,6 +440,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateEditCheckbox);
+            this.groupBox1.Controls.Add(this.serialEditCheckbox);
+            this.groupBox1.Controls.Add(this.categoryEditCheckbox);
+            this.groupBox1.Controls.Add(this.userEditCheckbox);
+            this.groupBox1.Controls.Add(this.locationEditCheckbox);
+            this.groupBox1.Controls.Add(this.nameEditCheckbox);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.categoryEditCombobox);
             this.groupBox1.Controls.Add(this.serialEditTextbox);
@@ -454,10 +465,76 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // dateEditCheckbox
+            // 
+            this.dateEditCheckbox.AutoSize = true;
+            this.dateEditCheckbox.Location = new System.Drawing.Point(595, 331);
+            this.dateEditCheckbox.Name = "dateEditCheckbox";
+            this.dateEditCheckbox.Size = new System.Drawing.Size(78, 29);
+            this.dateEditCheckbox.TabIndex = 21;
+            this.dateEditCheckbox.Text = "Edit";
+            this.dateEditCheckbox.UseVisualStyleBackColor = true;
+            this.dateEditCheckbox.CheckedChanged += new System.EventHandler(this.dateEditCheckbox_CheckedChanged);
+            // 
+            // serialEditCheckbox
+            // 
+            this.serialEditCheckbox.AutoSize = true;
+            this.serialEditCheckbox.Location = new System.Drawing.Point(595, 214);
+            this.serialEditCheckbox.Name = "serialEditCheckbox";
+            this.serialEditCheckbox.Size = new System.Drawing.Size(78, 29);
+            this.serialEditCheckbox.TabIndex = 20;
+            this.serialEditCheckbox.Text = "Edit";
+            this.serialEditCheckbox.UseVisualStyleBackColor = true;
+            this.serialEditCheckbox.CheckedChanged += new System.EventHandler(this.serialEditCheckbox_CheckedChanged);
+            // 
+            // categoryEditCheckbox
+            // 
+            this.categoryEditCheckbox.AutoSize = true;
+            this.categoryEditCheckbox.Location = new System.Drawing.Point(595, 101);
+            this.categoryEditCheckbox.Name = "categoryEditCheckbox";
+            this.categoryEditCheckbox.Size = new System.Drawing.Size(78, 29);
+            this.categoryEditCheckbox.TabIndex = 19;
+            this.categoryEditCheckbox.Text = "Edit";
+            this.categoryEditCheckbox.UseVisualStyleBackColor = true;
+            this.categoryEditCheckbox.CheckedChanged += new System.EventHandler(this.categoryEditCheckbox_CheckedChanged);
+            // 
+            // userEditCheckbox
+            // 
+            this.userEditCheckbox.AutoSize = true;
+            this.userEditCheckbox.Location = new System.Drawing.Point(194, 331);
+            this.userEditCheckbox.Name = "userEditCheckbox";
+            this.userEditCheckbox.Size = new System.Drawing.Size(78, 29);
+            this.userEditCheckbox.TabIndex = 18;
+            this.userEditCheckbox.Text = "Edit";
+            this.userEditCheckbox.UseVisualStyleBackColor = true;
+            this.userEditCheckbox.CheckedChanged += new System.EventHandler(this.userEditCheckbox_CheckedChanged);
+            // 
+            // locationEditCheckbox
+            // 
+            this.locationEditCheckbox.AutoSize = true;
+            this.locationEditCheckbox.Location = new System.Drawing.Point(194, 214);
+            this.locationEditCheckbox.Name = "locationEditCheckbox";
+            this.locationEditCheckbox.Size = new System.Drawing.Size(78, 29);
+            this.locationEditCheckbox.TabIndex = 17;
+            this.locationEditCheckbox.Text = "Edit";
+            this.locationEditCheckbox.UseVisualStyleBackColor = true;
+            this.locationEditCheckbox.CheckedChanged += new System.EventHandler(this.locationEditCheckbox_CheckedChanged);
+            // 
+            // nameEditCheckbox
+            // 
+            this.nameEditCheckbox.AutoSize = true;
+            this.nameEditCheckbox.Location = new System.Drawing.Point(194, 101);
+            this.nameEditCheckbox.Name = "nameEditCheckbox";
+            this.nameEditCheckbox.Size = new System.Drawing.Size(78, 29);
+            this.nameEditCheckbox.TabIndex = 16;
+            this.nameEditCheckbox.Text = "Edit";
+            this.nameEditCheckbox.UseVisualStyleBackColor = true;
+            this.nameEditCheckbox.CheckedChanged += new System.EventHandler(this.editNameCheckbox_CheckedChanged);
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(493, 108);
+            this.label21.Location = new System.Drawing.Point(436, 104);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(134, 25);
             this.label21.TabIndex = 15;
@@ -465,6 +542,7 @@
             // 
             // categoryEditCombobox
             // 
+            this.categoryEditCombobox.Enabled = false;
             this.categoryEditCombobox.FormattingEnabled = true;
             this.categoryEditCombobox.Location = new System.Drawing.Point(409, 136);
             this.categoryEditCombobox.Name = "categoryEditCombobox";
@@ -473,6 +551,7 @@
             // 
             // serialEditTextbox
             // 
+            this.serialEditTextbox.Enabled = false;
             this.serialEditTextbox.Location = new System.Drawing.Point(409, 249);
             this.serialEditTextbox.Name = "serialEditTextbox";
             this.serialEditTextbox.Size = new System.Drawing.Size(303, 33);
@@ -481,17 +560,17 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(409, 366);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(303, 33);
             this.dateTimePicker1.TabIndex = 12;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(503, 221);
+            this.label20.Location = new System.Drawing.Point(436, 218);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(109, 25);
             this.label20.TabIndex = 11;
@@ -500,7 +579,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(509, 335);
+            this.label19.Location = new System.Drawing.Point(436, 332);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(71, 25);
             this.label19.TabIndex = 9;
@@ -509,7 +588,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(118, 338);
+            this.label17.Location = new System.Drawing.Point(50, 337);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(70, 25);
             this.label17.TabIndex = 5;
@@ -517,6 +596,7 @@
             // 
             // userEditCombobox
             // 
+            this.userEditCombobox.Enabled = false;
             this.userEditCombobox.FormattingEnabled = true;
             this.userEditCombobox.Location = new System.Drawing.Point(23, 366);
             this.userEditCombobox.Name = "userEditCombobox";
@@ -526,7 +606,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(90, 221);
+            this.label16.Location = new System.Drawing.Point(50, 218);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(130, 25);
             this.label16.TabIndex = 3;
@@ -534,6 +614,7 @@
             // 
             // locationEditCombobox
             // 
+            this.locationEditCombobox.Enabled = false;
             this.locationEditCombobox.FormattingEnabled = true;
             this.locationEditCombobox.Location = new System.Drawing.Point(23, 249);
             this.locationEditCombobox.Name = "locationEditCombobox";
@@ -543,7 +624,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(118, 108);
+            this.label15.Location = new System.Drawing.Point(50, 104);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(78, 25);
             this.label15.TabIndex = 1;
@@ -551,6 +632,7 @@
             // 
             // nameEditCombobox
             // 
+            this.nameEditCombobox.Enabled = false;
             this.nameEditCombobox.FormattingEnabled = true;
             this.nameEditCombobox.Location = new System.Drawing.Point(23, 136);
             this.nameEditCombobox.Name = "nameEditCombobox";
@@ -577,6 +659,16 @@
             this.inventoryEditCombobox.TabIndex = 1;
             this.inventoryEditCombobox.ValueMember = "INVENTORY_ID";
             this.inventoryEditCombobox.SelectedIndexChanged += new System.EventHandler(this.inventoryEditCombobox_SelectedIndexChanged);
+            // 
+            // iNVENTORYBindingSource1
+            // 
+            this.iNVENTORYBindingSource1.DataMember = "INVENTORY";
+            this.iNVENTORYBindingSource1.DataSource = this.dataSet1;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label11
             // 
@@ -744,16 +836,6 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // iNVENTORYBindingSource1
-            // 
-            this.iNVENTORYBindingSource1.DataMember = "INVENTORY";
-            this.iNVENTORYBindingSource1.DataSource = this.dataSet1;
-            // 
             // iNVENTORYTableAdapter
             // 
             this.iNVENTORYTableAdapter.ClearBeforeFill = true;
@@ -779,14 +861,14 @@
             this.editTab.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.createTab.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -853,5 +935,11 @@
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource iNVENTORYBindingSource1;
         private DataSet1TableAdapters.INVENTORYTableAdapter iNVENTORYTableAdapter;
+        private System.Windows.Forms.CheckBox dateEditCheckbox;
+        private System.Windows.Forms.CheckBox serialEditCheckbox;
+        private System.Windows.Forms.CheckBox categoryEditCheckbox;
+        private System.Windows.Forms.CheckBox userEditCheckbox;
+        private System.Windows.Forms.CheckBox locationEditCheckbox;
+        private System.Windows.Forms.CheckBox nameEditCheckbox;
     }
 }

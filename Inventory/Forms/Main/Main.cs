@@ -262,11 +262,6 @@ namespace Inventory
             }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void EditInventoryData()
         {
             //connection.Open();
@@ -336,9 +331,77 @@ namespace Inventory
             }
             connection.Close();
         }
-        private void quantityTextbox_TextChanged(object sender, EventArgs e)
-        {
 
+        private void editNameCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (nameEditCheckbox.Checked == true)
+            {
+                nameEditCombobox.Enabled = true;
+            }
+            else
+            {
+                nameEditCombobox.Enabled = false;
+            }
+        }
+
+        private void locationEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (locationEditCheckbox.Checked == true)
+            {
+                locationEditCombobox.Enabled = true;
+            }
+            else
+            {
+                locationEditCombobox.Enabled = false;
+            }
+        }
+
+        private void userEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (userEditCheckbox.Checked == true)
+            {
+                userEditCombobox.Enabled = true;
+            }
+            else
+            {
+                userEditCombobox.Enabled = false;
+            }
+        }
+
+        private void categoryEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (categoryEditCheckbox.Checked == true)
+            {
+                categoryEditCombobox.Enabled = true;
+            }
+            else
+            {
+                categoryEditCombobox.Enabled = false;
+            }
+        }
+
+        private void serialEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (serialEditCheckbox.Checked == true)
+            {
+                serialEditTextbox.Enabled = true;
+            }
+            else
+            {
+                serialEditTextbox.Enabled = false;
+            }
+        }
+
+        private void dateEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dateEditCheckbox.Checked == true)
+            {
+                dateTimePicker1.Enabled = true;
+            }
+            else
+            {
+                dateTimePicker1.Enabled = false;
+            }
         }
     }
 }
