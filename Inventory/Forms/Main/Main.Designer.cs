@@ -77,7 +77,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.inventoryEditCombobox = new System.Windows.Forms.ComboBox();
             this.iNVENTORYBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new Inventory.DataSet1();
+            this.dataSet2 = new Inventory.DataSet2();
             this.label11 = new System.Windows.Forms.Label();
             this.createTab = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -94,7 +94,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.iNVENTORYTableAdapter = new Inventory.DataSet1TableAdapters.INVENTORYTableAdapter();
+            this.dataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iNVENTORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iNVENTORYTableAdapter = new Inventory.DataSet2TableAdapters.INVENTORYTableAdapter();
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -103,11 +105,13 @@
             this.editTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             this.createTab.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // inventoryTabControl
@@ -529,6 +533,7 @@
             this.nameEditCheckbox.TabIndex = 16;
             this.nameEditCheckbox.Text = "Edit";
             this.nameEditCheckbox.UseVisualStyleBackColor = true;
+            this.nameEditCheckbox.CheckedChanged += new System.EventHandler(this.nameEditCheckbox_CheckedChanged);
             // 
             // label21
             // 
@@ -565,6 +570,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(303, 33);
             this.dateTimePicker1.TabIndex = 12;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label20
             // 
@@ -631,6 +637,7 @@
             // 
             // nameEditCombobox
             // 
+            this.nameEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.nameEditCombobox.Enabled = false;
             this.nameEditCombobox.FormattingEnabled = true;
             this.nameEditCombobox.Location = new System.Drawing.Point(23, 136);
@@ -662,12 +669,12 @@
             // iNVENTORYBindingSource1
             // 
             this.iNVENTORYBindingSource1.DataMember = "INVENTORY";
-            this.iNVENTORYBindingSource1.DataSource = this.dataSet1;
+            this.iNVENTORYBindingSource1.DataSource = this.dataSet2;
             // 
-            // dataSet1
+            // dataSet2
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dataSet2.DataSetName = "DataSet2";
+            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label11
             // 
@@ -835,6 +842,16 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // dataSet2BindingSource
+            // 
+            this.dataSet2BindingSource.DataSource = this.dataSet2;
+            this.dataSet2BindingSource.Position = 0;
+            // 
+            // iNVENTORYBindingSource
+            // 
+            this.iNVENTORYBindingSource.DataMember = "INVENTORY";
+            this.iNVENTORYBindingSource.DataSource = this.dataSet2BindingSource;
+            // 
             // iNVENTORYTableAdapter
             // 
             this.iNVENTORYTableAdapter.ClearBeforeFill = true;
@@ -861,13 +878,15 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             this.createTab.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -931,14 +950,16 @@
         private System.Windows.Forms.ComboBox categoryEditCombobox;
         private System.Windows.Forms.TextBox serialEditTextbox;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private DataSet1 dataSet1;
-        private System.Windows.Forms.BindingSource iNVENTORYBindingSource1;
-        private DataSet1TableAdapters.INVENTORYTableAdapter iNVENTORYTableAdapter;
         private System.Windows.Forms.CheckBox dateEditCheckbox;
         private System.Windows.Forms.CheckBox serialEditCheckbox;
         private System.Windows.Forms.CheckBox categoryEditCheckbox;
         private System.Windows.Forms.CheckBox userEditCheckbox;
         private System.Windows.Forms.CheckBox locationEditCheckbox;
         private System.Windows.Forms.CheckBox nameEditCheckbox;
+        private System.Windows.Forms.BindingSource dataSet2BindingSource;
+        private DataSet2 dataSet2;
+        private System.Windows.Forms.BindingSource iNVENTORYBindingSource;
+        private DataSet2TableAdapters.INVENTORYTableAdapter iNVENTORYTableAdapter;
+        private System.Windows.Forms.BindingSource iNVENTORYBindingSource1;
     }
 }

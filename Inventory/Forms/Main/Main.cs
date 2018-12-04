@@ -35,6 +35,30 @@ namespace Inventory
             g.DrawString(text, this.inventoryTabControl.Font, Brushes.Black, x, y);
         }
 
+        //Loads these functions on main form load
+        private void Main_Load_1(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'dataSet2.INVENTORY' table. You can move, or remove it, as needed.
+            this.iNVENTORYTableAdapter.Fill(this.dataSet2.INVENTORY);
+            TakeInventoryComboBoxData();
+            CreateItemData();
+            editInventoryData();
+        }
+
+        //Call clear_data() function
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            clear_data();
+        }
+
+        //Exit application from Menu toolstrip
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+
+
         //Search tab - Runs cmd.CommandText query with every keystroke within searchTextbox.
         private void searchTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -42,7 +66,7 @@ namespace Inventory
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            //Query
+            //Query for case insensitive(i) searching
             cmd.CommandText = "SELECT * FROM INVENTORY WHERE REGEXP_LIKE(" + tableCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
             Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
@@ -54,13 +78,7 @@ namespace Inventory
 
         }
 
-        //Loads these functions on main form load
-        private void Main_Load_1(object sender, EventArgs e)
-        {
-            TakeInventoryComboBoxData();
-            CreateItemData();
-            EditInventoryData();
-        }
+
 
         //TakeInventory tab - Function that loads data into TakeInventory tab comboboxes
         private void TakeInventoryComboBoxData()
@@ -123,21 +141,7 @@ namespace Inventory
             connection.Close();
         }
 
-        //Create tab - Display data function with datagridview3
-        private void display_create_data()
-        {
-            connection.Open();
-            OracleCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM EQUIPMENT";
-            cmd.ExecuteNonQuery();
-            DataTable dta = new DataTable();
-            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
-            dataadp.Fill(dta);
-            dataGridView3.DataSource = dta;
-            connection.Close();
-        }
-        //Inventory tab - Function that clears data in comboboxes.
+        //TakeInventory tab - Function that clears data in comboboxes.
         private void clear_data()
         {
             tInvenEquipmentCombobox.Text = ""; //Clear textboxes
@@ -146,7 +150,7 @@ namespace Inventory
             //tInvenQuantityTextbox.Text = "";
         }
 
-        //Inventory tab - Display data function with datagridview1
+        //TakeInventory tab - Display data function with datagridview1
         private void display_data()
         {
             connection.Open();
@@ -161,7 +165,7 @@ namespace Inventory
             connection.Close();
         }
 
-        //Inventory tab - If Enter is pressed(scanners have the Enter keystroke per scan) serialTextbox calls insertButton function
+        //TakeInventory tab - If Enter is pressed(scanners have the Enter keystroke per scan) serialTextbox calls insertButton function
         private void serialTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -172,7 +176,7 @@ namespace Inventory
             }
         }
 
-        //Inventory tab - Use combobox text and insert that data into database with insert query
+        //TakeInventory tab - Use combobox text and insert that data into database with insert query
         private void insertButton_Click(object sender, EventArgs e)
         {
             //Inventory tab - If any of the comboboxes are empty then show messagebox
@@ -204,16 +208,22 @@ namespace Inventory
             }
         }
 
-        //Call clear_data() function
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            clear_data();
-        }
 
-        //Exit application from Menu toolstrip
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        //Create tab - Display data function with datagridview3
+        private void display_create_data()
         {
-            Application.Exit();
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM EQUIPMENT";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta);
+            dataGridView3.DataSource = dta;
+            connection.Close();
         }
 
         //Create tab - Use combobox text and insert that data into database with insert query
@@ -282,59 +292,170 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes
-        private void nameEditCheckbox_CheckedChanged(object sender, EventArgs e)
+
+
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
+        public void nameEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (nameEditCheckbox.Checked == true)
             {
                 nameEditCombobox.Enabled = true;
+
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT DISTINCT EQUIPMENT_NAME FROM INVENTORY";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    nameEditCombobox.DataSource = dt1;
+                    nameEditCombobox.DisplayMember = "EQUIPMENT_NAME";
+                    nameEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
             }
             else
             {
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    nameEditCombobox.DataSource = dt1;
+                    nameEditCombobox.DisplayMember = "EQUIPMENT_NAME";
+                    nameEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
+
                 nameEditCombobox.Enabled = false;
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
         private void locationEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (locationEditCheckbox.Checked == true)
             {
                 locationEditCombobox.Enabled = true;
+
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT DISTINCT LOCATION FROM INVENTORY";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    locationEditCombobox.DataSource = dt1;
+                    locationEditCombobox.DisplayMember = "LOCATION";
+                    locationEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
             }
             else
             {
-                locationEditCombobox.Enabled = false;
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    locationEditCombobox.DataSource = dt1;
+                    locationEditCombobox.DisplayMember = "LOCATION";
+                    locationEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
+            locationEditCombobox.Enabled = false;
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
         private void userEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (userEditCheckbox.Checked == true)
             {
                 userEditCombobox.Enabled = true;
+
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT DISTINCT ACTIVITY_BY FROM INVENTORY";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    userEditCombobox.DataSource = dt1;
+                    userEditCombobox.DisplayMember = "ACTIVITY_BY";
+                    userEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
             }
             else
             {
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    userEditCombobox.DataSource = dt1;
+                    userEditCombobox.DisplayMember = "ACTIVITY_BY";
+                    userEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
                 userEditCombobox.Enabled = false;
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
         private void categoryEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (categoryEditCheckbox.Checked == true)
             {
                 categoryEditCombobox.Enabled = true;
+
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT DISTINCT CATEGORY FROM INVENTORY";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    categoryEditCombobox.DataSource = dt1;
+                    categoryEditCombobox.DisplayMember = "CATEGORY";
+                    categoryEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
             }
             else
             {
+                OracleCommand cmd = connection.CreateCommand();
+                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+                DataTable dt1 = new DataTable();
+                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
+                da1.Fill(dt1);
+                if (dt1.Rows.Count > 0)
+                {
+                    categoryEditCombobox.DataSource = dt1;
+                    categoryEditCombobox.DisplayMember = "CATEGORY";
+                    categoryEditCombobox.ValueMember = "INVENTORY_ID";
+                    connection.Close();
+                }
                 categoryEditCombobox.Enabled = false;
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
         private void serialEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (serialEditCheckbox.Checked == true)
@@ -347,7 +468,7 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
         private void dateEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (dateEditCheckbox.Checked == true)
@@ -360,13 +481,13 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - 
-        private void EditInventoryData()
+        //Edit Inventory tab - Pull data from various tables and display them.
+        private void editInventoryData()
         {
+           
             //connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '"+inventoryEditCombobox.Text+"' ";
-            string q = "SELECT SERIAL_NUMBER FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
 
             DataTable dt1 = new DataTable();
             OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
@@ -410,10 +531,26 @@ namespace Inventory
             }
         }
 
+        //Edit Inventory tab - Changing this combobox will execute these functions
         private void inventoryEditCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            EditInventoryData();
+            Console.WriteLine("Attempt to uncheck edit checkboxes");
+            nameEditCheckbox.Checked = false;
+            categoryEditCheckbox.Checked = false;
+            locationEditCheckbox.Checked = false;
+            serialEditCheckbox.Checked = false;
+            userEditCheckbox.Checked = false;
+            dateEditCheckbox.Checked = false;
+
+
+            nameEditCheckbox_CheckedChanged(sender, e);
+            categoryEditCheckbox_CheckedChanged(sender, e);
+            locationEditCheckbox_CheckedChanged(sender, e);
+            serialEditCheckbox_CheckedChanged(sender, e);
+            userEditCheckbox_CheckedChanged(sender, e);
+            dateEditCheckbox_CheckedChanged(sender, e);
+
+            editInventoryData();
             readSerialEdit();
         }
 
@@ -429,6 +566,11 @@ namespace Inventory
                 serialEditTextbox.Text = (dr["SERIAL_NUMBER"].ToString());
             }
             connection.Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
