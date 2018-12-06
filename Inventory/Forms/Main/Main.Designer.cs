@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.inventoryTabControl = new System.Windows.Forms.TabControl();
             this.searchTab = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
@@ -76,8 +75,6 @@
             this.nameEditCombobox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.inventoryEditCombobox = new System.Windows.Forms.ComboBox();
-            this.iNVENTORYBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet2 = new Inventory.DataSet2();
             this.label11 = new System.Windows.Forms.Label();
             this.createTab = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -94,9 +91,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iNVENTORYBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iNVENTORYTableAdapter = new Inventory.DataSet2TableAdapters.INVENTORYTableAdapter();
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -104,14 +98,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.editTab.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             this.createTab.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // inventoryTabControl
@@ -199,12 +189,8 @@
             this.searchCombobox.FormattingEnabled = true;
             this.searchCombobox.Items.AddRange(new object[] {
             "EQUIPMENT_NAME",
-            "CATEGORY",
-            "LOCATION",
-            "ACTIVITY_BY",
-            "DATE",
-            "INVENTORY_ID",
-            "ACTIVITY"});
+            "CATEGORY_NAME",
+            "USERNAME"});
             this.searchCombobox.Location = new System.Drawing.Point(18, 41);
             this.searchCombobox.Name = "searchCombobox";
             this.searchCombobox.Size = new System.Drawing.Size(208, 33);
@@ -570,7 +556,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(303, 33);
             this.dateTimePicker1.TabIndex = 12;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label20
             // 
@@ -656,7 +641,6 @@
             // 
             // inventoryEditCombobox
             // 
-            this.inventoryEditCombobox.DataSource = this.iNVENTORYBindingSource1;
             this.inventoryEditCombobox.DisplayMember = "INVENTORY_ID";
             this.inventoryEditCombobox.FormattingEnabled = true;
             this.inventoryEditCombobox.Location = new System.Drawing.Point(783, 72);
@@ -665,16 +649,6 @@
             this.inventoryEditCombobox.TabIndex = 1;
             this.inventoryEditCombobox.ValueMember = "INVENTORY_ID";
             this.inventoryEditCombobox.SelectedIndexChanged += new System.EventHandler(this.inventoryEditCombobox_SelectedIndexChanged);
-            // 
-            // iNVENTORYBindingSource1
-            // 
-            this.iNVENTORYBindingSource1.DataMember = "INVENTORY";
-            this.iNVENTORYBindingSource1.DataSource = this.dataSet2;
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "DataSet2";
-            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label11
             // 
@@ -842,20 +816,6 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // dataSet2BindingSource
-            // 
-            this.dataSet2BindingSource.DataSource = this.dataSet2;
-            this.dataSet2BindingSource.Position = 0;
-            // 
-            // iNVENTORYBindingSource
-            // 
-            this.iNVENTORYBindingSource.DataMember = "INVENTORY";
-            this.iNVENTORYBindingSource.DataSource = this.dataSet2BindingSource;
-            // 
-            // iNVENTORYTableAdapter
-            // 
-            this.iNVENTORYTableAdapter.ClearBeforeFill = true;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -877,16 +837,12 @@
             this.editTab.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             this.createTab.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVENTORYBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -956,10 +912,5 @@
         private System.Windows.Forms.CheckBox userEditCheckbox;
         private System.Windows.Forms.CheckBox locationEditCheckbox;
         private System.Windows.Forms.CheckBox nameEditCheckbox;
-        private System.Windows.Forms.BindingSource dataSet2BindingSource;
-        private DataSet2 dataSet2;
-        private System.Windows.Forms.BindingSource iNVENTORYBindingSource;
-        private DataSet2TableAdapters.INVENTORYTableAdapter iNVENTORYTableAdapter;
-        private System.Windows.Forms.BindingSource iNVENTORYBindingSource1;
     }
 }

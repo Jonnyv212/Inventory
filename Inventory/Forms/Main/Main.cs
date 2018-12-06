@@ -38,8 +38,6 @@ namespace Inventory
         //Loads these functions on main form load
         private void Main_Load_1(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSet2.INVENTORY' table. You can move, or remove it, as needed.
-            this.iNVENTORYTableAdapter.Fill(this.dataSet2.INVENTORY);
             TakeInventoryComboBoxData();
             CreateItemData();
             editInventoryData();
@@ -67,7 +65,7 @@ namespace Inventory
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             //Query for case insensitive(i) searching
-            cmd.CommandText = "SELECT * FROM INVENTORY WHERE REGEXP_LIKE(" + tableCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
+            cmd.CommandText = "SELECT * FROM INVENTORY_DETAILS WHERE REGEXP_LIKE(" + tableCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
             Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
@@ -103,7 +101,7 @@ namespace Inventory
                 connection.Close();
             }
             //Display queried data within combobox
-            DataTable dt2 = new DataTable();
+            /*DataTable dt2 = new DataTable();
             OracleDataAdapter da2 = new OracleDataAdapter(w, connection);
             da2.Fill(dt2);
             if (dt2.Rows.Count > 0)
@@ -112,7 +110,7 @@ namespace Inventory
                 tInvenLocationCombobox.DisplayMember = "ROOM";
                 tInvenLocationCombobox.ValueMember = "LOCATION_ID";
                 connection.Close();
-            }
+            }*/
             //Display queried data within combobox
             DataTable dt3 = new DataTable();
             OracleDataAdapter da3 = new OracleDataAdapter(d, connection);
@@ -120,8 +118,8 @@ namespace Inventory
             if (dt3.Rows.Count > 0)
             {
                 tInvenCategoryCombobox.DataSource = dt3;
-                tInvenCategoryCombobox.DisplayMember = "CAT_NAME";
-                tInvenCategoryCombobox.ValueMember = "CAT_ID";
+                tInvenCategoryCombobox.DisplayMember = "CATEGORY_NAME";
+                tInvenCategoryCombobox.ValueMember = "CATEGORY_ID";
                 connection.Close();
             }
         }
@@ -192,7 +190,7 @@ namespace Inventory
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY, LOCATION, ACTIVITY_BY, ACTIVITY, SERIAL_NUMBER ) values " + "('" + tInvenEquipmentCombobox.Text + "','" + tInvenCategoryCombobox.Text + "', '" + tInvenLocationCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + tInvenSerialTextbox.Text + "')"; // SQL Command
+                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY_NAME, USERNAME, EVENT, SERIAL_NUMBER ) values " + "('" + tInvenEquipmentCombobox.Text + "','" + tInvenCategoryCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + tInvenSerialTextbox.Text + "')"; // SQL Command
                 Console.WriteLine(cmd.CommandText);
                 //For Loop to execute command multiple times for multiple inserts
                 /*for (int i = 0; i < quantity; i++)
@@ -286,8 +284,8 @@ namespace Inventory
             if (dt.Rows.Count > 0)
             {
                 createCategoryCombobox.DataSource = dt;
-                createCategoryCombobox.DisplayMember = "CAT_NAME";
-                createCategoryCombobox.ValueMember = "CAT_ID";
+                createCategoryCombobox.DisplayMember = "CATEGORY_NAME";
+                createCategoryCombobox.ValueMember = "CATEGORY_ID";
                 connection.Close();
             }
         }
@@ -554,23 +552,21 @@ namespace Inventory
             readSerialEdit();
         }
 
+        //Edit Inventory tab - Select query to retrieve serial number data into serialEditTextbox
         private void readSerialEdit()
         {
+            string q = "SELECT SERIAL_NUMBER FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
+
             connection.Open();
 
-            string q = "SELECT SERIAL_NUMBER FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
             OracleCommand cmd2 = new OracleCommand(q, connection);
             OracleDataReader dr = cmd2.ExecuteReader();
+
             if (dr.Read())
             {
                 serialEditTextbox.Text = (dr["SERIAL_NUMBER"].ToString());
             }
             connection.Close();
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

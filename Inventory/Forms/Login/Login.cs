@@ -55,7 +55,8 @@ namespace Inventory
             connection.Open(); // Connects to DB
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text; //Command to send to DB
-            cmd.CommandText = "SELECT COUNT(*) FROM LOGIN WHERE USER_NAME= '" + usernameTextbox.Text + "' AND PASSWORD= '" + passwordTextbox.Text + "' "; // SQL Command
+            cmd.CommandText = "SELECT COUNT(*) FROM LOGIN WHERE USERNAME= '" + usernameTextbox.Text + "' AND PASSWORD= '" + passwordTextbox.Text + "' "; // SQL Command
+            Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery(); //Execute command
             OracleDataAdapter sda = new OracleDataAdapter(cmd);
             DataTable dt = new DataTable();
