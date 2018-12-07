@@ -60,12 +60,17 @@ namespace Inventory
         //Search tab - Runs cmd.CommandText query with every keystroke within searchTextbox.
         private void searchTextbox_TextChanged(object sender, EventArgs e)
         {
-            string tableCB = searchCombobox.Text;
+            string filterCB = searchCombobox.Text;
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             //Query for case insensitive(i) searching
-            cmd.CommandText = "SELECT * FROM INVENTORY_DETAILS WHERE REGEXP_LIKE(" + tableCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
+            cmd.CommandText = "  SELECT EQUIPMENT.EQUIPMENT_NAME, CATEGORY.CATEGORY_NAME, LOGIN.USERNAME " +
+                "FROM INVENTORY " +
+                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                "WHERE REGEXP_LIKE(" + filterCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
             Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
