@@ -80,7 +80,30 @@ namespace Inventory
             connection.Close();
 
         }
-
+        //Search tab - Display data function with datagridview1
+        private void display_data()
+        {
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "EQUIPMENT.EQUIPMENT_NAME AS EQUIPMENT," +
+                "CATEGORY.CATEGORY_NAME AS CATEGORY," +
+                "SERIAL_NO," +
+                "LOGIN.USERNAME," +
+                "(LOCATION.BUILDING_NAME || '_' || LOCATION.ROOM_NAME) AS BUILDING_ROOM," +
+                "DATE" +
+                "FROM INVENTORY" +
+                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID" +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID" +
+                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID" +
+                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta);
+            dataGridView1.DataSource = dta;
+            connection.Close();
+        }
 
 
         //TakeInventory tab - Function that loads data into TakeInventory tab comboboxes
@@ -106,16 +129,16 @@ namespace Inventory
                 connection.Close();
             }
             //Display queried data within combobox
-            /*DataTable dt2 = new DataTable();
+            DataTable dt2 = new DataTable();
             OracleDataAdapter da2 = new OracleDataAdapter(w, connection);
             da2.Fill(dt2);
             if (dt2.Rows.Count > 0)
             {
                 tInvenLocationCombobox.DataSource = dt2;
-                tInvenLocationCombobox.DisplayMember = "ROOM";
+                tInvenLocationCombobox.DisplayMember = "BUILDING_ROOM";
                 tInvenLocationCombobox.ValueMember = "LOCATION_ID";
                 connection.Close();
-            }*/
+            }
             //Display queried data within combobox
             DataTable dt3 = new DataTable();
             OracleDataAdapter da3 = new OracleDataAdapter(d, connection);
@@ -135,7 +158,16 @@ namespace Inventory
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM INVENTORY";
+            cmd.CommandText = "SELECT EQUIPMENT.EQUIPMENT_NAME AS EQUIPMENT," +
+                "CATEGORY.CATEGORY_NAME AS CATEGORY, " +
+                "SERIAL_NO, " +
+                "LOGIN.USERNAME, " +
+                "(LOCATION.BUILDING_NAME || '_' || LOCATION.ROOM_NAME) AS BUILDING_ROOM, " +
+                "'DATE' FROM INVENTORY " +
+                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -151,21 +183,6 @@ namespace Inventory
             tInvenLocationCombobox.Text = "";
             tInvenCategoryCombobox.Text = "";
             //tInvenQuantityTextbox.Text = "";
-        }
-
-        //TakeInventory tab - Display data function with datagridview1
-        private void display_data()
-        {
-            connection.Open();
-            OracleCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM INVENTORY";
-            cmd.ExecuteNonQuery();
-            DataTable dta = new DataTable();
-            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
-            dataadp.Fill(dta);
-            dataGridView1.DataSource = dta;
-            connection.Close();
         }
 
         //TakeInventory tab - If Enter is pressed(scanners have the Enter keystroke per scan) serialTextbox calls insertButton function
@@ -195,7 +212,7 @@ namespace Inventory
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "insert into INVENTORY (EQUIPMENT_NAME, CATEGORY_NAME, USERNAME, EVENT, SERIAL_NUMBER ) values " + "('" + tInvenEquipmentCombobox.Text + "','" + tInvenCategoryCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + tInvenSerialTextbox.Text + "')"; // SQL Command
+                cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_NAME, CATEGORY_NAME, USERNAME, EVENT, SERIAL_NUMBER ) values " + "('" + tInvenEquipmentCombobox.Text + "','" + tInvenCategoryCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + tInvenSerialTextbox.Text + "')"; // SQL Command
                 Console.WriteLine(cmd.CommandText);
                 //For Loop to execute command multiple times for multiple inserts
                 /*for (int i = 0; i < quantity; i++)
