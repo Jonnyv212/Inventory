@@ -113,13 +113,14 @@ namespace Inventory
             display_inventory_data();
             connection.Open();
             //Queries for adapters
-            string q = "SELECT * FROM EQUIPMENT";
-            string w = "SELECT * FROM LOCATION";
-            string d = "SELECT * FROM CATEGORY";
+            string e = "SELECT * FROM EQUIPMENT";
+            string b = "SELECT * FROM BUILDING";
+            string r = "SELECT * FROM ROOM";
+            string c = "SELECT * FROM CATEGORY";
 
             //Display queried data within combobox
             DataTable dt = new DataTable();
-            OracleDataAdapter da = new OracleDataAdapter(q, connection);
+            OracleDataAdapter da = new OracleDataAdapter(e, connection);
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
@@ -130,24 +131,35 @@ namespace Inventory
             }
             //Display queried data within combobox
             DataTable dt2 = new DataTable();
-            OracleDataAdapter da2 = new OracleDataAdapter(w, connection);
+            OracleDataAdapter da2 = new OracleDataAdapter(b, connection);
             da2.Fill(dt2);
             if (dt2.Rows.Count > 0)
             {
-                tInvenLocationCombobox.DataSource = dt2;
-                tInvenLocationCombobox.DisplayMember = "BUILDING_ROOM";
-                tInvenLocationCombobox.ValueMember = "LOCATION_ID";
+                tInvenBuildingCombobox.DataSource = dt2;
+                tInvenBuildingCombobox.DisplayMember = "BUILDING_NAME";
+                tInvenBuildingCombobox.ValueMember = "BUILDING_ID";
                 connection.Close();
             }
             //Display queried data within combobox
             DataTable dt3 = new DataTable();
-            OracleDataAdapter da3 = new OracleDataAdapter(d, connection);
+            OracleDataAdapter da3 = new OracleDataAdapter(c, connection);
             da3.Fill(dt3);
             if (dt3.Rows.Count > 0)
             {
                 tInvenCategoryCombobox.DataSource = dt3;
                 tInvenCategoryCombobox.DisplayMember = "CATEGORY_NAME";
                 tInvenCategoryCombobox.ValueMember = "CATEGORY_ID";
+                connection.Close();
+            }
+            //Display queried data within combobox
+            DataTable dt4 = new DataTable();
+            OracleDataAdapter da4= new OracleDataAdapter(r, connection);
+            da4.Fill(dt4);
+            if (dt2.Rows.Count > 0)
+            {
+                tInvenRoomCombobox.DataSource = dt4;
+                tInvenRoomCombobox.DisplayMember = "ROOM_NAME";
+                tInvenRoomCombobox.ValueMember = "ROOM_ID";
                 connection.Close();
             }
         }
@@ -162,12 +174,15 @@ namespace Inventory
                 "CATEGORY.CATEGORY_NAME AS CATEGORY, " +
                 "SERIAL_NO, " +
                 "LOGIN.USERNAME, " +
-                "(LOCATION.BUILDING_NAME || '_' || LOCATION.ROOM_NAME) AS BUILDING_ROOM, " +
-                "'DATE' FROM INVENTORY " +
+                "(BUILDING.BUILDING_NAME || '_' || ROOM.ROOM_NAME) AS BUILDING_ROOM, " +
+                "INVENTORY_DATE " +
+                "FROM INVENTORY " +
                 "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                 "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
                 "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID";
+                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.LOCATION_ID " +
+                "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.LOCATION_ID ";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -180,7 +195,7 @@ namespace Inventory
         private void clear_data()
         {
             tInvenEquipmentCombobox.Text = ""; //Clear textboxes
-            tInvenLocationCombobox.Text = "";
+            tInvenBuildingCombobox.Text = "";
             tInvenCategoryCombobox.Text = "";
             //tInvenQuantityTextbox.Text = "";
         }
@@ -200,7 +215,7 @@ namespace Inventory
         private void insertButton_Click(object sender, EventArgs e)
         {
             //Inventory tab - If any of the comboboxes are empty then show messagebox
-            if (String.IsNullOrEmpty(tInvenEquipmentCombobox.Text) || String.IsNullOrEmpty(tInvenLocationCombobox.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
+            if (String.IsNullOrEmpty(tInvenEquipmentCombobox.Text) || String.IsNullOrEmpty(tInvenBuildingCombobox.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
@@ -211,14 +226,45 @@ namespace Inventory
 
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_NAME, CATEGORY_NAME, USERNAME, EVENT, SERIAL_NUMBER ) values " + "('" + tInvenEquipmentCombobox.Text + "','" + tInvenCategoryCombobox.Text + "', '" + loginUser + "', 'Inventory', '" + tInvenSerialTextbox.Text + "')"; // SQL Command
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_ID, CATEGORY_ID, EVENT_ID, USER_ID, LOCATION_ID, SERIAL_NO)" +
+                    "SELECT " +
+                    "(SELECT EQUIPMENT_ID " +
+                    "FROM EQUIPMENT " +
+                    "WHERE EQUIPMENT.EQUIPMENT_NAME = '"+ tInvenEquipmentCombobox.Text + "') " +
+                    "AS EQUIPMENT_ID," +
+
+                    "(SELECT CATEGORY_ID " +
+                    "FROM CATEGORY " +
+                    "WHERE CATEGORY.CATEGORY_NAME = '" + tInvenCategoryCombobox.Text + "') " +
+                    "AS CATEGORY_ID, " +
+
+                    "(SELECT EVENT_ID " +
+                    "FROM EVENT " +
+                    "WHERE EVENT.EVENT_ID = 1) " +
+                    "AS EVENT_ID, " +
+
+                    "(SELECT USER_ID " +
+                    "FROM LOGIN " +
+                    "WHERE LOGIN.USERNAME = '"+ loginUser +"' ) " +
+                    "AS USER_ID, " +
+
+                    "(SELECT LOCATION_ID " +
+                    "FROM LOCATION " +
+                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.LOCATION_ID " +
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.LOCATION_ID " +
+                    "WHERE BUILDING.BUILDING_NAME = '" + tInvenBuildingCombobox.Text + "' " +
+                    "AND ROOM.ROOM_NAME = '" + tInvenRoomCombobox.Text + "') " +
+                    "AS LOCATION_ID, " +
+
+                    "(SELECT '" + tInvenSerialTextbox.Text + "' " +
+                    "FROM DUAL) " +
+                    "AS SERIAL_NO " +
+
+                    "FROM DUAL";
+
                 Console.WriteLine(cmd.CommandText);
-                //For Loop to execute command multiple times for multiple inserts
-                /*for (int i = 0; i < quantity; i++)
-                {
-                    cmd.ExecuteNonQuery(); //Execute command
-                }*/
+
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close(); //Close connection to DB
 

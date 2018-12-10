@@ -44,7 +44,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.tInvenLocationCombobox = new System.Windows.Forms.ComboBox();
+            this.tInvenBuildingCombobox = new System.Windows.Forms.ComboBox();
             this.clearButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.insertButton = new System.Windows.Forms.Button();
@@ -52,7 +52,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tInvenCategoryCombobox = new System.Windows.Forms.ComboBox();
-            this.tInvenQuantityTextbox = new System.Windows.Forms.TextBox();
             this.editTab = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateEditCheckbox = new System.Windows.Forms.CheckBox();
@@ -91,6 +90,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tInvenRoomCombobox = new System.Windows.Forms.ComboBox();
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -208,6 +208,7 @@
             // 
             // takeTab
             // 
+            this.takeTab.Controls.Add(this.tInvenRoomCombobox);
             this.takeTab.Controls.Add(this.label13);
             this.takeTab.Controls.Add(this.label6);
             this.takeTab.Controls.Add(this.tInvenSerialTextbox);
@@ -215,7 +216,7 @@
             this.takeTab.Controls.Add(this.label7);
             this.takeTab.Controls.Add(this.label2);
             this.takeTab.Controls.Add(this.checkBox1);
-            this.takeTab.Controls.Add(this.tInvenLocationCombobox);
+            this.takeTab.Controls.Add(this.tInvenBuildingCombobox);
             this.takeTab.Controls.Add(this.clearButton);
             this.takeTab.Controls.Add(this.label3);
             this.takeTab.Controls.Add(this.insertButton);
@@ -223,7 +224,6 @@
             this.takeTab.Controls.Add(this.label4);
             this.takeTab.Controls.Add(this.dataGridView2);
             this.takeTab.Controls.Add(this.tInvenCategoryCombobox);
-            this.takeTab.Controls.Add(this.tInvenQuantityTextbox);
             this.takeTab.Location = new System.Drawing.Point(134, 4);
             this.takeTab.Name = "takeTab";
             this.takeTab.Padding = new System.Windows.Forms.Padding(3);
@@ -269,7 +269,7 @@
             this.tInvenEquipmentCombobox.FormattingEnabled = true;
             this.tInvenEquipmentCombobox.Location = new System.Drawing.Point(11, 67);
             this.tInvenEquipmentCombobox.Name = "tInvenEquipmentCombobox";
-            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(310, 33);
+            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(369, 33);
             this.tInvenEquipmentCombobox.TabIndex = 0;
             // 
             // label7
@@ -306,16 +306,16 @@
             this.checkBox1.Text = "Auto Insert";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // tInvenLocationCombobox
+            // tInvenBuildingCombobox
             // 
-            this.tInvenLocationCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tInvenBuildingCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tInvenLocationCombobox.FormattingEnabled = true;
-            this.tInvenLocationCombobox.Location = new System.Drawing.Point(365, 67);
-            this.tInvenLocationCombobox.Name = "tInvenLocationCombobox";
-            this.tInvenLocationCombobox.Size = new System.Drawing.Size(291, 33);
-            this.tInvenLocationCombobox.TabIndex = 2;
+            this.tInvenBuildingCombobox.FormattingEnabled = true;
+            this.tInvenBuildingCombobox.Location = new System.Drawing.Point(11, 174);
+            this.tInvenBuildingCombobox.Name = "tInvenBuildingCombobox";
+            this.tInvenBuildingCombobox.Size = new System.Drawing.Size(238, 33);
+            this.tInvenBuildingCombobox.TabIndex = 2;
             // 
             // clearButton
             // 
@@ -338,11 +338,11 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(360, 39);
+            this.label3.Location = new System.Drawing.Point(6, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 25);
+            this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Location";
+            this.label3.Text = "Building";
             // 
             // insertButton
             // 
@@ -365,7 +365,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(6, 145);
+            this.label5.Location = new System.Drawing.Point(414, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 25);
             this.label5.TabIndex = 10;
@@ -379,11 +379,11 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(361, 145);
+            this.label4.Location = new System.Drawing.Point(300, 145);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 25);
+            this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Quantity";
+            this.label4.Text = "Room";
             // 
             // dataGridView2
             // 
@@ -403,18 +403,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tInvenCategoryCombobox.FormattingEnabled = true;
-            this.tInvenCategoryCombobox.Location = new System.Drawing.Point(8, 173);
+            this.tInvenCategoryCombobox.Location = new System.Drawing.Point(419, 67);
             this.tInvenCategoryCombobox.Name = "tInvenCategoryCombobox";
-            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(306, 33);
+            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(244, 33);
             this.tInvenCategoryCombobox.TabIndex = 9;
-            // 
-            // tInvenQuantityTextbox
-            // 
-            this.tInvenQuantityTextbox.Enabled = false;
-            this.tInvenQuantityTextbox.Location = new System.Drawing.Point(365, 173);
-            this.tInvenQuantityTextbox.Name = "tInvenQuantityTextbox";
-            this.tInvenQuantityTextbox.Size = new System.Drawing.Size(124, 33);
-            this.tInvenQuantityTextbox.TabIndex = 8;
             // 
             // editTab
             // 
@@ -816,6 +808,17 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // tInvenRoomCombobox
+            // 
+            this.tInvenRoomCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tInvenRoomCombobox.FormattingEnabled = true;
+            this.tInvenRoomCombobox.Location = new System.Drawing.Point(305, 174);
+            this.tInvenRoomCombobox.Name = "tInvenRoomCombobox";
+            this.tInvenRoomCombobox.Size = new System.Drawing.Size(238, 33);
+            this.tInvenRoomCombobox.TabIndex = 16;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -862,12 +865,11 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ComboBox tInvenEquipmentCombobox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox tInvenLocationCombobox;
+        private System.Windows.Forms.ComboBox tInvenBuildingCombobox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox tInvenCategoryCombobox;
-        private System.Windows.Forms.TextBox tInvenQuantityTextbox;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tInvenSerialTextbox;
@@ -912,5 +914,6 @@
         private System.Windows.Forms.CheckBox userEditCheckbox;
         private System.Windows.Forms.CheckBox locationEditCheckbox;
         private System.Windows.Forms.CheckBox nameEditCheckbox;
+        private System.Windows.Forms.ComboBox tInvenRoomCombobox;
     }
 }
