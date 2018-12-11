@@ -361,39 +361,42 @@ namespace Inventory
 
 
         //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
-        public void nameEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        private void nameEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (nameEditCheckbox.Checked == true)
             {
                 nameEditCombobox.Enabled = true;
 
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT DISTINCT EQUIPMENT_NAME FROM INVENTORY";
+                string w = "SELECT * FROM EQUIPMENT";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+
+                DataTable dtNE = new DataTable();
+                OracleDataAdapter daNE = new OracleDataAdapter(w, connection);
+                daNE.Fill(dtNE);
+                if (dtNE.Rows.Count > 0)
                 {
-                    nameEditCombobox.DataSource = dt1;
+                    nameEditCombobox.DataSource = dtNE;
                     nameEditCombobox.DisplayMember = "EQUIPMENT_NAME";
-                    nameEditCombobox.ValueMember = "INVENTORY_ID";
+                    nameEditCombobox.ValueMember = "EQUIPMENT_ID";
                     connection.Close();
                 }
             }
             else
             {
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                string w = "SELECT * FROM EQUIPMENT " +
+                    "JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                    "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+                DataTable dtNE2 = new DataTable();
+                OracleDataAdapter daNE2 = new OracleDataAdapter(w, connection);
+                daNE2.Fill(dtNE2);
+                if (dtNE2.Rows.Count > 0)
                 {
-                    nameEditCombobox.DataSource = dt1;
+                    nameEditCombobox.DataSource = dtNE2;
                     nameEditCombobox.DisplayMember = "EQUIPMENT_NAME";
-                    nameEditCombobox.ValueMember = "INVENTORY_ID";
+                    nameEditCombobox.ValueMember = "EQUIPMENT_ID";
                     connection.Close();
                 }
 
@@ -402,42 +405,90 @@ namespace Inventory
         }
 
         //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
-        private void locationEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        private void roomEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (locationEditCheckbox.Checked == true)
+            if (roomEditCheckbox.Checked == true)
             {
-                locationEditCombobox.Enabled = true;
+                roomEditCombobox.Enabled = true;
 
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT DISTINCT LOCATION FROM INVENTORY";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+                string r = "SELECT * FROM ROOM";
+
+                DataTable dtRE = new DataTable();
+                OracleDataAdapter daRE = new OracleDataAdapter(r, connection);
+                daRE.Fill(dtRE);
+                if (dtRE.Rows.Count > 0)
                 {
-                    locationEditCombobox.DataSource = dt1;
-                    locationEditCombobox.DisplayMember = "LOCATION";
-                    locationEditCombobox.ValueMember = "INVENTORY_ID";
+                    roomEditCombobox.DataSource = dtRE;
+                    roomEditCombobox.DisplayMember = "ROOM_NAME";
+                    roomEditCombobox.ValueMember = "ROOM_ID";
                     connection.Close();
                 }
             }
             else
             {
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                string r = "SELECT * FROM ROOM " +
+                "JOIN LOCATION ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+                DataTable dtRE2 = new DataTable();
+                OracleDataAdapter daRE2 = new OracleDataAdapter(r, connection);
+                daRE2.Fill(dtRE2);
+                if (dtRE2.Rows.Count > 0)
                 {
-                    locationEditCombobox.DataSource = dt1;
-                    locationEditCombobox.DisplayMember = "LOCATION";
-                    locationEditCombobox.ValueMember = "INVENTORY_ID";
+                    roomEditCombobox.DataSource = dtRE2;
+                    roomEditCombobox.DisplayMember = "ROOM_NAME";
+                    roomEditCombobox.ValueMember = "ROOM_ID";
                     connection.Close();
                 }
-            locationEditCombobox.Enabled = false;
+                roomEditCombobox.Enabled = false;
+            }
+        }
+
+        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
+        private void buildingEditCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (buildingEditCheckbox.Checked == true)
+            {
+                buildingEditCombobox.Enabled = true;
+
+                OracleCommand cmd = connection.CreateCommand();
+
+                string b = "SELECT * FROM BUILDING";
+
+                DataTable dtBE = new DataTable();
+                OracleDataAdapter daBE = new OracleDataAdapter(b, connection);
+                daBE.Fill(dtBE);
+                if (dtBE.Rows.Count > 0)
+                {
+                    buildingEditCombobox.DataSource = dtBE;
+                    buildingEditCombobox.DisplayMember = "BUILDING_NAME";
+                    buildingEditCombobox.ValueMember = "BUILDING_ID";
+                    connection.Close();
+                }
+            }
+            else
+            {
+                OracleCommand cmd = connection.CreateCommand();
+                string b = "SELECT * FROM BUILDING " +
+                "JOIN LOCATION ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+                DataTable dtBE2 = new DataTable();
+                OracleDataAdapter daBE2 = new OracleDataAdapter(b, connection);
+                daBE2.Fill(dtBE2);
+                if (dtBE2.Rows.Count > 0)
+                {
+                    buildingEditCombobox.DataSource = dtBE2;
+                    buildingEditCombobox.DisplayMember = "BUILDING_NAME";
+                    buildingEditCombobox.ValueMember = "BUILDING_ID";
+                    connection.Close();
+                }
+                roomEditCombobox.Enabled = false;
             }
         }
 
@@ -449,32 +500,34 @@ namespace Inventory
                 userEditCombobox.Enabled = true;
 
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT DISTINCT ACTIVITY_BY FROM INVENTORY";
+                string w = "SELECT * FROM LOGIN";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+                DataTable dtUE = new DataTable();
+                OracleDataAdapter daUE = new OracleDataAdapter(w, connection);
+                daUE.Fill(dtUE);
+                if (dtUE.Rows.Count > 0)
                 {
-                    userEditCombobox.DataSource = dt1;
-                    userEditCombobox.DisplayMember = "ACTIVITY_BY";
-                    userEditCombobox.ValueMember = "INVENTORY_ID";
+                    userEditCombobox.DataSource = dtUE;
+                    userEditCombobox.DisplayMember = "USERNAME";
+                    userEditCombobox.ValueMember = "USER_ID";
                     connection.Close();
                 }
             }
             else
             {
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                string w = "SELECT * FROM LOGIN " +
+                    "JOIN INVENTORY ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                    "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+                DataTable dtUE2 = new DataTable();
+                OracleDataAdapter daUE2 = new OracleDataAdapter(w, connection);
+                daUE2.Fill(dtUE2);
+                if (dtUE2.Rows.Count > 0)
                 {
-                    userEditCombobox.DataSource = dt1;
-                    userEditCombobox.DisplayMember = "ACTIVITY_BY";
-                    userEditCombobox.ValueMember = "INVENTORY_ID";
+                    userEditCombobox.DataSource = daUE2;
+                    userEditCombobox.DisplayMember = "USERNAME";
+                    userEditCombobox.ValueMember = "USER_ID";
                     connection.Close();
                 }
                 userEditCombobox.Enabled = false;
@@ -489,32 +542,34 @@ namespace Inventory
                 categoryEditCombobox.Enabled = true;
 
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT DISTINCT CATEGORY FROM INVENTORY";
+                string w = "SELECT * FROM CATEGORY";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+                DataTable dtCE = new DataTable();
+                OracleDataAdapter daCE = new OracleDataAdapter(w, connection);
+                daCE.Fill(dtCE);
+                if (dtCE.Rows.Count > 0)
                 {
-                    categoryEditCombobox.DataSource = dt1;
-                    categoryEditCombobox.DisplayMember = "CATEGORY";
-                    categoryEditCombobox.ValueMember = "INVENTORY_ID";
+                    categoryEditCombobox.DataSource = dtCE;
+                    categoryEditCombobox.DisplayMember = "CATEGORY_NAME";
+                    categoryEditCombobox.ValueMember = "CATEGORY_ID";
                     connection.Close();
                 }
             }
             else
             {
                 OracleCommand cmd = connection.CreateCommand();
-                string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                string w = "SELECT * FROM CATEGORY " +
+                    "JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
+                    "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
 
-                DataTable dt1 = new DataTable();
-                OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-                da1.Fill(dt1);
-                if (dt1.Rows.Count > 0)
+                DataTable dtCE2 = new DataTable();
+                OracleDataAdapter daCE2 = new OracleDataAdapter(w, connection);
+                daCE2.Fill(dtCE2);
+                if (dtCE2.Rows.Count > 0)
                 {
-                    categoryEditCombobox.DataSource = dt1;
-                    categoryEditCombobox.DisplayMember = "CATEGORY";
-                    categoryEditCombobox.ValueMember = "INVENTORY_ID";
+                    categoryEditCombobox.DataSource = dtCE2;
+                    categoryEditCombobox.DisplayMember = "CATEGORY_NAME";
+                    categoryEditCombobox.ValueMember = "CATEGORY_ID";
                     connection.Close();
                 }
                 categoryEditCombobox.Enabled = false;
@@ -534,65 +589,100 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
-        private void dateEditCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (dateEditCheckbox.Checked == true)
-            {
-                dateTimePicker1.Enabled = true;
-            }
-            else
-            {
-                dateTimePicker1.Enabled = false;
-            }
-        }
-
         //Edit Inventory tab - Pull data from various tables and display them.
         private void editInventoryData()
         {
            
             //connection.Open();
             OracleCommand cmd = connection.CreateCommand();
-            string w = "SELECT * FROM INVENTORY WHERE INVENTORY_ID = '"+inventoryEditCombobox.Text+"' ";
 
-            DataTable dt1 = new DataTable();
-            OracleDataAdapter da1 = new OracleDataAdapter(w, connection);
-            da1.Fill(dt1);
-            if (dt1.Rows.Count > 0)
+            string i = "SELECT * FROM INVENTORY";
+
+            string e = "SELECT * FROM EQUIPMENT " +
+                        "JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            string b = "SELECT * FROM BUILDING " +
+                        "JOIN LOCATION ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                        "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.INVENTORY_ID " +
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            string r = "SELECT * FROM ROOM " +
+                        "JOIN LOCATION ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                        "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.INVENTORY_ID " +
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            string u = "SELECT * FROM LOGIN " +
+                        "JOIN INVENTORY ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            string c = "SELECT * FROM CATEGORY " +
+                        "JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+          /*  DataTable dt = new DataTable();
+            OracleDataAdapter da = new OracleDataAdapter(i, connection);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
             {
-                nameEditCombobox.DataSource = dt1;
+                inventoryEditCombobox.DataSource = dt;
+                inventoryEditCombobox.DisplayMember = "INVENTORY_ID";
+                inventoryEditCombobox.ValueMember = "INVENTORY_ID";
+                connection.Close();
+            } */
+
+            DataTable dtEI1 = new DataTable();
+            OracleDataAdapter daEI1 = new OracleDataAdapter(e, connection);
+            daEI1.Fill(dtEI1);
+            if (dtEI1.Rows.Count > 0)
+            {
+                nameEditCombobox.DataSource = dtEI1;
                 nameEditCombobox.DisplayMember = "EQUIPMENT_NAME";
-                nameEditCombobox.ValueMember = "INVENTORY_ID";
+                nameEditCombobox.ValueMember = "EQUIPMENT_ID";
                 connection.Close();
             }
-            DataTable dt2 = new DataTable();
-            OracleDataAdapter da2 = new OracleDataAdapter(w, connection);
-            da2.Fill(dt2);
-            if (dt2.Rows.Count > 0)
+
+            DataTable dtEI2 = new DataTable();
+            OracleDataAdapter daEI2 = new OracleDataAdapter(b, connection);
+            daEI2.Fill(dtEI2);
+            if (dtEI2.Rows.Count > 0)
             {
-                locationEditCombobox.DataSource = dt2;
-                locationEditCombobox.DisplayMember = "LOCATION";
-                locationEditCombobox.ValueMember = "INVENTORY_ID";
+                buildingEditCombobox.DataSource = dtEI2;
+                buildingEditCombobox.DisplayMember = "BUILDING_NAME";
+                buildingEditCombobox.ValueMember = "BUILDING_ID";
                 connection.Close();
             }
-            DataTable dt3 = new DataTable();
-            OracleDataAdapter da3 = new OracleDataAdapter(w, connection);
-            da3.Fill(dt3);
-            if (dt3.Rows.Count > 0)
+
+            DataTable dtEI3 = new DataTable();
+            OracleDataAdapter daEI3 = new OracleDataAdapter(u, connection);
+            daEI3.Fill(dtEI3);
+            if (dtEI3.Rows.Count > 0)
             {
-                userEditCombobox.DataSource = dt3;
-                userEditCombobox.DisplayMember = "ACTIVITY_BY";
-                userEditCombobox.ValueMember = "INVENTORY_ID";
+                userEditCombobox.DataSource = dtEI3;
+                userEditCombobox.DisplayMember = "USERNAME";
+                userEditCombobox.ValueMember = "USER_ID";
                 connection.Close();
             }
-            DataTable dt4 = new DataTable();
-            OracleDataAdapter da4 = new OracleDataAdapter(w, connection);
-            da4.Fill(dt4);
-            if (dt4.Rows.Count > 0)
+
+            DataTable dtEI4 = new DataTable();
+            OracleDataAdapter daEI4 = new OracleDataAdapter(c, connection);
+            daEI4.Fill(dtEI4);
+            if (dtEI4.Rows.Count > 0)
             {
-                categoryEditCombobox.DataSource = dt4;
-                categoryEditCombobox.DisplayMember = "CATEGORY";
-                categoryEditCombobox.ValueMember = "INVENTORY_ID";
+                categoryEditCombobox.DataSource = dtEI4;
+                categoryEditCombobox.DisplayMember = "CATEGORY_NAME";
+                categoryEditCombobox.ValueMember = "CATEGORY_ID";
+                connection.Close();
+            }
+
+            DataTable dtEI5 = new DataTable();
+            OracleDataAdapter daEI5 = new OracleDataAdapter(r, connection);
+            daEI5.Fill(dtEI5);
+            if (dtEI5.Rows.Count > 0)
+            {
+                roomEditCombobox.DataSource = dtEI5;
+                roomEditCombobox.DisplayMember = "ROOM_NAME";
+                roomEditCombobox.ValueMember = "ROOM_ID";
                 connection.Close();
             }
         }
@@ -603,27 +693,27 @@ namespace Inventory
             Console.WriteLine("Attempt to uncheck edit checkboxes");
             nameEditCheckbox.Checked = false;
             categoryEditCheckbox.Checked = false;
-            locationEditCheckbox.Checked = false;
+            buildingEditCheckbox.Checked = false;
             serialEditCheckbox.Checked = false;
             userEditCheckbox.Checked = false;
-            dateEditCheckbox.Checked = false;
+            roomEditCheckbox.Checked = false;
 
 
             nameEditCheckbox_CheckedChanged(sender, e);
             categoryEditCheckbox_CheckedChanged(sender, e);
-            locationEditCheckbox_CheckedChanged(sender, e);
+            roomEditCheckbox_CheckedChanged(sender, e);
             serialEditCheckbox_CheckedChanged(sender, e);
             userEditCheckbox_CheckedChanged(sender, e);
-            dateEditCheckbox_CheckedChanged(sender, e);
-
-            editInventoryData();
-            readSerialEdit();
+            buildingEditCheckbox_CheckedChanged(sender, e);
+            /*
+            editInventoryData(); */
+            readSerialEdit(); 
         }
 
         //Edit Inventory tab - Select query to retrieve serial number data into serialEditTextbox
         private void readSerialEdit()
         {
-            string q = "SELECT SERIAL_NUMBER FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
+            string q = "SELECT SERIAL_NO FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
 
             connection.Open();
 
@@ -632,9 +722,11 @@ namespace Inventory
 
             if (dr.Read())
             {
-                serialEditTextbox.Text = (dr["SERIAL_NUMBER"].ToString());
+                serialEditTextbox.Text = (dr["SERIAL_NO"].ToString());
             }
             connection.Close();
         }
+
+
     }
 }

@@ -45,7 +45,7 @@
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(312, 27);
+            this.usernameLabel.Location = new System.Drawing.Point(498, 143);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(101, 20);
             this.usernameLabel.TabIndex = 0;
@@ -54,7 +54,7 @@
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(312, 95);
+            this.passwordLabel.Location = new System.Drawing.Point(496, 229);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(103, 20);
             this.passwordLabel.TabIndex = 1;
@@ -73,21 +73,21 @@
             // 
             // usernameTextbox
             // 
-            this.usernameTextbox.Location = new System.Drawing.Point(469, 27);
+            this.usernameTextbox.Location = new System.Drawing.Point(678, 137);
             this.usernameTextbox.Name = "usernameTextbox";
             this.usernameTextbox.Size = new System.Drawing.Size(286, 26);
             this.usernameTextbox.TabIndex = 3;
             // 
             // passwordTextbox
             // 
-            this.passwordTextbox.Location = new System.Drawing.Point(469, 89);
+            this.passwordTextbox.Location = new System.Drawing.Point(678, 223);
             this.passwordTextbox.Name = "passwordTextbox";
             this.passwordTextbox.Size = new System.Drawing.Size(286, 26);
             this.passwordTextbox.TabIndex = 4;
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(534, 136);
+            this.loginButton.Location = new System.Drawing.Point(737, 278);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(153, 49);
             this.loginButton.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(647, 355);
+            this.exitButton.Location = new System.Drawing.Point(952, 583);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(155, 42);
             this.exitButton.TabIndex = 6;
@@ -111,12 +111,12 @@
             this.panel1.Controls.Add(this.loginLabel);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(294, 385);
+            this.panel1.Size = new System.Drawing.Size(294, 656);
             this.panel1.TabIndex = 7;
             // 
             // registerButton
             // 
-            this.registerButton.Location = new System.Drawing.Point(446, 355);
+            this.registerButton.Location = new System.Drawing.Point(563, 583);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(151, 42);
             this.registerButton.TabIndex = 9;
@@ -125,7 +125,7 @@
             // 
             // BarcodeLoginButton
             // 
-            this.BarcodeLoginButton.Location = new System.Drawing.Point(333, 273);
+            this.BarcodeLoginButton.Location = new System.Drawing.Point(489, 438);
             this.BarcodeLoginButton.Name = "BarcodeLoginButton";
             this.BarcodeLoginButton.Size = new System.Drawing.Size(160, 36);
             this.BarcodeLoginButton.TabIndex = 10;
@@ -135,7 +135,7 @@
             // 
             // barcodeTextbox
             // 
-            this.barcodeTextbox.Location = new System.Drawing.Point(516, 283);
+            this.barcodeTextbox.Location = new System.Drawing.Point(712, 448);
             this.barcodeTextbox.Name = "barcodeTextbox";
             this.barcodeTextbox.Size = new System.Drawing.Size(252, 26);
             this.barcodeTextbox.TabIndex = 11;
@@ -144,8 +144,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(865, 409);
+            this.ClientSize = new System.Drawing.Size(1368, 680);
             this.Controls.Add(this.barcodeTextbox);
             this.Controls.Add(this.BarcodeLoginButton);
             this.Controls.Add(this.registerButton);
