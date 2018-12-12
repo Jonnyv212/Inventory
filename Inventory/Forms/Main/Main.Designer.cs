@@ -255,10 +255,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(-4, 266);
+            this.dataGridView2.Location = new System.Drawing.Point(-4, 248);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(1316, 425);
+            this.dataGridView2.Size = new System.Drawing.Size(1316, 443);
             this.dataGridView2.TabIndex = 4;
             // 
             // tInvenRoomCombobox
@@ -267,9 +267,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tInvenRoomCombobox.FormattingEnabled = true;
-            this.tInvenRoomCombobox.Location = new System.Drawing.Point(360, 181);
+            this.tInvenRoomCombobox.Location = new System.Drawing.Point(419, 181);
             this.tInvenRoomCombobox.Name = "tInvenRoomCombobox";
-            this.tInvenRoomCombobox.Size = new System.Drawing.Size(502, 33);
+            this.tInvenRoomCombobox.Size = new System.Drawing.Size(288, 33);
             this.tInvenRoomCombobox.TabIndex = 16;
             // 
             // tInvenEquipmentCombobox
@@ -278,9 +278,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tInvenEquipmentCombobox.FormattingEnabled = true;
-            this.tInvenEquipmentCombobox.Location = new System.Drawing.Point(6, 76);
+            this.tInvenEquipmentCombobox.Location = new System.Drawing.Point(32, 76);
             this.tInvenEquipmentCombobox.Name = "tInvenEquipmentCombobox";
-            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(508, 33);
+            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(333, 33);
             this.tInvenEquipmentCombobox.TabIndex = 0;
             // 
             // insertButton
@@ -288,9 +288,9 @@
             this.insertButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.insertButton.Location = new System.Drawing.Point(916, 22);
+            this.insertButton.Location = new System.Drawing.Point(1068, 48);
             this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(375, 258);
+            this.insertButton.Size = new System.Drawing.Size(223, 61);
             this.insertButton.TabIndex = 5;
             this.insertButton.Text = "Insert";
             this.insertButton.UseVisualStyleBackColor = true;
@@ -301,9 +301,9 @@
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(916, 89);
+            this.clearButton.Location = new System.Drawing.Point(1068, 149);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(375, 258);
+            this.clearButton.Size = new System.Drawing.Size(223, 65);
             this.clearButton.TabIndex = 6;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -313,7 +313,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.Highlight;
-            this.label7.Location = new System.Drawing.Point(697, 138);
+            this.label7.Location = new System.Drawing.Point(764, 149);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(149, 25);
             this.label7.TabIndex = 12;
@@ -322,7 +322,7 @@
             // tInvenSerialTextbox
             // 
             this.tInvenSerialTextbox.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.tInvenSerialTextbox.Location = new System.Drawing.Point(689, 181);
+            this.tInvenSerialTextbox.Location = new System.Drawing.Point(769, 181);
             this.tInvenSerialTextbox.Multiline = true;
             this.tInvenSerialTextbox.Name = "tInvenSerialTextbox";
             this.tInvenSerialTextbox.Size = new System.Drawing.Size(236, 33);
@@ -337,7 +337,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(17, 38);
+            this.label2.Location = new System.Drawing.Point(27, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 25);
             this.label2.TabIndex = 1;
@@ -351,7 +351,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(17, 138);
+            this.label3.Location = new System.Drawing.Point(27, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 3;
@@ -363,9 +363,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tInvenBuildingCombobox.FormattingEnabled = true;
-            this.tInvenBuildingCombobox.Location = new System.Drawing.Point(6, 181);
+            this.tInvenBuildingCombobox.Location = new System.Drawing.Point(32, 181);
             this.tInvenBuildingCombobox.Name = "tInvenBuildingCombobox";
-            this.tInvenBuildingCombobox.Size = new System.Drawing.Size(492, 33);
+            this.tInvenBuildingCombobox.Size = new System.Drawing.Size(333, 33);
             this.tInvenBuildingCombobox.TabIndex = 2;
             // 
             // label4
@@ -376,7 +376,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(355, 138);
+            this.label4.Location = new System.Drawing.Point(414, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 7;
@@ -388,9 +388,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tInvenCategoryCombobox.FormattingEnabled = true;
-            this.tInvenCategoryCombobox.Location = new System.Drawing.Point(360, 76);
+            this.tInvenCategoryCombobox.Location = new System.Drawing.Point(419, 76);
             this.tInvenCategoryCombobox.Name = "tInvenCategoryCombobox";
-            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(502, 33);
+            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(278, 33);
             this.tInvenCategoryCombobox.TabIndex = 9;
             // 
             // label5
@@ -401,7 +401,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(367, 38);
+            this.label5.Location = new System.Drawing.Point(414, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 25);
             this.label5.TabIndex = 10;
@@ -465,7 +465,6 @@
             this.groupBox2.Size = new System.Drawing.Size(963, 600);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // roomEditCombobox
             // 
@@ -485,6 +484,7 @@
             this.roomEditCheckbox.TabIndex = 21;
             this.roomEditCheckbox.Text = "Edit";
             this.roomEditCheckbox.UseVisualStyleBackColor = true;
+            this.roomEditCheckbox.CheckedChanged += new System.EventHandler(this.roomEditCheckbox_CheckedChanged);
             // 
             // serialEditCheckbox
             // 
@@ -495,6 +495,7 @@
             this.serialEditCheckbox.TabIndex = 20;
             this.serialEditCheckbox.Text = "Edit";
             this.serialEditCheckbox.UseVisualStyleBackColor = true;
+            this.serialEditCheckbox.CheckedChanged += new System.EventHandler(this.serialEditCheckbox_CheckedChanged);
             // 
             // categoryEditCheckbox
             // 
@@ -516,6 +517,7 @@
             this.userEditCheckbox.TabIndex = 18;
             this.userEditCheckbox.Text = "Edit";
             this.userEditCheckbox.UseVisualStyleBackColor = true;
+            this.userEditCheckbox.CheckedChanged += new System.EventHandler(this.userEditCheckbox_CheckedChanged);
             // 
             // buildingEditCheckbox
             // 
@@ -526,6 +528,7 @@
             this.buildingEditCheckbox.TabIndex = 17;
             this.buildingEditCheckbox.Text = "Edit";
             this.buildingEditCheckbox.UseVisualStyleBackColor = true;
+            this.buildingEditCheckbox.CheckedChanged += new System.EventHandler(this.buildingEditCheckbox_CheckedChanged);
             // 
             // nameEditCheckbox
             // 

@@ -525,7 +525,7 @@ namespace Inventory
                 daUE2.Fill(dtUE2);
                 if (dtUE2.Rows.Count > 0)
                 {
-                    userEditCombobox.DataSource = daUE2;
+                    userEditCombobox.DataSource = dtUE2;
                     userEditCombobox.DisplayMember = "USERNAME";
                     userEditCombobox.ValueMember = "USER_ID";
                     connection.Close();
@@ -620,16 +620,16 @@ namespace Inventory
                         "JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
                         "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
 
-          /*  DataTable dt = new DataTable();
-            OracleDataAdapter da = new OracleDataAdapter(i, connection);
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
+            DataTable dtEI = new DataTable();
+            OracleDataAdapter daEI = new OracleDataAdapter(i, connection);
+            daEI.Fill(dtEI);
+            if (dtEI.Rows.Count > 0)
             {
-                inventoryEditCombobox.DataSource = dt;
+                inventoryEditCombobox.DataSource = dtEI;
                 inventoryEditCombobox.DisplayMember = "INVENTORY_ID";
                 inventoryEditCombobox.ValueMember = "INVENTORY_ID";
                 connection.Close();
-            } */
+            } 
 
             DataTable dtEI1 = new DataTable();
             OracleDataAdapter daEI1 = new OracleDataAdapter(e, connection);
@@ -705,8 +705,8 @@ namespace Inventory
             serialEditCheckbox_CheckedChanged(sender, e);
             userEditCheckbox_CheckedChanged(sender, e);
             buildingEditCheckbox_CheckedChanged(sender, e);
-            /*
-            editInventoryData(); */
+            
+            //editInventoryData();
             readSerialEdit(); 
         }
 
@@ -726,7 +726,5 @@ namespace Inventory
             }
             connection.Close();
         }
-
-
     }
 }
