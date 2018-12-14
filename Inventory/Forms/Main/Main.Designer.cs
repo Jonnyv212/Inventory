@@ -88,20 +88,23 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.createInnerTab = new System.Windows.Forms.TabControl();
             this.equipmentTab = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.createEquipmentListview = new System.Windows.Forms.ListView();
+            this.productNoTextbox = new System.Windows.Forms.TextBox();
             this.createCategoryCombobox = new System.Windows.Forms.ComboBox();
             this.createButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.createEquipmentCombobox = new System.Windows.Forms.TextBox();
             this.locationTab = new System.Windows.Forms.TabPage();
             this.removeTab = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.equipmentHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.categoryHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.productNoHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -714,7 +717,7 @@
             // 
             // searchDeleteButton
             // 
-            this.searchDeleteButton.Location = new System.Drawing.Point(496, 110);
+            this.searchDeleteButton.Location = new System.Drawing.Point(514, 110);
             this.searchDeleteButton.Name = "searchDeleteButton";
             this.searchDeleteButton.Size = new System.Drawing.Size(149, 49);
             this.searchDeleteButton.TabIndex = 9;
@@ -761,7 +764,7 @@
             // deleteButton
             // 
             this.deleteButton.BackColor = System.Drawing.Color.Transparent;
-            this.deleteButton.Location = new System.Drawing.Point(1072, 110);
+            this.deleteButton.Location = new System.Drawing.Point(1059, 110);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(149, 49);
             this.deleteButton.TabIndex = 0;
@@ -802,15 +805,15 @@
             // 
             // equipmentTab
             // 
-            this.equipmentTab.Controls.Add(this.listView1);
-            this.equipmentTab.Controls.Add(this.textBox1);
+            this.equipmentTab.Controls.Add(this.createEquipmentListview);
+            this.equipmentTab.Controls.Add(this.productNoTextbox);
             this.equipmentTab.Controls.Add(this.createCategoryCombobox);
             this.equipmentTab.Controls.Add(this.createButton);
             this.equipmentTab.Controls.Add(this.label8);
             this.equipmentTab.Controls.Add(this.label10);
             this.equipmentTab.Controls.Add(this.refreshButton);
             this.equipmentTab.Controls.Add(this.label9);
-            this.equipmentTab.Controls.Add(this.textBox2);
+            this.equipmentTab.Controls.Add(this.createEquipmentCombobox);
             this.equipmentTab.Location = new System.Drawing.Point(4, 34);
             this.equipmentTab.Name = "equipmentTab";
             this.equipmentTab.Padding = new System.Windows.Forms.Padding(3);
@@ -819,34 +822,39 @@
             this.equipmentTab.Text = "Equipment";
             this.equipmentTab.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // createEquipmentListview
             // 
-            this.listView1.Location = new System.Drawing.Point(34, 180);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1019, 414);
-            this.listView1.TabIndex = 17;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.createEquipmentListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.equipmentHeader,
+            this.categoryHeader,
+            this.productNoHeader});
+            this.createEquipmentListview.Location = new System.Drawing.Point(27, 25);
+            this.createEquipmentListview.Name = "createEquipmentListview";
+            this.createEquipmentListview.Size = new System.Drawing.Size(1019, 615);
+            this.createEquipmentListview.TabIndex = 17;
+            this.createEquipmentListview.UseCompatibleStateImageBehavior = false;
+            this.createEquipmentListview.View = System.Windows.Forms.View.Details;
             // 
-            // textBox1
+            // productNoTextbox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.productNoTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(639, 116);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(251, 33);
-            this.textBox1.TabIndex = 8;
+            this.productNoTextbox.Location = new System.Drawing.Point(647, 692);
+            this.productNoTextbox.Name = "productNoTextbox";
+            this.productNoTextbox.Size = new System.Drawing.Size(251, 33);
+            this.productNoTextbox.TabIndex = 8;
             // 
             // createCategoryCombobox
             // 
             this.createCategoryCombobox.FormattingEnabled = true;
-            this.createCategoryCombobox.Location = new System.Drawing.Point(345, 116);
+            this.createCategoryCombobox.Location = new System.Drawing.Point(335, 692);
             this.createCategoryCombobox.Name = "createCategoryCombobox";
             this.createCategoryCombobox.Size = new System.Drawing.Size(251, 33);
             this.createCategoryCombobox.TabIndex = 16;
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(940, 55);
+            this.createButton.Location = new System.Drawing.Point(918, 653);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(113, 47);
             this.createButton.TabIndex = 0;
@@ -858,7 +866,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(340, 77);
+            this.label8.Location = new System.Drawing.Point(330, 664);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 25);
             this.label8.TabIndex = 15;
@@ -871,7 +879,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(29, 77);
+            this.label10.Location = new System.Drawing.Point(22, 664);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(116, 25);
             this.label10.TabIndex = 1;
@@ -880,7 +888,7 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(940, 116);
+            this.refreshButton.Location = new System.Drawing.Point(918, 723);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(113, 47);
             this.refreshButton.TabIndex = 14;
@@ -894,20 +902,20 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label9.Location = new System.Drawing.Point(634, 77);
+            this.label9.Location = new System.Drawing.Point(642, 664);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(170, 25);
             this.label9.TabIndex = 2;
             this.label9.Text = "Product Number";
             // 
-            // textBox2
+            // createEquipmentCombobox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.createEquipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox2.Location = new System.Drawing.Point(34, 116);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(251, 33);
-            this.textBox2.TabIndex = 7;
+            this.createEquipmentCombobox.Location = new System.Drawing.Point(27, 692);
+            this.createEquipmentCombobox.Name = "createEquipmentCombobox";
+            this.createEquipmentCombobox.Size = new System.Drawing.Size(251, 33);
+            this.createEquipmentCombobox.TabIndex = 7;
             // 
             // locationTab
             // 
@@ -953,6 +961,21 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // equipmentHeader
+            // 
+            this.equipmentHeader.Text = "EQUIPMENT";
+            this.equipmentHeader.Width = 285;
+            // 
+            // categoryHeader
+            // 
+            this.categoryHeader.Text = "CATEGORY";
+            this.categoryHeader.Width = 185;
+            // 
+            // productNoHeader
+            // 
+            this.productNoHeader.Text = "PRODUCT NUMBER";
+            this.productNoHeader.Width = 237;
             // 
             // Main
             // 
@@ -1025,8 +1048,8 @@
         private System.Windows.Forms.ComboBox createCategoryCombobox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox productNoTextbox;
+        private System.Windows.Forms.TextBox createEquipmentCombobox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button createButton;
@@ -1068,7 +1091,10 @@
         private System.Windows.Forms.ComboBox filterDeleteCombobox;
         private System.Windows.Forms.TabControl createInnerTab;
         private System.Windows.Forms.TabPage equipmentTab;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView createEquipmentListview;
         private System.Windows.Forms.TabPage locationTab;
+        private System.Windows.Forms.ColumnHeader equipmentHeader;
+        private System.Windows.Forms.ColumnHeader categoryHeader;
+        private System.Windows.Forms.ColumnHeader productNoHeader;
     }
 }

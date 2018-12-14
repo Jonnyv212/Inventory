@@ -22,6 +22,7 @@ namespace Inventory
             InitializeComponent();
 
         }
+
         //GUI for Inventory Tab Control (text, layout, size)
         private void inventoryTabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -42,6 +43,7 @@ namespace Inventory
             CreateItemData();
             editInventoryData();
             deleteInventoryData();
+            displayCreateEquipmentListview();
         }
 
         //Call clear_data() function
@@ -56,7 +58,16 @@ namespace Inventory
             Application.Exit();
         }
 
-
+        //Refresh displayed data when switching between tabs
+        private void inventoryInnerTabs_Selected(object sender, TabControlEventArgs e)
+        {
+            //Refresh all displayed data after selecting a different tab
+            TakeInventoryComboBoxData();
+            CreateItemData();
+            editInventoryData();
+            deleteInventoryData();
+            Console.WriteLine("Connection refreshed!");
+        }
 
         //Search tab - Runs cmd.CommandText query with every keystroke within searchTextbox.
         private void searchTextbox_TextChanged(object sender, EventArgs e)
@@ -81,6 +92,7 @@ namespace Inventory
             connection.Close();
 
         }
+
         //Search tab - Display data function with datagridview1
         private void display_data()
         {
@@ -105,6 +117,7 @@ namespace Inventory
             dataGridView1.DataSource = dta;
             connection.Close();
         }
+
 
 
         //TakeInventory tab - Function that loads data into TakeInventory tab comboboxes
@@ -277,25 +290,10 @@ namespace Inventory
 
 
 
-
-        //Create tab - Display data function with datagridview3
-        private void display_create_data()
-        {
-            connection.Open();
-            OracleCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM EQUIPMENT";
-            cmd.ExecuteNonQuery();
-            DataTable dta = new DataTable();
-            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
-            dataadp.Fill(dta);
-            connection.Close();
-        }
-
         //Create tab - Use combobox text and insert that data into database with insert query
         private void createButton_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBox1.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
+            if (String.IsNullOrEmpty(createEquipmentCombobox.Text) || String.IsNullOrEmpty(productNoTextbox.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
@@ -304,7 +302,7 @@ namespace Inventory
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
-                cmd.CommandText = "SELECT COUNT(*) FROM EQUIPMENT WHERE EQUIPMENT_NAME= '" + textBox1.Text + "' OR PRODUCT_NO= '" + textBox2.Text + "' "; // SQL Command
+                cmd.CommandText = "SELECT COUNT(*) FROM EQUIPMENT WHERE EQUIPMENT_NAME= '" + createEquipmentCombobox.Text + "' OR PRODUCT_NO= '" + productNoTextbox.Text + "' "; // SQL Command
                 cmd.ExecuteNonQuery(); //Execute command
                 OracleDataAdapter sda = new OracleDataAdapter(cmd);
                 DataTable dt = new DataTable();
@@ -312,23 +310,23 @@ namespace Inventory
                 if (dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
                 {
                     MessageBox.Show("Already exists!");
+                    createEquipmentListview.Refresh();
                     connection.Close();
-                    display_data();
                 }
                 else
                 {
                     //connection.Open(); // Connects to DB
                     OracleCommand cmd2 = connection.CreateCommand();
                     cmd2.CommandType = CommandType.Text; //Command to send to DB
-                    cmd2.CommandText = "insert into EQUIPMENT (EQUIPMENT_NAME, PRODUCT_NO, CATEGORY) values " + "('" + textBox1.Text + "','" + textBox2.Text + "','" +  createCategoryCombobox.Text + "')"; // SQL Command
+                    cmd2.CommandText = "insert into EQUIPMENT (PRODUCT_NO, EQUIPMENT_NAME, CATEGORY_ID) values " + "('" + productNoTextbox.Text + "','" + createEquipmentCombobox.Text + "', (SELECT CATEGORY.CATEGORY_ID FROM CATEGORY WHERE CATEGORY_ID = '" +  createCategoryCombobox.Text + "') )"; // SQL Command
                     cmd2.ExecuteNonQuery(); //Execute command
                     //connection.Close(); //Close connection to DB
 
-                    textBox1.Text = ""; //Clear textboxes
-                    textBox2.Text = "";
-                    connection.Close();
+                    productNoTextbox.Text = ""; //Clear textboxes
+                    createEquipmentCombobox.Text = "";
 
-                    display_data();
+                    createEquipmentListview.Refresh();
+                    connection.Close();
                     MessageBox.Show("Data inserted");
                 }
             }
@@ -337,7 +335,7 @@ namespace Inventory
         //Create tab - Call display_create_data() function
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            display_create_data();
+            createEquipmentListview.Refresh();
         }
 
         //Create tab - display category table data into createCategoryCombobox
@@ -356,6 +354,36 @@ namespace Inventory
                 createCategoryCombobox.ValueMember = "CATEGORY_ID";
                 connection.Close();
             }
+        }
+
+        //Create tab - 
+        private void displayCreateEquipmentListview()
+        {
+            string q = "SELECT * " +
+                        "FROM EQUIPMENT " +
+                        "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID";
+
+            connection.Open();
+
+            OracleCommand cmd = new OracleCommand(q, connection);
+
+            try
+            {
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ListViewItem item = new ListViewItem(dr["EQUIPMENT_NAME"].ToString());
+                    item.SubItems.Add(dr["CATEGORY_NAME"].ToString());
+                    item.SubItems.Add(dr["PRODUCT_NO"].ToString());
+                    createEquipmentListview.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            connection.Close();
         }
 
 
@@ -680,6 +708,7 @@ namespace Inventory
             connection.Close();
         }
 
+        //Edit Inventory tab - If a checkbox is true then run an update query from the specified combobox by INVENTORY_ID to update the inventory table
         private void editApplyButton_Click(object sender, EventArgs e)
         {
 
@@ -804,7 +833,7 @@ namespace Inventory
 
 
 
-
+        //Delete Inventory tab - Delete an inventory record by selecting the INVENTORY_ID 
         private void deleteButton_Click(object sender, EventArgs e)
         {
 
@@ -820,7 +849,8 @@ namespace Inventory
 
             MessageBox.Show("Data deleted successfully!");
         }
-
+        
+        //Delete Inventory tab - Search record information based on inventory_id and display to datagridview in delete tab
         private void searchDeleteTextbox_TextChanged(object sender, EventArgs e)
         {
             string filterCB = searchCombobox.Text;
@@ -846,6 +876,7 @@ namespace Inventory
             connection.Close();
         }
 
+        //Delete Inventory tab - 
         private void deleteInventoryData()
         {
             string i = "SELECT * FROM INVENTORY";
@@ -863,40 +894,5 @@ namespace Inventory
             }
         }
 
-        private void inventoryInnerTabs_Selected(object sender, TabControlEventArgs e)
-        {
-            //Refresh all displayed data after selecting a different tab
-            TakeInventoryComboBoxData();
-            CreateItemData();
-            editInventoryData();
-            deleteInventoryData();
-            Console.WriteLine("Connection refreshed!");
-        }
-
-
-        /* private void deleteFiltersCombobox()
-{
-connection.Open();
-
-string A = "SELECT column_name AS FILTERS " +
-       "FROM all_tab_cols " +
-       "WHERE(table_name = 'BUILDING' " +
-        "OR table_name = 'ROOM' " +
-        "OR table_name = 'EQUIPMENT' " +
-       "OR table_name = 'LOGIN' " +
-       "OR table_name = 'INVENTORY' )" +
-       "AND column_name IN('BUILDING_NAME', 'ROOM_NAME', 'USERNAME', 'EQUIPMENT_NAME', 'CATEGORY_NAME', 'INVENTORY_ID') ";
-
-DataTable dtDF = new DataTable();
-OracleDataAdapter daDF = new OracleDataAdapter(A, connection);
-daDF.Fill(dtDF);
-if (dtDF.Rows.Count > 0)
-{
-deleteFilterCombobox.DataSource = dtDF;
-deleteFilterCombobox.DisplayMember = "FILTERS";
-deleteFilterCombobox.ValueMember = "FILTERS";
-connection.Close();
-}
-}*/
     }
 }
