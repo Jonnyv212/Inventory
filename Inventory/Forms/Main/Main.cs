@@ -69,6 +69,8 @@ namespace Inventory
             Console.WriteLine("Connection refreshed!");
         }
 
+
+
         //Search tab - Runs cmd.CommandText query with every keystroke within searchTextbox.
         private void searchTextbox_TextChanged(object sender, EventArgs e)
         {
@@ -293,7 +295,7 @@ namespace Inventory
         //Create tab - Use combobox text and insert that data into database with insert query
         private void createButton_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(createEquipmentCombobox.Text) || String.IsNullOrEmpty(productNoTextbox.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
+            if (String.IsNullOrEmpty(createEquipmentCombobox.Text) || String.IsNullOrEmpty(productNoTextbox.Text) || String.IsNullOrEmpty(createCategoryCombobox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
@@ -318,7 +320,10 @@ namespace Inventory
                     //connection.Open(); // Connects to DB
                     OracleCommand cmd2 = connection.CreateCommand();
                     cmd2.CommandType = CommandType.Text; //Command to send to DB
-                    cmd2.CommandText = "insert into EQUIPMENT (PRODUCT_NO, EQUIPMENT_NAME, CATEGORY_ID) values " + "('" + productNoTextbox.Text + "','" + createEquipmentCombobox.Text + "', (SELECT CATEGORY.CATEGORY_ID FROM CATEGORY WHERE CATEGORY_ID = '" +  createCategoryCombobox.Text + "') )"; // SQL Command
+                    cmd2.CommandText = "INSERT INTO EQUIPMENT " +
+                                        "(PRODUCT_NO, EQUIPMENT_NAME, CATEGORY_ID) VALUES " +
+                                        "('" + productNoTextbox.Text + "','" + createEquipmentCombobox.Text + "', " +
+                                        "(SELECT CATEGORY.CATEGORY_ID FROM CATEGORY WHERE CATEGORY_NAME = '" +  createCategoryCombobox.Text + "') )"; // SQL Command
                     cmd2.ExecuteNonQuery(); //Execute command
                     //connection.Close(); //Close connection to DB
 
@@ -332,7 +337,7 @@ namespace Inventory
             }
         }
 
-        //Create tab - Call display_create_data() function
+        //Create tab - Call createEquipmentListview.Refresh() function
         private void refreshButton_Click(object sender, EventArgs e)
         {
             createEquipmentListview.Refresh();
@@ -376,6 +381,7 @@ namespace Inventory
                     ListViewItem item = new ListViewItem(dr["EQUIPMENT_NAME"].ToString());
                     item.SubItems.Add(dr["CATEGORY_NAME"].ToString());
                     item.SubItems.Add(dr["PRODUCT_NO"].ToString());
+
                     createEquipmentListview.Items.Add(item);
                 }
             }

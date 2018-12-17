@@ -89,6 +89,9 @@
             this.createInnerTab = new System.Windows.Forms.TabControl();
             this.equipmentTab = new System.Windows.Forms.TabPage();
             this.createEquipmentListview = new System.Windows.Forms.ListView();
+            this.equipmentHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.categoryHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.productNoHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.productNoTextbox = new System.Windows.Forms.TextBox();
             this.createCategoryCombobox = new System.Windows.Forms.ComboBox();
             this.createButton = new System.Windows.Forms.Button();
@@ -102,9 +105,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.equipmentHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.categoryHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.productNoHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -141,7 +141,7 @@
             this.inventoryTabControl.Multiline = true;
             this.inventoryTabControl.Name = "inventoryTabControl";
             this.inventoryTabControl.SelectedIndex = 0;
-            this.inventoryTabControl.Size = new System.Drawing.Size(1455, 831);
+            this.inventoryTabControl.Size = new System.Drawing.Size(1578, 811);
             this.inventoryTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.inventoryTabControl.TabIndex = 8;
             this.inventoryTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.inventoryTabControl_DrawItem);
@@ -229,7 +229,7 @@
             this.inventoryTab.Location = new System.Drawing.Point(154, 4);
             this.inventoryTab.Name = "inventoryTab";
             this.inventoryTab.Padding = new System.Windows.Forms.Padding(3);
-            this.inventoryTab.Size = new System.Drawing.Size(1297, 823);
+            this.inventoryTab.Size = new System.Drawing.Size(1060, 652);
             this.inventoryTab.TabIndex = 1;
             this.inventoryTab.Text = "Inventory";
             this.inventoryTab.UseVisualStyleBackColor = true;
@@ -243,7 +243,7 @@
             this.inventoryInnerTabs.Location = new System.Drawing.Point(3, 3);
             this.inventoryInnerTabs.Name = "inventoryInnerTabs";
             this.inventoryInnerTabs.SelectedIndex = 0;
-            this.inventoryInnerTabs.Size = new System.Drawing.Size(1291, 817);
+            this.inventoryInnerTabs.Size = new System.Drawing.Size(1054, 646);
             this.inventoryInnerTabs.TabIndex = 17;
             this.inventoryInnerTabs.Selected += new System.Windows.Forms.TabControlEventHandler(this.inventoryInnerTabs_Selected);
             // 
@@ -686,7 +686,7 @@
             this.deleteInventoryTab.Controls.Add(this.deleteButton);
             this.deleteInventoryTab.Location = new System.Drawing.Point(4, 34);
             this.deleteInventoryTab.Name = "deleteInventoryTab";
-            this.deleteInventoryTab.Size = new System.Drawing.Size(1283, 779);
+            this.deleteInventoryTab.Size = new System.Drawing.Size(1046, 608);
             this.deleteInventoryTab.TabIndex = 2;
             this.deleteInventoryTab.Text = "Delete Inventory";
             this.deleteInventoryTab.UseVisualStyleBackColor = true;
@@ -738,10 +738,10 @@
             // 
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView4.Location = new System.Drawing.Point(0, 183);
+            this.dataGridView4.Location = new System.Drawing.Point(0, 12);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowTemplate.Height = 28;
-            this.dataGridView4.Size = new System.Drawing.Size(1283, 596);
+            this.dataGridView4.Size = new System.Drawing.Size(1046, 596);
             this.dataGridView4.TabIndex = 5;
             // 
             // label11
@@ -777,7 +777,7 @@
             this.createTab.Controls.Add(this.panel1);
             this.createTab.Location = new System.Drawing.Point(154, 4);
             this.createTab.Name = "createTab";
-            this.createTab.Size = new System.Drawing.Size(1297, 823);
+            this.createTab.Size = new System.Drawing.Size(1420, 803);
             this.createTab.TabIndex = 3;
             this.createTab.Text = "Create";
             this.createTab.UseVisualStyleBackColor = true;
@@ -789,7 +789,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1297, 823);
+            this.panel1.Size = new System.Drawing.Size(1420, 803);
             this.panel1.TabIndex = 1;
             // 
             // createInnerTab
@@ -800,7 +800,7 @@
             this.createInnerTab.Location = new System.Drawing.Point(0, 0);
             this.createInnerTab.Name = "createInnerTab";
             this.createInnerTab.SelectedIndex = 0;
-            this.createInnerTab.Size = new System.Drawing.Size(1297, 823);
+            this.createInnerTab.Size = new System.Drawing.Size(1420, 803);
             this.createInnerTab.TabIndex = 17;
             // 
             // equipmentTab
@@ -817,7 +817,7 @@
             this.equipmentTab.Location = new System.Drawing.Point(4, 34);
             this.equipmentTab.Name = "equipmentTab";
             this.equipmentTab.Padding = new System.Windows.Forms.Padding(3);
-            this.equipmentTab.Size = new System.Drawing.Size(1289, 785);
+            this.equipmentTab.Size = new System.Drawing.Size(1412, 765);
             this.equipmentTab.TabIndex = 0;
             this.equipmentTab.Text = "Equipment";
             this.equipmentTab.UseVisualStyleBackColor = true;
@@ -830,16 +830,31 @@
             this.productNoHeader});
             this.createEquipmentListview.Location = new System.Drawing.Point(27, 25);
             this.createEquipmentListview.Name = "createEquipmentListview";
-            this.createEquipmentListview.Size = new System.Drawing.Size(1019, 615);
+            this.createEquipmentListview.Size = new System.Drawing.Size(1019, 445);
             this.createEquipmentListview.TabIndex = 17;
             this.createEquipmentListview.UseCompatibleStateImageBehavior = false;
             this.createEquipmentListview.View = System.Windows.Forms.View.Details;
+            // 
+            // equipmentHeader
+            // 
+            this.equipmentHeader.Text = "EQUIPMENT";
+            this.equipmentHeader.Width = 285;
+            // 
+            // categoryHeader
+            // 
+            this.categoryHeader.Text = "CATEGORY";
+            this.categoryHeader.Width = 185;
+            // 
+            // productNoHeader
+            // 
+            this.productNoHeader.Text = "PRODUCT NUMBER";
+            this.productNoHeader.Width = 237;
             // 
             // productNoTextbox
             // 
             this.productNoTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.productNoTextbox.Location = new System.Drawing.Point(647, 692);
+            this.productNoTextbox.Location = new System.Drawing.Point(662, 515);
             this.productNoTextbox.Name = "productNoTextbox";
             this.productNoTextbox.Size = new System.Drawing.Size(251, 33);
             this.productNoTextbox.TabIndex = 8;
@@ -847,14 +862,14 @@
             // createCategoryCombobox
             // 
             this.createCategoryCombobox.FormattingEnabled = true;
-            this.createCategoryCombobox.Location = new System.Drawing.Point(335, 692);
+            this.createCategoryCombobox.Location = new System.Drawing.Point(350, 515);
             this.createCategoryCombobox.Name = "createCategoryCombobox";
             this.createCategoryCombobox.Size = new System.Drawing.Size(251, 33);
             this.createCategoryCombobox.TabIndex = 16;
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(918, 653);
+            this.createButton.Location = new System.Drawing.Point(933, 476);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(113, 47);
             this.createButton.TabIndex = 0;
@@ -866,7 +881,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(330, 664);
+            this.label8.Location = new System.Drawing.Point(345, 487);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 25);
             this.label8.TabIndex = 15;
@@ -879,7 +894,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(22, 664);
+            this.label10.Location = new System.Drawing.Point(37, 487);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(116, 25);
             this.label10.TabIndex = 1;
@@ -888,7 +903,7 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(918, 723);
+            this.refreshButton.Location = new System.Drawing.Point(933, 535);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(113, 47);
             this.refreshButton.TabIndex = 14;
@@ -902,7 +917,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label9.Location = new System.Drawing.Point(642, 664);
+            this.label9.Location = new System.Drawing.Point(657, 487);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(170, 25);
             this.label9.TabIndex = 2;
@@ -912,7 +927,7 @@
             // 
             this.createEquipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.createEquipmentCombobox.Location = new System.Drawing.Point(27, 692);
+            this.createEquipmentCombobox.Location = new System.Drawing.Point(42, 515);
             this.createEquipmentCombobox.Name = "createEquipmentCombobox";
             this.createEquipmentCombobox.Size = new System.Drawing.Size(251, 33);
             this.createEquipmentCombobox.TabIndex = 7;
@@ -943,7 +958,7 @@
             this.File});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1455, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1578, 33);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -962,27 +977,12 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // equipmentHeader
-            // 
-            this.equipmentHeader.Text = "EQUIPMENT";
-            this.equipmentHeader.Width = 285;
-            // 
-            // categoryHeader
-            // 
-            this.categoryHeader.Text = "CATEGORY";
-            this.categoryHeader.Width = 185;
-            // 
-            // productNoHeader
-            // 
-            this.productNoHeader.Text = "PRODUCT NUMBER";
-            this.productNoHeader.Width = 237;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1455, 864);
+            this.ClientSize = new System.Drawing.Size(1578, 844);
             this.Controls.Add(this.inventoryTabControl);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Main";
