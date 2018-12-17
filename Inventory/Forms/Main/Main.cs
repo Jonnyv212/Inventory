@@ -282,6 +282,12 @@ namespace Inventory
                 Console.WriteLine(cmd.CommandText);
 
                 cmd.ExecuteNonQuery(); //Execute command
+
+                cmd.CommandText = "INSERT INTO HISTORY" +
+                    "(EVENT_ID, USER_ID, INVENTORY_ID)" +
+                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'), (SELECT max(INVENTORY_ID) FROM INVENTORY))";
+                cmd.ExecuteNonQuery();
+
                 connection.Close(); //Close connection to DB
 
                 display_inventory_data();
