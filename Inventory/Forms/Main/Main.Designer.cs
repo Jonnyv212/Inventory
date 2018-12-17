@@ -30,7 +30,6 @@
         {
             this.inventoryTabControl = new System.Windows.Forms.TabControl();
             this.searchTab = new System.Windows.Forms.TabPage();
-            this.label12 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -149,7 +148,6 @@
             // searchTab
             // 
             this.searchTab.BackColor = System.Drawing.Color.Gray;
-            this.searchTab.Controls.Add(this.label12);
             this.searchTab.Controls.Add(this.label1);
             this.searchTab.Controls.Add(this.searchButton);
             this.searchTab.Controls.Add(this.dataGridView1);
@@ -159,23 +157,14 @@
             this.searchTab.Name = "searchTab";
             this.searchTab.Padding = new System.Windows.Forms.Padding(3);
             this.searchTab.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.searchTab.Size = new System.Drawing.Size(1297, 823);
+            this.searchTab.Size = new System.Drawing.Size(1420, 803);
             this.searchTab.TabIndex = 0;
             this.searchTab.Text = "Search";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(449, 7);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 25);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Search";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 3);
+            this.label1.Location = new System.Drawing.Point(19, 705);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 25);
             this.label1.TabIndex = 16;
@@ -184,9 +173,9 @@
             // searchButton
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.searchButton.Location = new System.Drawing.Point(621, 107);
+            this.searchButton.Location = new System.Drawing.Point(946, 697);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(110, 35);
+            this.searchButton.Size = new System.Drawing.Size(110, 36);
             this.searchButton.TabIndex = 11;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -194,11 +183,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 269);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1291, 551);
+            this.dataGridView1.Size = new System.Drawing.Size(1406, 680);
             this.dataGridView1.TabIndex = 13;
             // 
             // searchCombobox
@@ -208,7 +196,7 @@
             "EQUIPMENT_NAME",
             "CATEGORY_NAME",
             "USERNAME"});
-            this.searchCombobox.Location = new System.Drawing.Point(18, 41);
+            this.searchCombobox.Location = new System.Drawing.Point(107, 697);
             this.searchCombobox.Name = "searchCombobox";
             this.searchCombobox.Size = new System.Drawing.Size(208, 33);
             this.searchCombobox.TabIndex = 15;
@@ -217,9 +205,9 @@
             // 
             this.searchTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.searchTextbox.Location = new System.Drawing.Point(18, 107);
+            this.searchTextbox.Location = new System.Drawing.Point(456, 697);
             this.searchTextbox.Name = "searchTextbox";
-            this.searchTextbox.Size = new System.Drawing.Size(573, 33);
+            this.searchTextbox.Size = new System.Drawing.Size(446, 33);
             this.searchTextbox.TabIndex = 7;
             this.searchTextbox.TextChanged += new System.EventHandler(this.searchTextbox_TextChanged);
             // 
@@ -229,7 +217,7 @@
             this.inventoryTab.Location = new System.Drawing.Point(154, 4);
             this.inventoryTab.Name = "inventoryTab";
             this.inventoryTab.Padding = new System.Windows.Forms.Padding(3);
-            this.inventoryTab.Size = new System.Drawing.Size(1060, 652);
+            this.inventoryTab.Size = new System.Drawing.Size(1420, 803);
             this.inventoryTab.TabIndex = 1;
             this.inventoryTab.Text = "Inventory";
             this.inventoryTab.UseVisualStyleBackColor = true;
@@ -243,7 +231,7 @@
             this.inventoryInnerTabs.Location = new System.Drawing.Point(3, 3);
             this.inventoryInnerTabs.Name = "inventoryInnerTabs";
             this.inventoryInnerTabs.SelectedIndex = 0;
-            this.inventoryInnerTabs.Size = new System.Drawing.Size(1054, 646);
+            this.inventoryInnerTabs.Size = new System.Drawing.Size(1414, 797);
             this.inventoryInnerTabs.TabIndex = 17;
             this.inventoryInnerTabs.Selected += new System.Windows.Forms.TabControlEventHandler(this.inventoryInnerTabs_Selected);
             // 
@@ -266,7 +254,7 @@
             this.takeInventoryTab.Location = new System.Drawing.Point(4, 34);
             this.takeInventoryTab.Name = "takeInventoryTab";
             this.takeInventoryTab.Padding = new System.Windows.Forms.Padding(3);
-            this.takeInventoryTab.Size = new System.Drawing.Size(1283, 779);
+            this.takeInventoryTab.Size = new System.Drawing.Size(1406, 759);
             this.takeInventoryTab.TabIndex = 0;
             this.takeInventoryTab.Text = "Take Inventory";
             // 
@@ -279,7 +267,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(-4, 248);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(1291, 528);
+            this.dataGridView2.Size = new System.Drawing.Size(1414, 508);
             this.dataGridView2.TabIndex = 4;
             // 
             // tInvenRoomCombobox
@@ -290,7 +278,7 @@
             this.tInvenRoomCombobox.FormattingEnabled = true;
             this.tInvenRoomCombobox.Location = new System.Drawing.Point(480, 193);
             this.tInvenRoomCombobox.Name = "tInvenRoomCombobox";
-            this.tInvenRoomCombobox.Size = new System.Drawing.Size(289, 33);
+            this.tInvenRoomCombobox.Size = new System.Drawing.Size(278, 33);
             this.tInvenRoomCombobox.TabIndex = 16;
             // 
             // tInvenEquipmentCombobox
@@ -301,7 +289,7 @@
             this.tInvenEquipmentCombobox.FormattingEnabled = true;
             this.tInvenEquipmentCombobox.Location = new System.Drawing.Point(18, 76);
             this.tInvenEquipmentCombobox.Name = "tInvenEquipmentCombobox";
-            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(395, 33);
+            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(412, 33);
             this.tInvenEquipmentCombobox.TabIndex = 0;
             // 
             // insertButton
@@ -311,7 +299,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.insertButton.Location = new System.Drawing.Point(1079, 48);
             this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(198, 61);
+            this.insertButton.Size = new System.Drawing.Size(295, 85);
             this.insertButton.TabIndex = 5;
             this.insertButton.Text = "Insert";
             this.insertButton.UseVisualStyleBackColor = true;
@@ -322,9 +310,9 @@
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(1079, 125);
+            this.clearButton.Location = new System.Drawing.Point(1079, 165);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(198, 65);
+            this.clearButton.Size = new System.Drawing.Size(295, 77);
             this.clearButton.TabIndex = 6;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
@@ -386,7 +374,7 @@
             this.tInvenBuildingCombobox.FormattingEnabled = true;
             this.tInvenBuildingCombobox.Location = new System.Drawing.Point(480, 76);
             this.tInvenBuildingCombobox.Name = "tInvenBuildingCombobox";
-            this.tInvenBuildingCombobox.Size = new System.Drawing.Size(385, 33);
+            this.tInvenBuildingCombobox.Size = new System.Drawing.Size(330, 33);
             this.tInvenBuildingCombobox.TabIndex = 2;
             // 
             // label4
@@ -411,7 +399,7 @@
             this.tInvenCategoryCombobox.FormattingEnabled = true;
             this.tInvenCategoryCombobox.Location = new System.Drawing.Point(18, 193);
             this.tInvenCategoryCombobox.Name = "tInvenCategoryCombobox";
-            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(395, 33);
+            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(338, 33);
             this.tInvenCategoryCombobox.TabIndex = 9;
             // 
             // label5
@@ -437,7 +425,7 @@
             this.editInventoryTab.Location = new System.Drawing.Point(4, 34);
             this.editInventoryTab.Name = "editInventoryTab";
             this.editInventoryTab.Padding = new System.Windows.Forms.Padding(3);
-            this.editInventoryTab.Size = new System.Drawing.Size(1283, 779);
+            this.editInventoryTab.Size = new System.Drawing.Size(1406, 759);
             this.editInventoryTab.TabIndex = 1;
             this.editInventoryTab.Text = "Edit Inventory";
             this.editInventoryTab.UseVisualStyleBackColor = true;
@@ -686,7 +674,7 @@
             this.deleteInventoryTab.Controls.Add(this.deleteButton);
             this.deleteInventoryTab.Location = new System.Drawing.Point(4, 34);
             this.deleteInventoryTab.Name = "deleteInventoryTab";
-            this.deleteInventoryTab.Size = new System.Drawing.Size(1046, 608);
+            this.deleteInventoryTab.Size = new System.Drawing.Size(1406, 759);
             this.deleteInventoryTab.TabIndex = 2;
             this.deleteInventoryTab.Text = "Delete Inventory";
             this.deleteInventoryTab.UseVisualStyleBackColor = true;
@@ -738,10 +726,10 @@
             // 
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView4.Location = new System.Drawing.Point(0, 12);
+            this.dataGridView4.Location = new System.Drawing.Point(0, 163);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowTemplate.Height = 28;
-            this.dataGridView4.Size = new System.Drawing.Size(1046, 596);
+            this.dataGridView4.Size = new System.Drawing.Size(1406, 596);
             this.dataGridView4.TabIndex = 5;
             // 
             // label11
@@ -937,7 +925,7 @@
             this.locationTab.Location = new System.Drawing.Point(4, 34);
             this.locationTab.Name = "locationTab";
             this.locationTab.Padding = new System.Windows.Forms.Padding(3);
-            this.locationTab.Size = new System.Drawing.Size(1289, 785);
+            this.locationTab.Size = new System.Drawing.Size(1412, 765);
             this.locationTab.TabIndex = 1;
             this.locationTab.Text = "Location";
             this.locationTab.UseVisualStyleBackColor = true;
@@ -946,7 +934,7 @@
             // 
             this.removeTab.Location = new System.Drawing.Point(154, 4);
             this.removeTab.Name = "removeTab";
-            this.removeTab.Size = new System.Drawing.Size(1297, 823);
+            this.removeTab.Size = new System.Drawing.Size(1420, 803);
             this.removeTab.TabIndex = 4;
             this.removeTab.Text = "History";
             this.removeTab.UseVisualStyleBackColor = true;
@@ -1053,7 +1041,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button createButton;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox tInvenRoomCombobox;
         private System.Windows.Forms.TabControl inventoryInnerTabs;
         private System.Windows.Forms.TabPage takeInventoryTab;
