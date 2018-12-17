@@ -267,8 +267,8 @@ namespace Inventory
 
                     "(SELECT LOCATION_ID " +
                     "FROM LOCATION " +
-                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.LOCATION_ID " +
-                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.LOCATION_ID " +
+                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                     "WHERE BUILDING.BUILDING_NAME = '" + tInvenBuildingCombobox.Text + "' " +
                     "AND ROOM.ROOM_NAME = '" + tInvenRoomCombobox.Text + "') " +
                     "AS LOCATION_ID, " +
