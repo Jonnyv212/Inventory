@@ -411,7 +411,7 @@ namespace Inventory
 
 
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
+        //Edit Inventory tab EQUIPMENT combobox - Checkbox to enable/disable comboboxes and display appropriate data
         private void nameEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (nameEditCheckbox.Checked == true)
@@ -455,7 +455,7 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
+        //Edit Inventory tab BUILDING ROOM comboboxes- Checkbox to enable/disable comboboxes and display appropriate data
         private void locationEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (locationEditCheckbox.Checked == true)
@@ -528,7 +528,7 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
+        //Edit Inventory tab LOGIN combobox - Checkbox to enable/disable comboboxes and display appropriate data
         private void userEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (userEditCheckbox.Checked == true)
@@ -570,7 +570,7 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
+        //Edit Inventory tab CATEGORY combobox - Checkbox to enable/disable comboboxes and display appropriate data
         private void categoryEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (categoryEditCheckbox.Checked == true)
@@ -612,7 +612,7 @@ namespace Inventory
             }
         }
 
-        //Edit Inventory tab - Checkbox to enable/disable comboboxes and display appropriate data
+        //Edit Inventory tab SERIAL textbox - Checkbox to enable/disable comboboxes and display appropriate data
         private void serialEditCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (serialEditCheckbox.Checked == true)
@@ -936,5 +936,91 @@ namespace Inventory
             }
         }
 
+        private void refreshEditButton_Click(object sender, EventArgs e)
+        {
+            // EQUIPMENT COMBOBOX
+            OracleCommand cmd = connection.CreateCommand();
+            string w = "SELECT * FROM EQUIPMENT " +
+                "JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            DataTable dtNE2 = new DataTable();
+            OracleDataAdapter daNE2 = new OracleDataAdapter(w, connection);
+            daNE2.Fill(dtNE2);
+            if (dtNE2.Rows.Count > 0)
+            {
+                nameEditCombobox.DataSource = dtNE2;
+                nameEditCombobox.DisplayMember = "EQUIPMENT_NAME";
+                nameEditCombobox.ValueMember = "EQUIPMENT_ID";
+                connection.Close();
+            }
+
+            //BUILDING & ROOM COMBOBOX
+            OracleCommand cmd2 = connection.CreateCommand();
+            string b = "SELECT * FROM BUILDING " +
+            "JOIN LOCATION ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+            "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+            "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            string r = "SELECT * FROM ROOM " +
+            "JOIN LOCATION ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+            "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+            "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            DataTable dtBE2 = new DataTable();
+            OracleDataAdapter daBE2 = new OracleDataAdapter(b, connection);
+            daBE2.Fill(dtBE2);
+            if (dtBE2.Rows.Count > 0)
+            {
+                buildingEditCombobox.DataSource = dtBE2;
+                buildingEditCombobox.DisplayMember = "BUILDING_NAME";
+                buildingEditCombobox.ValueMember = "BUILDING_ID";
+                connection.Close();
+            }
+            DataTable dtRE2 = new DataTable();
+            OracleDataAdapter daRE2 = new OracleDataAdapter(r, connection);
+            daRE2.Fill(dtRE2);
+            if (dtRE2.Rows.Count > 0)
+            {
+                roomEditCombobox.DataSource = dtRE2;
+                roomEditCombobox.DisplayMember = "ROOM_NAME";
+                roomEditCombobox.ValueMember = "ROOM_ID";
+                connection.Close();
+            }
+            //LOGIN COMBOBOX
+            OracleCommand cmd3 = connection.CreateCommand();
+            string l = "SELECT * FROM LOGIN " +
+                "JOIN INVENTORY ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            DataTable dtUE2 = new DataTable();
+            OracleDataAdapter daUE2 = new OracleDataAdapter(l, connection);
+            daUE2.Fill(dtUE2);
+            if (dtUE2.Rows.Count > 0)
+            {
+                userEditCombobox.DataSource = dtUE2;
+                userEditCombobox.DisplayMember = "USERNAME";
+                userEditCombobox.ValueMember = "USER_ID";
+                connection.Close();
+            }
+            //CATEGORY COMBOBOX
+            OracleCommand cmd4 = connection.CreateCommand();
+            string c = "SELECT * FROM CATEGORY " +
+                "JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+
+            DataTable dtCE2 = new DataTable();
+            OracleDataAdapter daCE2 = new OracleDataAdapter(c, connection);
+            daCE2.Fill(dtCE2);
+            if (dtCE2.Rows.Count > 0)
+            {
+                categoryEditCombobox.DataSource = dtCE2;
+                categoryEditCombobox.DisplayMember = "CATEGORY_NAME";
+                categoryEditCombobox.ValueMember = "CATEGORY_ID";
+                connection.Close();
+            }
+
+            readSerialEdit();
+        }
     }
 }

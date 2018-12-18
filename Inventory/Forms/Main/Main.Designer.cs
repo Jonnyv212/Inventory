@@ -104,6 +104,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshEditButton = new System.Windows.Forms.Button();
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -423,6 +424,7 @@
             // 
             // editInventoryTab
             // 
+            this.editInventoryTab.Controls.Add(this.refreshEditButton);
             this.editInventoryTab.Controls.Add(this.editApplyButton);
             this.editInventoryTab.Controls.Add(this.label25);
             this.editInventoryTab.Controls.Add(this.inventoryEditCombobox);
@@ -974,6 +976,16 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // refreshEditButton
+            // 
+            this.refreshEditButton.Location = new System.Drawing.Point(38, 540);
+            this.refreshEditButton.Name = "refreshEditButton";
+            this.refreshEditButton.Size = new System.Drawing.Size(147, 49);
+            this.refreshEditButton.TabIndex = 8;
+            this.refreshEditButton.Text = "Refresh";
+            this.refreshEditButton.UseVisualStyleBackColor = true;
+            this.refreshEditButton.Click += new System.EventHandler(this.refreshEditButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -1092,5 +1104,6 @@
         private System.Windows.Forms.ColumnHeader equipmentHeader;
         private System.Windows.Forms.ColumnHeader categoryHeader;
         private System.Windows.Forms.ColumnHeader productNoHeader;
+        private System.Windows.Forms.Button refreshEditButton;
     }
 }
