@@ -74,25 +74,35 @@ namespace Inventory
         //Search tab - Runs cmd.CommandText query with every keystroke within searchTextbox.
         private void searchTextbox_TextChanged(object sender, EventArgs e)
         {
-            string filterCB = searchCombobox.Text;
-            connection.Open();
-            OracleCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            //Query for case insensitive(i) searching
-            cmd.CommandText = "  SELECT EQUIPMENT.EQUIPMENT_NAME, CATEGORY.CATEGORY_NAME, LOGIN.USERNAME " +
-                "FROM INVENTORY " +
-                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
-                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
-                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                "WHERE REGEXP_LIKE(" + filterCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
-            Console.WriteLine(cmd.CommandText);
-            cmd.ExecuteNonQuery();
-            DataTable dta = new DataTable();
-            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
-            dataadp.Fill(dta);
-            dataGridView1.DataSource = dta;
-            connection.Close();
-
+            if (String.IsNullOrEmpty(searchCombobox.Text))
+            {
+                MessageBox.Show("Please select a valid filter!");
+            }
+            else
+            {
+                string filterCB = searchCombobox.Text;
+                connection.Open();
+                OracleCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                //Query for case insensitive(i) searching
+                cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product," +
+                    "INVENTORY.SERIAL_NO AS Serial, BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS User, INVENTORY.INVENTORY_DATE AS InvDate " +
+                    "FROM INVENTORY " +
+                    "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                    "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                    "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                    "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                    "WHERE REGEXP_LIKE(" + filterCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
+                Console.WriteLine(cmd.CommandText);
+                cmd.ExecuteNonQuery();
+                DataTable dta = new DataTable();
+                OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+                dataadp.Fill(dta);
+                dataGridView1.DataSource = dta;
+                connection.Close();
+            }
         }
 
         //Search tab - Display data function with datagridview1
@@ -283,9 +293,10 @@ namespace Inventory
 
                 cmd.ExecuteNonQuery(); //Execute command
 
+                //Select event 1 (inventory), current user_id, and insert latest inventory_ID value into the HISTORY table
                 cmd.CommandText = "INSERT INTO HISTORY" +
                     "(EVENT_ID, USER_ID, INVENTORY_ID)" +
-                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'), (SELECT max(INVENTORY_ID) FROM INVENTORY))";
+                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'))";
                 cmd.ExecuteNonQuery();
 
                 connection.Close(); //Close connection to DB
@@ -367,10 +378,10 @@ namespace Inventory
             }
         }
 
-        //Create tab - 
+        //Create tab - display list of equipment into createEquipmentListview
         private void displayCreateEquipmentListview()
         {
-            string q = "SELECT * " +
+            string q = "SELECT EQUIPMENT.EQUIPMENT_NAME, CATEGORY.CATEGORY_NAME, EQUIPMENT.PRODUCT_NO " +
                         "FROM EQUIPMENT " +
                         "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID";
 
@@ -849,23 +860,42 @@ namespace Inventory
         private void deleteButton_Click(object sender, EventArgs e)
         {
 
-            connection.Open(); // Connects to DB
-            OracleCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "DELETE FROM INVENTORY WHERE INVENTORY_ID = '"+ inventoryDeleteCombobox.Text +"' ";
+            var confirmResult = MessageBox.Show("Are you sure to delete this record?",
+                                     "Confirm Delete!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                string loginUser = Login.user;
 
-            Console.WriteLine(cmd.CommandText);
+                connection.Open(); // Connects to DB
+                OracleCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "DELETE FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
 
-            cmd.ExecuteNonQuery(); //Execute command
-            connection.Close(); //Close connection to DB
+                Console.WriteLine(cmd.CommandText);
 
-            MessageBox.Show("Data deleted successfully!");
+                cmd.ExecuteNonQuery(); //Execute command
+
+                //Select event 4 (removed inventory), current user_id, and insert latest inventory_ID value into the HISTORY table
+                cmd.CommandText = "INSERT INTO HISTORY" +
+                    "(EVENT_ID, USER_ID, INVENTORY_ID)" +
+                    "VALUES('4', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'))";
+                cmd.ExecuteNonQuery();
+
+                connection.Close(); //Close connection to DB
+
+                MessageBox.Show("Data deleted successfully!");
+            }
+            else
+            {
+                // If 'No', do something here.
+            }
         }
         
         //Delete Inventory tab - Search record information based on inventory_id and display to datagridview in delete tab
         private void searchDeleteTextbox_TextChanged(object sender, EventArgs e)
         {
-            string filterCB = searchCombobox.Text;
+            string filterCB = filterDeleteCombobox.Text;
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;

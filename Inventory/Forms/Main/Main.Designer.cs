@@ -191,6 +191,7 @@
             // 
             // searchCombobox
             // 
+            this.searchCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchCombobox.FormattingEnabled = true;
             this.searchCombobox.Items.AddRange(new object[] {
             "EQUIPMENT_NAME",
@@ -275,6 +276,7 @@
             this.tInvenRoomCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tInvenRoomCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tInvenRoomCombobox.FormattingEnabled = true;
             this.tInvenRoomCombobox.Location = new System.Drawing.Point(480, 193);
             this.tInvenRoomCombobox.Name = "tInvenRoomCombobox";
@@ -286,6 +288,7 @@
             this.tInvenEquipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tInvenEquipmentCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tInvenEquipmentCombobox.FormattingEnabled = true;
             this.tInvenEquipmentCombobox.Location = new System.Drawing.Point(18, 76);
             this.tInvenEquipmentCombobox.Name = "tInvenEquipmentCombobox";
@@ -371,6 +374,7 @@
             this.tInvenBuildingCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tInvenBuildingCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tInvenBuildingCombobox.FormattingEnabled = true;
             this.tInvenBuildingCombobox.Location = new System.Drawing.Point(480, 76);
             this.tInvenBuildingCombobox.Name = "tInvenBuildingCombobox";
@@ -396,6 +400,7 @@
             this.tInvenCategoryCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tInvenCategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tInvenCategoryCombobox.FormattingEnabled = true;
             this.tInvenCategoryCombobox.Location = new System.Drawing.Point(18, 193);
             this.tInvenCategoryCombobox.Name = "tInvenCategoryCombobox";
@@ -452,6 +457,7 @@
             // inventoryEditCombobox
             // 
             this.inventoryEditCombobox.DisplayMember = "INVENTORY_ID";
+            this.inventoryEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inventoryEditCombobox.FormattingEnabled = true;
             this.inventoryEditCombobox.Location = new System.Drawing.Point(11, 45);
             this.inventoryEditCombobox.Name = "inventoryEditCombobox";
@@ -690,6 +696,7 @@
             // 
             // filterDeleteCombobox
             // 
+            this.filterDeleteCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.filterDeleteCombobox.FormattingEnabled = true;
             this.filterDeleteCombobox.Items.AddRange(new object[] {
             "BUILDING_NAME",
@@ -743,6 +750,7 @@
             // 
             // inventoryDeleteCombobox
             // 
+            this.inventoryDeleteCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inventoryDeleteCombobox.FormattingEnabled = true;
             this.inventoryDeleteCombobox.Location = new System.Drawing.Point(744, 126);
             this.inventoryDeleteCombobox.Name = "inventoryDeleteCombobox";
@@ -849,6 +857,7 @@
             // 
             // createCategoryCombobox
             // 
+            this.createCategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.createCategoryCombobox.FormattingEnabled = true;
             this.createCategoryCombobox.Location = new System.Drawing.Point(350, 515);
             this.createCategoryCombobox.Name = "createCategoryCombobox";
