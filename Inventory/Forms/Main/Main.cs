@@ -887,7 +887,8 @@ namespace Inventory
                 cmd.CommandText = "INSERT INTO HISTORY " +
                     "(EVENT_ID, USER_ID, D_INVENTORY_ID) " +
                     "VALUES('4', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'), " +
-                    "(SELECT last_number FROM user_sequences WHERE sequence_name = 'D_INVENTORY_SEQUENCE'))";
+                    "(SELECT max(D_INVENTORY.D_INVENTORY_ID) FROM D_INVENTORY)) ";
+                    //"(SELECT last_number FROM user_sequences WHERE sequence_name = 'D_INVENTORY_SEQUENCE'))";
                 cmd.ExecuteNonQuery();
 
 
