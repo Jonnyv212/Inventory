@@ -15,8 +15,9 @@ namespace Inventory
     public partial class Main : Form
     {
         //Establish Oracle database connection using my username and password.
-        OracleConnection connection = new OracleConnection(@"DATA SOURCE = pathDEV2.world; PERSIST SECURITY INFO=True;USER ID = JONNYV;PASSWORD = AjGoEnvA101");
-       
+        OracleConnection connection = new OracleConnection("Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.20.26.41)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME= Dev.path.med.umich.edu))); USER ID = JONNYV;PASSWORD = AjGoEnvA101");
+
+
         public Main()
         {
             InitializeComponent();
@@ -86,7 +87,7 @@ namespace Inventory
                 cmd.CommandType = CommandType.Text;
                 //Query for case insensitive(i) searching
                 cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product," +
-                    "INVENTORY.SERIAL_NO AS Serial, BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS User, INVENTORY.INVENTORY_DATE AS InvDate " +
+                    "INVENTORY.SERIAL_NO AS Serial, BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS Username, INVENTORY.INVENTORY_DATE AS InvDate " +
                     "FROM INVENTORY " +
                     "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                     "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
