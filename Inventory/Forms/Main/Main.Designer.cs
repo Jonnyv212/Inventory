@@ -52,6 +52,7 @@
             this.tInvenCategoryCombobox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.editInventoryTab = new System.Windows.Forms.TabPage();
+            this.refreshEditButton = new System.Windows.Forms.Button();
             this.editApplyButton = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.inventoryEditCombobox = new System.Windows.Forms.ComboBox();
@@ -104,7 +105,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.File = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshEditButton = new System.Windows.Forms.Button();
             this.inventoryTabControl.SuspendLayout();
             this.searchTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -437,6 +437,16 @@
             this.editInventoryTab.Text = "Edit Inventory";
             this.editInventoryTab.UseVisualStyleBackColor = true;
             // 
+            // refreshEditButton
+            // 
+            this.refreshEditButton.Location = new System.Drawing.Point(38, 540);
+            this.refreshEditButton.Name = "refreshEditButton";
+            this.refreshEditButton.Size = new System.Drawing.Size(147, 49);
+            this.refreshEditButton.TabIndex = 8;
+            this.refreshEditButton.Text = "Refresh";
+            this.refreshEditButton.UseVisualStyleBackColor = true;
+            this.refreshEditButton.Click += new System.EventHandler(this.refreshEditButton_Click);
+            // 
             // editApplyButton
             // 
             this.editApplyButton.Location = new System.Drawing.Point(38, 437);
@@ -735,16 +745,16 @@
             // 
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView4.Location = new System.Drawing.Point(0, 163);
+            this.dataGridView4.Location = new System.Drawing.Point(0, 214);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowTemplate.Height = 28;
-            this.dataGridView4.Size = new System.Drawing.Size(1406, 596);
+            this.dataGridView4.Size = new System.Drawing.Size(1406, 545);
             this.dataGridView4.TabIndex = 5;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(739, 69);
+            this.label11.Location = new System.Drawing.Point(739, 81);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(135, 25);
             this.label11.TabIndex = 2;
@@ -754,7 +764,7 @@
             // 
             this.inventoryDeleteCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inventoryDeleteCombobox.FormattingEnabled = true;
-            this.inventoryDeleteCombobox.Location = new System.Drawing.Point(744, 126);
+            this.inventoryDeleteCombobox.Location = new System.Drawing.Point(744, 119);
             this.inventoryDeleteCombobox.Name = "inventoryDeleteCombobox";
             this.inventoryDeleteCombobox.Size = new System.Drawing.Size(262, 33);
             this.inventoryDeleteCombobox.TabIndex = 1;
@@ -975,16 +985,6 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(123, 30);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // refreshEditButton
-            // 
-            this.refreshEditButton.Location = new System.Drawing.Point(38, 540);
-            this.refreshEditButton.Name = "refreshEditButton";
-            this.refreshEditButton.Size = new System.Drawing.Size(147, 49);
-            this.refreshEditButton.TabIndex = 8;
-            this.refreshEditButton.Text = "Refresh";
-            this.refreshEditButton.UseVisualStyleBackColor = true;
-            this.refreshEditButton.Click += new System.EventHandler(this.refreshEditButton_Click);
             // 
             // Main
             // 

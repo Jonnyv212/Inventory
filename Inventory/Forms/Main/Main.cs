@@ -871,17 +871,29 @@ namespace Inventory
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "DELETE FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
 
-                Console.WriteLine(cmd.CommandText);
 
-                cmd.ExecuteNonQuery(); //Execute command
+                //select all rows
+                cmd.CommandText = "INSERT INTO D_INVENTORY (D_INVENTORY.INVENTORY_ID, D_INVENTORY.EQUIPMENT_ID, D_INVENTORY.EVENT_ID, D_INVENTORY.USER_ID, " +
+                    "D_INVENTORY.SERIAL_NO, D_INVENTORY.INVENTORY_DATE, D_INVENTORY.CATEGORY_ID, D_INVENTORY.LOCATION_ID) " +
+                    "SELECT INVENTORY.INVENTORY_ID, INVENTORY.EQUIPMENT_ID, INVENTORY.EVENT_ID, INVENTORY.USER_ID, " +
+                    "INVENTORY.SERIAL_NO, INVENTORY.INVENTORY_DATE, INVENTORY.CATEGORY_ID, INVENTORY.LOCATION_ID " +
+                    "FROM INVENTORY " +
+                    "WHERE INVENTORY.INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
+                cmd.ExecuteNonQuery();
+
 
                 //Select event 4 (removed inventory), current user_id, and insert latest inventory_ID value into the HISTORY table
-                cmd.CommandText = "INSERT INTO HISTORY" +
-                    "(EVENT_ID, USER_ID, INVENTORY_ID)" +
-                    "VALUES('4', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'))";
+                cmd.CommandText = "INSERT INTO HISTORY " +
+                    "(EVENT_ID, USER_ID, D_INVENTORY_ID) " +
+                    "VALUES('4', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'), " +
+                    "(SELECT last_number FROM user_sequences WHERE sequence_name = 'D_INVENTORY_SEQUENCE'))";
                 cmd.ExecuteNonQuery();
+
+
+
+                cmd.CommandText = "DELETE FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
+                cmd.ExecuteNonQuery(); //Execute command
 
                 connection.Close(); //Close connection to DB
 
