@@ -45,6 +45,8 @@ namespace Inventory
             editInventoryData();
             deleteInventoryData();
             displayCreateEquipmentListview();
+            displayCreateBuildingListview();
+            displayCreateRoomListview();
         }
 
         //Call clear_data() function
@@ -408,6 +410,108 @@ namespace Inventory
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             connection.Close();
+        }
+
+
+
+        //Create tab - display list of buildings into createBuildingListview
+        private void displayCreateBuildingListview()
+        {
+            string q = "SELECT BUILDING.BUILDING_NAME " +
+                        "FROM BUILDING ";
+
+            connection.Open();
+
+            OracleCommand cmd = new OracleCommand(q, connection);
+
+            try
+            {
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ListViewItem item = new ListViewItem(dr["BUILDING_NAME"].ToString());
+
+                    createBuildingListview.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            connection.Close();
+        }
+
+
+        //Create tab - display list of rooms into createRoomListview
+        private void displayCreateRoomListview()
+        {
+            string q = "SELECT ROOM.ROOM_NAME " +
+                        "FROM ROOM ";
+
+            connection.Open();
+
+            OracleCommand cmd = new OracleCommand(q, connection);
+
+            try
+            {
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ListViewItem item = new ListViewItem(dr["ROOM_NAME"].ToString());
+
+                    createRoomListview.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            connection.Close();
+        }
+
+        //Create tab - Create buildings using combobox text and insert that data into database with insert query
+        private void createBuildingButton_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(createBuildingTextbox.Text))
+            {
+                MessageBox.Show("Please fill in the the data.");
+            }
+            else
+            {
+                connection.Open(); // Connects to DB
+                OracleCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text; //Command to send to DB
+                cmd.CommandText = "SELECT COUNT(*) FROM BUILDING WHERE BUILDING_NAME= '" + createBuildingTextbox.Text + "' "; // SQL Command
+                cmd.ExecuteNonQuery(); //Execute command
+                OracleDataAdapter sda = new OracleDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
+                {
+                    MessageBox.Show("Already exists!");
+                    createBuildingListview.Refresh();
+                    connection.Close();
+                }
+                else
+                {
+                    //connection.Open(); // Connects to DB
+                    OracleCommand cmd2 = connection.CreateCommand();
+                    cmd2.CommandType = CommandType.Text; //Command to send to DB
+                    cmd2.CommandText = "INSERT INTO BUILDING " +
+                                        "(BUILDING_NAME) VALUES " +
+                                        "('" + createBuildingTextbox.Text + "' )"; // SQL Command
+                    cmd2.ExecuteNonQuery(); //Execute command
+                    //connection.Close(); //Close connection to DB
+
+                    createBuildingTextbox.Text = ""; //Clear textboxes
+
+                    createBuildingListview.Refresh();
+                    connection.Close();
+                    MessageBox.Show("Data inserted");
+                }
+            }
         }
 
 
@@ -1035,6 +1139,11 @@ namespace Inventory
             }
 
             readSerialEdit();
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
