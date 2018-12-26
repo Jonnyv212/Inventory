@@ -47,6 +47,8 @@ namespace Inventory
             displayCreateEquipmentListview();
             displayCreateBuildingListview();
             displayCreateRoomListview();
+            display_history_data();
+            display_data();
         }
 
         //Call clear_data() function
@@ -114,17 +116,18 @@ namespace Inventory
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "EQUIPMENT.EQUIPMENT_NAME AS EQUIPMENT," +
-                "CATEGORY.CATEGORY_NAME AS CATEGORY," +
-                "SERIAL_NO," +
-                "LOGIN.USERNAME," +
-                "(LOCATION.BUILDING_NAME || '_' || LOCATION.ROOM_NAME) AS BUILDING_ROOM," +
-                "DATE" +
-                "FROM INVENTORY" +
-                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID" +
-                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID" +
-                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID" +
-                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID";
+            cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
+                    "CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product, " +
+                    "INVENTORY.SERIAL_NO AS Serial, (BUILDING.BUILDING_NAME || '-' || ROOM.ROOM_NAME) AS Location, " +
+                    "LOGIN.USERNAME AS Users, INVENTORY.INVENTORY_DATE AS InvDate " +
+                    "FROM INVENTORY " +
+                    "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                    "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                    "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                    "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID ";
+            Console.WriteLine(cmd.CommandText);
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -430,7 +433,8 @@ namespace Inventory
 
                 while (dr.Read())
                 {
-                    ListViewItem item = new ListViewItem(dr["BUILDING_NAME"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.SubItems.Add(dr["BUILDING_NAME"].ToString());
 
                     createBuildingListview.Items.Add(item);
                 }
@@ -440,6 +444,7 @@ namespace Inventory
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             connection.Close();
+
         }
 
 
@@ -459,7 +464,8 @@ namespace Inventory
 
                 while (dr.Read())
                 {
-                    ListViewItem item = new ListViewItem(dr["ROOM_NAME"].ToString());
+                    ListViewItem item = new ListViewItem();
+                    item.SubItems.Add(dr["ROOM_NAME"].ToString());
 
                     createRoomListview.Items.Add(item);
                 }
@@ -1141,7 +1147,32 @@ namespace Inventory
             readSerialEdit();
         }
 
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        private void display_history_data()
+        {
+            //dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT D_INVENTORY_ID AS ID, EVENT.EVENT, LOGIN.USERNAME, HISTORY_DATE " +
+                "FROM HISTORY " +
+                "JOIN EVENT ON EVENT.EVENT_ID = HISTORY.EVENT_ID " +
+                "JOIN LOGIN ON LOGIN.USER_ID = HISTORY.USER_ID";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta);
+            dataGridView3.DataSource = dta;
+            connection.Close();
+        }
+
+        private void createBuildingListview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createEquipmentListview_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
