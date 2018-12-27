@@ -22,20 +22,47 @@ namespace Inventory
         {
             InitializeComponent();
 
+            inventoryTabControl.DrawItem += new DrawItemEventHandler(inventoryTabControl_DrawItem);
+
         }
+  
 
         //GUI for Inventory Tab Control (text, layout, size)
-        private void inventoryTabControl_DrawItem(object sender, DrawItemEventArgs e)
+        private void inventoryTabControl_DrawItem(Object sender, System.Windows.Forms.DrawItemEventArgs e)
         {
-            var g = e.Graphics;
-            var text = this.inventoryTabControl.TabPages[e.Index].Text;
-            var sizeText = g.MeasureString(text, this.inventoryTabControl.Font);
+            Graphics g = e.Graphics;
+            Brush _textBrush;
 
-            var x = e.Bounds.Left + 3;
-            var y = e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 4;
+            // Get the item from the collection.
+            TabPage _tabPage = inventoryTabControl.TabPages[e.Index];
 
-            g.DrawString(text, this.inventoryTabControl.Font, Brushes.Black, x, y);
+            // Get the real bounds for the tab rectangle.
+            Rectangle _tabBounds = inventoryTabControl.GetTabRect(e.Index);
+
+            if (e.State == DrawItemState.Selected)
+            {
+
+                // Draw a different background color, and don't paint a focus rectangle.
+                _textBrush = new SolidBrush(Color.White);
+                g.FillRectangle(Brushes.Black, e.Bounds);
+            }
+            else
+            {
+                _textBrush = new System.Drawing.SolidBrush(e.ForeColor);
+                e.DrawBackground();
+            }
+
+            // Use our own font.
+            Font _tabFont = new Font("Arial", 20.0f, FontStyle.Bold, GraphicsUnit.Pixel);
+
+            // Draw string. Center the text.
+            StringFormat _stringFlags = new StringFormat();
+            _stringFlags.Alignment = StringAlignment.Center;
+            _stringFlags.LineAlignment = StringAlignment.Center;
+            g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
         }
+
+
 
         //Loads these functions on main form load
         private void Main_Load_1(object sender, EventArgs e)
@@ -1155,7 +1182,7 @@ namespace Inventory
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT D_INVENTORY_ID AS ID, EVENT.EVENT, LOGIN.USERNAME, HISTORY_DATE " +
+            cmd.CommandText = "SELECT D_INVENTORY_ID AS INVENTORY_ID, EVENT.EVENT, LOGIN.USERNAME, HISTORY_DATE " +
                 "FROM HISTORY " +
                 "JOIN EVENT ON EVENT.EVENT_ID = HISTORY.EVENT_ID " +
                 "JOIN LOGIN ON LOGIN.USER_ID = HISTORY.USER_ID";
@@ -1173,6 +1200,11 @@ namespace Inventory
         }
 
         private void createEquipmentListview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
         {
 
         }
