@@ -117,8 +117,10 @@ namespace Inventory
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 //Query for case insensitive(i) searching
-                cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product," +
-                    "INVENTORY.SERIAL_NO AS Serial, BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS Username, INVENTORY.INVENTORY_DATE AS InvDate " +
+                cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
+                    "CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product, " +
+                    "INVENTORY.SERIAL_NO AS Serial, (BUILDING.BUILDING_NAME || '-' || ROOM.ROOM_NAME) AS Location, " +
+                    "LOGIN.USERNAME AS Users, INVENTORY.INVENTORY_DATE AS InvDate " +
                     "FROM INVENTORY " +
                     "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                     "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
@@ -229,19 +231,17 @@ namespace Inventory
             connection.Open();
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT EQUIPMENT.EQUIPMENT_NAME AS EQUIPMENT," +
-                "CATEGORY.CATEGORY_NAME AS CATEGORY, " +
-                "SERIAL_NO, " +
-                "LOGIN.USERNAME, " +
-                "(BUILDING.BUILDING_NAME || '_' || ROOM.ROOM_NAME) AS BUILDING_ROOM, " +
-                "INVENTORY_DATE " +
-                "FROM INVENTORY " +
-                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
-                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
-                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
-                "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.LOCATION_ID " +
-                "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.LOCATION_ID ";
+            cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
+                    "CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product, " +
+                    "INVENTORY.SERIAL_NO AS Serial, (BUILDING.BUILDING_NAME || '-' || ROOM.ROOM_NAME) AS Location, " +
+                    "LOGIN.USERNAME AS Users, INVENTORY.INVENTORY_DATE AS InvDate " +
+                    "FROM INVENTORY " +
+                    "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                    "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                    "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                    "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID ";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -259,7 +259,7 @@ namespace Inventory
             //tInvenQuantityTextbox.Text = "";
         }
 
-        //TakeInventory tab - If Enter is pressed(scanners have the Enter keystroke per scan) serialTextbox calls insertButton function
+       /* //TakeInventory tab - If Enter is pressed(scanners have the Enter keystroke per scan) serialTextbox calls insertButton function
         private void serialTextbox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -268,7 +268,7 @@ namespace Inventory
                 tInvenSerialTextbox.Text = "";
                 Console.WriteLine("Inserted");
             }
-        }
+        }*/
 
         //TakeInventory tab - Use combobox text and insert that data into database with insert query
         private void insertButton_Click(object sender, EventArgs e)
@@ -328,8 +328,9 @@ namespace Inventory
 
                 //Select event 1 (inventory), current user_id, and insert latest inventory_ID value into the HISTORY table
                 cmd.CommandText = "INSERT INTO HISTORY" +
-                    "(EVENT_ID, USER_ID, INVENTORY_ID)" +
-                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME ='" + loginUser + "'))";
+                    "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION)" +
+                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = 'jonnyv'), " +
+                    "('New inventory taken. Inventory ID: ' || (SELECT MAX(INVENTORY_ID) FROM INVENTORY)))";
                 cmd.ExecuteNonQuery();
 
                 connection.Close(); //Close connection to DB
@@ -1194,19 +1195,5 @@ namespace Inventory
             connection.Close();
         }
 
-        private void createBuildingListview_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void createEquipmentListview_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
