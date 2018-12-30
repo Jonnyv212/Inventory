@@ -93,7 +93,6 @@
             this.loginButton.TabIndex = 5;
             this.loginButton.Text = "LOGIN";
             this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // exitButton
             // 
@@ -131,7 +130,6 @@
             this.BarcodeLoginButton.TabIndex = 10;
             this.BarcodeLoginButton.Text = "CHECK BARCODE";
             this.BarcodeLoginButton.UseVisualStyleBackColor = true;
-            this.BarcodeLoginButton.Click += new System.EventHandler(this.BarcodeLoginButton_Click);
             // 
             // barcodeTextbox
             // 
