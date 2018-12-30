@@ -53,7 +53,7 @@ namespace Inventory
             }
 
             // Use our own font.
-            Font _tabFont = new Font("Arial", 20.0f, FontStyle.Bold, GraphicsUnit.Pixel);
+            Font _tabFont = new Font("Arial", 17.0f, FontStyle.Bold, GraphicsUnit.Pixel);
 
             // Draw string. Center the text.
             StringFormat _stringFlags = new StringFormat();
