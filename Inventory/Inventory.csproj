@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -72,6 +73,12 @@
     <Compile Include="Forms\Main\AddData\SerialNumbers\SerialNumbers.Designer.cs">
       <DependentUpon>SerialNumbers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Main\Barcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\Barcode.Designer.cs">
+      <DependentUpon>Barcode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Main\DeleteData\DeleteData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\AddData\SerialNumbers\SerialNumbers.resx">
       <DependentUpon>SerialNumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\Barcode.resx">
+      <DependentUpon>Barcode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\DeleteData\DeleteData.resx">
       <DependentUpon>DeleteData.cs</DependentUpon>

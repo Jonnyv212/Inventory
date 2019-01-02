@@ -314,11 +314,7 @@ namespace Inventory
                     "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                     "WHERE BUILDING.BUILDING_NAME = '" + tInvenBuildingCombobox.Text + "' " +
                     "AND ROOM.ROOM_NAME = '" + tInvenRoomCombobox.Text + "') " +
-                    "AS LOCATION_ID, " +
-
-                    "(SELECT '" + tInvenSerialTextbox.Text + "' " +
-                    "FROM DUAL) " +
-                    "AS SERIAL_NO " +
+                    "AS LOCATION_ID " +
 
                     "FROM DUAL";
 
@@ -326,7 +322,7 @@ namespace Inventory
 
                 cmd.ExecuteNonQuery(); //Execute command
 
-                //Select event 1 (inventory), current user_id, and insert latest inventory_ID value into the HISTORY table
+                //History log of insert
                 cmd.CommandText = "INSERT INTO HISTORY" +
                     "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION)" +
                     "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = 'jonnyv'), " +
@@ -376,7 +372,14 @@ namespace Inventory
                                         "('" + productNoTextbox.Text + "','" + createEquipmentCombobox.Text + "', " +
                                         "(SELECT CATEGORY.CATEGORY_ID FROM CATEGORY WHERE CATEGORY_NAME = '" +  createCategoryCombobox.Text + "') )"; // SQL Command
                     cmd2.ExecuteNonQuery(); //Execute command
-                    //connection.Close(); //Close connection to DB
+
+                    //History log of equipment addition
+                    cmd2.CommandText = "INSERT INTO HISTORY" +
+                        "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION)" +
+                        "VALUES('3', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = 'jonnyv'), " +
+                        "('Added Equipment: ' || (SELECT EQUIPMENT_NAME FROM EQUIPMENT WHERE EQUIPMENT_ID = " +
+                        "(SELECT MAX(EQUIPMENT_ID) FROM EQUIPMENT)))";
+                    cmd2.ExecuteNonQuery();
 
                     productNoTextbox.Text = ""; //Clear textboxes
                     createEquipmentCombobox.Text = "";
@@ -873,9 +876,11 @@ namespace Inventory
         //Edit Inventory tab - If a checkbox is true then run an update query from the specified combobox by INVENTORY_ID to update the inventory table
         private void editApplyButton_Click(object sender, EventArgs e)
         {
+            bool checkEnabled = false; 
 
             if (nameEditCheckbox.Checked == true)
             {
+                checkEnabled = true;
                 connection.Open();
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
@@ -888,8 +893,13 @@ namespace Inventory
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close();
             }
+            else
+            {
+                checkEnabled = false;
+            }
             if (categoryEditCheckbox.Checked == true)
             {
+                checkEnabled = true;
                 connection.Open();
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
@@ -902,8 +912,13 @@ namespace Inventory
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close();
             }
+            else
+            {
+                checkEnabled = false;
+            }
             if (userEditCheckbox.Checked == true)
             {
+                checkEnabled = true;
                 connection.Open();
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
@@ -916,8 +931,13 @@ namespace Inventory
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close();
             }
+            else
+            {
+                checkEnabled = false;
+            }
             if (serialEditCheckbox.Checked == true)
             {
+                checkEnabled = true;
                 connection.Open();
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
@@ -926,11 +946,16 @@ namespace Inventory
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close();
             }
+            else
+            {
+                checkEnabled = false;
+            }
             if (locationEditCheckbox.Checked == true)
             {
                 connection.Open(); // Connects to DB
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text; //Command to send to DB
+                //Check to see if location exists
                 cmd.CommandText = "SELECT COUNT(*) " +
                     "FROM LOCATION " +
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
@@ -943,7 +968,10 @@ namespace Inventory
                 odaL.Fill(dtL);
                 if (dtL.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
                 {
+                    //If the location exists then continue the update
                     connection.Close();
+
+                    checkEnabled = true;
 
                     connection.Open();
                     OracleCommand cmd2 = connection.CreateCommand();
@@ -963,6 +991,7 @@ namespace Inventory
                 }
                 else
                 {
+                    //else create new a new ID with the new building/room combination for the Location table
                     connection.Close();
 
                     connection.Open();
@@ -974,7 +1003,7 @@ namespace Inventory
                         "(SELECT ROOM_ID FROM ROOM WHERE ROOM_NAME = '" + roomEditCombobox.Text + "' ) AS ROOM_ID " +
                         "FROM DUAL";
                     cmd3.ExecuteNonQuery(); //Execute command
-
+                    //update with new location ID
                     OracleCommand cmd4 = connection.CreateCommand();
                     cmd4.CommandType = CommandType.Text; //Command to send to DB
                     cmd4.CommandText = "UPDATE INVENTORY " +
@@ -989,7 +1018,27 @@ namespace Inventory
                     cmd4.ExecuteNonQuery(); //Execute command
                     connection.Close();
                     MessageBox.Show("Added new location");
+                    checkEnabled = true;
                 }
+            }
+            else
+            {
+                checkEnabled = false;
+            }
+            if (checkEnabled == true){
+                connection.Open();
+                OracleCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text; //Command to send to DB
+
+                //History log of edit
+                cmd.CommandText = "INSERT INTO HISTORY" +
+                    "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION)" +
+                    "VALUES('2', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = 'jonnyv'), " +
+                    "('Inventory edited. Inventory ID: ' ||  '" + inventoryEditCombobox.Text +"' ))";
+                cmd.ExecuteNonQuery();
+                connection.Close();
+
+                checkEnabled = false;
             }
         }
 
@@ -1195,5 +1244,10 @@ namespace Inventory
             connection.Close();
         }
 
+        private void barcodeButton_Click(object sender, EventArgs e)
+        {
+            Barcode bar = new Barcode();
+            bar.Show();
+        }
     }
 }
