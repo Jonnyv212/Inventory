@@ -20,7 +20,7 @@ namespace Inventory
             InitializeComponent();
         }
 
-        private void BarcodeLoginButton_Click(object sender, EventArgs e)
+        /*private void BarcodeLoginButton_Click(object sender, EventArgs e)
         {
             connection.Open(); // Connects to DB
             OracleCommand cmd = connection.CreateCommand();
@@ -46,7 +46,7 @@ namespace Inventory
                 connection.Close();
                 MessageBox.Show("Please check your username and password");
             }
-        }
+        }*/
 
         public void exitButton_Click(object sender, EventArgs e)
         {

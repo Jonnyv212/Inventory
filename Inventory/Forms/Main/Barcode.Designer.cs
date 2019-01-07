@@ -28,15 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.closeButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.barcodeTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.quantityTextbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.insertButton = new System.Windows.Forms.Button();
+            this.bInvenBuildingCombobox = new System.Windows.Forms.ComboBox();
+            this.bInvenRoomCombobox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,42 +54,81 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2});
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 18);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(1, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(1773, 671);
+            this.dataGridView1.Size = new System.Drawing.Size(1510, 541);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Equipment";
+            this.Column1.MinimumWidth = 30;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Category";
+            this.Column2.MinimumWidth = 30;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 200;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Product Number";
+            this.Column3.MinimumWidth = 30;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 200;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Building";
+            this.Column4.MinimumWidth = 30;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Room";
+            this.Column5.MinimumWidth = 30;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(1593, 813);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.closeButton.Location = new System.Drawing.Point(1062, 528);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(152, 62);
+            this.closeButton.Size = new System.Drawing.Size(101, 40);
             this.closeButton.TabIndex = 1;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
@@ -87,21 +136,20 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(1397, 813);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.clearButton.Location = new System.Drawing.Point(931, 528);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(152, 62);
+            this.clearButton.Size = new System.Drawing.Size(101, 40);
             this.clearButton.TabIndex = 2;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // barcodeTextbox
             // 
             this.barcodeTextbox.Enabled = false;
-            this.barcodeTextbox.Location = new System.Drawing.Point(713, 825);
-            this.barcodeTextbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.barcodeTextbox.Location = new System.Drawing.Point(181, 506);
             this.barcodeTextbox.Name = "barcodeTextbox";
-            this.barcodeTextbox.Size = new System.Drawing.Size(390, 26);
+            this.barcodeTextbox.Size = new System.Drawing.Size(261, 20);
             this.barcodeTextbox.TabIndex = 3;
             this.barcodeTextbox.TextChanged += new System.EventHandler(this.barcodeTextbox_TextChanged);
             // 
@@ -109,18 +157,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(723, 788);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(188, 461);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 32);
+            this.label1.Size = new System.Drawing.Size(244, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "SCAN PRODUCT NUMBER";
             // 
             // quantityTextbox
             // 
-            this.quantityTextbox.Location = new System.Drawing.Point(351, 825);
+            this.quantityTextbox.Location = new System.Drawing.Point(12, 506);
+            this.quantityTextbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.quantityTextbox.Name = "quantityTextbox";
-            this.quantityTextbox.Size = new System.Drawing.Size(151, 26);
+            this.quantityTextbox.Size = new System.Drawing.Size(102, 20);
             this.quantityTextbox.TabIndex = 5;
             this.quantityTextbox.TextChanged += new System.EventHandler(this.quantityTextbox_TextChanged);
             this.quantityTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.quantityTextbox_KeyDown);
@@ -129,18 +177,76 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(346, 788);
+            this.label2.Location = new System.Drawing.Point(8, 461);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 32);
+            this.label2.Size = new System.Drawing.Size(105, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "QUANTITY";
             // 
+            // insertButton
+            // 
+            this.insertButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insertButton.Location = new System.Drawing.Point(978, 469);
+            this.insertButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.insertButton.Name = "insertButton";
+            this.insertButton.Size = new System.Drawing.Size(147, 55);
+            this.insertButton.TabIndex = 7;
+            this.insertButton.Text = "INSERT";
+            this.insertButton.UseVisualStyleBackColor = true;
+            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
+            // 
+            // bInvenBuildingCombobox
+            // 
+            this.bInvenBuildingCombobox.FormattingEnabled = true;
+            this.bInvenBuildingCombobox.Location = new System.Drawing.Point(500, 505);
+            this.bInvenBuildingCombobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bInvenBuildingCombobox.Name = "bInvenBuildingCombobox";
+            this.bInvenBuildingCombobox.Size = new System.Drawing.Size(164, 21);
+            this.bInvenBuildingCombobox.TabIndex = 8;
+            // 
+            // bInvenRoomCombobox
+            // 
+            this.bInvenRoomCombobox.FormattingEnabled = true;
+            this.bInvenRoomCombobox.Location = new System.Drawing.Point(705, 506);
+            this.bInvenRoomCombobox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bInvenRoomCombobox.Name = "bInvenRoomCombobox";
+            this.bInvenRoomCombobox.Size = new System.Drawing.Size(166, 21);
+            this.bInvenRoomCombobox.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(528, 461);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 24);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "BUILDING";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(747, 461);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 24);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "ROOM";
+            // 
             // Barcode
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1776, 898);
+            this.ClientSize = new System.Drawing.Size(1184, 561);
             this.ControlBox = false;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.bInvenRoomCombobox);
+            this.Controls.Add(this.bInvenBuildingCombobox);
+            this.Controls.Add(this.insertButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.quantityTextbox);
             this.Controls.Add(this.label1);
@@ -149,8 +255,7 @@
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.dataGridView1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(1789, 893);
+            this.MinimumSize = new System.Drawing.Size(1200, 600);
             this.Name = "Barcode";
             this.Text = "Barcode";
             this.Load += new System.EventHandler(this.Barcode_Load);
@@ -167,9 +272,17 @@
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.TextBox barcodeTextbox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.TextBox quantityTextbox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button insertButton;
+        private System.Windows.Forms.ComboBox bInvenBuildingCombobox;
+        private System.Windows.Forms.ComboBox bInvenRoomCombobox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }

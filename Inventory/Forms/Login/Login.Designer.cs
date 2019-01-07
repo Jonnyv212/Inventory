@@ -36,9 +36,6 @@
             this.loginButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.registerButton = new System.Windows.Forms.Button();
-            this.BarcodeLoginButton = new System.Windows.Forms.Button();
-            this.barcodeTextbox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,32 +111,6 @@
             this.panel1.Size = new System.Drawing.Size(294, 656);
             this.panel1.TabIndex = 7;
             // 
-            // registerButton
-            // 
-            this.registerButton.Location = new System.Drawing.Point(563, 583);
-            this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(151, 42);
-            this.registerButton.TabIndex = 9;
-            this.registerButton.Text = "REGISTER";
-            this.registerButton.UseVisualStyleBackColor = true;
-            // 
-            // BarcodeLoginButton
-            // 
-            this.BarcodeLoginButton.Location = new System.Drawing.Point(489, 438);
-            this.BarcodeLoginButton.Name = "BarcodeLoginButton";
-            this.BarcodeLoginButton.Size = new System.Drawing.Size(160, 36);
-            this.BarcodeLoginButton.TabIndex = 10;
-            this.BarcodeLoginButton.Text = "CHECK BARCODE";
-            this.BarcodeLoginButton.UseVisualStyleBackColor = true;
-            this.BarcodeLoginButton.Click += new System.EventHandler(this.BarcodeLoginButton_Click);
-            // 
-            // barcodeTextbox
-            // 
-            this.barcodeTextbox.Location = new System.Drawing.Point(712, 448);
-            this.barcodeTextbox.Name = "barcodeTextbox";
-            this.barcodeTextbox.Size = new System.Drawing.Size(252, 26);
-            this.barcodeTextbox.TabIndex = 11;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -147,9 +118,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1368, 680);
-            this.Controls.Add(this.barcodeTextbox);
-            this.Controls.Add(this.BarcodeLoginButton);
-            this.Controls.Add(this.registerButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.loginButton);
@@ -176,8 +144,5 @@
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button registerButton;
-        private System.Windows.Forms.Button BarcodeLoginButton;
-        private System.Windows.Forms.TextBox barcodeTextbox;
     }
 }
