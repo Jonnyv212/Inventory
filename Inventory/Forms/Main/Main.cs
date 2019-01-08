@@ -351,12 +351,12 @@ namespace Inventory
                 //History log of insert
                 cmd.CommandText = "INSERT INTO HISTORY" +
                     "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION, D_INVENTORY_ID)" +
-                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = 'jonnyv'), " +
-                    "('New inventory taken. Inventory ID: ' || (SELECT MAX(INVENTORY_ID) FROM INVENTORY))," +
-                    ")";
+                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = '"+ Login.user +"'), " +
+                    "('New inventory taken. Inventory ID: ' || (SELECT MAX(INVENTORY_ID) FROM INVENTORY)), " +
+                    "(SELECT MAX(INVENTORY_ID) FROM INVENTORY))";
                 cmd.ExecuteNonQuery();
 
-
+                //displays query into datagridiew2
                 OracleCommand cmd2 = connection.CreateCommand();
                 cmd2.CommandType = CommandType.Text;
                 cmd2.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
@@ -598,7 +598,6 @@ namespace Inventory
                 }
             }
         }
-
 
 
         //Edit Inventory tab EQUIPMENT combobox - Checkbox to enable/disable comboboxes and display appropriate data
@@ -1181,7 +1180,7 @@ namespace Inventory
         private void deleteButton_Click(object sender, EventArgs e)
         {
 
-            var confirmResult = MessageBox.Show("Are you sure to delete this record?",
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this record?",
                                      "Confirm Delete!",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
@@ -1216,9 +1215,31 @@ namespace Inventory
                 cmd.CommandText = "DELETE FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
                 cmd.ExecuteNonQuery(); //Execute command
 
-                connection.Close(); //Close connection to DB
+               // connection.Close(); //Close connection to DB
 
                 MessageBox.Show("Data deleted successfully!");
+
+                dataGridView4.DataSource = null;
+
+                OracleCommand cmd2 = connection.CreateCommand();
+                cmd2.CommandType = CommandType.Text;
+                //Query for case insensitive(i) searching
+                cmd2.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, CATEGORY.CATEGORY_NAME AS Category, BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS Username " +
+                    "FROM INVENTORY " +
+                    "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                    "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
+                    "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                    "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                    "WHERE REGEXP_LIKE(" + filterDeleteCombobox.Text + ", '(" + searchDeleteTextbox.Text + ")', 'i')"; // SQL Command
+                Console.WriteLine(cmd2.CommandText);
+                cmd2.ExecuteNonQuery();
+                DataTable dta2 = new DataTable();
+                OracleDataAdapter dataadp2 = new OracleDataAdapter(cmd2);
+                dataadp2.Fill(dta2);
+                dataGridView4.DataSource = dta2;
+                connection.Close();
             }
             else
             {
@@ -1478,6 +1499,105 @@ namespace Inventory
             String Room = roomEditCombobox.Text.ToString();
 
             dataGridView6.Rows.Add(Eqs, Cat, Srl, Bld, Room, User);
+        }
+
+        private void deleteBuildingButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this building?",
+                            "Confirm Delete!",
+                            MessageBoxButtons.YesNo);
+                connection.Open();
+                OracleCommand invLocCheck = connection.CreateCommand();
+                invLocCheck.CommandType = CommandType.Text;
+                invLocCheck.CommandText = "SELECT COUNT(*) FROM INVENTORY JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                    "WHERE BUILDING.BUILDING_NAME = '"+ createBuildingTextbox.Text + "' ";
+                invLocCheck.ExecuteNonQuery(); //Execute command
+                Console.WriteLine(invLocCheck.CommandText);
+                OracleDataAdapter InvLocSda = new OracleDataAdapter(invLocCheck);
+                DataTable invLocDt = new DataTable();
+                InvLocSda.Fill(invLocDt);
+                if (invLocDt.Rows[0][0].ToString() == "0") //Checks in DB if first column, first row equals 0
+                {
+
+                    string loginUser = Login.user;
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        OracleCommand cmd = connection.CreateCommand();
+                        cmd.CommandType = CommandType.Text;
+
+
+                        cmd.CommandText = "DELETE FROM LOCATION WHERE LOCATION.BUILDING_ID = " +
+                            "(SELECT BUILDING.BUILDING_ID FROM BUILDING WHERE BUILDING.BUILDING_NAME = '" + createBuildingTextbox.Text + "' ) ";
+                        cmd.ExecuteNonQuery(); //Execute command
+
+
+                        cmd.CommandText = "DELETE FROM BUILDING WHERE BUILDING_NAME = '" + createBuildingTextbox.Text + "' ";
+                        cmd.ExecuteNonQuery();
+
+
+                        connection.Close(); //Close connection to DB
+
+                        MessageBox.Show("Data deleted successfully!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Building " + createBuildingTextbox.Text + " is already used in previous inventories. Edit or remove them before deleting this building.");
+                    connection.Close();
+                }
+        }
+
+        private void deleteRoomButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this building?",
+                "Confirm Delete!",
+                MessageBoxButtons.YesNo);
+            connection.Open();
+            OracleCommand invLocCheck = connection.CreateCommand();
+            invLocCheck.CommandType = CommandType.Text;
+            invLocCheck.CommandText = "SELECT COUNT(*) FROM INVENTORY JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                "WHERE ROOM.ROOM_NAME = '" + createRoomTextbox.Text + "' ";
+            invLocCheck.ExecuteNonQuery(); //Execute command
+            Console.WriteLine(invLocCheck.CommandText);
+            OracleDataAdapter InvLocSda = new OracleDataAdapter(invLocCheck);
+            DataTable invLocDt = new DataTable();
+            InvLocSda.Fill(invLocDt);
+            if (invLocDt.Rows[0][0].ToString() == "0") //Checks in DB if first column, first row equals 0
+            {
+
+                string loginUser = Login.user;
+                if (confirmResult == DialogResult.Yes)
+                {
+                    OracleCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+
+
+                    cmd.CommandText = "DELETE FROM LOCATION WHERE LOCATION.ROOM_ID = " +
+                        "(SELECT ROOM.ROOM_ID FROM ROOM WHERE ROOM.ROOM_NAME = '" + createRoomTextbox.Text + "' ) ";
+                    cmd.ExecuteNonQuery(); //Execute command
+
+
+                    cmd.CommandText = "DELETE FROM ROOM WHERE ROOM_NAME = '" + createRoomTextbox.Text + "' ";
+                    cmd.ExecuteNonQuery();
+
+
+                    connection.Close(); //Close connection to DB
+
+                    MessageBox.Show("Data deleted successfully!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Room " + createBuildingTextbox.Text + " is already used in previous inventories. Edit or remove them before deleting this room.");
+                connection.Close();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

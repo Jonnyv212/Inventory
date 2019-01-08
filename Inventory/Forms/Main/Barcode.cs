@@ -233,6 +233,16 @@ namespace Inventory
                                        "FROM DUAL";
                     cmd.ExecuteNonQuery(); //Execute command
 
+
+                    //History log of insert
+                    cmd.CommandText = "INSERT INTO HISTORY" +
+                    "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION, D_INVENTORY_ID)" +
+                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = '" + Login.user + "'), " +
+                    "('New inventory taken. Inventory ID: ' || (SELECT MAX(INVENTORY_ID) FROM INVENTORY)), " +
+                    "(SELECT MAX(INVENTORY_ID) FROM INVENTORY))";
+                    cmd.ExecuteNonQuery();
+
+
                     connection.Close();
                 }
                 quantityTextbox.Text = "0";
