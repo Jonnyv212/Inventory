@@ -92,7 +92,7 @@ namespace Inventory
         //Take Inventory - Call clear_data() function
         private void clearInventoryButton_Click(object sender, EventArgs e)
         {
-            clear_data();
+            //clear_data();
         }
 
         //Exit application from Menu toolstrip
@@ -123,6 +123,7 @@ namespace Inventory
             }
             else
             {
+                dataGridView1.DataSource = null;
                 string filterCB = searchCombobox.Text;
                 connection.Open();
                 OracleCommand cmd = connection.CreateCommand();
@@ -139,8 +140,9 @@ namespace Inventory
                     "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
                     "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
-                    "WHERE REGEXP_LIKE(" + filterCB + ", '(" + searchTextbox.Text + ")', 'i')"; // SQL Command
-                Console.WriteLine(cmd.CommandText);
+                    "WHERE REGEXP_LIKE(" + filterCB + ", '(" + searchTextbox.Text + ")', 'i') AND " +
+                    "INVENTORY.STATUS = '1' " +
+                    "ORDER BY INVDATE DESC "; // SQL Command
                 cmd.ExecuteNonQuery();
                 DataTable dta = new DataTable();
                 OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -154,6 +156,7 @@ namespace Inventory
         private void display_search_data()
         {
             connection.Open();
+            dataGridView1.DataSource = null;
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
@@ -166,8 +169,8 @@ namespace Inventory
                     "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
                     "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
-                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID ";
-            Console.WriteLine(cmd.CommandText);
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                    "WHERE INVENTORY.STATUS = '1' ";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -240,6 +243,7 @@ namespace Inventory
         private void display_inventory_data()
         {
             connection.Open();
+            dataGridView2.DataSource = null;
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
@@ -252,7 +256,9 @@ namespace Inventory
                     "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
                     "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
-                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID ";
+                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                    "WHERE INVENTORY.STATUS = '1' " +
+                    "ORDER BY INVDATE DESC ";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -273,17 +279,19 @@ namespace Inventory
         //TakeInventory tab - Use combobox text and insert that data into database with insert query
         private void insertButton_Click(object sender, EventArgs e)
         {
+            DescriptionInsert descForm = new DescriptionInsert();
             //Inventory tab - If any of the comboboxes are empty then show messagebox
-            if (String.IsNullOrEmpty(tInvenEquipmentCombobox.Text) || String.IsNullOrEmpty(tInvenBuildingCombobox.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text))
+            if (String.IsNullOrEmpty(tInvenEquipmentCombobox.Text) || String.IsNullOrEmpty(tInvenBuildingCombobox.Text) || String.IsNullOrEmpty(tInvenCategoryCombobox.Text) || String.IsNullOrEmpty(tInvenQuantityTextbox.Text))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
             else
             {
                 string loginUser = Login.user;
-                //int quantity = Convert.ToInt32(quantityTextbox.Text);
+                int quantity = Convert.ToInt32(tInvenQuantityTextbox.Text);
 
                 connection.Open(); // Connects to DB
+
 
                 OracleCommand locCheck = connection.CreateCommand();
                 locCheck.CommandType = CommandType.Text;
@@ -293,11 +301,11 @@ namespace Inventory
                     "WHERE BUILDING.BUILDING_NAME = '" + tInvenBuildingCombobox.Text + "' " +
                     "AND ROOM.ROOM_NAME = '" + tInvenRoomCombobox.Text + "' ";
                 locCheck.ExecuteNonQuery(); //Execute command
-                Console.WriteLine(locCheck.CommandText);
+
                 OracleDataAdapter locSda = new OracleDataAdapter(locCheck);
                 DataTable locDt = new DataTable();
                 locSda.Fill(locDt);
-                if (locDt.Rows[0][0].ToString() == "0") //Checks in DB if first column, first row equals 1.
+                if (locDt.Rows[0][0].ToString() == "0") //Checks in DB if first column, first row equals 0
                 {
                     OracleCommand locIns = connection.CreateCommand();
                     locIns.CommandType = CommandType.Text;
@@ -310,78 +318,126 @@ namespace Inventory
                     MessageBox.Show("New location inserted!");
                 }
 
-                    
-                OracleCommand cmd = connection.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_ID, CATEGORY_ID, EVENT_ID, USER_ID, LOCATION_ID)" +
-                    "SELECT " +
-                    "(SELECT EQUIPMENT_ID " +
-                    "FROM EQUIPMENT " +
-                    "WHERE EQUIPMENT.EQUIPMENT_NAME = '"+ tInvenEquipmentCombobox.Text + "') " +
-                    "AS EQUIPMENT_ID," +
 
-                    "(SELECT CATEGORY_ID " +
-                    "FROM CATEGORY " +
-                    "WHERE CATEGORY.CATEGORY_NAME = '" + tInvenCategoryCombobox.Text + "') " +
-                    "AS CATEGORY_ID, " +
+                OracleCommand descIns = connection.CreateCommand();
 
-                    "(SELECT EVENT_ID " +
-                    "FROM EVENT " +
-                    "WHERE EVENT.EVENT_ID = 1) " +
-                    "AS EVENT_ID, " +
-
-                    "(SELECT USER_ID " +
-                    "FROM LOGIN " +
-                    "WHERE LOGIN.USERNAME = '"+ loginUser +"' ) " +
-                    "AS USER_ID, " +
-
-                    "(SELECT LOCATION_ID " +
-                    "FROM LOCATION " +
-                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
-                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
-                    "WHERE BUILDING.BUILDING_NAME = '" + tInvenBuildingCombobox.Text + "' " +
-                    "AND ROOM.ROOM_NAME = '" + tInvenRoomCombobox.Text + "') " +
-                    "AS LOCATION_ID " +
-
-                    "FROM DUAL";
+                descIns.CommandType = CommandType.Text;
+                descIns.CommandText = "INSERT INTO INVENTORY_DESCRIPTION " +
+                    "(DESCRIPTION) " +
+                    "VALUES('No Description.') " +
+                    "RETURNING DESCRIPTION_ID INTO :desc_id ";
+                OracleParameter outputParameter = new OracleParameter("desc_id", OracleDbType.Decimal);
+                outputParameter.Direction = ParameterDirection.Output;
+                descIns.Parameters.Add(outputParameter);
+                descIns.ExecuteNonQuery();
 
 
-                cmd.ExecuteNonQuery(); //Execute command
+                for (int i = 0; i < quantity; i++)
+                {
+                    OracleCommand cmd = connection.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_ID, CATEGORY_ID, EVENT_ID, USER_ID, LOCATION_ID, SERIAL_NO, DESCRIPTION_ID)" +
+                        "SELECT " +
+                        "(SELECT EQUIPMENT_ID " +
+                        "FROM EQUIPMENT " +
+                        "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + tInvenEquipmentCombobox.Text + "') " +
+                        "AS EQUIPMENT_ID," +
 
-                //History log of insert
-                cmd.CommandText = "INSERT INTO HISTORY" +
-                    "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION, D_INVENTORY_ID)" +
-                    "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = '"+ Login.user +"'), " +
-                    "('New inventory taken. Inventory ID: ' || (SELECT MAX(INVENTORY_ID) FROM INVENTORY)), " +
-                    "(SELECT MAX(INVENTORY_ID) FROM INVENTORY))";
-                cmd.ExecuteNonQuery();
+                        "(SELECT CATEGORY_ID " +
+                        "FROM CATEGORY " +
+                        "WHERE CATEGORY.CATEGORY_NAME = '" + tInvenCategoryCombobox.Text + "') " +
+                        "AS CATEGORY_ID, " +
 
-                //displays query into datagridiew2
-                OracleCommand cmd2 = connection.CreateCommand();
-                cmd2.CommandType = CommandType.Text;
-                cmd2.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
-                        "CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product, " +
-                        "INVENTORY.SERIAL_NO AS Serial, (BUILDING.BUILDING_NAME || '-' || ROOM.ROOM_NAME) AS Location, " +
-                        "LOGIN.USERNAME AS Users, INVENTORY.INVENTORY_DATE AS InvDate " +
-                        "FROM INVENTORY " +
-                        "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
-                        "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
-                        "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                        "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                        "(SELECT EVENT_ID " +
+                        "FROM EVENT " +
+                        "WHERE EVENT.EVENT_ID = 1) " +
+                        "AS EVENT_ID, " +
+
+                        "(SELECT USER_ID " +
+                        "FROM LOGIN " +
+                        "WHERE LOGIN.USERNAME = '" + loginUser + "' ) " +
+                        "AS USER_ID, " +
+
+                        "(SELECT LOCATION_ID " +
+                        "FROM LOCATION " +
                         "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
-                        "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID ";
-                cmd2.ExecuteNonQuery();
-                DataTable dta2 = new DataTable();
-                OracleDataAdapter dataadp2 = new OracleDataAdapter(cmd2);
-                dataadp2.Fill(dta2);
-                dataGridView2.DataSource = dta2;
+                        "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                        "WHERE BUILDING.BUILDING_NAME = '" + tInvenBuildingCombobox.Text + "' " +
+                        "AND ROOM.ROOM_NAME = '" + tInvenRoomCombobox.Text + "') " +
+                        "AS LOCATION_ID, " +
 
+                        "('" + tInvenSerialTextbox.Text + "') " +
+                        "AS SERIAL_NO, " +
+
+                        "(SELECT  ('" + descIns.Parameters["desc_id"].Value + "') " +
+                        "AS DESCRIPTION_ID " +
+                        "FROM DUAL )" +
+
+                        "FROM DUAL";
+
+
+                    cmd.ExecuteNonQuery(); //Execute command
+                    descForm.descID = descIns.Parameters["desc_id"].Value.ToString();
+
+
+
+                    string maxI = "SELECT MAX(INVENTORY_ID) FROM INVENTORY";
+                    OracleCommand cmd3 = new OracleCommand(maxI, connection);
+
+                    try
+                    {
+                       /* cmd3.CommandText = maxI;
+                        cmd3.CommandType = CommandType.Text;
+                        String maxInven = cmd3.ExecuteScalar().ToString();
+                        maxInven = maxInven + i;
+
+                        //History log of insert
+                        cmd.CommandText = "INSERT INTO HISTORY" +
+                            "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION, D_INVENTORY_ID)" +
+                            "VALUES('1', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = '" + Login.user + "'), " +
+                            "('New inventory taken. Inventory ID: ' || '" + maxInven + "'), " +
+                            " '" + maxInven + "' )";
+                        cmd.ExecuteNonQuery();
+                        */
+
+                        //displays query into datagridiew2
+                        dataGridView2.DataSource = null;
+                        OracleCommand cmd2 = connection.CreateCommand();
+                        cmd2.CommandType = CommandType.Text;
+                        cmd2.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
+                                "CATEGORY.CATEGORY_NAME AS Category, EQUIPMENT.PRODUCT_NO AS Product, " +
+                                "INVENTORY.SERIAL_NO AS Serial, (BUILDING.BUILDING_NAME || '-' || ROOM.ROOM_NAME) AS Location, " +
+                                "LOGIN.USERNAME AS Users, INVENTORY.INVENTORY_DATE AS InvDate " +
+                                "FROM INVENTORY " +
+                                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                                "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                                "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                                "WHERE INVENTORY.STATUS = '1' ";
+                        cmd2.ExecuteNonQuery();
+                        DataTable dta2 = new DataTable();
+                        OracleDataAdapter dataadp2 = new OracleDataAdapter(cmd2);
+                        dataadp2.Fill(dta2);
+                        dataGridView2.DataSource = dta2;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+                if (InvenDescriptionCheckbox.Checked == true)
+                {
+                    descForm.Show(); 
+                }
 
                 connection.Close(); //Close connection to DB
 
                 //display_inventory_data();
                 MessageBox.Show("Data inserted successfully!");
-
             }
         }
 
@@ -821,20 +877,20 @@ namespace Inventory
             //connection.Open();
             OracleCommand cmd = connection.CreateCommand();
 
-            string i = "SELECT * FROM INVENTORY";
+            string i = "SELECT * FROM INVENTORY WHERE INVENTORY.STATUS = '1' ";
 
             string e = "SELECT * FROM EQUIPMENT " +
                         "JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
-                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
 
             string u = "SELECT * FROM LOGIN " +
                         "JOIN INVENTORY ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             string c = "SELECT * FROM CATEGORY " +
                         "JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
-                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                        "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             DataTable dtEI = new DataTable();
             OracleDataAdapter daEI = new OracleDataAdapter(i, connection);
@@ -885,7 +941,6 @@ namespace Inventory
         //Edit Inventory tab - Changing this combobox will execute these functions
         private void inventoryEditCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("Attempt to uncheck edit checkboxes");
             nameEditCheckbox.Checked = false;
             categoryEditCheckbox.Checked = false;
             locationEditCheckbox.Checked = false;
@@ -907,7 +962,7 @@ namespace Inventory
         //Edit Inventory tab - Select query to retrieve serial number data into serialEditTextbox
         private void readSerialEdit()
         {
-            string q = "SELECT SERIAL_NO FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "'";
+            string q = "SELECT SERIAL_NO FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             connection.Open();
 
@@ -924,7 +979,6 @@ namespace Inventory
         //Edit Inventory tab - If a checkbox is true then run an update query from the specified combobox by INVENTORY_ID to update the inventory table
         private void editApplyButton_Click(object sender, EventArgs e)
         {
-            //clear datagridview6 and update datagridview5
 
             bool checkEnabled = false; 
 
@@ -1097,7 +1151,7 @@ namespace Inventory
         private void display_beforeEdit_data()
         {
             connection.Open();
-            //dataGridView5.DataSource = null;
+            dataGridView5.DataSource = null;
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
@@ -1111,7 +1165,7 @@ namespace Inventory
                     "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
                     "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
-                    "WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                    "WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -1126,10 +1180,10 @@ namespace Inventory
             //DISPLAY PREVIEW
             string q = "SELECT EQUIPMENT_NAME FROM EQUIPMENT WHERE EQUIPMENT_NAME = '" + nameEditCombobox.Text + "' ";
             string c = "SELECT CATEGORY.CATEGORY_NAME FROM CATEGORY JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
-            string s = "SELECT SERIAL_NO FROM INVENTORY WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
-            string u = "SELECT LOGIN.USERNAME FROM INVENTORY JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
-            string b = "SELECT BUILDING.BUILDING_NAME FROM BUILDING JOIN LOCATION ON LOCATION.BUILDING_ID = BUILDING.BUILDING_ID JOIN INVENTORY ON INVENTORY.LOCATION_ID = LOCATION.LOCATION_ID WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
-            string r = "SELECT ROOM.ROOM_NAME FROM ROOM JOIN LOCATION ON LOCATION.ROOM_ID = ROOM.ROOM_ID JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+            string s = "SELECT SERIAL_NO FROM INVENTORY WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
+            string u = "SELECT LOGIN.USERNAME FROM INVENTORY JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
+            string b = "SELECT BUILDING.BUILDING_NAME FROM BUILDING JOIN LOCATION ON LOCATION.BUILDING_ID = BUILDING.BUILDING_ID JOIN INVENTORY ON INVENTORY.LOCATION_ID = LOCATION.LOCATION_ID WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
+            string r = "SELECT ROOM.ROOM_NAME FROM ROOM JOIN LOCATION ON LOCATION.ROOM_ID = ROOM.ROOM_ID JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID WHERE INVENTORY.INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
 
 
@@ -1192,15 +1246,6 @@ namespace Inventory
                 cmd.CommandType = CommandType.Text;
 
 
-                //select all rows
-                cmd.CommandText = "INSERT INTO D_INVENTORY (D_INVENTORY.INVENTORY_ID, D_INVENTORY.EQUIPMENT_ID, D_INVENTORY.EVENT_ID, D_INVENTORY.USER_ID, " +
-                    "D_INVENTORY.SERIAL_NO, D_INVENTORY.INVENTORY_DATE, D_INVENTORY.CATEGORY_ID, D_INVENTORY.LOCATION_ID) " +
-                    "SELECT INVENTORY.INVENTORY_ID, INVENTORY.EQUIPMENT_ID, INVENTORY.EVENT_ID, INVENTORY.USER_ID, " +
-                    "INVENTORY.SERIAL_NO, INVENTORY.INVENTORY_DATE, INVENTORY.CATEGORY_ID, INVENTORY.LOCATION_ID " +
-                    "FROM INVENTORY " +
-                    "WHERE INVENTORY.INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
-                cmd.ExecuteNonQuery();
-
 
                 //Select event 4 (removed inventory), current user_id, and insert inventory_ID value into the HISTORY table
                 cmd.CommandText = "INSERT INTO HISTORY " +
@@ -1212,7 +1257,9 @@ namespace Inventory
 
 
 
-                cmd.CommandText = "DELETE FROM INVENTORY WHERE INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
+                cmd.CommandText = "UPDATE INVENTORY " +
+                    "SET INVENTORY.STATUS = 0" +
+                    "WHERE INVENTORY_ID = '" + inventoryDeleteCombobox.Text + "' ";
                 cmd.ExecuteNonQuery(); //Execute command
 
                // connection.Close(); //Close connection to DB
@@ -1224,7 +1271,8 @@ namespace Inventory
                 OracleCommand cmd2 = connection.CreateCommand();
                 cmd2.CommandType = CommandType.Text;
                 //Query for case insensitive(i) searching
-                cmd2.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, CATEGORY.CATEGORY_NAME AS Category, BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS Username " +
+                cmd2.CommandText = "SELECT INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
+                    "CATEGORY.CATEGORY_NAME AS Category, BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS Username " +
                     "FROM INVENTORY " +
                     "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                     "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
@@ -1232,8 +1280,7 @@ namespace Inventory
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
                     "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                     "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                    "WHERE REGEXP_LIKE(" + filterDeleteCombobox.Text + ", '(" + searchDeleteTextbox.Text + ")', 'i')"; // SQL Command
-                Console.WriteLine(cmd2.CommandText);
+                    "WHERE REGEXP_LIKE(" + filterDeleteCombobox.Text + ", '(" + searchDeleteTextbox.Text + ")', 'i') AND INVENTORY.STATUS = '1' "; // SQL Command
                 cmd2.ExecuteNonQuery();
                 DataTable dta2 = new DataTable();
                 OracleDataAdapter dataadp2 = new OracleDataAdapter(cmd2);
@@ -1252,6 +1299,7 @@ namespace Inventory
         {
             string filterCB = filterDeleteCombobox.Text;
             connection.Open();
+            dataGridView4.DataSource = null;
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             //Query for case insensitive(i) searching
@@ -1263,8 +1311,7 @@ namespace Inventory
                 "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
                 "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                 "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                "WHERE REGEXP_LIKE(" + filterDeleteCombobox.Text + ", '(" + searchDeleteTextbox.Text + ")', 'i')"; // SQL Command
-            Console.WriteLine(cmd.CommandText);
+                "WHERE REGEXP_LIKE(" + filterDeleteCombobox.Text + ", '(" + searchDeleteTextbox.Text + ")', 'i') AND INVENTORY.STATUS = '1' ";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -1276,7 +1323,7 @@ namespace Inventory
         //Delete Inventory tab - 
         private void deleteInventoryData()
         {
-            string i = "SELECT * FROM INVENTORY";
+            string i = "SELECT * FROM INVENTORY WHERE INVENTORY.STATUS = '1' ";
 
 
             DataTable dtDI = new DataTable();
@@ -1299,7 +1346,7 @@ namespace Inventory
             OracleCommand cmd = connection.CreateCommand();
             string w = "SELECT * FROM EQUIPMENT " +
                 "JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
-                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             DataTable dtNE2 = new DataTable();
             OracleDataAdapter daNE2 = new OracleDataAdapter(w, connection);
@@ -1317,12 +1364,12 @@ namespace Inventory
             string b = "SELECT * FROM BUILDING " +
             "JOIN LOCATION ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
             "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
-            "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+            "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             string r = "SELECT * FROM ROOM " +
             "JOIN LOCATION ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
             "JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
-            "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+            "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             DataTable dtBE2 = new DataTable();
             OracleDataAdapter daBE2 = new OracleDataAdapter(b, connection);
@@ -1348,7 +1395,7 @@ namespace Inventory
             OracleCommand cmd3 = connection.CreateCommand();
             string l = "SELECT * FROM LOGIN " +
                 "JOIN INVENTORY ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             DataTable dtUE2 = new DataTable();
             OracleDataAdapter daUE2 = new OracleDataAdapter(l, connection);
@@ -1364,7 +1411,7 @@ namespace Inventory
             OracleCommand cmd4 = connection.CreateCommand();
             string c = "SELECT * FROM CATEGORY " +
                 "JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
-                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' ";
+                "WHERE INVENTORY_ID = '" + inventoryEditCombobox.Text + "' AND INVENTORY.STATUS = '1' ";
 
             DataTable dtCE2 = new DataTable();
             OracleDataAdapter daCE2 = new OracleDataAdapter(c, connection);
@@ -1379,7 +1426,6 @@ namespace Inventory
 
             readSerialEdit();
 
-            Console.WriteLine("Attempt to uncheck edit checkboxes");
             nameEditCheckbox.Checked = false;
             categoryEditCheckbox.Checked = false;
             locationEditCheckbox.Checked = false;
@@ -1387,18 +1433,21 @@ namespace Inventory
             userEditCheckbox.Checked = false;
         }
 
+        //still using D_INVENTORY
         private void display_history_data()
         {
             //dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
 
             connection.Open();
+            dataGridView3.DataSource = null;
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "SELECT D_INVENTORY_ID AS INVENTORY_ID, EVENT.EVENT, LOGIN.USERNAME, HISTORY_DATE " +
                 "FROM HISTORY " +
                 "JOIN EVENT ON EVENT.EVENT_ID = HISTORY.EVENT_ID " +
-                "JOIN LOGIN ON LOGIN.USER_ID = HISTORY.USER_ID";
+                "JOIN LOGIN ON LOGIN.USER_ID = HISTORY.USER_ID " +
+                "ORDER BY HISTORY_DATE DESC";
             cmd.ExecuteNonQuery();
             DataTable dta = new DataTable();
             OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
@@ -1413,11 +1462,6 @@ namespace Inventory
             bar.Show();
         }
 
-        private void tInvenBuildingCombobox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void rButton_Click(object sender, EventArgs e)
         {
             display_inventory_data();
@@ -1428,43 +1472,11 @@ namespace Inventory
         private void nameEditCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             editAfterGridUpdate(sender, e);
-
-            /* dataGridView6.Rows[0].Cells[0].Value = "";
-             //DISPLAY PREVIEW
-             string q = nameEditCombobox.Text;
-
-             try
-             {
-
-                 String Eqs = q.ToString();
-
-                 dataGridView6.Rows.Add(Eqs);
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-             } */
         }
 
         private void categoryEditCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             editAfterGridUpdate(sender, e);
-
-            /* dataGridView6.Rows[0].Cells[1].Value = "";
-             //DISPLAY PREVIEW
-             string c = categoryEditCombobox.Text;
-
-             try
-             {
-
-                 String Cat = c.ToString();
-
-                 dataGridView6.Rows.Add(null, Cat);
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-             } */
         }
 
         private void userEditCombobox_SelectedIndexChanged(object sender, EventArgs e)
@@ -1513,7 +1525,6 @@ namespace Inventory
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
                     "WHERE BUILDING.BUILDING_NAME = '"+ createBuildingTextbox.Text + "' ";
                 invLocCheck.ExecuteNonQuery(); //Execute command
-                Console.WriteLine(invLocCheck.CommandText);
                 OracleDataAdapter InvLocSda = new OracleDataAdapter(invLocCheck);
                 DataTable invLocDt = new DataTable();
                 InvLocSda.Fill(invLocDt);
@@ -1560,7 +1571,7 @@ namespace Inventory
                 "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                 "WHERE ROOM.ROOM_NAME = '" + createRoomTextbox.Text + "' ";
             invLocCheck.ExecuteNonQuery(); //Execute command
-            Console.WriteLine(invLocCheck.CommandText);
+
             OracleDataAdapter InvLocSda = new OracleDataAdapter(invLocCheck);
             DataTable invLocDt = new DataTable();
             InvLocSda.Fill(invLocDt);
@@ -1595,9 +1606,38 @@ namespace Inventory
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void displaySearchDescriptionListview(string sDesc_ID)
         {
+            string q = "SELECT INVENTORY_DESCRIPTION.DESCRIPTION FROM INVENTORY_DESCRIPTION " +
+                       "JOIN INVENTORY ON INVENTORY.DESCRIPTION_ID = INVENTORY_DESCRIPTION.DESCRIPTION_ID " +
+                       "WHERE INVENTORY.INVENTORY_ID = '"+ sDesc_ID + "' AND ROWNUM <= 1";
 
+            connection.Open();
+
+            OracleCommand cmd = new OracleCommand(q, connection);
+
+            try
+            {
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                Console.WriteLine(dr);
+                Console.WriteLine(q);
+                while (dr.Read())
+                {
+                    searchDescTextbox.Text = (dr["DESCRIPTION"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            connection.Close();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            searchDescTextbox.Clear();
+            displaySearchDescriptionListview(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
         }
     }
 }
