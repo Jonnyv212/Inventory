@@ -91,6 +91,15 @@
     <Compile Include="Forms\Main\DeleteData\DeleteData.Designer.cs">
       <DependentUpon>DeleteData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewProject.Designer.cs">
+      <DependentUpon>NewProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\testclass.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Test\FormTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\DeleteData\DeleteData.resx">
       <DependentUpon>DeleteData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewProject.resx">
+      <DependentUpon>NewProject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Test\FormTest.resx">
       <DependentUpon>FormTest.cs</DependentUpon>

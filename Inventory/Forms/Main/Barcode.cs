@@ -17,7 +17,6 @@ namespace Inventory
     {
         OracleConnection connection = new OracleConnection("Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.20.26.41)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME= Dev.path.med.umich.edu))); USER ID = JONNYV;PASSWORD = AjGoEnvA101");
 
-
         public Barcode()
         {
             InitializeComponent();
@@ -33,12 +32,16 @@ namespace Inventory
             if (String.IsNullOrEmpty(quantityTextbox.Text))
             {
                 MessageBox.Show("Please select a quantity!");
+
+                insertButton.Enabled = false;
             }
             else
             {
                 connection.Close();
 
                 connection.Open();
+
+
                 OracleCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "SELECT COUNT(*) FROM EQUIPMENT WHERE PRODUCT_NO = '" + barcodeTextbox.Text + "' ";
@@ -48,6 +51,7 @@ namespace Inventory
                 sda.Fill(dt);
                 if (dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
                 {
+                    insertButton.Enabled = true;
                     //DISPLAY PREVIEW
                     string q = "SELECT EQUIPMENT_NAME FROM EQUIPMENT WHERE PRODUCT_NO = '" + barcodeTextbox.Text + "' ";
                     string c = "SELECT CATEGORY.CATEGORY_NAME FROM CATEGORY " +
@@ -89,7 +93,6 @@ namespace Inventory
                         for (int i = 0; i < quan; i++)
                         {
                             dataGridView1.Rows.Add(Eq, Cat, Prod, Bld, Room);
-                            
                         }
                     }
 
@@ -97,10 +100,11 @@ namespace Inventory
                     {
                         MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    connection.Close();
                     barcodeTextbox.Clear();
                     quantityTextbox.Text = "0";
+                    quantityTextbox_TextChanged(sender, e);
                 }
+                connection.Close();
             }
         }
 
@@ -149,6 +153,7 @@ namespace Inventory
         private void clearButton_Click(object sender, EventArgs e)
         {
             quantityTextbox.Text = "0";
+            barcodeDescriptionCheckbox.Enabled = false;
             barcodeTextbox.Clear();
             barcodeTextbox.Enabled = false;
             dataGridView1.Rows.Clear();
@@ -157,6 +162,7 @@ namespace Inventory
         private void insertButton_Click(object sender, EventArgs e)
         {
             string loginUser = Login.user;
+            DescriptionInsert descForm = new DescriptionInsert();
 
             if (String.IsNullOrEmpty(dataGridView1.Rows[0].Cells[0].Value as String))
             {
@@ -165,6 +171,8 @@ namespace Inventory
             }
             else
             {
+                connection.Open(); // Connects to DB
+
                 //CREATE NEW LOCATION IF IT DOES NOT EXIST
                 OracleCommand locCheck = connection.CreateCommand();
                 locCheck.CommandType = CommandType.Text;
@@ -191,16 +199,24 @@ namespace Inventory
                     MessageBox.Show("New location inserted!");
                 }
 
-                if (connection.State == ConnectionState.Open)
+                    OracleCommand descIns = connection.CreateCommand();
+
+                    descIns.CommandType = CommandType.Text;
+                    descIns.CommandText = "INSERT INTO INVENTORY_DESCRIPTION " +
+                        "(DESCRIPTION) " +
+                        "VALUES('No Description.') " +
+                        "RETURNING DESCRIPTION_ID INTO :desc_id ";
+                    OracleParameter outputParameter = new OracleParameter("desc_id", OracleDbType.Decimal);
+                    outputParameter.Direction = ParameterDirection.Output;
+                    descIns.Parameters.Add(outputParameter);
+                    descIns.ExecuteNonQuery();
+
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    connection.Close();
-                }
-                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
-                {
-                    connection.Open(); // Connects to DB
+                  
                     OracleCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_ID, CATEGORY_ID, EVENT_ID, USER_ID, LOCATION_ID)" +
+                    cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_ID, CATEGORY_ID, EVENT_ID, USER_ID, LOCATION_ID, DESCRIPTION_ID)" +
                                        "SELECT " +
                                        "(SELECT EQUIPMENT_ID " +
                                        "FROM EQUIPMENT " +
@@ -228,12 +244,18 @@ namespace Inventory
                                        "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                                        "WHERE BUILDING.BUILDING_NAME = '" + dataGridView1.Rows[i].Cells[3].Value + "' " +
                                        "AND ROOM.ROOM_NAME = '" + dataGridView1.Rows[i].Cells[4].Value + "') " +
-                                       "AS LOCATION_ID " +
+                                       "AS LOCATION_ID, " +
+
+
+                                        "(SELECT  ('" + descIns.Parameters["desc_id"].Value + "') " +
+                                        "AS DESCRIPTION_ID " +
+                                        "FROM DUAL )" +
 
                                        "FROM DUAL";
                     cmd.ExecuteNonQuery(); //Execute command
+                    descForm.descID = descIns.Parameters["desc_id"].Value.ToString();
 
-
+                    /*
                     //History log of insert
                     cmd.CommandText = "INSERT INTO HISTORY" +
                     "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION, D_INVENTORY_ID)" +
@@ -241,15 +263,23 @@ namespace Inventory
                     "('New inventory taken. Inventory ID: ' || (SELECT MAX(INVENTORY_ID) FROM INVENTORY)), " +
                     "(SELECT MAX(INVENTORY_ID) FROM INVENTORY))";
                     cmd.ExecuteNonQuery();
-
-
-                    connection.Close();
+                    */
                 }
+                if (barcodeDescriptionCheckbox.Checked == true)
+                {
+                    descForm.Show();
+                }
+
                 quantityTextbox.Text = "0";
                 barcodeTextbox.Clear();
-                barcodeTextbox.Enabled = false;
+                //barcodeTextbox.Enabled = false;
+                quantityTextbox_TextChanged(sender, e);
+                insertButton.Enabled = false;
                 dataGridView1.Rows.Clear();
+
                 MessageBox.Show("Inserted all rows.");
+
+                connection.Close();
             }
         }
 
