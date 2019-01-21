@@ -17,12 +17,12 @@ namespace Inventory
         //Establish Oracle database connection using my username and password.
         OracleConnection connection = new OracleConnection("Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.20.26.41)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME= Dev.path.med.umich.edu))); USER ID = JONNYV;PASSWORD = AjGoEnvA101");
 
-
         public Main()
         {
             InitializeComponent();
 
-            inventoryTabControl.DrawItem += new DrawItemEventHandler(inventoryTabControl_DrawItem);
+            //inventoryTabControl.DrawItem += new DrawItemEventHandler(inventoryTabControl_DrawItem);
+            inventoryInnerTabs.Appearance = TabAppearance.Buttons;
         }
 
         private void inventoryTabControl_Selected(object sender, TabControlEventArgs e)
@@ -37,6 +37,7 @@ namespace Inventory
         }
 
         //GUI for Inventory Tab Control (text, layout, size)
+        /*
         private void inventoryTabControl_DrawItem(Object sender, System.Windows.Forms.DrawItemEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -64,7 +65,7 @@ namespace Inventory
             // Use our own font.
             Font _tabFont = new Font("Arial", 17.0f, FontStyle.Bold, GraphicsUnit.Pixel);
 
-            
+
 
             // Draw string. Center the text.
             StringFormat _stringFlags = new StringFormat();
@@ -73,7 +74,7 @@ namespace Inventory
             g.DrawString(_tabPage.Text, _tabFont, _textBrush, _tabBounds, new StringFormat(_stringFlags));
             //inventoryTabControl.BackColor = Color.Blue;
         }
-
+        */
 
 
         //Loads these functions on main form load
@@ -1725,6 +1726,128 @@ namespace Inventory
             dataGridView7.DataSource = dta;
 
             connection.Close();
+        }
+
+        private void dataGridView7_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            projectEquipmentList.Items.Clear();
+            displayProjectEquipmentList(dataGridView7.SelectedRows[0].Cells[0].Value.ToString());
+
+        }
+
+        private void displayProjectEquipmentList(string pInfo_ID)
+        {
+            string searchEquipment = "SELECT INVENTORY.INVENTORY_ID, EQUIPMENT.EQUIPMENT_NAME " +
+                "FROM INVENTORY JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
+                "WHERE PROJECT.PROJECT_NAME = '" + pInfo_ID + "' ";
+
+
+            OracleCommand cmd = new OracleCommand(searchEquipment, connection);
+
+
+            connection.Open();
+             try
+            {
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    ListViewItem item = new ListViewItem(dr["INVENTORY_ID"].ToString());
+                    item.SubItems.Add(dr["EQUIPMENT_NAME"].ToString());
+
+                    projectEquipmentList.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            connection.Close();
+        }
+
+        private void dataGridView7_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine(dataGridView7.SelectedRows[0].Cells[0].Value.ToString());
+            AddProjectEquipment addEquipment = new AddProjectEquipment();
+
+
+            addEquipment.Show();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void InventoryTabButton_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedTab = inventoryTab;
+        }
+
+        private void createTabButton_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedTab = createTab;
+        }
+
+        private void historyTabButton_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedTab = historyTab;
+        }
+
+        private void projectsTabButton_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedTab = projectsTab;
+        }
+
+        private void outgoingTabButton_Click(object sender, EventArgs e)
+        {
+            mainTabControl.SelectedTab = outgoingTab;
+        }
+
+        private void searchInnerButton_Click(object sender, EventArgs e)
+        {
+            inventoryInnerTabs.SelectedTab = searchInventoryTab;
+            this.searchInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
+            this.searchInventoryButton.ForeColor = System.Drawing.Color.White;
+
+            addInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            editInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            deleteInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+        }
+
+        private void addInnerButton_Click(object sender, EventArgs e)
+        {
+            inventoryInnerTabs.SelectedTab = addInventoryTab;
+            this.addInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
+            this.addInventoryButton.ForeColor = System.Drawing.Color.White;
+
+            searchInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            editInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            deleteInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+        }
+
+        private void editInventoryButton_Click(object sender, EventArgs e)
+        {
+            inventoryInnerTabs.SelectedTab = editInventoryTab;
+            this.editInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
+            this.editInventoryButton.ForeColor = System.Drawing.Color.White;
+
+            searchInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            addInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            deleteInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+        }
+
+        private void deleteInventoryButton_Click(object sender, EventArgs e)
+        {
+            inventoryInnerTabs.SelectedTab = deleteInventoryTab;
+            this.deleteInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
+            this.deleteInventoryButton.ForeColor = System.Drawing.Color.White;
+
+            searchInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            editInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            addInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
         }
     }
 }

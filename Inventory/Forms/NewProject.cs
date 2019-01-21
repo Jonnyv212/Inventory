@@ -43,6 +43,7 @@ namespace Inventory
             MessageBox.Show("New project created!");
 
 
+
             connection.Close();
         }
 
