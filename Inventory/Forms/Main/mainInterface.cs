@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Inventory
-{ 
-    public class testclass : Main
+{
+    interface MainInterface
     {
-        public bool blah = true;
+       string SearchText { get; set; }
     }
 }

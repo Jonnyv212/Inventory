@@ -42,6 +42,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.inventoryTab = new System.Windows.Forms.TabPage();
+            this.deleteInventoryButton = new System.Windows.Forms.Button();
+            this.editInventoryButton = new System.Windows.Forms.Button();
+            this.addInventoryButton = new System.Windows.Forms.Button();
             this.inventoryInnerTabs = new System.Windows.Forms.TabControl();
             this.searchInventoryTab = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,7 +58,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.InvenDescriptionCheckbox = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.tInvenQuantityTextbox = new System.Windows.Forms.TextBox();
+            this.addInvenQuantityTextbox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.barcodeButton = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -63,15 +66,15 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tInvenRoomCombobox = new System.Windows.Forms.ComboBox();
-            this.tInvenEquipmentCombobox = new System.Windows.Forms.ComboBox();
+            this.addInvenRoomCombobox = new System.Windows.Forms.ComboBox();
+            this.addInvenEquipmentCombobox = new System.Windows.Forms.ComboBox();
             this.insertButton = new System.Windows.Forms.Button();
             this.clearInventoryButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tInvenBuildingCombobox = new System.Windows.Forms.ComboBox();
+            this.addInvenBuildingCombobox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tInvenCategoryCombobox = new System.Windows.Forms.ComboBox();
+            this.addInvenCategoryCombobox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.editInventoryTab = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
@@ -87,15 +90,11 @@
             this.label23 = new System.Windows.Forms.Label();
             this.roomEditCombobox = new System.Windows.Forms.ComboBox();
             this.buildingEditCombobox = new System.Windows.Forms.ComboBox();
-            this.locationEditCheckbox = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.refreshEditButton = new System.Windows.Forms.Button();
             this.editApplyButton = new System.Windows.Forms.Button();
-            this.categoryEditCheckbox = new System.Windows.Forms.CheckBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.userEditCheckbox = new System.Windows.Forms.CheckBox();
             this.inventoryEditCombobox = new System.Windows.Forms.ComboBox();
-            this.nameEditCheckbox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.categoryEditCombobox = new System.Windows.Forms.ComboBox();
             this.nameEditCombobox = new System.Windows.Forms.ComboBox();
@@ -111,22 +110,24 @@
             this.label11 = new System.Windows.Forms.Label();
             this.inventoryDeleteCombobox = new System.Windows.Forms.ComboBox();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.searchInventoryButton = new System.Windows.Forms.Button();
             this.createTab = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.locationTabButton = new System.Windows.Forms.Button();
+            this.equipmentTabButton = new System.Windows.Forms.Button();
             this.createInnerTab = new System.Windows.Forms.TabControl();
             this.equipmentTab = new System.Windows.Forms.TabPage();
-            this.createEquipmentListview = new System.Windows.Forms.ListView();
+            this.EquipListview = new System.Windows.Forms.ListView();
             this.equipmentHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.categoryHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.productNoHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.productNoTextbox = new System.Windows.Forms.TextBox();
-            this.createCategoryCombobox = new System.Windows.Forms.ComboBox();
+            this.createProductText = new System.Windows.Forms.TextBox();
+            this.createCategoryCombo = new System.Windows.Forms.ComboBox();
             this.createButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.createEquipmentCombobox = new System.Windows.Forms.TextBox();
+            this.createEquipText = new System.Windows.Forms.TextBox();
             this.locationTab = new System.Windows.Forms.TabPage();
             this.deleteRoomButton = new System.Windows.Forms.Button();
             this.deleteBuildingButton = new System.Windows.Forms.Button();
@@ -142,7 +143,6 @@
             this.historyTab = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.projectsTab = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.projectEquipmentList = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -158,12 +158,6 @@
             this.historyTabButton = new System.Windows.Forms.Button();
             this.createTabButton = new System.Windows.Forms.Button();
             this.inventoryTabButton = new System.Windows.Forms.Button();
-            this.searchInventoryButton = new System.Windows.Forms.Button();
-            this.addInventoryButton = new System.Windows.Forms.Button();
-            this.editInventoryButton = new System.Windows.Forms.Button();
-            this.deleteInventoryButton = new System.Windows.Forms.Button();
-            this.equipmentTabButton = new System.Windows.Forms.Button();
-            this.locationTabButton = new System.Windows.Forms.Button();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainTabControl.SuspendLayout();
             this.inventoryTab.SuspendLayout();
@@ -180,7 +174,6 @@
             this.deleteInventoryTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.createTab.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.createInnerTab.SuspendLayout();
             this.equipmentTab.SuspendLayout();
             this.locationTab.SuspendLayout();
@@ -210,13 +203,12 @@
             this.mainTabControl.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainTabControl.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.mainTabControl.ItemSize = new System.Drawing.Size(0, 1);
-            this.mainTabControl.Location = new System.Drawing.Point(0, 39);
-            this.mainTabControl.Margin = new System.Windows.Forms.Padding(2);
+            this.mainTabControl.Location = new System.Drawing.Point(0, 59);
             this.mainTabControl.Multiline = true;
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mainTabControl.SelectedIndex = 0;
-            this.mainTabControl.Size = new System.Drawing.Size(1184, 522);
+            this.mainTabControl.Size = new System.Drawing.Size(1776, 804);
             this.mainTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.mainTabControl.TabIndex = 8;
             this.mainTabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.inventoryTabControl_Selected);
@@ -230,13 +222,60 @@
             this.inventoryTab.Controls.Add(this.inventoryInnerTabs);
             this.inventoryTab.Controls.Add(this.searchInventoryButton);
             this.inventoryTab.Location = new System.Drawing.Point(4, 5);
-            this.inventoryTab.Margin = new System.Windows.Forms.Padding(2);
             this.inventoryTab.Name = "inventoryTab";
-            this.inventoryTab.Padding = new System.Windows.Forms.Padding(2);
-            this.inventoryTab.Size = new System.Drawing.Size(1176, 513);
+            this.inventoryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.inventoryTab.Size = new System.Drawing.Size(1768, 795);
             this.inventoryTab.TabIndex = 1;
             this.inventoryTab.Text = "Inventory";
             this.inventoryTab.UseVisualStyleBackColor = true;
+            // 
+            // deleteInventoryButton
+            // 
+            this.deleteInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.deleteInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.deleteInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
+            this.deleteInventoryButton.Location = new System.Drawing.Point(627, 8);
+            this.deleteInventoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.deleteInventoryButton.Name = "deleteInventoryButton";
+            this.deleteInventoryButton.Size = new System.Drawing.Size(154, 43);
+            this.deleteInventoryButton.TabIndex = 29;
+            this.deleteInventoryButton.Text = "Delete";
+            this.deleteInventoryButton.UseVisualStyleBackColor = false;
+            this.deleteInventoryButton.Click += new System.EventHandler(this.deleteInventoryButton_Click);
+            // 
+            // editInventoryButton
+            // 
+            this.editInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.editInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.editInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.editInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
+            this.editInventoryButton.Location = new System.Drawing.Point(472, 8);
+            this.editInventoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.editInventoryButton.Name = "editInventoryButton";
+            this.editInventoryButton.Size = new System.Drawing.Size(154, 43);
+            this.editInventoryButton.TabIndex = 28;
+            this.editInventoryButton.Text = "Edit";
+            this.editInventoryButton.UseVisualStyleBackColor = false;
+            this.editInventoryButton.Click += new System.EventHandler(this.editInventoryButton_Click);
+            // 
+            // addInventoryButton
+            // 
+            this.addInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.addInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.addInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
+            this.addInventoryButton.Location = new System.Drawing.Point(318, 8);
+            this.addInventoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.addInventoryButton.Name = "addInventoryButton";
+            this.addInventoryButton.Size = new System.Drawing.Size(154, 43);
+            this.addInventoryButton.TabIndex = 27;
+            this.addInventoryButton.Text = "Add";
+            this.addInventoryButton.UseVisualStyleBackColor = false;
+            this.addInventoryButton.Click += new System.EventHandler(this.addInnerButton_Click);
             // 
             // inventoryInnerTabs
             // 
@@ -249,11 +288,10 @@
             this.inventoryInnerTabs.Controls.Add(this.deleteInventoryTab);
             this.inventoryInnerTabs.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.inventoryInnerTabs.ItemSize = new System.Drawing.Size(0, 1);
-            this.inventoryInnerTabs.Location = new System.Drawing.Point(97, 36);
-            this.inventoryInnerTabs.Margin = new System.Windows.Forms.Padding(2);
+            this.inventoryInnerTabs.Location = new System.Drawing.Point(146, 55);
             this.inventoryInnerTabs.Name = "inventoryInnerTabs";
             this.inventoryInnerTabs.SelectedIndex = 0;
-            this.inventoryInnerTabs.Size = new System.Drawing.Size(1085, 486);
+            this.inventoryInnerTabs.Size = new System.Drawing.Size(1628, 749);
             this.inventoryInnerTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.inventoryInnerTabs.TabIndex = 17;
             this.inventoryInnerTabs.Selected += new System.Windows.Forms.TabControlEventHandler(this.inventoryInnerTabs_Selected);
@@ -270,8 +308,9 @@
             this.searchInventoryTab.Controls.Add(this.searchTextbox);
             this.searchInventoryTab.ForeColor = System.Drawing.SystemColors.ControlText;
             this.searchInventoryTab.Location = new System.Drawing.Point(4, 5);
+            this.searchInventoryTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchInventoryTab.Name = "searchInventoryTab";
-            this.searchInventoryTab.Size = new System.Drawing.Size(1077, 477);
+            this.searchInventoryTab.Size = new System.Drawing.Size(1620, 740);
             this.searchInventoryTab.TabIndex = 3;
             this.searchInventoryTab.Text = "Search";
             // 
@@ -280,10 +319,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(901, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(1344, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 22);
+            this.label1.Size = new System.Drawing.Size(219, 32);
             this.label1.TabIndex = 25;
             this.label1.Text = "INFORMATION";
             // 
@@ -292,34 +330,32 @@
             this.searchInfoTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchInfoTextbox.BackColor = System.Drawing.Color.White;
-            this.searchInfoTextbox.Location = new System.Drawing.Point(878, 55);
-            this.searchInfoTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.searchInfoTextbox.Location = new System.Drawing.Point(1298, 85);
             this.searchInfoTextbox.Name = "searchInfoTextbox";
             this.searchInfoTextbox.ReadOnly = true;
-            this.searchInfoTextbox.Size = new System.Drawing.Size(197, 414);
+            this.searchInfoTextbox.Size = new System.Drawing.Size(313, 634);
             this.searchInfoTextbox.TabIndex = 24;
             this.searchInfoTextbox.Text = "";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(24, 20);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(36, 31);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 17);
+            this.label15.Size = new System.Drawing.Size(108, 25);
             this.label15.TabIndex = 21;
             this.label15.Text = "Filter By: ";
             // 
             // searchButton
             // 
             this.searchButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.searchButton.Location = new System.Drawing.Point(699, 7);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2);
+            this.searchButton.Location = new System.Drawing.Point(1048, 11);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(111, 32);
+            this.searchButton.Size = new System.Drawing.Size(166, 49);
             this.searchButton.TabIndex = 18;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // dataGridView1
             // 
@@ -351,8 +387,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 55);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 85);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -364,7 +399,7 @@
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(867, 413);
+            this.dataGridView1.Size = new System.Drawing.Size(1281, 636);
             this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
@@ -373,22 +408,18 @@
             this.searchCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.searchCombobox.FormattingEnabled = true;
             this.searchCombobox.Items.AddRange(new object[] {
-            "EQUIPMENT_NAME",
-            "CATEGORY_NAME",
-            "USERNAME"});
-            this.searchCombobox.Location = new System.Drawing.Point(129, 12);
-            this.searchCombobox.Margin = new System.Windows.Forms.Padding(2);
+            "EQUIPMENT_NAME"});
+            this.searchCombobox.Location = new System.Drawing.Point(194, 18);
             this.searchCombobox.Name = "searchCombobox";
-            this.searchCombobox.Size = new System.Drawing.Size(160, 25);
+            this.searchCombobox.Size = new System.Drawing.Size(238, 33);
             this.searchCombobox.TabIndex = 20;
             // 
             // searchTextbox
             // 
             this.searchTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.searchTextbox.Location = new System.Drawing.Point(444, 12);
-            this.searchTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.searchTextbox.Location = new System.Drawing.Point(666, 18);
             this.searchTextbox.Name = "searchTextbox";
-            this.searchTextbox.Size = new System.Drawing.Size(225, 24);
+            this.searchTextbox.Size = new System.Drawing.Size(336, 33);
             this.searchTextbox.TabIndex = 17;
             this.searchTextbox.TextChanged += new System.EventHandler(this.searchTextbox_TextChanged);
             // 
@@ -397,25 +428,24 @@
             this.addInventoryTab.BackColor = System.Drawing.Color.White;
             this.addInventoryTab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.addInventoryTab.Controls.Add(this.groupBox2);
-            this.addInventoryTab.Controls.Add(this.tInvenQuantityTextbox);
+            this.addInventoryTab.Controls.Add(this.addInvenQuantityTextbox);
             this.addInventoryTab.Controls.Add(this.label16);
             this.addInventoryTab.Controls.Add(this.barcodeButton);
             this.addInventoryTab.Controls.Add(this.dataGridView2);
-            this.addInventoryTab.Controls.Add(this.tInvenRoomCombobox);
-            this.addInventoryTab.Controls.Add(this.tInvenEquipmentCombobox);
+            this.addInventoryTab.Controls.Add(this.addInvenRoomCombobox);
+            this.addInventoryTab.Controls.Add(this.addInvenEquipmentCombobox);
             this.addInventoryTab.Controls.Add(this.insertButton);
             this.addInventoryTab.Controls.Add(this.clearInventoryButton);
             this.addInventoryTab.Controls.Add(this.label2);
             this.addInventoryTab.Controls.Add(this.label3);
-            this.addInventoryTab.Controls.Add(this.tInvenBuildingCombobox);
+            this.addInventoryTab.Controls.Add(this.addInvenBuildingCombobox);
             this.addInventoryTab.Controls.Add(this.label4);
-            this.addInventoryTab.Controls.Add(this.tInvenCategoryCombobox);
+            this.addInventoryTab.Controls.Add(this.addInvenCategoryCombobox);
             this.addInventoryTab.Controls.Add(this.label5);
             this.addInventoryTab.Location = new System.Drawing.Point(4, 5);
-            this.addInventoryTab.Margin = new System.Windows.Forms.Padding(2);
             this.addInventoryTab.Name = "addInventoryTab";
-            this.addInventoryTab.Padding = new System.Windows.Forms.Padding(2);
-            this.addInventoryTab.Size = new System.Drawing.Size(1077, 477);
+            this.addInventoryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.addInventoryTab.Size = new System.Drawing.Size(1620, 740);
             this.addInventoryTab.TabIndex = 0;
             this.addInventoryTab.Text = "Inventory";
             // 
@@ -424,11 +454,9 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.InvenDescriptionCheckbox);
             this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Location = new System.Drawing.Point(548, 358);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Location = new System.Drawing.Point(822, 552);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(176, 47);
+            this.groupBox2.Size = new System.Drawing.Size(264, 72);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             // 
@@ -436,9 +464,10 @@
             // 
             this.InvenDescriptionCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.InvenDescriptionCheckbox.AutoSize = true;
-            this.InvenDescriptionCheckbox.Location = new System.Drawing.Point(75, 30);
+            this.InvenDescriptionCheckbox.Location = new System.Drawing.Point(113, 46);
+            this.InvenDescriptionCheckbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.InvenDescriptionCheckbox.Name = "InvenDescriptionCheckbox";
-            this.InvenDescriptionCheckbox.Size = new System.Drawing.Size(15, 14);
+            this.InvenDescriptionCheckbox.Size = new System.Drawing.Size(22, 21);
             this.InvenDescriptionCheckbox.TabIndex = 23;
             this.InvenDescriptionCheckbox.UseVisualStyleBackColor = true;
             // 
@@ -447,29 +476,32 @@
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(3, 6);
+            this.label17.Location = new System.Drawing.Point(4, 9);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(169, 22);
+            this.label17.Size = new System.Drawing.Size(256, 32);
             this.label17.TabIndex = 22;
             this.label17.Text = "Include Description";
             // 
-            // tInvenQuantityTextbox
+            // addInvenQuantityTextbox
             // 
-            this.tInvenQuantityTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tInvenQuantityTextbox.Location = new System.Drawing.Point(548, 435);
-            this.tInvenQuantityTextbox.Name = "tInvenQuantityTextbox";
-            this.tInvenQuantityTextbox.Size = new System.Drawing.Size(176, 24);
-            this.tInvenQuantityTextbox.TabIndex = 21;
-            this.tInvenQuantityTextbox.TextChanged += new System.EventHandler(this.tInvenQuantityTextbox_TextChanged);
+            this.addInvenQuantityTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addInvenQuantityTextbox.Location = new System.Drawing.Point(822, 670);
+            this.addInvenQuantityTextbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.addInvenQuantityTextbox.Name = "addInvenQuantityTextbox";
+            this.addInvenQuantityTextbox.Size = new System.Drawing.Size(262, 33);
+            this.addInvenQuantityTextbox.TabIndex = 21;
+            this.addInvenQuantityTextbox.TextChanged += new System.EventHandler(this.tInvenQuantityTextbox_TextChanged);
             // 
             // label16
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label16.Location = new System.Drawing.Point(545, 415);
+            this.label16.Location = new System.Drawing.Point(818, 639);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(64, 17);
+            this.label16.Size = new System.Drawing.Size(94, 25);
             this.label16.TabIndex = 20;
             this.label16.Text = "Quantity";
             // 
@@ -477,9 +509,10 @@
             // 
             this.barcodeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.barcodeButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barcodeButton.Location = new System.Drawing.Point(935, 364);
+            this.barcodeButton.Location = new System.Drawing.Point(1402, 561);
+            this.barcodeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.barcodeButton.Name = "barcodeButton";
-            this.barcodeButton.Size = new System.Drawing.Size(106, 92);
+            this.barcodeButton.Size = new System.Drawing.Size(159, 142);
             this.barcodeButton.TabIndex = 17;
             this.barcodeButton.Text = "BARCODE SCAN";
             this.barcodeButton.UseVisualStyleBackColor = true;
@@ -510,15 +543,13 @@
             this.Column8,
             this.Column9,
             this.Column10});
-            this.dataGridView2.Location = new System.Drawing.Point(4, 2);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView2.Location = new System.Drawing.Point(6, 3);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
-            this.dataGridView2.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(1070, 341);
+            this.dataGridView2.Size = new System.Drawing.Size(1605, 526);
             this.dataGridView2.TabIndex = 4;
             // 
             // Column7
@@ -545,37 +576,34 @@
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
             // 
-            // tInvenRoomCombobox
+            // addInvenRoomCombobox
             // 
-            this.tInvenRoomCombobox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tInvenRoomCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tInvenRoomCombobox.FormattingEnabled = true;
-            this.tInvenRoomCombobox.Location = new System.Drawing.Point(304, 434);
-            this.tInvenRoomCombobox.Margin = new System.Windows.Forms.Padding(2);
-            this.tInvenRoomCombobox.Name = "tInvenRoomCombobox";
-            this.tInvenRoomCombobox.Size = new System.Drawing.Size(189, 25);
-            this.tInvenRoomCombobox.TabIndex = 16;
-            this.tInvenRoomCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenRoomCombobox_SelectedIndexChanged);
+            this.addInvenRoomCombobox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addInvenRoomCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addInvenRoomCombobox.FormattingEnabled = true;
+            this.addInvenRoomCombobox.Location = new System.Drawing.Point(456, 669);
+            this.addInvenRoomCombobox.Name = "addInvenRoomCombobox";
+            this.addInvenRoomCombobox.Size = new System.Drawing.Size(282, 33);
+            this.addInvenRoomCombobox.TabIndex = 16;
+            this.addInvenRoomCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenRoomCombobox_SelectedIndexChanged);
             // 
-            // tInvenEquipmentCombobox
+            // addInvenEquipmentCombobox
             // 
-            this.tInvenEquipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tInvenEquipmentCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tInvenEquipmentCombobox.FormattingEnabled = true;
-            this.tInvenEquipmentCombobox.Location = new System.Drawing.Point(14, 373);
-            this.tInvenEquipmentCombobox.Margin = new System.Windows.Forms.Padding(2);
-            this.tInvenEquipmentCombobox.Name = "tInvenEquipmentCombobox";
-            this.tInvenEquipmentCombobox.Size = new System.Drawing.Size(212, 25);
-            this.tInvenEquipmentCombobox.TabIndex = 0;
-            this.tInvenEquipmentCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenEquipmentCombobox_SelectedIndexChanged);
+            this.addInvenEquipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addInvenEquipmentCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addInvenEquipmentCombobox.FormattingEnabled = true;
+            this.addInvenEquipmentCombobox.Location = new System.Drawing.Point(21, 575);
+            this.addInvenEquipmentCombobox.Name = "addInvenEquipmentCombobox";
+            this.addInvenEquipmentCombobox.Size = new System.Drawing.Size(316, 33);
+            this.addInvenEquipmentCombobox.TabIndex = 0;
+            this.addInvenEquipmentCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenEquipmentCombobox_SelectedIndexChanged);
             // 
             // insertButton
             // 
             this.insertButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.insertButton.Location = new System.Drawing.Point(787, 364);
-            this.insertButton.Margin = new System.Windows.Forms.Padding(2);
+            this.insertButton.Location = new System.Drawing.Point(1180, 561);
             this.insertButton.Name = "insertButton";
-            this.insertButton.Size = new System.Drawing.Size(107, 41);
+            this.insertButton.Size = new System.Drawing.Size(160, 63);
             this.insertButton.TabIndex = 5;
             this.insertButton.Text = "Insert";
             this.insertButton.UseVisualStyleBackColor = true;
@@ -584,10 +612,9 @@
             // clearInventoryButton
             // 
             this.clearInventoryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearInventoryButton.Location = new System.Drawing.Point(787, 415);
-            this.clearInventoryButton.Margin = new System.Windows.Forms.Padding(2);
+            this.clearInventoryButton.Location = new System.Drawing.Point(1180, 639);
             this.clearInventoryButton.Name = "clearInventoryButton";
-            this.clearInventoryButton.Size = new System.Drawing.Size(107, 41);
+            this.clearInventoryButton.Size = new System.Drawing.Size(160, 63);
             this.clearInventoryButton.TabIndex = 6;
             this.clearInventoryButton.Text = "Clear";
             this.clearInventoryButton.UseVisualStyleBackColor = true;
@@ -599,10 +626,9 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(11, 354);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(16, 546);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.Size = new System.Drawing.Size(116, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Equipment";
             // 
@@ -612,25 +638,23 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(301, 359);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(452, 553);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 17);
+            this.label3.Size = new System.Drawing.Size(92, 25);
             this.label3.TabIndex = 3;
             this.label3.Text = "Building";
             // 
-            // tInvenBuildingCombobox
+            // addInvenBuildingCombobox
             // 
-            this.tInvenBuildingCombobox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tInvenBuildingCombobox.BackColor = System.Drawing.SystemColors.Window;
-            this.tInvenBuildingCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tInvenBuildingCombobox.FormattingEnabled = true;
-            this.tInvenBuildingCombobox.Location = new System.Drawing.Point(304, 380);
-            this.tInvenBuildingCombobox.Margin = new System.Windows.Forms.Padding(2);
-            this.tInvenBuildingCombobox.Name = "tInvenBuildingCombobox";
-            this.tInvenBuildingCombobox.Size = new System.Drawing.Size(189, 25);
-            this.tInvenBuildingCombobox.TabIndex = 2;
-            this.tInvenBuildingCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenBuildingCombobox_SelectedIndexChanged);
+            this.addInvenBuildingCombobox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addInvenBuildingCombobox.BackColor = System.Drawing.SystemColors.Window;
+            this.addInvenBuildingCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addInvenBuildingCombobox.FormattingEnabled = true;
+            this.addInvenBuildingCombobox.Location = new System.Drawing.Point(456, 586);
+            this.addInvenBuildingCombobox.Name = "addInvenBuildingCombobox";
+            this.addInvenBuildingCombobox.Size = new System.Drawing.Size(282, 33);
+            this.addInvenBuildingCombobox.TabIndex = 2;
+            this.addInvenBuildingCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenBuildingCombobox_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -638,24 +662,22 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(301, 414);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(452, 638);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(67, 25);
             this.label4.TabIndex = 7;
             this.label4.Text = "Room";
             // 
-            // tInvenCategoryCombobox
+            // addInvenCategoryCombobox
             // 
-            this.tInvenCategoryCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tInvenCategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tInvenCategoryCombobox.FormattingEnabled = true;
-            this.tInvenCategoryCombobox.Location = new System.Drawing.Point(15, 435);
-            this.tInvenCategoryCombobox.Margin = new System.Windows.Forms.Padding(2);
-            this.tInvenCategoryCombobox.Name = "tInvenCategoryCombobox";
-            this.tInvenCategoryCombobox.Size = new System.Drawing.Size(212, 25);
-            this.tInvenCategoryCombobox.TabIndex = 9;
-            this.tInvenCategoryCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenCategoryCombobox_SelectedIndexChanged);
+            this.addInvenCategoryCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addInvenCategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addInvenCategoryCombobox.FormattingEnabled = true;
+            this.addInvenCategoryCombobox.Location = new System.Drawing.Point(22, 670);
+            this.addInvenCategoryCombobox.Name = "addInvenCategoryCombobox";
+            this.addInvenCategoryCombobox.Size = new System.Drawing.Size(316, 33);
+            this.addInvenCategoryCombobox.TabIndex = 9;
+            this.addInvenCategoryCombobox.SelectedIndexChanged += new System.EventHandler(this.tInvenCategoryCombobox_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -663,10 +685,9 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(12, 416);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(18, 641);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 17);
+            this.label5.Size = new System.Drawing.Size(97, 25);
             this.label5.TabIndex = 10;
             this.label5.Text = "Category";
             // 
@@ -680,11 +701,8 @@
             this.editInventoryTab.Controls.Add(this.groupBox1);
             this.editInventoryTab.Controls.Add(this.refreshEditButton);
             this.editInventoryTab.Controls.Add(this.editApplyButton);
-            this.editInventoryTab.Controls.Add(this.categoryEditCheckbox);
             this.editInventoryTab.Controls.Add(this.label25);
-            this.editInventoryTab.Controls.Add(this.userEditCheckbox);
             this.editInventoryTab.Controls.Add(this.inventoryEditCombobox);
-            this.editInventoryTab.Controls.Add(this.nameEditCheckbox);
             this.editInventoryTab.Controls.Add(this.label6);
             this.editInventoryTab.Controls.Add(this.categoryEditCombobox);
             this.editInventoryTab.Controls.Add(this.nameEditCombobox);
@@ -692,10 +710,9 @@
             this.editInventoryTab.Controls.Add(this.label24);
             this.editInventoryTab.Controls.Add(this.userEditCombobox);
             this.editInventoryTab.Location = new System.Drawing.Point(4, 5);
-            this.editInventoryTab.Margin = new System.Windows.Forms.Padding(2);
             this.editInventoryTab.Name = "editInventoryTab";
-            this.editInventoryTab.Padding = new System.Windows.Forms.Padding(2);
-            this.editInventoryTab.Size = new System.Drawing.Size(1077, 477);
+            this.editInventoryTab.Padding = new System.Windows.Forms.Padding(3);
+            this.editInventoryTab.Size = new System.Drawing.Size(1620, 740);
             this.editInventoryTab.TabIndex = 1;
             this.editInventoryTab.Text = "Edit";
             this.editInventoryTab.UseVisualStyleBackColor = true;
@@ -706,10 +723,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(609, 185);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(914, 286);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(75, 22);
+            this.label12.Size = new System.Drawing.Size(110, 32);
             this.label12.TabIndex = 27;
             this.label12.Text = "AFTER";
             // 
@@ -717,10 +733,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(609, 33);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(914, 51);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 22);
+            this.label7.Size = new System.Drawing.Size(133, 32);
             this.label7.TabIndex = 26;
             this.label7.Text = "BEFORE";
             // 
@@ -737,11 +752,10 @@
             this.Column5,
             this.Column3,
             this.Column6});
-            this.dataGridView6.Location = new System.Drawing.Point(225, 215);
-            this.dataGridView6.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView6.Location = new System.Drawing.Point(338, 332);
             this.dataGridView6.Name = "dataGridView6";
             this.dataGridView6.RowTemplate.Height = 28;
-            this.dataGridView6.Size = new System.Drawing.Size(845, 188);
+            this.dataGridView6.Size = new System.Drawing.Size(1268, 289);
             this.dataGridView6.TabIndex = 25;
             // 
             // Column1
@@ -781,11 +795,10 @@
             this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView5.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(225, 57);
-            this.dataGridView5.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView5.Location = new System.Drawing.Point(338, 88);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.RowTemplate.Height = 28;
-            this.dataGridView5.Size = new System.Drawing.Size(845, 120);
+            this.dataGridView5.Size = new System.Drawing.Size(1268, 186);
             this.dataGridView5.TabIndex = 24;
             // 
             // groupBox1
@@ -793,13 +806,10 @@
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.roomEditCombobox);
             this.groupBox1.Controls.Add(this.buildingEditCombobox);
-            this.groupBox1.Controls.Add(this.locationEditCheckbox);
             this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Location = new System.Drawing.Point(4, 326);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(6, 502);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(191, 138);
+            this.groupBox1.Size = new System.Drawing.Size(286, 212);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Location";
@@ -807,10 +817,9 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(8, 21);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Location = new System.Drawing.Point(12, 32);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(85, 17);
+            this.label23.Size = new System.Drawing.Size(125, 25);
             this.label23.TabIndex = 3;
             this.label23.Text = "BUILDING";
             // 
@@ -819,10 +828,9 @@
             this.roomEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roomEditCombobox.Enabled = false;
             this.roomEditCombobox.FormattingEnabled = true;
-            this.roomEditCombobox.Location = new System.Drawing.Point(11, 90);
-            this.roomEditCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.roomEditCombobox.Location = new System.Drawing.Point(16, 138);
             this.roomEditCombobox.Name = "roomEditCombobox";
-            this.roomEditCombobox.Size = new System.Drawing.Size(170, 25);
+            this.roomEditCombobox.Size = new System.Drawing.Size(253, 33);
             this.roomEditCombobox.TabIndex = 22;
             this.roomEditCombobox.SelectedIndexChanged += new System.EventHandler(this.roomEditCombobox_SelectedIndexChanged);
             // 
@@ -831,43 +839,27 @@
             this.buildingEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.buildingEditCombobox.Enabled = false;
             this.buildingEditCombobox.FormattingEnabled = true;
-            this.buildingEditCombobox.Location = new System.Drawing.Point(11, 40);
-            this.buildingEditCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.buildingEditCombobox.Location = new System.Drawing.Point(16, 62);
             this.buildingEditCombobox.Name = "buildingEditCombobox";
-            this.buildingEditCombobox.Size = new System.Drawing.Size(170, 25);
+            this.buildingEditCombobox.Size = new System.Drawing.Size(253, 33);
             this.buildingEditCombobox.TabIndex = 2;
             this.buildingEditCombobox.SelectedIndexChanged += new System.EventHandler(this.buildingEditCombobox_SelectedIndexChanged);
-            // 
-            // locationEditCheckbox
-            // 
-            this.locationEditCheckbox.AutoSize = true;
-            this.locationEditCheckbox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.locationEditCheckbox.Location = new System.Drawing.Point(126, 15);
-            this.locationEditCheckbox.Margin = new System.Windows.Forms.Padding(2);
-            this.locationEditCheckbox.Name = "locationEditCheckbox";
-            this.locationEditCheckbox.Size = new System.Drawing.Size(55, 23);
-            this.locationEditCheckbox.TabIndex = 17;
-            this.locationEditCheckbox.Text = "Edit";
-            this.locationEditCheckbox.UseVisualStyleBackColor = true;
-            this.locationEditCheckbox.CheckedChanged += new System.EventHandler(this.locationEditCheckbox_CheckedChanged);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(8, 71);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Location = new System.Drawing.Point(12, 109);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(58, 17);
+            this.label18.Size = new System.Drawing.Size(81, 25);
             this.label18.TabIndex = 9;
             this.label18.Text = "ROOM";
             // 
             // refreshEditButton
             // 
             this.refreshEditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.refreshEditButton.Location = new System.Drawing.Point(723, 416);
-            this.refreshEditButton.Margin = new System.Windows.Forms.Padding(2);
+            this.refreshEditButton.Location = new System.Drawing.Point(1084, 641);
             this.refreshEditButton.Name = "refreshEditButton";
-            this.refreshEditButton.Size = new System.Drawing.Size(98, 35);
+            this.refreshEditButton.Size = new System.Drawing.Size(147, 54);
             this.refreshEditButton.TabIndex = 8;
             this.refreshEditButton.Text = "Refresh";
             this.refreshEditButton.UseVisualStyleBackColor = true;
@@ -876,81 +868,41 @@
             // editApplyButton
             // 
             this.editApplyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.editApplyButton.Location = new System.Drawing.Point(465, 416);
-            this.editApplyButton.Margin = new System.Windows.Forms.Padding(2);
+            this.editApplyButton.Location = new System.Drawing.Point(698, 641);
             this.editApplyButton.Name = "editApplyButton";
-            this.editApplyButton.Size = new System.Drawing.Size(98, 35);
+            this.editApplyButton.Size = new System.Drawing.Size(147, 54);
             this.editApplyButton.TabIndex = 7;
             this.editApplyButton.Text = "Apply";
             this.editApplyButton.UseVisualStyleBackColor = true;
             this.editApplyButton.Click += new System.EventHandler(this.editApplyButton_Click);
             // 
-            // categoryEditCheckbox
-            // 
-            this.categoryEditCheckbox.AutoSize = true;
-            this.categoryEditCheckbox.Location = new System.Drawing.Point(130, 171);
-            this.categoryEditCheckbox.Margin = new System.Windows.Forms.Padding(2);
-            this.categoryEditCheckbox.Name = "categoryEditCheckbox";
-            this.categoryEditCheckbox.Size = new System.Drawing.Size(54, 21);
-            this.categoryEditCheckbox.TabIndex = 19;
-            this.categoryEditCheckbox.Text = "Edit";
-            this.categoryEditCheckbox.UseVisualStyleBackColor = true;
-            this.categoryEditCheckbox.CheckedChanged += new System.EventHandler(this.categoryEditCheckbox_CheckedChanged);
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(10, 20);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Location = new System.Drawing.Point(15, 31);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(93, 17);
+            this.label25.Size = new System.Drawing.Size(135, 25);
             this.label25.TabIndex = 6;
             this.label25.Text = "Inventory ID";
-            // 
-            // userEditCheckbox
-            // 
-            this.userEditCheckbox.AutoSize = true;
-            this.userEditCheckbox.Location = new System.Drawing.Point(130, 239);
-            this.userEditCheckbox.Margin = new System.Windows.Forms.Padding(2);
-            this.userEditCheckbox.Name = "userEditCheckbox";
-            this.userEditCheckbox.Size = new System.Drawing.Size(54, 21);
-            this.userEditCheckbox.TabIndex = 18;
-            this.userEditCheckbox.Text = "Edit";
-            this.userEditCheckbox.UseVisualStyleBackColor = true;
-            this.userEditCheckbox.CheckedChanged += new System.EventHandler(this.userEditCheckbox_CheckedChanged);
             // 
             // inventoryEditCombobox
             // 
             this.inventoryEditCombobox.DisplayMember = "INVENTORY_ID";
             this.inventoryEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inventoryEditCombobox.FormattingEnabled = true;
-            this.inventoryEditCombobox.Location = new System.Drawing.Point(11, 39);
-            this.inventoryEditCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.inventoryEditCombobox.Location = new System.Drawing.Point(16, 60);
             this.inventoryEditCombobox.Name = "inventoryEditCombobox";
-            this.inventoryEditCombobox.Size = new System.Drawing.Size(174, 25);
+            this.inventoryEditCombobox.Size = new System.Drawing.Size(259, 33);
             this.inventoryEditCombobox.TabIndex = 5;
             this.inventoryEditCombobox.ValueMember = "INVENTORY_ID";
             this.inventoryEditCombobox.SelectedIndexChanged += new System.EventHandler(this.inventoryEditCombobox_SelectedIndexChanged);
             // 
-            // nameEditCheckbox
-            // 
-            this.nameEditCheckbox.AutoSize = true;
-            this.nameEditCheckbox.Location = new System.Drawing.Point(130, 104);
-            this.nameEditCheckbox.Margin = new System.Windows.Forms.Padding(2);
-            this.nameEditCheckbox.Name = "nameEditCheckbox";
-            this.nameEditCheckbox.Size = new System.Drawing.Size(54, 21);
-            this.nameEditCheckbox.TabIndex = 16;
-            this.nameEditCheckbox.Text = "Edit";
-            this.nameEditCheckbox.UseVisualStyleBackColor = true;
-            this.nameEditCheckbox.CheckedChanged += new System.EventHandler(this.nameEditCheckbox_CheckedChanged);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 175);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(12, 269);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 17);
+            this.label6.Size = new System.Drawing.Size(134, 25);
             this.label6.TabIndex = 15;
             this.label6.Text = "CATEGORY";
             // 
@@ -959,41 +911,38 @@
             this.categoryEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryEditCombobox.Enabled = false;
             this.categoryEditCombobox.FormattingEnabled = true;
-            this.categoryEditCombobox.Location = new System.Drawing.Point(11, 196);
-            this.categoryEditCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.categoryEditCombobox.Location = new System.Drawing.Point(16, 302);
             this.categoryEditCombobox.Name = "categoryEditCombobox";
-            this.categoryEditCombobox.Size = new System.Drawing.Size(174, 25);
+            this.categoryEditCombobox.Size = new System.Drawing.Size(259, 33);
             this.categoryEditCombobox.TabIndex = 14;
             this.categoryEditCombobox.SelectedIndexChanged += new System.EventHandler(this.categoryEditCombobox_SelectedIndexChanged);
             // 
             // nameEditCombobox
             // 
             this.nameEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.nameEditCombobox.Enabled = false;
             this.nameEditCombobox.FormattingEnabled = true;
-            this.nameEditCombobox.Location = new System.Drawing.Point(11, 129);
-            this.nameEditCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.nameEditCombobox.Location = new System.Drawing.Point(16, 198);
             this.nameEditCombobox.Name = "nameEditCombobox";
-            this.nameEditCombobox.Size = new System.Drawing.Size(174, 25);
+            this.nameEditCombobox.Size = new System.Drawing.Size(259, 33);
             this.nameEditCombobox.TabIndex = 0;
             this.nameEditCombobox.SelectedIndexChanged += new System.EventHandler(this.nameEditCombobox_SelectedIndexChanged);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 245);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Location = new System.Drawing.Point(15, 377);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(48, 17);
+            this.label22.Size = new System.Drawing.Size(70, 25);
             this.label22.TabIndex = 5;
             this.label22.Text = "USER";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(10, 108);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Location = new System.Drawing.Point(15, 166);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(102, 17);
+            this.label24.Size = new System.Drawing.Size(149, 25);
             this.label24.TabIndex = 1;
             this.label24.Text = "EQUIPMENT";
             // 
@@ -1002,10 +951,9 @@
             this.userEditCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userEditCombobox.Enabled = false;
             this.userEditCombobox.FormattingEnabled = true;
-            this.userEditCombobox.Location = new System.Drawing.Point(11, 264);
-            this.userEditCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.userEditCombobox.Location = new System.Drawing.Point(16, 406);
             this.userEditCombobox.Name = "userEditCombobox";
-            this.userEditCombobox.Size = new System.Drawing.Size(174, 25);
+            this.userEditCombobox.Size = new System.Drawing.Size(259, 33);
             this.userEditCombobox.TabIndex = 4;
             this.userEditCombobox.SelectedIndexChanged += new System.EventHandler(this.userEditCombobox_SelectedIndexChanged);
             // 
@@ -1021,9 +969,8 @@
             this.deleteInventoryTab.Controls.Add(this.inventoryDeleteCombobox);
             this.deleteInventoryTab.Controls.Add(this.deleteButton);
             this.deleteInventoryTab.Location = new System.Drawing.Point(4, 5);
-            this.deleteInventoryTab.Margin = new System.Windows.Forms.Padding(2);
             this.deleteInventoryTab.Name = "deleteInventoryTab";
-            this.deleteInventoryTab.Size = new System.Drawing.Size(1077, 477);
+            this.deleteInventoryTab.Size = new System.Drawing.Size(1620, 740);
             this.deleteInventoryTab.TabIndex = 2;
             this.deleteInventoryTab.Text = "Delete";
             this.deleteInventoryTab.UseVisualStyleBackColor = true;
@@ -1032,10 +979,9 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(20, 17);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(30, 27);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(92, 17);
+            this.label14.Size = new System.Drawing.Size(134, 25);
             this.label14.TabIndex = 11;
             this.label14.Text = "Search Filter";
             // 
@@ -1051,19 +997,17 @@
             "EQUIPMENT_NAME",
             "CATEGORY_NAME",
             "INVENTORY_ID"});
-            this.filterDeleteCombobox.Location = new System.Drawing.Point(23, 36);
-            this.filterDeleteCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.filterDeleteCombobox.Location = new System.Drawing.Point(34, 56);
             this.filterDeleteCombobox.Name = "filterDeleteCombobox";
-            this.filterDeleteCombobox.Size = new System.Drawing.Size(179, 25);
+            this.filterDeleteCombobox.Size = new System.Drawing.Size(266, 33);
             this.filterDeleteCombobox.TabIndex = 10;
             // 
             // searchDeleteButton
             // 
             this.searchDeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.searchDeleteButton.Location = new System.Drawing.Point(547, 29);
-            this.searchDeleteButton.Margin = new System.Windows.Forms.Padding(2);
+            this.searchDeleteButton.Location = new System.Drawing.Point(820, 46);
             this.searchDeleteButton.Name = "searchDeleteButton";
-            this.searchDeleteButton.Size = new System.Drawing.Size(99, 32);
+            this.searchDeleteButton.Size = new System.Drawing.Size(148, 49);
             this.searchDeleteButton.TabIndex = 9;
             this.searchDeleteButton.Text = "Search";
             this.searchDeleteButton.UseVisualStyleBackColor = true;
@@ -1071,10 +1015,9 @@
             // searchDeleteTextbox
             // 
             this.searchDeleteTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.searchDeleteTextbox.Location = new System.Drawing.Point(224, 37);
-            this.searchDeleteTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.searchDeleteTextbox.Location = new System.Drawing.Point(336, 58);
             this.searchDeleteTextbox.Name = "searchDeleteTextbox";
-            this.searchDeleteTextbox.Size = new System.Drawing.Size(304, 24);
+            this.searchDeleteTextbox.Size = new System.Drawing.Size(454, 33);
             this.searchDeleteTextbox.TabIndex = 8;
             this.searchDeleteTextbox.TextChanged += new System.EventHandler(this.searchDeleteTextbox_TextChanged);
             // 
@@ -1089,21 +1032,19 @@
             this.dataGridView4.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.dataGridView4.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(7, 85);
-            this.dataGridView4.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView4.Location = new System.Drawing.Point(10, 131);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowTemplate.Height = 28;
-            this.dataGridView4.Size = new System.Drawing.Size(1067, 386);
+            this.dataGridView4.Size = new System.Drawing.Size(1600, 595);
             this.dataGridView4.TabIndex = 5;
             // 
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(855, 39);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(1282, 61);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(93, 17);
+            this.label11.Size = new System.Drawing.Size(135, 25);
             this.label11.TabIndex = 2;
             this.label11.Text = "Inventory ID";
             // 
@@ -1112,100 +1053,137 @@
             this.inventoryDeleteCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.inventoryDeleteCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inventoryDeleteCombobox.FormattingEnabled = true;
-            this.inventoryDeleteCombobox.Location = new System.Drawing.Point(858, 56);
-            this.inventoryDeleteCombobox.Margin = new System.Windows.Forms.Padding(2);
+            this.inventoryDeleteCombobox.Location = new System.Drawing.Point(1287, 87);
             this.inventoryDeleteCombobox.Name = "inventoryDeleteCombobox";
-            this.inventoryDeleteCombobox.Size = new System.Drawing.Size(176, 25);
+            this.inventoryDeleteCombobox.Size = new System.Drawing.Size(262, 33);
             this.inventoryDeleteCombobox.TabIndex = 1;
             // 
             // deleteButton
             // 
             this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteButton.BackColor = System.Drawing.Color.Transparent;
-            this.deleteButton.Location = new System.Drawing.Point(887, 2);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteButton.Location = new System.Drawing.Point(1330, 4);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(99, 32);
+            this.deleteButton.Size = new System.Drawing.Size(148, 49);
             this.deleteButton.TabIndex = 0;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = false;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // searchInventoryButton
+            // 
+            this.searchInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.searchInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.searchInventoryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
+            this.searchInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.searchInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
+            this.searchInventoryButton.Location = new System.Drawing.Point(164, 8);
+            this.searchInventoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.searchInventoryButton.Name = "searchInventoryButton";
+            this.searchInventoryButton.Size = new System.Drawing.Size(154, 43);
+            this.searchInventoryButton.TabIndex = 26;
+            this.searchInventoryButton.Text = "Search";
+            this.searchInventoryButton.UseVisualStyleBackColor = false;
+            this.searchInventoryButton.Click += new System.EventHandler(this.searchInnerButton_Click);
+            // 
             // createTab
             // 
-            this.createTab.Controls.Add(this.panel1);
+            this.createTab.Controls.Add(this.locationTabButton);
+            this.createTab.Controls.Add(this.equipmentTabButton);
+            this.createTab.Controls.Add(this.createInnerTab);
             this.createTab.Location = new System.Drawing.Point(4, 5);
-            this.createTab.Margin = new System.Windows.Forms.Padding(2);
             this.createTab.Name = "createTab";
-            this.createTab.Size = new System.Drawing.Size(1176, 513);
+            this.createTab.Size = new System.Drawing.Size(1768, 795);
             this.createTab.TabIndex = 3;
             this.createTab.Text = "Create";
             this.createTab.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // locationTabButton
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.panel1.Controls.Add(this.createInnerTab);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1176, 513);
-            this.panel1.TabIndex = 1;
+            this.locationTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.locationTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.locationTabButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
+            this.locationTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.locationTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.locationTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
+            this.locationTabButton.Location = new System.Drawing.Point(315, 5);
+            this.locationTabButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.locationTabButton.Name = "locationTabButton";
+            this.locationTabButton.Size = new System.Drawing.Size(154, 43);
+            this.locationTabButton.TabIndex = 28;
+            this.locationTabButton.Text = "Location";
+            this.locationTabButton.UseVisualStyleBackColor = false;
+            this.locationTabButton.Click += new System.EventHandler(this.locationTabButton_Click);
+            // 
+            // equipmentTabButton
+            // 
+            this.equipmentTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.equipmentTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.equipmentTabButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
+            this.equipmentTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.equipmentTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.equipmentTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
+            this.equipmentTabButton.Location = new System.Drawing.Point(160, 5);
+            this.equipmentTabButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.equipmentTabButton.Name = "equipmentTabButton";
+            this.equipmentTabButton.Size = new System.Drawing.Size(154, 43);
+            this.equipmentTabButton.TabIndex = 27;
+            this.equipmentTabButton.Text = "Equipment";
+            this.equipmentTabButton.UseVisualStyleBackColor = false;
+            this.equipmentTabButton.Click += new System.EventHandler(this.equipmentTabButton_Click);
             // 
             // createInnerTab
             // 
+            this.createInnerTab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.createInnerTab.Controls.Add(this.equipmentTab);
             this.createInnerTab.Controls.Add(this.locationTab);
-            this.createInnerTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.createInnerTab.ItemSize = new System.Drawing.Size(0, 1);
-            this.createInnerTab.Location = new System.Drawing.Point(0, 0);
-            this.createInnerTab.Margin = new System.Windows.Forms.Padding(2);
+            this.createInnerTab.Location = new System.Drawing.Point(146, 55);
             this.createInnerTab.Name = "createInnerTab";
             this.createInnerTab.SelectedIndex = 0;
-            this.createInnerTab.Size = new System.Drawing.Size(1176, 513);
+            this.createInnerTab.Size = new System.Drawing.Size(1616, 789);
+            this.createInnerTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.createInnerTab.TabIndex = 17;
             // 
             // equipmentTab
             // 
-            this.equipmentTab.Controls.Add(this.locationTabButton);
-            this.equipmentTab.Controls.Add(this.equipmentTabButton);
-            this.equipmentTab.Controls.Add(this.createEquipmentListview);
-            this.equipmentTab.Controls.Add(this.productNoTextbox);
-            this.equipmentTab.Controls.Add(this.createCategoryCombobox);
+            this.equipmentTab.Controls.Add(this.EquipListview);
+            this.equipmentTab.Controls.Add(this.createProductText);
+            this.equipmentTab.Controls.Add(this.createCategoryCombo);
             this.equipmentTab.Controls.Add(this.createButton);
             this.equipmentTab.Controls.Add(this.label8);
             this.equipmentTab.Controls.Add(this.label10);
             this.equipmentTab.Controls.Add(this.refreshButton);
             this.equipmentTab.Controls.Add(this.label9);
-            this.equipmentTab.Controls.Add(this.createEquipmentCombobox);
+            this.equipmentTab.Controls.Add(this.createEquipText);
             this.equipmentTab.Location = new System.Drawing.Point(4, 5);
-            this.equipmentTab.Margin = new System.Windows.Forms.Padding(2);
             this.equipmentTab.Name = "equipmentTab";
-            this.equipmentTab.Padding = new System.Windows.Forms.Padding(2);
-            this.equipmentTab.Size = new System.Drawing.Size(1168, 504);
+            this.equipmentTab.Padding = new System.Windows.Forms.Padding(3);
+            this.equipmentTab.Size = new System.Drawing.Size(1608, 780);
             this.equipmentTab.TabIndex = 0;
             this.equipmentTab.Text = "Equipment";
             this.equipmentTab.UseVisualStyleBackColor = true;
             // 
-            // createEquipmentListview
+            // EquipListview
             // 
-            this.createEquipmentListview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.EquipListview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.createEquipmentListview.BackColor = System.Drawing.Color.AliceBlue;
-            this.createEquipmentListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.EquipListview.BackColor = System.Drawing.Color.AliceBlue;
+            this.EquipListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.equipmentHeader,
             this.categoryHeader,
             this.productNoHeader});
-            this.createEquipmentListview.GridLines = true;
-            this.createEquipmentListview.Location = new System.Drawing.Point(100, 37);
-            this.createEquipmentListview.Margin = new System.Windows.Forms.Padding(2);
-            this.createEquipmentListview.Name = "createEquipmentListview";
-            this.createEquipmentListview.Size = new System.Drawing.Size(1066, 407);
-            this.createEquipmentListview.TabIndex = 17;
-            this.createEquipmentListview.UseCompatibleStateImageBehavior = false;
-            this.createEquipmentListview.View = System.Windows.Forms.View.Details;
+            this.EquipListview.GridLines = true;
+            this.EquipListview.Location = new System.Drawing.Point(6, 0);
+            this.EquipListview.Name = "EquipListview";
+            this.EquipListview.Size = new System.Drawing.Size(1590, 624);
+            this.EquipListview.TabIndex = 17;
+            this.EquipListview.UseCompatibleStateImageBehavior = false;
+            this.EquipListview.View = System.Windows.Forms.View.Details;
             // 
             // equipmentHeader
             // 
@@ -1222,33 +1200,30 @@
             this.productNoHeader.Text = "PRODUCT NUMBER";
             this.productNoHeader.Width = 457;
             // 
-            // productNoTextbox
+            // createProductText
             // 
-            this.productNoTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.productNoTextbox.Location = new System.Drawing.Point(744, 467);
-            this.productNoTextbox.Margin = new System.Windows.Forms.Padding(2);
-            this.productNoTextbox.Name = "productNoTextbox";
-            this.productNoTextbox.Size = new System.Drawing.Size(169, 24);
-            this.productNoTextbox.TabIndex = 8;
+            this.createProductText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.createProductText.Location = new System.Drawing.Point(900, 674);
+            this.createProductText.Name = "createProductText";
+            this.createProductText.Size = new System.Drawing.Size(252, 33);
+            this.createProductText.TabIndex = 8;
             // 
-            // createCategoryCombobox
+            // createCategoryCombo
             // 
-            this.createCategoryCombobox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.createCategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.createCategoryCombobox.FormattingEnabled = true;
-            this.createCategoryCombobox.Location = new System.Drawing.Point(479, 466);
-            this.createCategoryCombobox.Margin = new System.Windows.Forms.Padding(2);
-            this.createCategoryCombobox.Name = "createCategoryCombobox";
-            this.createCategoryCombobox.Size = new System.Drawing.Size(169, 25);
-            this.createCategoryCombobox.TabIndex = 16;
+            this.createCategoryCombo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.createCategoryCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.createCategoryCombo.FormattingEnabled = true;
+            this.createCategoryCombo.Location = new System.Drawing.Point(498, 674);
+            this.createCategoryCombo.Name = "createCategoryCombo";
+            this.createCategoryCombo.Size = new System.Drawing.Size(252, 33);
+            this.createCategoryCombo.TabIndex = 16;
             // 
             // createButton
             // 
             this.createButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.createButton.Location = new System.Drawing.Point(962, 461);
-            this.createButton.Margin = new System.Windows.Forms.Padding(2);
+            this.createButton.Location = new System.Drawing.Point(1251, 663);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(75, 31);
+            this.createButton.Size = new System.Drawing.Size(122, 48);
             this.createButton.TabIndex = 0;
             this.createButton.Text = "Create";
             this.createButton.UseVisualStyleBackColor = true;
@@ -1259,10 +1234,9 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label8.Location = new System.Drawing.Point(476, 447);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(494, 646);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 17);
+            this.label8.Size = new System.Drawing.Size(97, 25);
             this.label8.TabIndex = 15;
             this.label8.Text = "Category";
             // 
@@ -1272,10 +1246,9 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(146, 446);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(60, 646);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 17);
+            this.label10.Size = new System.Drawing.Size(116, 25);
             this.label10.TabIndex = 1;
             this.label10.Text = "Equipment";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1283,10 +1256,9 @@
             // refreshButton
             // 
             this.refreshButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.refreshButton.Location = new System.Drawing.Point(1067, 461);
-            this.refreshButton.Margin = new System.Windows.Forms.Padding(2);
+            this.refreshButton.Location = new System.Drawing.Point(1442, 665);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(75, 31);
+            this.refreshButton.Size = new System.Drawing.Size(122, 48);
             this.refreshButton.TabIndex = 14;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -1297,21 +1269,19 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label9.Location = new System.Drawing.Point(741, 448);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(896, 646);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 17);
+            this.label9.Size = new System.Drawing.Size(170, 25);
             this.label9.TabIndex = 2;
             this.label9.Text = "Product Number";
             // 
-            // createEquipmentCombobox
+            // createEquipText
             // 
-            this.createEquipmentCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.createEquipmentCombobox.Location = new System.Drawing.Point(149, 465);
-            this.createEquipmentCombobox.Margin = new System.Windows.Forms.Padding(2);
-            this.createEquipmentCombobox.Name = "createEquipmentCombobox";
-            this.createEquipmentCombobox.Size = new System.Drawing.Size(169, 24);
-            this.createEquipmentCombobox.TabIndex = 7;
+            this.createEquipText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.createEquipText.Location = new System.Drawing.Point(64, 675);
+            this.createEquipText.Name = "createEquipText";
+            this.createEquipText.Size = new System.Drawing.Size(252, 33);
+            this.createEquipText.TabIndex = 7;
             // 
             // locationTab
             // 
@@ -1323,21 +1293,19 @@
             this.locationTab.Controls.Add(this.createBuildingButton);
             this.locationTab.Controls.Add(this.createRoomButton);
             this.locationTab.Controls.Add(this.createBuildingTextbox);
-            this.locationTab.Location = new System.Drawing.Point(4, 26);
-            this.locationTab.Margin = new System.Windows.Forms.Padding(2);
+            this.locationTab.Location = new System.Drawing.Point(4, 5);
             this.locationTab.Name = "locationTab";
-            this.locationTab.Padding = new System.Windows.Forms.Padding(2);
-            this.locationTab.Size = new System.Drawing.Size(1260, 561);
+            this.locationTab.Padding = new System.Windows.Forms.Padding(3);
+            this.locationTab.Size = new System.Drawing.Size(1608, 780);
             this.locationTab.TabIndex = 1;
             this.locationTab.Text = "Location";
             this.locationTab.UseVisualStyleBackColor = true;
             // 
             // deleteRoomButton
             // 
-            this.deleteRoomButton.Location = new System.Drawing.Point(877, 458);
-            this.deleteRoomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteRoomButton.Location = new System.Drawing.Point(1160, 621);
             this.deleteRoomButton.Name = "deleteRoomButton";
-            this.deleteRoomButton.Size = new System.Drawing.Size(75, 31);
+            this.deleteRoomButton.Size = new System.Drawing.Size(112, 48);
             this.deleteRoomButton.TabIndex = 25;
             this.deleteRoomButton.Text = "Delete";
             this.deleteRoomButton.UseVisualStyleBackColor = true;
@@ -1345,10 +1313,9 @@
             // 
             // deleteBuildingButton
             // 
-            this.deleteBuildingButton.Location = new System.Drawing.Point(254, 458);
-            this.deleteBuildingButton.Margin = new System.Windows.Forms.Padding(2);
+            this.deleteBuildingButton.Location = new System.Drawing.Point(308, 622);
             this.deleteBuildingButton.Name = "deleteBuildingButton";
-            this.deleteBuildingButton.Size = new System.Drawing.Size(75, 31);
+            this.deleteBuildingButton.Size = new System.Drawing.Size(112, 48);
             this.deleteBuildingButton.TabIndex = 24;
             this.deleteBuildingButton.Text = "Delete";
             this.deleteBuildingButton.UseVisualStyleBackColor = true;
@@ -1356,17 +1323,15 @@
             // 
             // createRoomListview
             // 
-            this.createRoomListview.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.createRoomListview.BackColor = System.Drawing.Color.AliceBlue;
             this.createRoomListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2,
             this.roomHeader});
             this.createRoomListview.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createRoomListview.GridLines = true;
-            this.createRoomListview.Location = new System.Drawing.Point(622, 0);
-            this.createRoomListview.Margin = new System.Windows.Forms.Padding(2);
+            this.createRoomListview.Location = new System.Drawing.Point(809, 3);
             this.createRoomListview.Name = "createRoomListview";
-            this.createRoomListview.Size = new System.Drawing.Size(539, 426);
+            this.createRoomListview.Size = new System.Drawing.Size(796, 597);
             this.createRoomListview.TabIndex = 23;
             this.createRoomListview.UseCompatibleStateImageBehavior = false;
             this.createRoomListview.View = System.Windows.Forms.View.Details;
@@ -1384,17 +1349,15 @@
             // 
             // createBuildingListview
             // 
-            this.createBuildingListview.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.createBuildingListview.BackColor = System.Drawing.Color.AliceBlue;
             this.createBuildingListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             columnHeader1,
             this.buildingHeader});
             this.createBuildingListview.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createBuildingListview.GridLines = true;
-            this.createBuildingListview.Location = new System.Drawing.Point(108, 0);
-            this.createBuildingListview.Margin = new System.Windows.Forms.Padding(2);
+            this.createBuildingListview.Location = new System.Drawing.Point(3, 3);
             this.createBuildingListview.Name = "createBuildingListview";
-            this.createBuildingListview.Size = new System.Drawing.Size(517, 426);
+            this.createBuildingListview.Size = new System.Drawing.Size(798, 597);
             this.createBuildingListview.TabIndex = 22;
             this.createBuildingListview.UseCompatibleStateImageBehavior = false;
             this.createBuildingListview.View = System.Windows.Forms.View.Details;
@@ -1409,19 +1372,17 @@
             // createRoomTextbox
             // 
             this.createRoomTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.createRoomTextbox.Location = new System.Drawing.Point(829, 501);
-            this.createRoomTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.createRoomTextbox.Location = new System.Drawing.Point(1098, 675);
             this.createRoomTextbox.Name = "createRoomTextbox";
-            this.createRoomTextbox.Size = new System.Drawing.Size(169, 24);
+            this.createRoomTextbox.Size = new System.Drawing.Size(252, 33);
             this.createRoomTextbox.TabIndex = 20;
             // 
             // createBuildingButton
             // 
             this.createBuildingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.createBuildingButton.Location = new System.Drawing.Point(160, 589);
-            this.createBuildingButton.Margin = new System.Windows.Forms.Padding(2);
+            this.createBuildingButton.Location = new System.Drawing.Point(240, 818);
             this.createBuildingButton.Name = "createBuildingButton";
-            this.createBuildingButton.Size = new System.Drawing.Size(75, 31);
+            this.createBuildingButton.Size = new System.Drawing.Size(112, 48);
             this.createBuildingButton.TabIndex = 18;
             this.createBuildingButton.Text = "Create";
             this.createBuildingButton.UseVisualStyleBackColor = true;
@@ -1430,10 +1391,9 @@
             // createRoomButton
             // 
             this.createRoomButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.createRoomButton.Location = new System.Drawing.Point(923, 589);
-            this.createRoomButton.Margin = new System.Windows.Forms.Padding(2);
+            this.createRoomButton.Location = new System.Drawing.Point(1098, 818);
             this.createRoomButton.Name = "createRoomButton";
-            this.createRoomButton.Size = new System.Drawing.Size(75, 31);
+            this.createRoomButton.Size = new System.Drawing.Size(112, 48);
             this.createRoomButton.TabIndex = 21;
             this.createRoomButton.Text = "Create";
             this.createRoomButton.UseVisualStyleBackColor = true;
@@ -1441,19 +1401,17 @@
             // createBuildingTextbox
             // 
             this.createBuildingTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.createBuildingTextbox.Location = new System.Drawing.Point(207, 501);
-            this.createBuildingTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.createBuildingTextbox.Location = new System.Drawing.Point(240, 675);
             this.createBuildingTextbox.Name = "createBuildingTextbox";
-            this.createBuildingTextbox.Size = new System.Drawing.Size(169, 24);
+            this.createBuildingTextbox.Size = new System.Drawing.Size(252, 33);
             this.createBuildingTextbox.TabIndex = 19;
             // 
             // historyTab
             // 
             this.historyTab.Controls.Add(this.dataGridView3);
             this.historyTab.Location = new System.Drawing.Point(4, 5);
-            this.historyTab.Margin = new System.Windows.Forms.Padding(2);
             this.historyTab.Name = "historyTab";
-            this.historyTab.Size = new System.Drawing.Size(1241, 604);
+            this.historyTab.Size = new System.Drawing.Size(1768, 795);
             this.historyTab.TabIndex = 4;
             this.historyTab.Text = "History";
             this.historyTab.UseVisualStyleBackColor = true;
@@ -1477,38 +1435,25 @@
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 120;
             this.dataGridView3.RowTemplate.Height = 28;
-            this.dataGridView3.Size = new System.Drawing.Size(1241, 604);
+            this.dataGridView3.Size = new System.Drawing.Size(1768, 795);
             this.dataGridView3.TabIndex = 6;
             // 
             // projectsTab
             // 
-            this.projectsTab.Controls.Add(this.button2);
             this.projectsTab.Controls.Add(this.projectEquipmentList);
             this.projectsTab.Controls.Add(this.button1);
             this.projectsTab.Controls.Add(this.label13);
             this.projectsTab.Controls.Add(this.dataGridView7);
             this.projectsTab.Location = new System.Drawing.Point(4, 5);
-            this.projectsTab.Margin = new System.Windows.Forms.Padding(2);
             this.projectsTab.Name = "projectsTab";
-            this.projectsTab.Size = new System.Drawing.Size(1241, 604);
+            this.projectsTab.Size = new System.Drawing.Size(1768, 795);
             this.projectsTab.TabIndex = 6;
             this.projectsTab.Text = "Projects";
             this.projectsTab.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(579, 79);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 27);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // projectEquipmentList
             // 
@@ -1521,10 +1466,9 @@
             this.columnHeader4});
             this.projectEquipmentList.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectEquipmentList.GridLines = true;
-            this.projectEquipmentList.Location = new System.Drawing.Point(579, 200);
-            this.projectEquipmentList.Margin = new System.Windows.Forms.Padding(2);
+            this.projectEquipmentList.Location = new System.Drawing.Point(885, 225);
             this.projectEquipmentList.Name = "projectEquipmentList";
-            this.projectEquipmentList.Size = new System.Drawing.Size(642, 367);
+            this.projectEquipmentList.Size = new System.Drawing.Size(814, 366);
             this.projectEquipmentList.TabIndex = 18;
             this.projectEquipmentList.UseCompatibleStateImageBehavior = false;
             this.projectEquipmentList.View = System.Windows.Forms.View.Details;
@@ -1542,10 +1486,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(164, 65);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(316, 72);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 42);
+            this.button1.Size = new System.Drawing.Size(158, 65);
             this.button1.TabIndex = 3;
             this.button1.Text = "New Project";
             this.button1.UseVisualStyleBackColor = true;
@@ -1555,10 +1498,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(160, 164);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(408, 183);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(155, 25);
+            this.label13.Size = new System.Drawing.Size(221, 36);
             this.label13.TabIndex = 1;
             this.label13.Text = "Active Projects";
             // 
@@ -1590,15 +1532,14 @@
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView7.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView7.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView7.Location = new System.Drawing.Point(19, 244);
-            this.dataGridView7.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView7.Location = new System.Drawing.Point(231, 225);
             this.dataGridView7.MultiSelect = false;
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
             this.dataGridView7.RowHeadersWidth = 28;
             this.dataGridView7.RowTemplate.Height = 35;
             this.dataGridView7.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView7.Size = new System.Drawing.Size(454, 322);
+            this.dataGridView7.Size = new System.Drawing.Size(610, 368);
             this.dataGridView7.TabIndex = 0;
             this.dataGridView7.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView7_CellDoubleClick);
             this.dataGridView7.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView7_CellMouseClick);
@@ -1606,8 +1547,9 @@
             // outgoingTab
             // 
             this.outgoingTab.Location = new System.Drawing.Point(4, 5);
+            this.outgoingTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.outgoingTab.Name = "outgoingTab";
-            this.outgoingTab.Size = new System.Drawing.Size(1241, 604);
+            this.outgoingTab.Size = new System.Drawing.Size(1768, 795);
             this.outgoingTab.TabIndex = 5;
             this.outgoingTab.Text = "Outgoing";
             this.outgoingTab.UseVisualStyleBackColor = true;
@@ -1619,19 +1561,20 @@
             this.panel2.Controls.Add(this.label19);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1184, 39);
+            this.panel2.Size = new System.Drawing.Size(1776, 59);
             this.panel2.TabIndex = 10;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(12, 5);
+            this.label19.Location = new System.Drawing.Point(18, 8);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(199, 26);
+            this.label19.Size = new System.Drawing.Size(301, 39);
             this.label19.TabIndex = 0;
             this.label19.Text = "Pathology Informatics";
             // 
@@ -1645,9 +1588,10 @@
             this.panel3.Controls.Add(this.createTabButton);
             this.panel3.Controls.Add(this.inventoryTabButton);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 39);
+            this.panel3.Location = new System.Drawing.Point(0, 59);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(107, 522);
+            this.panel3.Size = new System.Drawing.Size(160, 804);
             this.panel3.TabIndex = 11;
             // 
             // projectsTabButton
@@ -1657,9 +1601,10 @@
             this.projectsTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.projectsTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectsTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(164)))), ((int)(((byte)(219)))));
-            this.projectsTabButton.Location = new System.Drawing.Point(12, 325);
+            this.projectsTabButton.Location = new System.Drawing.Point(18, 192);
+            this.projectsTabButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.projectsTabButton.Name = "projectsTabButton";
-            this.projectsTabButton.Size = new System.Drawing.Size(78, 64);
+            this.projectsTabButton.Size = new System.Drawing.Size(117, 98);
             this.projectsTabButton.TabIndex = 7;
             this.projectsTabButton.Text = "Projects";
             this.projectsTabButton.UseVisualStyleBackColor = false;
@@ -1672,9 +1617,10 @@
             this.outgoingTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.outgoingTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outgoingTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(164)))), ((int)(((byte)(219)))));
-            this.outgoingTabButton.Location = new System.Drawing.Point(12, 425);
+            this.outgoingTabButton.Location = new System.Drawing.Point(18, 654);
+            this.outgoingTabButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.outgoingTabButton.Name = "outgoingTabButton";
-            this.outgoingTabButton.Size = new System.Drawing.Size(78, 64);
+            this.outgoingTabButton.Size = new System.Drawing.Size(117, 98);
             this.outgoingTabButton.TabIndex = 6;
             this.outgoingTabButton.Text = "Outgoing";
             this.outgoingTabButton.UseVisualStyleBackColor = false;
@@ -1687,9 +1633,10 @@
             this.historyTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.historyTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.historyTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(164)))), ((int)(((byte)(219)))));
-            this.historyTabButton.Location = new System.Drawing.Point(12, 225);
+            this.historyTabButton.Location = new System.Drawing.Point(18, 346);
+            this.historyTabButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.historyTabButton.Name = "historyTabButton";
-            this.historyTabButton.Size = new System.Drawing.Size(78, 64);
+            this.historyTabButton.Size = new System.Drawing.Size(117, 98);
             this.historyTabButton.TabIndex = 5;
             this.historyTabButton.Text = "History";
             this.historyTabButton.UseVisualStyleBackColor = false;
@@ -1702,9 +1649,10 @@
             this.createTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.createTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(164)))), ((int)(((byte)(219)))));
-            this.createTabButton.Location = new System.Drawing.Point(12, 125);
+            this.createTabButton.Location = new System.Drawing.Point(18, 500);
+            this.createTabButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.createTabButton.Name = "createTabButton";
-            this.createTabButton.Size = new System.Drawing.Size(78, 64);
+            this.createTabButton.Size = new System.Drawing.Size(117, 98);
             this.createTabButton.TabIndex = 4;
             this.createTabButton.Text = "Create";
             this.createTabButton.UseVisualStyleBackColor = false;
@@ -1717,117 +1665,26 @@
             this.inventoryTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.inventoryTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inventoryTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(164)))), ((int)(((byte)(219)))));
-            this.inventoryTabButton.Location = new System.Drawing.Point(12, 25);
+            this.inventoryTabButton.Location = new System.Drawing.Point(18, 38);
+            this.inventoryTabButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.inventoryTabButton.Name = "inventoryTabButton";
-            this.inventoryTabButton.Size = new System.Drawing.Size(78, 68);
+            this.inventoryTabButton.Size = new System.Drawing.Size(117, 105);
             this.inventoryTabButton.TabIndex = 3;
             this.inventoryTabButton.Text = "Inventory";
             this.inventoryTabButton.UseVisualStyleBackColor = false;
             this.inventoryTabButton.Click += new System.EventHandler(this.InventoryTabButton_Click);
             // 
-            // searchInventoryButton
-            // 
-            this.searchInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.searchInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.searchInventoryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
-            this.searchInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.searchInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
-            this.searchInventoryButton.Location = new System.Drawing.Point(109, 5);
-            this.searchInventoryButton.Name = "searchInventoryButton";
-            this.searchInventoryButton.Size = new System.Drawing.Size(103, 28);
-            this.searchInventoryButton.TabIndex = 26;
-            this.searchInventoryButton.Text = "Search";
-            this.searchInventoryButton.UseVisualStyleBackColor = false;
-            this.searchInventoryButton.Click += new System.EventHandler(this.searchInnerButton_Click);
-            // 
-            // addInventoryButton
-            // 
-            this.addInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.addInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.addInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
-            this.addInventoryButton.Location = new System.Drawing.Point(212, 5);
-            this.addInventoryButton.Name = "addInventoryButton";
-            this.addInventoryButton.Size = new System.Drawing.Size(103, 28);
-            this.addInventoryButton.TabIndex = 27;
-            this.addInventoryButton.Text = "Add";
-            this.addInventoryButton.UseVisualStyleBackColor = false;
-            this.addInventoryButton.Click += new System.EventHandler(this.addInnerButton_Click);
-            // 
-            // editInventoryButton
-            // 
-            this.editInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.editInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.editInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.editInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
-            this.editInventoryButton.Location = new System.Drawing.Point(315, 5);
-            this.editInventoryButton.Name = "editInventoryButton";
-            this.editInventoryButton.Size = new System.Drawing.Size(103, 28);
-            this.editInventoryButton.TabIndex = 28;
-            this.editInventoryButton.Text = "Edit";
-            this.editInventoryButton.UseVisualStyleBackColor = false;
-            this.editInventoryButton.Click += new System.EventHandler(this.editInventoryButton_Click);
-            // 
-            // deleteInventoryButton
-            // 
-            this.deleteInventoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.deleteInventoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.deleteInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteInventoryButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteInventoryButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
-            this.deleteInventoryButton.Location = new System.Drawing.Point(418, 5);
-            this.deleteInventoryButton.Name = "deleteInventoryButton";
-            this.deleteInventoryButton.Size = new System.Drawing.Size(103, 28);
-            this.deleteInventoryButton.TabIndex = 29;
-            this.deleteInventoryButton.Text = "Delete";
-            this.deleteInventoryButton.UseVisualStyleBackColor = false;
-            this.deleteInventoryButton.Click += new System.EventHandler(this.deleteInventoryButton_Click);
-            // 
-            // equipmentTabButton
-            // 
-            this.equipmentTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.equipmentTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.equipmentTabButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
-            this.equipmentTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.equipmentTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.equipmentTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
-            this.equipmentTabButton.Location = new System.Drawing.Point(105, 0);
-            this.equipmentTabButton.Name = "equipmentTabButton";
-            this.equipmentTabButton.Size = new System.Drawing.Size(103, 28);
-            this.equipmentTabButton.TabIndex = 27;
-            this.equipmentTabButton.Text = "Equipment";
-            this.equipmentTabButton.UseVisualStyleBackColor = false;
-            // 
-            // locationTabButton
-            // 
-            this.locationTabButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.locationTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.locationTabButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(57)))));
-            this.locationTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.locationTabButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.locationTabButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(2)))));
-            this.locationTabButton.Location = new System.Drawing.Point(227, 0);
-            this.locationTabButton.Name = "locationTabButton";
-            this.locationTabButton.Size = new System.Drawing.Size(103, 28);
-            this.locationTabButton.TabIndex = 28;
-            this.locationTabButton.Text = "Location";
-            this.locationTabButton.UseVisualStyleBackColor = false;
-            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.ClientSize = new System.Drawing.Size(1776, 863);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1200, 600);
+            this.MinimumSize = new System.Drawing.Size(1789, 893);
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load_1);
@@ -1852,7 +1709,6 @@
             this.deleteInventoryTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.createTab.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.createInnerTab.ResumeLayout(false);
             this.equipmentTab.ResumeLayout(false);
             this.equipmentTab.PerformLayout();
@@ -1875,35 +1731,22 @@
         private System.Windows.Forms.TabPage inventoryTab;
         private System.Windows.Forms.TabPage createTab;
         private System.Windows.Forms.TabPage historyTab;
-        private System.Windows.Forms.ComboBox tInvenEquipmentCombobox;
+        private System.Windows.Forms.ComboBox addInvenEquipmentCombobox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox tInvenBuildingCombobox;
+        private System.Windows.Forms.ComboBox addInvenBuildingCombobox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox tInvenCategoryCombobox;
+        private System.Windows.Forms.ComboBox addInvenCategoryCombobox;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button clearInventoryButton;
         private System.Windows.Forms.Button insertButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox createCategoryCombobox;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button refreshButton;
-        private System.Windows.Forms.TextBox productNoTextbox;
-        private System.Windows.Forms.TextBox createEquipmentCombobox;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button createButton;
-        private System.Windows.Forms.ComboBox tInvenRoomCombobox;
+        private System.Windows.Forms.ComboBox addInvenRoomCombobox;
         private System.Windows.Forms.TabControl inventoryInnerTabs;
         private System.Windows.Forms.TabPage addInventoryTab;
         private System.Windows.Forms.TabPage editInventoryTab;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox inventoryEditCombobox;
-        private System.Windows.Forms.CheckBox categoryEditCheckbox;
-        private System.Windows.Forms.CheckBox userEditCheckbox;
-        private System.Windows.Forms.CheckBox locationEditCheckbox;
-        private System.Windows.Forms.CheckBox nameEditCheckbox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox categoryEditCombobox;
         private System.Windows.Forms.Label label18;
@@ -1925,32 +1768,14 @@
         private System.Windows.Forms.TextBox searchDeleteTextbox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox filterDeleteCombobox;
-        private System.Windows.Forms.TabControl createInnerTab;
-        private System.Windows.Forms.TabPage equipmentTab;
-        private System.Windows.Forms.ListView createEquipmentListview;
-        private System.Windows.Forms.TabPage locationTab;
-        private System.Windows.Forms.ColumnHeader equipmentHeader;
-        private System.Windows.Forms.ColumnHeader categoryHeader;
-        private System.Windows.Forms.ColumnHeader productNoHeader;
         private System.Windows.Forms.Button refreshEditButton;
-        private System.Windows.Forms.ListView createRoomListview;
-        private System.Windows.Forms.ColumnHeader roomHeader;
-        private System.Windows.Forms.ListView createBuildingListview;
-        private System.Windows.Forms.ColumnHeader buildingHeader;
-        private System.Windows.Forms.TextBox createRoomTextbox;
-        private System.Windows.Forms.Button createBuildingButton;
-        private System.Windows.Forms.Button createRoomButton;
-        private System.Windows.Forms.TextBox createBuildingTextbox;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.TabPage outgoingTab;
         private System.Windows.Forms.Button barcodeButton;
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button deleteRoomButton;
-        private System.Windows.Forms.Button deleteBuildingButton;
         private System.Windows.Forms.TabPage searchInventoryTab;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button searchButton;
@@ -1960,7 +1785,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox InvenDescriptionCheckbox;
         private System.Windows.Forms.Label label17;
-        public System.Windows.Forms.TextBox tInvenQuantityTextbox;
+        public System.Windows.Forms.TextBox addInvenQuantityTextbox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox searchInfoTextbox;
@@ -1980,7 +1805,6 @@
         private System.Windows.Forms.ListView projectEquipmentList;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel3;
@@ -1993,7 +1817,33 @@
         private System.Windows.Forms.Button addInventoryButton;
         private System.Windows.Forms.Button deleteInventoryButton;
         private System.Windows.Forms.Button editInventoryButton;
+        private System.Windows.Forms.TabControl createInnerTab;
+        private System.Windows.Forms.TabPage equipmentTab;
         private System.Windows.Forms.Button locationTabButton;
         private System.Windows.Forms.Button equipmentTabButton;
+        private System.Windows.Forms.ListView EquipListview;
+        private System.Windows.Forms.ColumnHeader equipmentHeader;
+        private System.Windows.Forms.ColumnHeader categoryHeader;
+        private System.Windows.Forms.ColumnHeader productNoHeader;
+        private System.Windows.Forms.TextBox createProductText;
+        private System.Windows.Forms.Button createButton;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox createEquipText;
+        private System.Windows.Forms.TabPage locationTab;
+        private System.Windows.Forms.Button deleteRoomButton;
+        private System.Windows.Forms.Button deleteBuildingButton;
+        private System.Windows.Forms.ListView createRoomListview;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader roomHeader;
+        private System.Windows.Forms.ListView createBuildingListview;
+        private System.Windows.Forms.ColumnHeader buildingHeader;
+        private System.Windows.Forms.TextBox createRoomTextbox;
+        private System.Windows.Forms.Button createBuildingButton;
+        private System.Windows.Forms.Button createRoomButton;
+        private System.Windows.Forms.TextBox createBuildingTextbox;
+        private System.Windows.Forms.ComboBox createCategoryCombo;
     }
 }

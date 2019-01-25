@@ -20,6 +20,8 @@ namespace Inventory
 
         public string descID;
 
+        public object InvenDescriptionCheckbox { get; internal set; }
+
         public DescriptionInsert()
         {
             InitializeComponent();
@@ -33,7 +35,6 @@ namespace Inventory
 
         private void applyButton_Click(object sender, EventArgs e)
         {
-
             connection.Open();
             OracleCommand descIns2 = connection.CreateCommand();
 
@@ -45,9 +46,10 @@ namespace Inventory
             Console.WriteLine(descIns2.CommandText);
             Console.WriteLine(descID);
             descIns2.ExecuteNonQuery();
-           
+
             connection.Close();
         }
+
 
         private void closeButton_Click(object sender, EventArgs e)
         {
