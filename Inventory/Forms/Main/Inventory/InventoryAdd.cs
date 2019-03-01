@@ -12,21 +12,22 @@ namespace Inventory
 {
     class InventoryAdd : Main
     {
+        /*
         //TakeInventory tab - Function that loads data into TakeInventory tab comboboxes
-        public void TakeInventoryComboBoxData(OracleConnection con, ComboBox iEquipCombo, ComboBox iBldCombo, ComboBox iRoomCombo, ComboBox iCatCombo)
+        public void AddInventoryTextboxData(OracleConnection connection, TextBox iEquipCombo, TextBox iBldCombo, TextBox iRoomCombo)
         {
             //Queries for adapters
             string e = "SELECT * FROM EQUIPMENT";
             string b = "SELECT * FROM BUILDING";
             string r = "SELECT * FROM ROOM";
-            string c = "SELECT * FROM CATEGORY";
+            //string c = "SELECT * FROM CATEGORY";
 
 
-            con.Open();
+            connection.Open();
 
             //Display queried data within combobox
             DataTable dt = new DataTable();
-            OracleDataAdapter da = new OracleDataAdapter(e, con);
+            OracleDataAdapter da = new OracleDataAdapter(e, connection);
             da.Fill(dt);
             if (dt.Rows.Count > 0)
             {
@@ -34,63 +35,66 @@ namespace Inventory
                 iEquipCombo.DataSource = dt;
                 iEquipCombo.DisplayMember = "EQUIPMENT_NAME";
                 iEquipCombo.ValueMember = "EQUIPMENT_ID";
-                con.Close();
+                connection.Close();
             }
             //Display queried data within combobox
             DataTable dt2 = new DataTable();
-            OracleDataAdapter da2 = new OracleDataAdapter(b, con);
+            OracleDataAdapter da2 = new OracleDataAdapter(b, connection);
             da2.Fill(dt2);
             if (dt2.Rows.Count > 0)
             {
                 iBldCombo.DataSource = dt2;
                 iBldCombo.DisplayMember = "BUILDING_NAME";
                 iBldCombo.ValueMember = "BUILDING_ID";
-                con.Close();
+                connection.Close();
             }
+            
             //Display queried data within combobox
             DataTable dt3 = new DataTable();
-            OracleDataAdapter da3 = new OracleDataAdapter(c, con);
+            OracleDataAdapter da3 = new OracleDataAdapter(c, connection);
             da3.Fill(dt3);
             if (dt3.Rows.Count > 0)
             {
                 iCatCombo.DataSource = dt3;
                 iCatCombo.DisplayMember = "CATEGORY_NAME";
                 iCatCombo.ValueMember = "CATEGORY_ID";
-                con.Close();
+                connection.Close();
             }
+            
             //Display queried data within combobox
             DataTable dt4 = new DataTable();
-            OracleDataAdapter da4 = new OracleDataAdapter(r, con);
+            OracleDataAdapter da4 = new OracleDataAdapter(r, connection);
             da4.Fill(dt4);
             if (dt2.Rows.Count > 0)
             {
                 iRoomCombo.DataSource = dt4;
                 iRoomCombo.DisplayMember = "ROOM_NAME";
                 iRoomCombo.ValueMember = "ROOM_ID";
-                con.Close();
+                connection.Close();
             }
         }
+*/
 
 
-        public void clear_data(ComboBox iEquipText, ComboBox iBldText, ComboBox iRoomText, ComboBox iCatText, TextBox iQuanText, CheckBox DescCheckbox)
+
+
+        public void clear_data(ComboBox iEquipText, ComboBox iBldText, ComboBox iRoomText, TextBox iQuanText)
         {
             //Clear Comboboxes
             iEquipText.Text = "";
             iBldText.Text = "";
             iRoomText.Text = "";
-            iCatText.Text = "";
             iQuanText.Text = "";
-            DescCheckbox.Checked = false;
         }
 
 
-        public void OnInsertClick(OracleConnection con, String iEquipText, String iBldText, String iCatText, String iQuanText, String iRoomText, CheckBox descCheckbox)
+        public void OnInsertClick(OracleConnection connection, String iEquipText, String iBldText, String iQuanText, String iRoomText)
         {
             DescriptionInsert descForm = new DescriptionInsert();
             Main main = new Main();
 
             //Inventory tab - If any of the comboboxes are empty then show messagebox
-            if (string.IsNullOrEmpty(iEquipText) || string.IsNullOrEmpty(iBldText) || string.IsNullOrEmpty(iCatText) || string.IsNullOrEmpty(iQuanText))
+            if (string.IsNullOrEmpty(iEquipText) || string.IsNullOrEmpty(iBldText) ||  string.IsNullOrEmpty(iQuanText))
             {
                 MessageBox.Show("Please fill in the the data.");
             }
@@ -99,10 +103,11 @@ namespace Inventory
                 string loginUser = Login.user;
                 int quantity = Convert.ToInt32(iQuanText);
 
-                con.Open(); // Connects to DB
+                connection.Open(); // Connects to DB
 
 
-                OracleCommand locCheck = con.CreateCommand();
+                //CHECK DATABASE TO SEE IF LOCATION EXISTS
+                OracleCommand locCheck = connection.CreateCommand();
                 locCheck.CommandType = CommandType.Text;
                 locCheck.CommandText = "SELECT COUNT(*) FROM LOCATION " +
                     "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
@@ -114,9 +119,10 @@ namespace Inventory
                 OracleDataAdapter locSda = new OracleDataAdapter(locCheck);
                 DataTable locDt = new DataTable();
                 locSda.Fill(locDt);
+                //IF THE LOCATION DOES NOT EXIST THEN CREATE THAT LOCATION
                 if (locDt.Rows[0][0].ToString() == "0") //Checks in DB if first column, first row equals 0
                 {
-                    OracleCommand locIns = con.CreateCommand();
+                    OracleCommand locIns = connection.CreateCommand();
                     locIns.CommandType = CommandType.Text;
                     locIns.CommandText = "INSERT INTO LOCATION (BUILDING_ID, ROOM_ID)" +
                         "VALUES((SELECT BUILDING.BUILDING_ID FROM BUILDING WHERE BUILDING.BUILDING_NAME = '" + iBldText + "' ), " +
@@ -127,8 +133,8 @@ namespace Inventory
                     MessageBox.Show("New location inserted!");
                 }
 
-
-                OracleCommand descIns = con.CreateCommand();
+                //INCLUDE A DESCRIPTION
+                OracleCommand descIns = connection.CreateCommand();
 
                 descIns.CommandType = CommandType.Text;
                 descIns.CommandText = "INSERT INTO INVENTORY_DESCRIPTION " +
@@ -140,10 +146,10 @@ namespace Inventory
                 descIns.Parameters.Add(outputParameter);
                 descIns.ExecuteNonQuery();
 
-
+                //ADD NEW INVENTORY MULTIPLE TIMES BASED ON COMBOBOX DATA AND QUANTITY
                 for (int i = 0; i< quantity; i++)
                 {
-                    OracleCommand cmd = con.CreateCommand();
+                    OracleCommand cmd = connection.CreateCommand();
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_ID, CATEGORY_ID, EVENT_ID, USER_ID, LOCATION_ID, DESCRIPTION_ID)" +
                         "SELECT " +
@@ -154,7 +160,8 @@ namespace Inventory
 
                         "(SELECT CATEGORY_ID " +
                         "FROM CATEGORY " +
-                        "WHERE CATEGORY.CATEGORY_NAME = '" + iCatText + "') " +
+                        "JOIN EQUIPMENT ON EQUIPMENT.CATEGORY_ID = CATEGORY.CATEGORY_ID " +
+                        "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + iEquipText + "') " +
                         "AS CATEGORY_ID, " +
 
                         "(SELECT EVENT_ID " +
@@ -188,21 +195,42 @@ namespace Inventory
 
                     Console.WriteLine("descForm.descID: " + descForm.descID);
                     Console.WriteLine("descIns.desc_id: " + descIns.Parameters["desc_id"].Value);
+
+                    /*
+                    //IF DESCRIPTION CHECKBOX IS CHECKED THEN OPEN A NEW WINDOW TO EDIT THAT DESCRIPTION
                     if (descCheckbox.Checked == true)
                     {
                         descForm.Show();
                         main.Hide();
-                    }
-
+                    } */
                 }
 
-                con.Close(); //Close connection to DB
+                connection.Close(); //Close connection to DB
 
-                //display_inventory_data();
-                //MessageBox.Show("Data inserted successfully!");
+                MessageBox.Show("Data inserted successfully!");
             }
         }
 
+        public void Display_ProjectsInAdd(OracleConnection connection, DataGridView dataGrid)
+        {
+            connection.Open();
 
+            dataGrid.DataSource = null;
+            OracleCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT PROJECT_NAME as Project, TICKET_NO as Ticket, COUNT(INVENTORY.EQUIPMENT_ID) AS Stock " +
+                "FROM PROJECT " +
+                "LEFT JOIN INVENTORY ON INVENTORY.PROJECT_ID = PROJECT.PROJECT_ID " +
+                "WHERE INVENTORY.STATUS = '1' " +
+                "GROUP BY PROJECT_NAME, TICKET_NO";
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta);
+            dataGrid.DataSource = dta;
+
+            connection.Close();
+
+        }
     }
 }

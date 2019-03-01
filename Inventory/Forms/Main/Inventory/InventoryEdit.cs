@@ -73,7 +73,7 @@ namespace Inventory
         {
             Main main = new Main();
 
-            string i = "SELECT * FROM INVENTORY WHERE INVENTORY.STATUS = '1' ORDER BY INVENTORY_DATE desc ";
+            string p = "SELECT * FROM PROJECT ";
 
             string e = "SELECT * FROM EQUIPMENT " +
                         "JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
@@ -89,14 +89,14 @@ namespace Inventory
                         "WHERE INVENTORY_ID = '" + invenEditComboText + "' AND INVENTORY.STATUS = '1' ";
 
 
-            main.ComboAddRowData(i, "inventory_id", invenEditCombo);
+            main.ComboAddRowData(p, "PROJECT_NAME", invenEditCombo);
             main.ComboAddRowData(e, "EQUIPMENT_NAME", nameEditCombo);
             main.ComboAddRowData(u, "USERNAME", userEditCombo);
             main.ComboAddRowData(c, "CATEGORY_NAME", categoryEditCombo);
         }
 
         
-        public void EditApplyData(OracleConnection connection, String nEditCombo, String iEditCombo, String cEditCombo, 
+        public void EditApplyData(OracleConnection connection, String nEditCombo, String pEditCombo, String cEditCombo, 
             String uEditCombo, String bldEditCombo, String rmEditCombo, DataGridView dGridView)
         {
 
@@ -108,7 +108,7 @@ namespace Inventory
                     "(SELECT EQUIPMENT.EQUIPMENT_ID " +
                     "FROM EQUIPMENT " +
                     "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + nEditCombo + "') " +
-                    "WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' ";
+                    "WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') ";
                 cmd.ExecuteNonQuery(); //Execute command
                 connection.Close();
 
@@ -121,7 +121,7 @@ namespace Inventory
                     "(SELECT CATEGORY.CATEGORY_ID " +
                     "FROM CATEGORY " +
                     "WHERE CATEGORY.CATEGORY_NAME = '" + cEditCombo + "') " +
-                    "WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' ";
+                    "WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') ";
                 cmd2.ExecuteNonQuery(); //Execute command
                 connection.Close();
 
@@ -134,7 +134,7 @@ namespace Inventory
                     "(SELECT LOGIN.USER_ID " +
                     "FROM LOGIN " +
                     "WHERE LOGIN.USERNAME = '" + uEditCombo + "') " +
-                    "WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' ";
+                    "WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') ";
                 cmd3.ExecuteNonQuery(); //Execute command
                 connection.Close();
 
@@ -170,7 +170,7 @@ namespace Inventory
                             "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                             "WHERE BUILDING.BUILDING_NAME = '" + bldEditCombo + "' " +
                             "AND ROOM.ROOM_NAME = '" + rmEditCombo + "') " +
-                        "WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' ";
+                        "WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') ";
                     cmd5.ExecuteNonQuery(); //Execute command
                     connection.Close();
                     MessageBox.Show("Edited location");
@@ -201,7 +201,7 @@ namespace Inventory
                             "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
                             "WHERE BUILDING.BUILDING_NAME = '" + bldEditCombo + "' " +
                             "AND ROOM.ROOM_NAME = '" + rmEditCombo + "') " +
-                        "WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' ";
+                        "WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') ";
                     cmd7.ExecuteNonQuery(); //Execute command
                     connection.Close();
                     MessageBox.Show("Added new location");
@@ -210,19 +210,20 @@ namespace Inventory
                 OracleCommand cmd8 = connection.CreateCommand();
                 cmd8.CommandType = CommandType.Text; //Command to send to DB
 
+            /*
                 //History log of edit
                 cmd8.CommandText = "INSERT INTO HISTORY" +
                     "(EVENT_ID, USER_ID, HISTORY_DESCRIPTION)" +
                     "VALUES('2', (SELECT USER_ID FROM LOGIN WHERE LOGIN.USERNAME = 'jonnyv'), " +
                     "('Inventory edited. Inventory ID: ' ||  '" + iEditCombo + "' ))";
-                cmd8.ExecuteNonQuery();
+                cmd8.ExecuteNonQuery(); */
                 connection.Close();
 
             dGridView.Rows.Clear();
         }
 
    
-        public void Display_BeforeEdit_data(OracleConnection connection, DataGridView dGridView5, String iEditCombo)
+        public void Display_BeforeEdit_data(OracleConnection connection, DataGridView dGridView5, String pEditCombo)
         {
             connection.Open();
 
@@ -230,18 +231,17 @@ namespace Inventory
 
             OracleCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT EQUIPMENT.EQUIPMENT_NAME AS Equipment, " +
-                    "CATEGORY.CATEGORY_NAME AS Category, " +
-                    "BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, " +
-                    "LOGIN.USERNAME AS Users " +
-                    "FROM INVENTORY " +
-                    "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
-                    "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
-                    "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
-                    "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
-                    "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
-                    "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
-                    "WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' AND INVENTORY.STATUS = '1' ";
+            cmd.CommandText = "SELECT EQUIPMENT.EQUIPMENT_NAME AS Equipment, CATEGORY.CATEGORY_NAME AS Category, " +
+                "BUILDING.BUILDING_NAME AS Building, ROOM.ROOM_NAME AS Room, LOGIN.USERNAME AS Users " +
+                "FROM INVENTORY " +
+                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
+                "JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID " +
+                "JOIN LOCATION ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID " +
+                "JOIN BUILDING ON BUILDING.BUILDING_ID = LOCATION.BUILDING_ID " +
+                "JOIN ROOM ON ROOM.ROOM_ID = LOCATION.ROOM_ID " +
+                "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
+                "WHERE PROJECT.PROJECT_NAME = '"+ pEditCombo +"' AND INVENTORY.STATUS = '1' ";
             cmd.ExecuteNonQuery();
 
             DataTable dta = new DataTable();
@@ -253,21 +253,21 @@ namespace Inventory
         }
 
 
-        public void Display_AfterEdit_data(OracleConnection connection, String nEditCombo, String iEditCombo, DataGridView dGridView)
+        public void Display_AfterEdit_data(OracleConnection connection, String nEditCombo, String pEditCombo, DataGridView dGridView)
         {
             connection.Open();
             dGridView.Rows.Clear();
 
             //DISPLAY PREVIEW
-            string q = "SELECT EQUIPMENT.EQUIPMENT_NAME FROM EQUIPMENT JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' ";
-            string c = "SELECT CATEGORY.CATEGORY_NAME FROM CATEGORY JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' ";
-            string u = "SELECT LOGIN.USERNAME FROM INVENTORY JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' AND INVENTORY.STATUS = '1' ";
-            string b = "SELECT BUILDING.BUILDING_NAME FROM BUILDING JOIN LOCATION ON LOCATION.BUILDING_ID = BUILDING.BUILDING_ID JOIN INVENTORY ON INVENTORY.LOCATION_ID = LOCATION.LOCATION_ID WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' AND INVENTORY.STATUS = '1' ";
-            string r = "SELECT ROOM.ROOM_NAME FROM ROOM JOIN LOCATION ON LOCATION.ROOM_ID = ROOM.ROOM_ID JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID WHERE INVENTORY.INVENTORY_ID = '" + iEditCombo + "' AND INVENTORY.STATUS = '1' ";
+            string q = "SELECT EQUIPMENT.EQUIPMENT_NAME FROM EQUIPMENT JOIN INVENTORY ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') ";
+            //string c = "SELECT CATEGORY.CATEGORY_NAME FROM CATEGORY JOIN INVENTORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') ";
+            string u = "SELECT LOGIN.USERNAME FROM INVENTORY JOIN LOGIN ON LOGIN.USER_ID = INVENTORY.USER_ID WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') AND INVENTORY.STATUS = '1' ";
+            string b = "SELECT BUILDING.BUILDING_NAME FROM BUILDING JOIN LOCATION ON LOCATION.BUILDING_ID = BUILDING.BUILDING_ID JOIN INVENTORY ON INVENTORY.LOCATION_ID = LOCATION.LOCATION_ID WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') AND INVENTORY.STATUS = '1' ";
+            string r = "SELECT ROOM.ROOM_NAME FROM ROOM JOIN LOCATION ON LOCATION.ROOM_ID = ROOM.ROOM_ID JOIN INVENTORY ON LOCATION.LOCATION_ID = INVENTORY.LOCATION_ID WHERE INVENTORY.PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pEditCombo + "') AND INVENTORY.STATUS = '1' ";
 
 
             OracleCommand cmd2 = new OracleCommand(q, connection);
-            OracleCommand cmd3 = new OracleCommand(c, connection);
+            //OracleCommand cmd3 = new OracleCommand(c, connection);
             OracleCommand cmd5 = new OracleCommand(u, connection);
             OracleCommand cmd6 = new OracleCommand(b, connection);
             OracleCommand cmd7 = new OracleCommand(r, connection);
@@ -276,11 +276,11 @@ namespace Inventory
                 cmd2.CommandText = q;
                 cmd2.CommandType = CommandType.Text;
                 String Eq = cmd2.ExecuteScalar().ToString();
-
+                /*
                 cmd3.CommandText = c;
                 cmd3.CommandType = CommandType.Text;
                 String Cat = cmd3.ExecuteScalar().ToString();
-
+                */
                 cmd5.CommandText = u;
                 cmd5.CommandType = CommandType.Text;
                 String User = cmd5.ExecuteScalar().ToString();
@@ -293,7 +293,7 @@ namespace Inventory
                 cmd7.CommandType = CommandType.Text;
                 String Room = cmd7.ExecuteScalar().ToString();
 
-                dGridView.Rows.Add(Eq, Cat, Bld, Room, User);
+                dGridView.Rows.Add(Eq, Bld, Room, User);
             }
             catch (Exception ex)
             {
