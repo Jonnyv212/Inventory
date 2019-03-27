@@ -18,7 +18,7 @@ namespace Inventory
         private bool mouseDown;
         private Point lastLocation;
 
-        Main main = new Main();
+        //Main main = new Main();
 
         public InventoryAddForm()
         {
@@ -60,7 +60,7 @@ namespace Inventory
             }
         }
 
-        private void plabel19_MouseDown(object sender, MouseEventArgs e)
+        private void label19_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
@@ -76,13 +76,13 @@ namespace Inventory
         {
 
             string cat = "SELECT * FROM CATEGORY ORDER BY CATEGORY_NAME ASC";
-            string pj = "SELECT * FROM PROJECT ";
+            string pj = "SELECT * FROM PROJECT WHERE PROJECT.STATUS = '1' ";
 
 
-            main.ComboAddRowData(pj, "PROJECT_NAME", addInvenProjectCombobox);
+            Main.ComboAddRowData(pj, "PROJECT_NAME", addInvenProjectCombobox);
             addInvenProjectCombobox.SelectedIndex = 0;
 
-            main.ComboAddRowData(cat, "CATEGORY_NAME", addInvenCategoryCombobox);
+            Main.ComboAddRowData(cat, "CATEGORY_NAME", addInvenCategoryCombobox);
             addInvenCategoryCombobox.SelectedIndex = 0;
 
 
@@ -95,80 +95,97 @@ namespace Inventory
             string eq = "SELECT * " +
                         "FROM EQUIPMENT " +
                         "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
-                        "WHERE CATEGORY.CATEGORY_NAME = '" + addInvenCategoryCombobox.Text + "' ";
+                        "WHERE CATEGORY.CATEGORY_NAME = '" + addInvenCategoryCombobox.Text + "' AND EQUIPMENT.STATUS = '1' ";
 
-            main.AutofillInventoryTextbox(con, eq, "EQUIPMENT_NAME", addInvenEquipTextbox);
+            Main.AutofillInventoryTextbox(con, eq, "EQUIPMENT_NAME", addInvenEquipTextbox);
 
         }
 
 
         public void OnInsertClick()
         {
-            Main main = new Main();
+            //Main main = new Main();
             TextBox iEquipText = addInvenEquipTextbox;
             TextBox iQuanText = addInvenQuantityTextbox;
             ComboBox iProjectCombo = addInvenProjectCombobox;
+            ComboBox iCategoryCombo = addInvenCategoryCombobox;
 
-            //Inventory tab - If any of the comboboxes are empty then show messagebox
-            if (string.IsNullOrEmpty(iEquipText.Text) || string.IsNullOrEmpty(iQuanText.Text))
+
+            bool equipCheck = false;
+
+            string query = "INSERT INTO INVENTORY (EQUIPMENT_ID, EVENT_ID, PROJECT_ID) " +
+                            "SELECT " +
+                            "(SELECT EQUIPMENT_ID " +
+                            "FROM EQUIPMENT " +
+                            "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + iEquipText.Text + "') " +
+                            "AS EQUIPMENT_ID," +
+
+                            "(SELECT EVENT_ID " +
+                            "FROM EVENT " +
+                            "WHERE EVENT.EVENT_ID = '1') " +
+                            "AS EVENT_ID, " +
+
+                            "(SELECT PROJECT_ID " +
+                            "FROM PROJECT " +
+                            "WHERE PROJECT.PROJECT_NAME = '" + iProjectCombo.Text + "' AND PROJECT.STATUS = '1') " +
+                            "AS PROJECT_ID " +
+
+                            "FROM DUAL";
+
+            string queryCheck = "SELECT COUNT(*) FROM EQUIPMENT " +
+                                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                                "WHERE EQUIPMENT_NAME = '" + iEquipText.Text + "' AND CATEGORY.CATEGORY_NAME = '"+ iCategoryCombo.Text +"' AND EQUIPMENT.STATUS = '1' ";
+
+
+            DataTable dt = new DataTable();
+            dt = Main.DataTableSQLQuery(queryCheck);
+            if (dt.Rows[0][0].ToString() == "1") //Checks in DB if first column, first row equals 1.
             {
-                MessageBox.Show("Please fill in the the data.");
+                equipCheck = true;
+            }
+            if (string.IsNullOrEmpty(iEquipText.Text) || string.IsNullOrEmpty(iQuanText.Text) || equipCheck == false)
+            {
+                if(equipCheck == false)
+                {
+                    MessageBox.Show("Equipment does not exist.");
+                }
+                else
+                {
+                    MessageBox.Show("Please fill in the appropriate data.");
+                }
             }
             else
             {
-                string loginUser = Login.user;
-                int quantity = Convert.ToInt32(iQuanText.Text);
-
-                con.Open(); // Connects to DB
-
-                //ADD NEW INVENTORY MULTIPLE TIMES BASED ON TEXTBOX DATA AND QUANTITY
-                for (int i = 0; i < quantity; i++)
+                if (System.Text.RegularExpressions.Regex.IsMatch(iQuanText.Text, "^[0-9]") && (int.Parse(iQuanText.Text) > 0)) //&& (int.TryParse(iQuanText.Text, out quantity)))
                 {
-                    if (string.IsNullOrEmpty(iProjectCombo.Text))
+
+                    //ADD NEW INVENTORY MULTIPLE TIMES BASED ON TEXTBOX DATA AND QUANTITY
+                    for (int i = 0; i < int.Parse(iQuanText.Text); i++)
                     {
-                        iProjectCombo.Text = "1";
+                        if (string.IsNullOrEmpty(iProjectCombo.Text))
+                        {
+                            iProjectCombo.Text = "1";
+                        }
+                        Main.RunSQLQuery(query);
                     }
-                    OracleCommand cmd = con.CreateCommand();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "INSERT INTO INVENTORY (EQUIPMENT_ID, CATEGORY_ID, EVENT_ID, PROJECT_ID) " +
-                        "SELECT " +
-                        "(SELECT EQUIPMENT_ID " +
-                        "FROM EQUIPMENT " +
-                        "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + iEquipText.Text + "') " +
-                        "AS EQUIPMENT_ID," +
-
-                        "(SELECT EQUIPMENT.CATEGORY_ID " +
-                        "FROM CATEGORY " +
-                        "JOIN EQUIPMENT ON EQUIPMENT.CATEGORY_ID = CATEGORY.CATEGORY_ID " +
-                        "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + iEquipText.Text + "') " +
-                        "AS CATEGORY_ID, " +
-
-                        "(SELECT EVENT_ID " +
-                        "FROM EVENT " +
-                        "WHERE EVENT.EVENT_ID = 1) " +
-                        "AS EVENT_ID, " +
-
-                        "(SELECT PROJECT_ID " +
-                        "FROM PROJECT " +
-                        "WHERE PROJECT.PROJECT_NAME = '" + iProjectCombo.Text + "') " +
-                        "AS PROJECT_ID " +
-
-                        "FROM DUAL";
-
-                    cmd.ExecuteNonQuery(); //Execute command
+                    MessageBox.Show("Data inserted successfully!");
+                    equipCheck = false;
                 }
-                con.Close(); //Close connection to DB
-
-                MessageBox.Show("Data inserted successfully!");
+                else
+                {
+                    MessageBox.Show("Not a valid quantity");
+                }
             }
         }
 
         private void insertAddInventoryButton_Click(object sender, EventArgs e)
         {
-            Main main = new Main();
+            //Main main = new Main();
             OnInsertClick();
-            //main.DisplayInventory();
-            this.Close();
+            History.HistoryManualInsert(addInvenEquipTextbox, addInvenQuantityTextbox, addInvenProjectCombobox);
+            addInvenEquipTextbox.Text = "";
+            addInvenQuantityTextbox.Text = "";
+            addInvenProjectCombobox.Text = "";
         }
 
         private void clearAddInventoryButton_Click(object sender, EventArgs e)
@@ -192,7 +209,8 @@ namespace Inventory
 
         }
 
-        private void mainClose_Click(object sender, EventArgs e)
+
+        private void mainClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }

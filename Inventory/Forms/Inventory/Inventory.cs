@@ -9,93 +9,64 @@ using System.Data;
 
 namespace Inventory
 {
-    class Inventory
+    public class Inventory
     {
-        Main main = new Main();
-
-        public void InventorySearchComboFill(ComboBox InvenFilter)
+        public static void InventorySearchComboFill(ComboBox InvenFilter)
         {
             string E = "SELECT DISTINCT column_name FROM all_tab_cols WHERE column_name IN('EQUIPMENT_NAME', 'CATEGORY_NAME', 'TERM_ID', 'PROJECT_NAME') ";
-            main.ComboAddRowData(E, "column_name", InvenFilter);
+            Main.ComboAddRowData(E, "column_name", InvenFilter);
         }
 
-        public void DisplayInventory(DataGridView dGridView, OracleConnection connection)
+        public static void DisplayInventory(DataGridView dGridView, OracleConnection connection)
         {
             string query = "SELECT INVENTORY.INVENTORY_ID as ID, EQUIPMENT.EQUIPMENT_NAME as Equipment, CATEGORY.CATEGORY_NAME as Category, " +
                 "PROJECT.PROJECT_NAME as Project, INVENTORY.TERM_ID as Term_ID, INVENTORY.INVENTORY_DATE AS Inv_Date " +
                 "FROM INVENTORY " +
                 "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                 "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
-                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
-                "WHERE INVENTORY.STATUS = '1' " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                "WHERE INVENTORY.STATUS = '1' AND EQUIPMENT.STATUS = '1' " +
                 "ORDER BY TO_NUMBER(INVENTORY_ID) DESC ";
 
 
             dGridView.DataSource = null;
-            dGridView.DataSource = main.DataTableSQLQuery(query);
-            main.InventoryDataGridAppearance(dGridView);
+            dGridView.DataSource = Main.DataTableSQLQuery(query);
+            Main.InventoryDataGridAppearance(dGridView);
         }
 
-        public void InventoryComboboFill(ComboBox Project, ComboBox Category, ComboBox Equipment)
+        public static void InventoryComboFill(ComboBox Project, ComboBox Category, ComboBox Equipment)
         {
-            string pj = "SELECT PROJECT_NAME FROM PROJECT";
+            string pj = "SELECT PROJECT_NAME FROM PROJECT WHERE PROJECT.STATUS = '1' ";
             string eq = "SELECT EQUIPMENT_NAME FROM EQUIPMENT JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID WHERE CATEGORY.CATEGORY_NAME = '" + Category.Text + "' ";
             string cat = "SELECT CATEGORY_NAME FROM CATEGORY";
 
-            main.ComboAddRowData(pj, "PROJECT_NAME", Project);
-            main.ComboAddRowData(cat, "CATEGORY_NAME", Category);
-            main.ComboAddRowData(eq, "EQUIPMENT_NAME", Equipment);
+            Main.ComboAddRowData(pj, "PROJECT_NAME", Project);
+            Main.ComboAddRowData(cat, "CATEGORY_NAME", Category);
+            Main.ComboAddRowData(eq, "EQUIPMENT_NAME", Equipment);
         }
 
-        public void EditData(TextBox IDText, TextBox TermID, ComboBox Project, ComboBox Category, ComboBox Equipment, TextBox Product, DataGridView dGriView, OracleConnection connection)
+        public static void ReloadEquipmentData(ComboBox Category, ComboBox Equipment)
         {
-            IDText.Text = dGriView.SelectedRows[0].Cells[0].Value.ToString();
+            string eq = "SELECT EQUIPMENT_NAME " +
+                        "FROM EQUIPMENT " +
+                        "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                        "WHERE CATEGORY.CATEGORY_NAME = '" + Category.Text + "' ";
 
-            string query = "SELECT * FROM INVENTORY WHERE INVENTORY.INVENTORY_ID = '" + IDText.Text + "' ";
-            string pjName = "SELECT PROJECT_NAME FROM PROJECT JOIN INVENTORY ON INVENTORY.PROJECT_ID = PROJECT.PROJECT_ID WHERE INVENTORY_ID = '" + IDText.Text + "' ";
-            string catName = "SELECT CATEGORY_NAME FROM CATEGORY JOIN INVENTORY ON INVENTORY.CATEGORY_ID = CATEGORY.CATEGORY_ID WHERE INVENTORY.INVENTORY_ID = '" + IDText.Text + "' ";
-            string eqName = "SELECT EQUIPMENT_NAME FROM EQUIPMENT JOIN INVENTORY ON INVENTORY.EQUIPMENT_ID = EQUIPMENT.EQUIPMENT_ID WHERE INVENTORY.INVENTORY_ID = '" + IDText.Text + "' ";
-            string productNo = "SELECT PRODUCT_NO FROM EQUIPMENT JOIN INVENTORY ON INVENTORY.EQUIPMENT_ID = EQUIPMENT.EQUIPMENT_ID WHERE INVENTORY.INVENTORY_ID = '" + IDText.Text + "' ";
+            Main.ComboAddRowData(eq, "EQUIPMENT_NAME", Equipment);
+        }
 
+        public static void ReloadProductNo(ComboBox Equipment, TextBox Product, OracleConnection connection)
+        {
+            string productNo = "SELECT PRODUCT_NO FROM EQUIPMENT WHERE EQUIPMENT.EQUIPMENT_NAME = '" + Equipment.Text + "' ";
 
-            OracleCommand cmd = new OracleCommand(query, connection);
-            OracleCommand cmd1 = new OracleCommand(pjName, connection);
-            OracleCommand cmd2 = new OracleCommand(catName, connection);
-            OracleCommand cmd3 = new OracleCommand(eqName, connection);
-            OracleCommand cmd4 = new OracleCommand(productNo, connection);
             try
             {
+                OracleCommand cmd = new OracleCommand(productNo, connection);
                 connection.Open();
-
-                cmd1.CommandText = pjName;
-                cmd1.CommandType = CommandType.Text;
-                String PJ = cmd1.ExecuteScalar().ToString();
-
-                cmd2.CommandText = catName;
-                cmd2.CommandType = CommandType.Text;
-                String CAT = cmd2.ExecuteScalar().ToString();
-
-                cmd3.CommandText = eqName;
-                cmd3.CommandType = CommandType.Text;
-                String EQ = cmd3.ExecuteScalar().ToString();
-
-                cmd4.CommandText = productNo;
-                cmd4.CommandType = CommandType.Text;
-                String PN = cmd4.ExecuteScalar().ToString();
-
-
-                Project.Text = PJ;
-                Category.Text = CAT;
-                Equipment.Text = EQ;
-                Product.Text = PN;
-
-                using (OracleDataReader read = cmd.ExecuteReader())
-                {
-                    while (read.Read())
-                    {
-                        TermID.Text = (read["TERM_ID"].ToString());
-                    }
-                }
+                cmd.CommandText = productNo;
+                cmd.CommandType = CommandType.Text;
+                String PJ = cmd.ExecuteScalar().ToString();
+                Product.Text = PJ;
             }
             finally
             {
@@ -103,48 +74,38 @@ namespace Inventory
             }
         }
 
-        public void ReloadEquipmentData(ComboBox Category, ComboBox Equipment)
-        {
-            string eq = "SELECT EQUIPMENT_NAME " +
-                        "FROM EQUIPMENT " +
-                        "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
-                        "WHERE CATEGORY.CATEGORY_NAME = '" + Category.Text + "' ";
-
-            main.ComboAddRowData(eq, "EQUIPMENT_NAME", Equipment);
-        }
-
-        public void InventorySearch(DataGridView dGridView, string iFilterCombo, string iSearchText, OracleConnection connection)
+        public static void InventorySearch(DataGridView dGridView, string iFilterCombo, string iSearchText, OracleConnection connection)
         {
             string query = "SELECT INVENTORY.INVENTORY_ID as ID, EQUIPMENT.EQUIPMENT_NAME as Equipment, CATEGORY.CATEGORY_NAME as Category, " +
                 "PROJECT.PROJECT_NAME as Project, INVENTORY.TERM_ID as Term_ID, INVENTORY.INVENTORY_DATE AS Inv_Date " +
                 "FROM INVENTORY " +
                 "LEFT JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
-                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
                 "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
                 "WHERE REGEXP_LIKE((" + iFilterCombo + "), ('" + iSearchText + "'), 'i')  AND " +
                 "INVENTORY.STATUS = '1' " +
                 "ORDER BY cast(INVENTORY_ID AS int) desc ";
 
             dGridView.DataSource = null;
-            dGridView.DataSource = main.DataTableSQLQuery(query);
-            main.InventoryDataGridAppearance(dGridView);
+            dGridView.DataSource = Main.DataTableSQLQuery(query);
+            Main.InventoryDataGridAppearance(dGridView);
 
         }
 
-        public void UpdateButton(ComboBox Equipment, ComboBox Category, ComboBox Project, TextBox TermID, TextBox IDText, OracleConnection connection)
+        public static void UpdateButton(ComboBox Equipment, ComboBox Project, TextBox TermID, TextBox IDText, OracleConnection connection)
         {
             string query = "UPDATE INVENTORY " +
                     "SET INVENTORY.EQUIPMENT_ID = (SELECT EQUIPMENT.EQUIPMENT_ID FROM EQUIPMENT WHERE EQUIPMENT.EQUIPMENT_NAME = '" + Equipment.Text + "'), " +
-                    "INVENTORY.CATEGORY_ID = (SELECT CATEGORY.CATEGORY_ID FROM CATEGORY WHERE CATEGORY.CATEGORY_NAME = '" + Category.Text + "'), " +
-                    "INVENTORY.PROJECT_ID = (SELECT PROJECT.PROJECT_ID FROM PROJECT WHERE PROJECT.PROJECT_NAME = '" + Project.Text + "'), " +
+                    //"INVENTORY.CATEGORY_ID = (SELECT CATEGORY.CATEGORY_ID FROM CATEGORY WHERE CATEGORY.CATEGORY_NAME = '" + Category.Text + "'), " +
+                    "INVENTORY.PROJECT_ID = (SELECT PROJECT.PROJECT_ID FROM PROJECT WHERE PROJECT.PROJECT_NAME = '" + Project.Text + "' AND PROJECT.STATUS = '1'), " +
                     "INVENTORY.TERM_ID = ('" + TermID.Text + "') " +
                     "WHERE INVENTORY.INVENTORY_ID = '" + IDText.Text + "' ";
 
-            main.RunSQLQuery(query);
+            Main.RunSQLQuery(query);
             MessageBox.Show("Inventory ID: " + IDText.Text + " was edited.");
         }
 
-        public void DeleteInventory(string invID, DataGridView dGridView)
+        public static void DeleteInventory(string invID, DataGridView dGridView)
         {
             string query = "UPDATE INVENTORY " +
                     "SET INVENTORY.STATUS = 0, " +
@@ -156,8 +117,8 @@ namespace Inventory
                          MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                main.RunSQLQuery(query);
-
+                History.HistoryInventoryDelete("[Inventory ID " + dGridView.SelectedRows[0].Cells[0].Value.ToString() + "]: " + "was removed.");
+                Main.RunSQLQuery(query);
                 DataTable inventoryDataTable = (DataTable)dGridView.DataSource;
                 inventoryDataTable.Rows.RemoveAt(dGridView.SelectedRows[0].Index);
 

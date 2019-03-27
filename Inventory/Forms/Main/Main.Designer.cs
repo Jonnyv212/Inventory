@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,25 +42,22 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventoryContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectButton = new System.Windows.Forms.Button();
-            this.projectBackButton = new System.Windows.Forms.Button();
             this.projectContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.HistoryDataGrid = new System.Windows.Forms.DataGridView();
+            this.moveToToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainClose = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.inventoryNewButtonMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -74,6 +71,7 @@
             this.InventoryPanelButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.inventoryPanel = new System.Windows.Forms.Panel();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.fakeSearchTextbox = new System.Windows.Forms.TextBox();
             this.updateButton = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -89,7 +87,6 @@
             this.CategoryCombobox = new System.Windows.Forms.ComboBox();
             this.TermIDTextbox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.inventoryBackButton = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.newInventoryButton = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
@@ -97,22 +94,28 @@
             this.InventoryFilterCombo = new System.Windows.Forms.ComboBox();
             this.InventorySearchTextbox = new System.Windows.Forms.TextBox();
             this.projectsPanel = new System.Windows.Forms.Panel();
-            this.ProjectsRightDataGrid = new System.Windows.Forms.DataGridView();
-            this.pNameCombobox = new System.Windows.Forms.ComboBox();
-            this.leftButton = new System.Windows.Forms.Button();
-            this.rightButton = new System.Windows.Forms.Button();
-            this.ProjectsLeftDataGrid = new System.Windows.Forms.DataGridView();
-            this.projectSaveButton = new System.Windows.Forms.Button();
-            this.ticketEditNoTextbox = new System.Windows.Forms.TextBox();
-            this.descEditTextbox = new System.Windows.Forms.RichTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.deleteProjectButton = new System.Windows.Forms.Button();
+            this.projectNameTextbox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ticketTextbox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.projectComboList = new System.Windows.Forms.ComboBox();
+            this.newProjectButton = new System.Windows.Forms.Button();
+            this.projectRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.editProjectButton = new System.Windows.Forms.Button();
+            this.projectsDataGrid = new System.Windows.Forms.DataGridView();
+            this.historyPanel = new System.Windows.Forms.Panel();
+            this.HistoryDataGrid = new System.Windows.Forms.DataGridView();
             this.barcodePanel = new System.Windows.Forms.Panel();
+            this.editEquipmentButton = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.newEquipment = new System.Windows.Forms.Button();
             this.insertBarcodeButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.barcodeLabel = new System.Windows.Forms.Label();
             this.barcodeEquipment = new System.Windows.Forms.DataGridView();
             this.barcodeGrid = new System.Windows.Forms.DataGridView();
@@ -121,25 +124,26 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityTextbox = new System.Windows.Forms.TextBox();
             this.barcodeTextbox = new System.Windows.Forms.TextBox();
-            this.historyPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.deleteButton = new System.Windows.Forms.Button();
             this.inventoryContextMenuStrip.SuspendLayout();
             this.projectContextMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.inventoryNewButtonMenuStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InventoryDataGrid)).BeginInit();
             this.projectsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectsRightDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectsLeftDataGrid)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).BeginInit();
+            this.historyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).BeginInit();
             this.barcodePanel.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeEquipment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeGrid)).BeginInit();
-            this.historyPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // inventoryContextMenuStrip
@@ -149,147 +153,80 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.inventoryContextMenuStrip.Name = "contextMenuStrip1";
-            this.inventoryContextMenuStrip.Size = new System.Drawing.Size(135, 64);
+            this.inventoryContextMenuStrip.Size = new System.Drawing.Size(108, 48);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(134, 30);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click_1);
-            // 
-            // projectButton
-            // 
-            this.projectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            this.projectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.projectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.projectButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectButton.ForeColor = System.Drawing.Color.White;
-            this.projectButton.Location = new System.Drawing.Point(20, 204);
-            this.projectButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.projectButton.Name = "projectButton";
-            this.projectButton.Size = new System.Drawing.Size(93, 45);
-            this.projectButton.TabIndex = 53;
-            this.projectButton.Text = "Add";
-            this.projectButton.UseVisualStyleBackColor = false;
-            this.projectButton.Click += new System.EventHandler(this.projectButton_Click);
-            // 
-            // projectBackButton
-            // 
-            this.projectBackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))));
-            this.projectBackButton.Enabled = false;
-            this.projectBackButton.FlatAppearance.BorderSize = 0;
-            this.projectBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.projectBackButton.ForeColor = System.Drawing.Color.Black;
-            this.projectBackButton.Location = new System.Drawing.Point(136, 204);
-            this.projectBackButton.Name = "projectBackButton";
-            this.projectBackButton.Size = new System.Drawing.Size(122, 46);
-            this.projectBackButton.TabIndex = 46;
-            this.projectBackButton.Text = "Back";
-            this.projectBackButton.UseVisualStyleBackColor = false;
-            this.projectBackButton.Click += new System.EventHandler(this.projectBackButton_Click);
             // 
             // projectContextMenuStrip
             // 
             this.projectContextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.projectContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newProjectToolStripMenuItem,
-            this.editProjectToolStripMenuItem});
+            this.moveToToolStripMenuItem});
             this.projectContextMenuStrip.Name = "projectContextMenuStrip";
-            this.projectContextMenuStrip.Size = new System.Drawing.Size(179, 64);
+            this.projectContextMenuStrip.Size = new System.Drawing.Size(139, 48);
             // 
             // newProjectToolStripMenuItem
             // 
             this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
-            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.newProjectToolStripMenuItem.Text = "New Project";
             this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
             // 
-            // editProjectToolStripMenuItem
+            // moveToToolStripMenuItem
             // 
-            this.editProjectToolStripMenuItem.Name = "editProjectToolStripMenuItem";
-            this.editProjectToolStripMenuItem.Size = new System.Drawing.Size(178, 30);
-            this.editProjectToolStripMenuItem.Text = "Edit";
-            // 
-            // HistoryDataGrid
-            // 
-            this.HistoryDataGrid.AllowUserToAddRows = false;
-            this.HistoryDataGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-            this.HistoryDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.HistoryDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.HistoryDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.HistoryDataGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.HistoryDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.HistoryDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.HistoryDataGrid.ContextMenuStrip = this.inventoryContextMenuStrip;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.HistoryDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
-            this.HistoryDataGrid.GridColor = System.Drawing.SystemColors.MenuText;
-            this.HistoryDataGrid.Location = new System.Drawing.Point(18, 158);
-            this.HistoryDataGrid.MultiSelect = false;
-            this.HistoryDataGrid.Name = "HistoryDataGrid";
-            this.HistoryDataGrid.ReadOnly = true;
-            this.HistoryDataGrid.RowHeadersVisible = false;
-            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
-            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.HistoryDataGrid.RowTemplate.Height = 30;
-            this.HistoryDataGrid.RowTemplate.ReadOnly = true;
-            this.HistoryDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HistoryDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HistoryDataGrid.Size = new System.Drawing.Size(1511, 644);
-            this.HistoryDataGrid.TabIndex = 42;
+            this.moveToToolStripMenuItem.Name = "moveToToolStripMenuItem";
+            this.moveToToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.moveToToolStripMenuItem.Text = "Move To:";
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(673, 89);
+            this.label2.Location = new System.Drawing.Point(418, 10);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(208, 47);
+            this.label2.Size = new System.Drawing.Size(138, 31);
             this.label2.TabIndex = 41;
             this.label2.Text = "HISTORY";
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(42)))), ((int)(((byte)(84)))));
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.mainClose);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1798, 66);
+            this.panel2.Size = new System.Drawing.Size(1199, 55);
             this.panel2.TabIndex = 32;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             this.panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseUp);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(63, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 39;
+            this.pictureBox1.TabStop = false;
             // 
             // mainClose
             // 
@@ -299,10 +236,10 @@
             this.mainClose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mainClose.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainClose.ForeColor = System.Drawing.Color.White;
-            this.mainClose.Location = new System.Drawing.Point(1747, 12);
+            this.mainClose.Location = new System.Drawing.Point(1164, 9);
             this.mainClose.Margin = new System.Windows.Forms.Padding(0);
             this.mainClose.Name = "mainClose";
-            this.mainClose.Size = new System.Drawing.Size(38, 42);
+            this.mainClose.Size = new System.Drawing.Size(26, 27);
             this.mainClose.TabIndex = 39;
             this.mainClose.Text = "X";
             this.mainClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -313,10 +250,9 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(18, 12);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(81, 13);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(494, 45);
+            this.label19.Size = new System.Drawing.Size(322, 30);
             this.label19.TabIndex = 0;
             this.label19.Text = "Pathology Informatics - Inventory";
             this.label19.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label19_MouseDown);
@@ -331,26 +267,26 @@
             this.barcodeScanToolStripMenuItem,
             this.newEquipmentToolStripMenuItem});
             this.inventoryNewButtonMenuStrip.Name = "inventoryNewButtonMenuStrip";
-            this.inventoryNewButtonMenuStrip.Size = new System.Drawing.Size(211, 94);
+            this.inventoryNewButtonMenuStrip.Size = new System.Drawing.Size(160, 70);
             // 
             // manuallyInsertToolStripMenuItem
             // 
             this.manuallyInsertToolStripMenuItem.Name = "manuallyInsertToolStripMenuItem";
-            this.manuallyInsertToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
+            this.manuallyInsertToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.manuallyInsertToolStripMenuItem.Text = "Manually Insert";
             this.manuallyInsertToolStripMenuItem.Click += new System.EventHandler(this.manuallyInsertToolStripMenuItem_Click);
             // 
             // barcodeScanToolStripMenuItem
             // 
             this.barcodeScanToolStripMenuItem.Name = "barcodeScanToolStripMenuItem";
-            this.barcodeScanToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
+            this.barcodeScanToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.barcodeScanToolStripMenuItem.Text = "Barcode Scan";
             this.barcodeScanToolStripMenuItem.Click += new System.EventHandler(this.barcodeScanToolStripMenuItem_Click);
             // 
             // newEquipmentToolStripMenuItem
             // 
             this.newEquipmentToolStripMenuItem.Name = "newEquipmentToolStripMenuItem";
-            this.newEquipmentToolStripMenuItem.Size = new System.Drawing.Size(210, 30);
+            this.newEquipmentToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.newEquipmentToolStripMenuItem.Text = "New Equipment";
             this.newEquipmentToolStripMenuItem.Click += new System.EventHandler(this.newEquipmentToolStripMenuItem_Click);
             // 
@@ -363,10 +299,9 @@
             this.panel1.Controls.Add(this.ProjectsPanelButton);
             this.panel1.Controls.Add(this.InventoryPanelButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 66);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(0, 55);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 832);
+            this.panel1.Size = new System.Drawing.Size(167, 529);
             this.panel1.TabIndex = 33;
             // 
             // BarcodePanelButton
@@ -379,10 +314,9 @@
             this.BarcodePanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BarcodePanelButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BarcodePanelButton.ForeColor = System.Drawing.Color.White;
-            this.BarcodePanelButton.Location = new System.Drawing.Point(6, 423);
-            this.BarcodePanelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BarcodePanelButton.Location = new System.Drawing.Point(2, 145);
             this.BarcodePanelButton.Name = "BarcodePanelButton";
-            this.BarcodePanelButton.Size = new System.Drawing.Size(234, 77);
+            this.BarcodePanelButton.Size = new System.Drawing.Size(156, 50);
             this.BarcodePanelButton.TabIndex = 38;
             this.BarcodePanelButton.Text = "Barcode Scan";
             this.BarcodePanelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -400,10 +334,9 @@
             this.HistoryPanelButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HistoryPanelButton.ForeColor = System.Drawing.Color.White;
             this.HistoryPanelButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.HistoryPanelButton.Location = new System.Drawing.Point(9, 731);
-            this.HistoryPanelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.HistoryPanelButton.Location = new System.Drawing.Point(4, 345);
             this.HistoryPanelButton.Name = "HistoryPanelButton";
-            this.HistoryPanelButton.Size = new System.Drawing.Size(231, 77);
+            this.HistoryPanelButton.Size = new System.Drawing.Size(154, 50);
             this.HistoryPanelButton.TabIndex = 37;
             this.HistoryPanelButton.Text = "History";
             this.HistoryPanelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -421,10 +354,9 @@
             this.ProjectsPanelButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProjectsPanelButton.ForeColor = System.Drawing.Color.White;
             this.ProjectsPanelButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ProjectsPanelButton.Location = new System.Drawing.Point(9, 577);
-            this.ProjectsPanelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ProjectsPanelButton.Location = new System.Drawing.Point(4, 245);
             this.ProjectsPanelButton.Name = "ProjectsPanelButton";
-            this.ProjectsPanelButton.Size = new System.Drawing.Size(231, 77);
+            this.ProjectsPanelButton.Size = new System.Drawing.Size(154, 50);
             this.ProjectsPanelButton.TabIndex = 36;
             this.ProjectsPanelButton.Text = "Projects";
             this.ProjectsPanelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -442,10 +374,9 @@
             this.InventoryPanelButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InventoryPanelButton.ForeColor = System.Drawing.Color.White;
             this.InventoryPanelButton.Image = ((System.Drawing.Image)(resources.GetObject("InventoryPanelButton.Image")));
-            this.InventoryPanelButton.Location = new System.Drawing.Point(8, 269);
-            this.InventoryPanelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.InventoryPanelButton.Location = new System.Drawing.Point(3, 45);
             this.InventoryPanelButton.Name = "InventoryPanelButton";
-            this.InventoryPanelButton.Size = new System.Drawing.Size(234, 77);
+            this.InventoryPanelButton.Size = new System.Drawing.Size(156, 50);
             this.InventoryPanelButton.TabIndex = 35;
             this.InventoryPanelButton.Text = "Inventory";
             this.InventoryPanelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -456,15 +387,14 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.barcodePanel);
             this.panel3.Controls.Add(this.inventoryPanel);
+            this.panel3.Controls.Add(this.barcodePanel);
             this.panel3.Controls.Add(this.projectsPanel);
             this.panel3.Controls.Add(this.historyPanel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(250, 66);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(167, 55);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1548, 832);
+            this.panel3.Size = new System.Drawing.Size(1032, 529);
             this.panel3.TabIndex = 34;
             // 
             // inventoryPanel
@@ -486,7 +416,6 @@
             this.inventoryPanel.Controls.Add(this.CategoryCombobox);
             this.inventoryPanel.Controls.Add(this.TermIDTextbox);
             this.inventoryPanel.Controls.Add(this.label16);
-            this.inventoryPanel.Controls.Add(this.inventoryBackButton);
             this.inventoryPanel.Controls.Add(this.label17);
             this.inventoryPanel.Controls.Add(this.newInventoryButton);
             this.inventoryPanel.Controls.Add(this.label18);
@@ -495,16 +424,32 @@
             this.inventoryPanel.Controls.Add(this.InventorySearchTextbox);
             this.inventoryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.inventoryPanel.Location = new System.Drawing.Point(0, 0);
-            this.inventoryPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.inventoryPanel.Name = "inventoryPanel";
-            this.inventoryPanel.Size = new System.Drawing.Size(1546, 830);
+            this.inventoryPanel.Size = new System.Drawing.Size(1030, 527);
             this.inventoryPanel.TabIndex = 2;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))));
+            this.deleteButton.Enabled = false;
+            this.deleteButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.Black;
+            this.deleteButton.Location = new System.Drawing.Point(902, 475);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(102, 38);
+            this.deleteButton.TabIndex = 102;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // fakeSearchTextbox
             // 
-            this.fakeSearchTextbox.Location = new System.Drawing.Point(681, 15);
+            this.fakeSearchTextbox.Location = new System.Drawing.Point(418, 13);
+            this.fakeSearchTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.fakeSearchTextbox.Name = "fakeSearchTextbox";
-            this.fakeSearchTextbox.Size = new System.Drawing.Size(412, 26);
+            this.fakeSearchTextbox.Size = new System.Drawing.Size(312, 20);
             this.fakeSearchTextbox.TabIndex = 101;
             this.fakeSearchTextbox.Click += new System.EventHandler(this.fakeSearchTextbox_Click);
             // 
@@ -516,10 +461,9 @@
             this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.updateButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateButton.ForeColor = System.Drawing.Color.Black;
-            this.updateButton.Location = new System.Drawing.Point(1144, 731);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.updateButton.Location = new System.Drawing.Point(763, 475);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(153, 58);
+            this.updateButton.Size = new System.Drawing.Size(102, 38);
             this.updateButton.TabIndex = 100;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = false;
@@ -528,10 +472,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1106, 55);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(755, 47);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(63, 24);
+            this.checkBox1.Size = new System.Drawing.Size(54, 24);
             this.checkBox1.TabIndex = 99;
             this.checkBox1.Text = "Edit";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -541,9 +485,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1101, 148);
+            this.label10.Location = new System.Drawing.Point(792, 96);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 28);
+            this.label10.Size = new System.Drawing.Size(23, 17);
             this.label10.TabIndex = 98;
             this.label10.Text = "ID:";
             // 
@@ -552,18 +497,21 @@
             this.IDTextbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.IDTextbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.IDTextbox.Enabled = false;
-            this.IDTextbox.Location = new System.Drawing.Point(1238, 148);
+            this.IDTextbox.Location = new System.Drawing.Point(825, 96);
+            this.IDTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.IDTextbox.Name = "IDTextbox";
-            this.IDTextbox.Size = new System.Drawing.Size(294, 26);
+            this.IDTextbox.ReadOnly = true;
+            this.IDTextbox.Size = new System.Drawing.Size(197, 20);
             this.IDTextbox.TabIndex = 97;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1101, 425);
+            this.label11.Location = new System.Drawing.Point(734, 324);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(121, 28);
+            this.label11.Size = new System.Drawing.Size(81, 17);
             this.label11.TabIndex = 96;
             this.label11.Text = "PRODUCT #:";
             // 
@@ -572,19 +520,21 @@
             this.ProductTextbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.ProductTextbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ProductTextbox.Enabled = false;
-            this.ProductTextbox.Location = new System.Drawing.Point(1238, 425);
+            this.ProductTextbox.Location = new System.Drawing.Point(825, 324);
+            this.ProductTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.ProductTextbox.Name = "ProductTextbox";
             this.ProductTextbox.ReadOnly = true;
-            this.ProductTextbox.Size = new System.Drawing.Size(294, 26);
+            this.ProductTextbox.Size = new System.Drawing.Size(197, 20);
             this.ProductTextbox.TabIndex = 95;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1101, 609);
+            this.label12.Location = new System.Drawing.Point(752, 156);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 28);
+            this.label12.Size = new System.Drawing.Size(63, 17);
             this.label12.TabIndex = 94;
             this.label12.Text = "PROJECT:";
             // 
@@ -592,9 +542,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1101, 517);
+            this.label13.Location = new System.Drawing.Point(754, 380);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 28);
+            this.label13.Size = new System.Drawing.Size(61, 17);
             this.label13.TabIndex = 93;
             this.label13.Text = "TERM ID:";
             // 
@@ -602,9 +553,10 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1101, 332);
+            this.label14.Location = new System.Drawing.Point(732, 268);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(124, 28);
+            this.label14.Size = new System.Drawing.Size(83, 17);
             this.label14.TabIndex = 92;
             this.label14.Text = "EQUIPMENT:";
             // 
@@ -612,21 +564,20 @@
             // 
             this.EquipCombobox.Enabled = false;
             this.EquipCombobox.FormattingEnabled = true;
-            this.EquipCombobox.Location = new System.Drawing.Point(1238, 332);
-            this.EquipCombobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.EquipCombobox.Location = new System.Drawing.Point(825, 268);
             this.EquipCombobox.Name = "EquipCombobox";
-            this.EquipCombobox.Size = new System.Drawing.Size(294, 28);
+            this.EquipCombobox.Size = new System.Drawing.Size(197, 21);
             this.EquipCombobox.TabIndex = 91;
+            this.EquipCombobox.SelectedIndexChanged += new System.EventHandler(this.EquipCombobox_SelectedIndexChanged);
             // 
             // ProjectCombobox
             // 
             this.ProjectCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProjectCombobox.Enabled = false;
             this.ProjectCombobox.FormattingEnabled = true;
-            this.ProjectCombobox.Location = new System.Drawing.Point(1238, 609);
-            this.ProjectCombobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ProjectCombobox.Location = new System.Drawing.Point(825, 156);
             this.ProjectCombobox.Name = "ProjectCombobox";
-            this.ProjectCombobox.Size = new System.Drawing.Size(294, 28);
+            this.ProjectCombobox.Size = new System.Drawing.Size(197, 21);
             this.ProjectCombobox.TabIndex = 90;
             // 
             // CategoryCombobox
@@ -634,11 +585,11 @@
             this.CategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryCombobox.Enabled = false;
             this.CategoryCombobox.FormattingEnabled = true;
-            this.CategoryCombobox.Location = new System.Drawing.Point(1238, 240);
-            this.CategoryCombobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CategoryCombobox.Location = new System.Drawing.Point(825, 212);
             this.CategoryCombobox.Name = "CategoryCombobox";
-            this.CategoryCombobox.Size = new System.Drawing.Size(294, 28);
+            this.CategoryCombobox.Size = new System.Drawing.Size(197, 21);
             this.CategoryCombobox.TabIndex = 89;
+            this.CategoryCombobox.SelectedIndexChanged += new System.EventHandler(this.CategoryCombobox_SelectedIndexChanged);
             // 
             // TermIDTextbox
             // 
@@ -646,43 +597,31 @@
             this.TermIDTextbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TermIDTextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.TermIDTextbox.Enabled = false;
-            this.TermIDTextbox.Location = new System.Drawing.Point(1238, 517);
+            this.TermIDTextbox.Location = new System.Drawing.Point(825, 380);
+            this.TermIDTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.TermIDTextbox.Name = "TermIDTextbox";
-            this.TermIDTextbox.Size = new System.Drawing.Size(294, 26);
+            this.TermIDTextbox.Size = new System.Drawing.Size(197, 20);
             this.TermIDTextbox.TabIndex = 88;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1101, 240);
+            this.label16.Location = new System.Drawing.Point(741, 212);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(112, 28);
+            this.label16.Size = new System.Drawing.Size(74, 17);
             this.label16.TabIndex = 87;
             this.label16.Text = "CATEGORY:";
-            // 
-            // inventoryBackButton
-            // 
-            this.inventoryBackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))));
-            this.inventoryBackButton.Enabled = false;
-            this.inventoryBackButton.FlatAppearance.BorderSize = 0;
-            this.inventoryBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventoryBackButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inventoryBackButton.ForeColor = System.Drawing.Color.Black;
-            this.inventoryBackButton.Location = new System.Drawing.Point(122, 6);
-            this.inventoryBackButton.Name = "inventoryBackButton";
-            this.inventoryBackButton.Size = new System.Drawing.Size(122, 45);
-            this.inventoryBackButton.TabIndex = 86;
-            this.inventoryBackButton.Text = "Back";
-            this.inventoryBackButton.UseVisualStyleBackColor = false;
-            this.inventoryBackButton.Click += new System.EventHandler(this.inventoryBackButton_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(604, 20);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(354, 11);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 20);
+            this.label17.Size = new System.Drawing.Size(60, 20);
             this.label17.TabIndex = 84;
             this.label17.Text = "Search: ";
             // 
@@ -693,10 +632,9 @@
             this.newInventoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.newInventoryButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newInventoryButton.ForeColor = System.Drawing.Color.White;
-            this.newInventoryButton.Location = new System.Drawing.Point(4, 6);
-            this.newInventoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newInventoryButton.Location = new System.Drawing.Point(3, 4);
             this.newInventoryButton.Name = "newInventoryButton";
-            this.newInventoryButton.Size = new System.Drawing.Size(93, 45);
+            this.newInventoryButton.Size = new System.Drawing.Size(73, 31);
             this.newInventoryButton.TabIndex = 85;
             this.newInventoryButton.Text = "New";
             this.newInventoryButton.UseVisualStyleBackColor = false;
@@ -705,9 +643,11 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(280, 20);
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(104, 11);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(52, 20);
+            this.label18.Size = new System.Drawing.Size(49, 20);
             this.label18.TabIndex = 83;
             this.label18.Text = "Filter: ";
             // 
@@ -715,9 +655,9 @@
             // 
             this.InventoryDataGrid.AllowUserToAddRows = false;
             this.InventoryDataGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.AliceBlue;
-            this.InventoryDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            this.InventoryDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.InventoryDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -725,39 +665,39 @@
             this.InventoryDataGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.InventoryDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.InventoryDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.InventoryDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.InventoryDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.InventoryDataGrid.ColumnHeadersHeight = 30;
             this.InventoryDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.InventoryDataGrid.ContextMenuStrip = this.inventoryContextMenuStrip;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.InventoryDataGrid.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.InventoryDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.InventoryDataGrid.GridColor = System.Drawing.SystemColors.MenuText;
-            this.InventoryDataGrid.Location = new System.Drawing.Point(3, 58);
+            this.InventoryDataGrid.Location = new System.Drawing.Point(2, 38);
             this.InventoryDataGrid.Margin = new System.Windows.Forms.Padding(0);
             this.InventoryDataGrid.MultiSelect = false;
             this.InventoryDataGrid.Name = "InventoryDataGrid";
             this.InventoryDataGrid.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.InfoText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.InventoryDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.InventoryDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.InventoryDataGrid.RowHeadersVisible = false;
             this.InventoryDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.InventoryDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -769,27 +709,34 @@
             this.InventoryDataGrid.RowTemplate.ReadOnly = true;
             this.InventoryDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.InventoryDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.InventoryDataGrid.Size = new System.Drawing.Size(1094, 768);
+            this.InventoryDataGrid.Size = new System.Drawing.Size(728, 487);
             this.InventoryDataGrid.TabIndex = 81;
-            this.InventoryDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.InventoryDataGrid_CellClick);
+            this.InventoryDataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InventoryDataGrid_CellMouseClick);
             this.InventoryDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.InventoryDataGrid_CellMouseDown);
             // 
             // InventoryFilterCombo
             // 
+            this.InventoryFilterCombo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
             this.InventoryFilterCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InventoryFilterCombo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.InventoryFilterCombo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InventoryFilterCombo.ForeColor = System.Drawing.Color.White;
             this.InventoryFilterCombo.FormattingEnabled = true;
             this.InventoryFilterCombo.Items.AddRange(new object[] {
             "EQUIPMENT_NAME"});
-            this.InventoryFilterCombo.Location = new System.Drawing.Point(339, 15);
+            this.InventoryFilterCombo.Location = new System.Drawing.Point(157, 6);
+            this.InventoryFilterCombo.Margin = new System.Windows.Forms.Padding(2);
             this.InventoryFilterCombo.Name = "InventoryFilterCombo";
-            this.InventoryFilterCombo.Size = new System.Drawing.Size(216, 28);
+            this.InventoryFilterCombo.Size = new System.Drawing.Size(175, 28);
             this.InventoryFilterCombo.TabIndex = 82;
+            this.InventoryFilterCombo.SelectedIndexChanged += new System.EventHandler(this.InventoryFilterCombo_SelectedIndexChanged);
             // 
             // InventorySearchTextbox
             // 
-            this.InventorySearchTextbox.Location = new System.Drawing.Point(681, 15);
+            this.InventorySearchTextbox.Location = new System.Drawing.Point(418, 13);
+            this.InventorySearchTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.InventorySearchTextbox.Name = "InventorySearchTextbox";
-            this.InventorySearchTextbox.Size = new System.Drawing.Size(412, 26);
+            this.InventorySearchTextbox.Size = new System.Drawing.Size(312, 20);
             this.InventorySearchTextbox.TabIndex = 80;
             this.InventorySearchTextbox.TextChanged += new System.EventHandler(this.InventorySearchTextbox_TextChanged);
             this.InventorySearchTextbox.Leave += new System.EventHandler(this.InventorySearchTextbox_Leave);
@@ -797,235 +744,307 @@
             // projectsPanel
             // 
             this.projectsPanel.BackColor = System.Drawing.Color.White;
-            this.projectsPanel.Controls.Add(this.ProjectsRightDataGrid);
-            this.projectsPanel.Controls.Add(this.pNameCombobox);
-            this.projectsPanel.Controls.Add(this.leftButton);
-            this.projectsPanel.Controls.Add(this.rightButton);
-            this.projectsPanel.Controls.Add(this.ProjectsLeftDataGrid);
-            this.projectsPanel.Controls.Add(this.projectSaveButton);
-            this.projectsPanel.Controls.Add(this.ticketEditNoTextbox);
-            this.projectsPanel.Controls.Add(this.descEditTextbox);
-            this.projectsPanel.Controls.Add(this.label7);
-            this.projectsPanel.Controls.Add(this.label8);
-            this.projectsPanel.Controls.Add(this.label9);
-            this.projectsPanel.Controls.Add(this.projectButton);
-            this.projectsPanel.Controls.Add(this.projectBackButton);
-            this.projectsPanel.Controls.Add(this.label5);
+            this.projectsPanel.Controls.Add(this.deleteProjectButton);
+            this.projectsPanel.Controls.Add(this.projectNameTextbox);
+            this.projectsPanel.Controls.Add(this.label15);
+            this.projectsPanel.Controls.Add(this.ticketTextbox);
+            this.projectsPanel.Controls.Add(this.label6);
+            this.projectsPanel.Controls.Add(this.panel5);
+            this.projectsPanel.Controls.Add(this.projectRichTextbox);
+            this.projectsPanel.Controls.Add(this.editProjectButton);
+            this.projectsPanel.Controls.Add(this.projectsDataGrid);
             this.projectsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.projectsPanel.Location = new System.Drawing.Point(0, 0);
-            this.projectsPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.projectsPanel.Name = "projectsPanel";
-            this.projectsPanel.Size = new System.Drawing.Size(1546, 830);
-            this.projectsPanel.TabIndex = 3;
+            this.projectsPanel.Size = new System.Drawing.Size(1030, 527);
+            this.projectsPanel.TabIndex = 98;
             // 
-            // ProjectsRightDataGrid
+            // deleteProjectButton
             // 
-            this.ProjectsRightDataGrid.AllowUserToAddRows = false;
-            this.ProjectsRightDataGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.AliceBlue;
-            this.ProjectsRightDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.ProjectsRightDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.deleteProjectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.deleteProjectButton.Enabled = false;
+            this.deleteProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.deleteProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteProjectButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteProjectButton.ForeColor = System.Drawing.Color.White;
+            this.deleteProjectButton.Location = new System.Drawing.Point(875, 468);
+            this.deleteProjectButton.Name = "deleteProjectButton";
+            this.deleteProjectButton.Size = new System.Drawing.Size(129, 45);
+            this.deleteProjectButton.TabIndex = 110;
+            this.deleteProjectButton.Text = "Delete";
+            this.deleteProjectButton.UseVisualStyleBackColor = false;
+            this.deleteProjectButton.Click += new System.EventHandler(this.deleteProjectButton_Click);
+            // 
+            // projectNameTextbox
+            // 
+            this.projectNameTextbox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.projectNameTextbox.Location = new System.Drawing.Point(772, 46);
+            this.projectNameTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.projectNameTextbox.Name = "projectNameTextbox";
+            this.projectNameTextbox.ReadOnly = true;
+            this.projectNameTextbox.Size = new System.Drawing.Size(176, 22);
+            this.projectNameTextbox.TabIndex = 109;
+            this.projectNameTextbox.TextChanged += new System.EventHandler(this.projectNameTextbox_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(834, 22);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 18);
+            this.label15.TabIndex = 108;
+            this.label15.Text = "Name";
+            // 
+            // ticketTextbox
+            // 
+            this.ticketTextbox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketTextbox.Location = new System.Drawing.Point(772, 102);
+            this.ticketTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.ticketTextbox.Name = "ticketTextbox";
+            this.ticketTextbox.ReadOnly = true;
+            this.ticketTextbox.Size = new System.Drawing.Size(176, 22);
+            this.ticketTextbox.TabIndex = 107;
+            this.ticketTextbox.TextChanged += new System.EventHandler(this.ticketTextbox_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(805, 81);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(105, 18);
+            this.label6.TabIndex = 106;
+            this.label6.Text = "Ticket Number";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.projectComboList);
+            this.panel5.Controls.Add(this.newProjectButton);
+            this.panel5.Location = new System.Drawing.Point(3, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(702, 41);
+            this.panel5.TabIndex = 105;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(301, 7);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 20);
+            this.label4.TabIndex = 105;
+            this.label4.Text = "Project: ";
+            // 
+            // projectComboList
+            // 
+            this.projectComboList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.projectComboList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.projectComboList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.projectComboList.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.projectComboList.ForeColor = System.Drawing.Color.White;
+            this.projectComboList.FormattingEnabled = true;
+            this.projectComboList.Items.AddRange(new object[] {
+            "EQUIPMENT_NAME"});
+            this.projectComboList.Location = new System.Drawing.Point(367, 4);
+            this.projectComboList.Margin = new System.Windows.Forms.Padding(2);
+            this.projectComboList.Name = "projectComboList";
+            this.projectComboList.Size = new System.Drawing.Size(297, 28);
+            this.projectComboList.TabIndex = 104;
+            this.projectComboList.SelectedIndexChanged += new System.EventHandler(this.projectComboList_SelectedIndexChanged);
+            // 
+            // newProjectButton
+            // 
+            this.newProjectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.newProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.newProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.newProjectButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newProjectButton.ForeColor = System.Drawing.Color.White;
+            this.newProjectButton.Location = new System.Drawing.Point(3, 3);
+            this.newProjectButton.Name = "newProjectButton";
+            this.newProjectButton.Size = new System.Drawing.Size(107, 31);
+            this.newProjectButton.TabIndex = 103;
+            this.newProjectButton.Text = "New";
+            this.newProjectButton.UseVisualStyleBackColor = false;
+            this.newProjectButton.Click += new System.EventHandler(this.newProjectButton_Click);
+            // 
+            // projectRichTextbox
+            // 
+            this.projectRichTextbox.BackColor = System.Drawing.Color.White;
+            this.projectRichTextbox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.projectRichTextbox.Location = new System.Drawing.Point(712, 133);
+            this.projectRichTextbox.Name = "projectRichTextbox";
+            this.projectRichTextbox.ReadOnly = true;
+            this.projectRichTextbox.Size = new System.Drawing.Size(310, 331);
+            this.projectRichTextbox.TabIndex = 104;
+            this.projectRichTextbox.Text = "No description.";
+            this.projectRichTextbox.TextChanged += new System.EventHandler(this.projectRichTextbox_TextChanged);
+            // 
+            // editProjectButton
+            // 
+            this.editProjectButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.editProjectButton.Enabled = false;
+            this.editProjectButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.editProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.editProjectButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editProjectButton.ForeColor = System.Drawing.Color.White;
+            this.editProjectButton.Location = new System.Drawing.Point(724, 468);
+            this.editProjectButton.Name = "editProjectButton";
+            this.editProjectButton.Size = new System.Drawing.Size(129, 45);
+            this.editProjectButton.TabIndex = 102;
+            this.editProjectButton.Text = "Save";
+            this.editProjectButton.UseVisualStyleBackColor = false;
+            this.editProjectButton.Click += new System.EventHandler(this.editProjectButton_Click);
+            // 
+            // projectsDataGrid
+            // 
+            this.projectsDataGrid.AllowUserToAddRows = false;
+            this.projectsDataGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.AliceBlue;
+            this.projectsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.projectsDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProjectsRightDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ProjectsRightDataGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ProjectsRightDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.projectsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.projectsDataGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.projectsDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.projectsDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.projectsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.projectsDataGrid.ColumnHeadersHeight = 30;
+            this.projectsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.projectsDataGrid.ContextMenuStrip = this.projectContextMenuStrip;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.projectsDataGrid.DefaultCellStyle = dataGridViewCellStyle14;
+            this.projectsDataGrid.EnableHeadersVisualStyles = false;
+            this.projectsDataGrid.GridColor = System.Drawing.SystemColors.MenuText;
+            this.projectsDataGrid.Location = new System.Drawing.Point(3, 42);
+            this.projectsDataGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.projectsDataGrid.MultiSelect = false;
+            this.projectsDataGrid.Name = "projectsDataGrid";
+            this.projectsDataGrid.ReadOnly = true;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.projectsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.projectsDataGrid.RowHeadersVisible = false;
+            this.projectsDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.projectsDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.projectsDataGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.projectsDataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.projectsDataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
+            this.projectsDataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.projectsDataGrid.RowTemplate.Height = 30;
+            this.projectsDataGrid.RowTemplate.ReadOnly = true;
+            this.projectsDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.projectsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.projectsDataGrid.Size = new System.Drawing.Size(702, 483);
+            this.projectsDataGrid.TabIndex = 82;
+            this.projectsDataGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.projectsDataGrid_CellMouseClick);
+            this.projectsDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.projectsDataGrid_CellMouseDown);
+            // 
+            // historyPanel
+            // 
+            this.historyPanel.BackColor = System.Drawing.Color.White;
+            this.historyPanel.Controls.Add(this.HistoryDataGrid);
+            this.historyPanel.Controls.Add(this.label2);
+            this.historyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.historyPanel.Location = new System.Drawing.Point(0, 0);
+            this.historyPanel.Name = "historyPanel";
+            this.historyPanel.Size = new System.Drawing.Size(1030, 527);
+            this.historyPanel.TabIndex = 4;
+            // 
+            // HistoryDataGrid
+            // 
+            this.HistoryDataGrid.AllowUserToAddRows = false;
+            this.HistoryDataGrid.AllowUserToDeleteRows = false;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProjectsRightDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.AliceBlue;
+            this.HistoryDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.HistoryDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HistoryDataGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.HistoryDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.HistoryDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProjectsRightDataGrid.DefaultCellStyle = dataGridViewCellStyle17;
-            this.ProjectsRightDataGrid.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ProjectsRightDataGrid.Location = new System.Drawing.Point(854, 269);
-            this.ProjectsRightDataGrid.MultiSelect = false;
-            this.ProjectsRightDataGrid.Name = "ProjectsRightDataGrid";
-            this.ProjectsRightDataGrid.ReadOnly = true;
-            this.ProjectsRightDataGrid.RowHeadersVisible = false;
-            this.ProjectsRightDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ProjectsRightDataGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProjectsRightDataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.ProjectsRightDataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
-            this.ProjectsRightDataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.ProjectsRightDataGrid.RowTemplate.Height = 35;
-            this.ProjectsRightDataGrid.RowTemplate.ReadOnly = true;
-            this.ProjectsRightDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProjectsRightDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProjectsRightDataGrid.Size = new System.Drawing.Size(675, 531);
-            this.ProjectsRightDataGrid.TabIndex = 97;
-            this.ProjectsRightDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProjectsRightDataGrid_CellContentClick);
-            // 
-            // pNameCombobox
-            // 
-            this.pNameCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.pNameCombobox.FormattingEnabled = true;
-            this.pNameCombobox.Location = new System.Drawing.Point(864, 73);
-            this.pNameCombobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pNameCombobox.Name = "pNameCombobox";
-            this.pNameCombobox.Size = new System.Drawing.Size(262, 28);
-            this.pNameCombobox.TabIndex = 96;
-            this.pNameCombobox.SelectedIndexChanged += new System.EventHandler(this.pNameCombobox_SelectedIndexChanged);
-            // 
-            // leftButton
-            // 
-            this.leftButton.Enabled = false;
-            this.leftButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leftButton.Location = new System.Drawing.Point(732, 686);
-            this.leftButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.leftButton.Name = "leftButton";
-            this.leftButton.Size = new System.Drawing.Size(90, 46);
-            this.leftButton.TabIndex = 95;
-            this.leftButton.Text = "<<";
-            this.leftButton.UseVisualStyleBackColor = true;
-            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
-            // 
-            // rightButton
-            // 
-            this.rightButton.Enabled = false;
-            this.rightButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rightButton.Location = new System.Drawing.Point(732, 387);
-            this.rightButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rightButton.Name = "rightButton";
-            this.rightButton.Size = new System.Drawing.Size(90, 46);
-            this.rightButton.TabIndex = 94;
-            this.rightButton.Text = ">>";
-            this.rightButton.UseVisualStyleBackColor = true;
-            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
-            // 
-            // ProjectsLeftDataGrid
-            // 
-            this.ProjectsLeftDataGrid.AllowUserToAddRows = false;
-            this.ProjectsLeftDataGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.HistoryDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.HistoryDataGrid.ColumnHeadersHeight = 30;
+            this.HistoryDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.AliceBlue;
-            this.ProjectsLeftDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
-            this.ProjectsLeftDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProjectsLeftDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ProjectsLeftDataGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ProjectsLeftDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.HistoryDataGrid.DefaultCellStyle = dataGridViewCellStyle18;
+            this.HistoryDataGrid.EnableHeadersVisualStyles = false;
+            this.HistoryDataGrid.GridColor = System.Drawing.SystemColors.MenuText;
+            this.HistoryDataGrid.Location = new System.Drawing.Point(4, 46);
+            this.HistoryDataGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.HistoryDataGrid.MultiSelect = false;
+            this.HistoryDataGrid.Name = "HistoryDataGrid";
+            this.HistoryDataGrid.ReadOnly = true;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.InfoText;
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProjectsLeftDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProjectsLeftDataGrid.DefaultCellStyle = dataGridViewCellStyle20;
-            this.ProjectsLeftDataGrid.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ProjectsLeftDataGrid.Location = new System.Drawing.Point(20, 269);
-            this.ProjectsLeftDataGrid.MultiSelect = false;
-            this.ProjectsLeftDataGrid.Name = "ProjectsLeftDataGrid";
-            this.ProjectsLeftDataGrid.ReadOnly = true;
-            this.ProjectsLeftDataGrid.RowHeadersVisible = false;
-            this.ProjectsLeftDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ProjectsLeftDataGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProjectsLeftDataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.ProjectsLeftDataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
-            this.ProjectsLeftDataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.ProjectsLeftDataGrid.RowTemplate.Height = 35;
-            this.ProjectsLeftDataGrid.RowTemplate.ReadOnly = true;
-            this.ProjectsLeftDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProjectsLeftDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProjectsLeftDataGrid.Size = new System.Drawing.Size(675, 531);
-            this.ProjectsLeftDataGrid.TabIndex = 93;
-            this.ProjectsLeftDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProjectsLeftDataGrid_CellContentClick);
-            this.ProjectsLeftDataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProjectsLeftDataGrid_CellContentDoubleClick);
-            // 
-            // projectSaveButton
-            // 
-            this.projectSaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            this.projectSaveButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.projectSaveButton.ForeColor = System.Drawing.Color.White;
-            this.projectSaveButton.Location = new System.Drawing.Point(926, 194);
-            this.projectSaveButton.Name = "projectSaveButton";
-            this.projectSaveButton.Size = new System.Drawing.Size(116, 58);
-            this.projectSaveButton.TabIndex = 91;
-            this.projectSaveButton.Text = "Save";
-            this.projectSaveButton.UseVisualStyleBackColor = false;
-            // 
-            // ticketEditNoTextbox
-            // 
-            this.ticketEditNoTextbox.Location = new System.Drawing.Point(864, 141);
-            this.ticketEditNoTextbox.Name = "ticketEditNoTextbox";
-            this.ticketEditNoTextbox.Size = new System.Drawing.Size(262, 26);
-            this.ticketEditNoTextbox.TabIndex = 90;
-            // 
-            // descEditTextbox
-            // 
-            this.descEditTextbox.BackColor = System.Drawing.Color.White;
-            this.descEditTextbox.Location = new System.Drawing.Point(1144, 73);
-            this.descEditTextbox.Name = "descEditTextbox";
-            this.descEditTextbox.Size = new System.Drawing.Size(385, 187);
-            this.descEditTextbox.TabIndex = 89;
-            this.descEditTextbox.Text = "";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1250, 30);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(158, 32);
-            this.label7.TabIndex = 88;
-            this.label7.Text = "Description";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(914, 110);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(153, 26);
-            this.label8.TabIndex = 87;
-            this.label8.Text = "Ticket Number";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(922, 41);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(145, 26);
-            this.label9.TabIndex = 86;
-            this.label9.Text = "Project Name";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(483, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(235, 47);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "PROJECTS";
+            this.HistoryDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.HistoryDataGrid.RowHeadersVisible = false;
+            this.HistoryDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
+            this.HistoryDataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.HistoryDataGrid.RowTemplate.Height = 30;
+            this.HistoryDataGrid.RowTemplate.ReadOnly = true;
+            this.HistoryDataGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HistoryDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.HistoryDataGrid.Size = new System.Drawing.Size(1018, 467);
+            this.HistoryDataGrid.TabIndex = 82;
             // 
             // barcodePanel
             // 
+            this.barcodePanel.BackColor = System.Drawing.Color.White;
+            this.barcodePanel.Controls.Add(this.editEquipmentButton);
+            this.barcodePanel.Controls.Add(this.panel7);
+            this.barcodePanel.Controls.Add(this.panel6);
             this.barcodePanel.Controls.Add(this.newEquipment);
             this.barcodePanel.Controls.Add(this.insertBarcodeButton);
-            this.barcodePanel.Controls.Add(this.label1);
             this.barcodePanel.Controls.Add(this.barcodeLabel);
             this.barcodePanel.Controls.Add(this.barcodeEquipment);
             this.barcodePanel.Controls.Add(this.barcodeGrid);
@@ -1033,11 +1052,65 @@
             this.barcodePanel.Controls.Add(this.barcodeTextbox);
             this.barcodePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.barcodePanel.Location = new System.Drawing.Point(0, 0);
-            this.barcodePanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.barcodePanel.Name = "barcodePanel";
-            this.barcodePanel.Size = new System.Drawing.Size(1546, 830);
+            this.barcodePanel.Size = new System.Drawing.Size(1030, 527);
             this.barcodePanel.TabIndex = 101;
             this.barcodePanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.barcodePanel_MouseClick);
+            // 
+            // editEquipmentButton
+            // 
+            this.editEquipmentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.editEquipmentButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.editEquipmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.editEquipmentButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editEquipmentButton.ForeColor = System.Drawing.Color.White;
+            this.editEquipmentButton.Location = new System.Drawing.Point(837, 478);
+            this.editEquipmentButton.Name = "editEquipmentButton";
+            this.editEquipmentButton.Size = new System.Drawing.Size(114, 38);
+            this.editEquipmentButton.TabIndex = 108;
+            this.editEquipmentButton.Text = "Edit";
+            this.editEquipmentButton.UseVisualStyleBackColor = false;
+            this.editEquipmentButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Location = new System.Drawing.Point(603, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(419, 39);
+            this.panel7.TabIndex = 107;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(115, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 30);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "EQUIPMENT CODES";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Location = new System.Drawing.Point(2, 4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(584, 39);
+            this.panel6.TabIndex = 106;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(190, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 30);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "BARCODE SCANS";
             // 
             // newEquipment
             // 
@@ -1046,12 +1119,11 @@
             this.newEquipment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.newEquipment.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newEquipment.ForeColor = System.Drawing.Color.White;
-            this.newEquipment.Location = new System.Drawing.Point(1144, 755);
-            this.newEquipment.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.newEquipment.Location = new System.Drawing.Point(673, 478);
             this.newEquipment.Name = "newEquipment";
-            this.newEquipment.Size = new System.Drawing.Size(130, 58);
+            this.newEquipment.Size = new System.Drawing.Size(114, 38);
             this.newEquipment.TabIndex = 102;
-            this.newEquipment.Text = "New";
+            this.newEquipment.Text = "Add";
             this.newEquipment.UseVisualStyleBackColor = false;
             this.newEquipment.Click += new System.EventHandler(this.newEquipment_Click);
             // 
@@ -1063,25 +1135,13 @@
             this.insertBarcodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.insertBarcodeButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.insertBarcodeButton.ForeColor = System.Drawing.Color.Black;
-            this.insertBarcodeButton.Location = new System.Drawing.Point(357, 759);
-            this.insertBarcodeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.insertBarcodeButton.Location = new System.Drawing.Point(238, 478);
             this.insertBarcodeButton.Name = "insertBarcodeButton";
-            this.insertBarcodeButton.Size = new System.Drawing.Size(153, 58);
+            this.insertBarcodeButton.Size = new System.Drawing.Size(102, 38);
             this.insertBarcodeButton.TabIndex = 101;
             this.insertBarcodeButton.Text = "Insert";
             this.insertBarcodeButton.UseVisualStyleBackColor = false;
             this.insertBarcodeButton.Click += new System.EventHandler(this.insertBarcodeButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1067, 21);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 40);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "EQUIPMENT CODES";
             // 
             // barcodeLabel
             // 
@@ -1089,10 +1149,9 @@
             this.barcodeLabel.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.barcodeLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barcodeLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.barcodeLabel.Location = new System.Drawing.Point(123, 394);
-            this.barcodeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.barcodeLabel.Location = new System.Drawing.Point(82, 256);
             this.barcodeLabel.Name = "barcodeLabel";
-            this.barcodeLabel.Size = new System.Drawing.Size(625, 55);
+            this.barcodeLabel.Size = new System.Drawing.Size(414, 37);
             this.barcodeLabel.TabIndex = 44;
             this.barcodeLabel.Text = "Barcode Scan Product Numbers";
             // 
@@ -1100,9 +1159,9 @@
             // 
             this.barcodeEquipment.AllowUserToAddRows = false;
             this.barcodeEquipment.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
-            this.barcodeEquipment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.AliceBlue;
+            this.barcodeEquipment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.barcodeEquipment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1110,27 +1169,28 @@
             this.barcodeEquipment.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.barcodeEquipment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.barcodeEquipment.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.barcodeEquipment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.barcodeEquipment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.barcodeEquipment.ColumnHeadersHeight = 30;
             this.barcodeEquipment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.barcodeEquipment.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.barcodeEquipment.DefaultCellStyle = dataGridViewCellStyle7;
             this.barcodeEquipment.EnableHeadersVisualStyles = false;
             this.barcodeEquipment.GridColor = System.Drawing.SystemColors.MenuText;
-            this.barcodeEquipment.Location = new System.Drawing.Point(905, 70);
+            this.barcodeEquipment.Location = new System.Drawing.Point(603, 45);
+            this.barcodeEquipment.Margin = new System.Windows.Forms.Padding(2);
             this.barcodeEquipment.MultiSelect = false;
             this.barcodeEquipment.Name = "barcodeEquipment";
             this.barcodeEquipment.ReadOnly = true;
@@ -1144,7 +1204,7 @@
             this.barcodeEquipment.RowTemplate.ReadOnly = true;
             this.barcodeEquipment.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.barcodeEquipment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.barcodeEquipment.Size = new System.Drawing.Size(630, 677);
+            this.barcodeEquipment.Size = new System.Drawing.Size(419, 428);
             this.barcodeEquipment.TabIndex = 43;
             this.barcodeEquipment.Click += new System.EventHandler(this.barcodeEquipment_Click);
             // 
@@ -1152,9 +1212,9 @@
             // 
             this.barcodeGrid.AllowUserToAddRows = false;
             this.barcodeGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.AliceBlue;
-            this.barcodeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.AliceBlue;
+            this.barcodeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.barcodeGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1162,42 +1222,43 @@
             this.barcodeGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
             this.barcodeGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.barcodeGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.barcodeGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.barcodeGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.barcodeGrid.ColumnHeadersHeight = 30;
             this.barcodeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.barcodeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.barcodeGrid.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.barcodeGrid.DefaultCellStyle = dataGridViewCellStyle10;
             this.barcodeGrid.EnableHeadersVisualStyles = false;
             this.barcodeGrid.GridColor = System.Drawing.SystemColors.MenuText;
-            this.barcodeGrid.Location = new System.Drawing.Point(3, 65);
+            this.barcodeGrid.Location = new System.Drawing.Point(2, 42);
+            this.barcodeGrid.Margin = new System.Windows.Forms.Padding(2);
             this.barcodeGrid.MultiSelect = false;
             this.barcodeGrid.Name = "barcodeGrid";
             this.barcodeGrid.ReadOnly = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.barcodeGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.barcodeGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.barcodeGrid.RowHeadersVisible = false;
             this.barcodeGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.barcodeGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1208,7 +1269,7 @@
             this.barcodeGrid.RowTemplate.ReadOnly = true;
             this.barcodeGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.barcodeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.barcodeGrid.Size = new System.Drawing.Size(878, 682);
+            this.barcodeGrid.Size = new System.Drawing.Size(584, 431);
             this.barcodeGrid.TabIndex = 36;
             this.barcodeGrid.Click += new System.EventHandler(this.barcodeGrid_Click);
             // 
@@ -1233,9 +1294,10 @@
             // quantityTextbox
             // 
             this.quantityTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.quantityTextbox.Location = new System.Drawing.Point(135, 625);
+            this.quantityTextbox.Location = new System.Drawing.Point(90, 394);
+            this.quantityTextbox.Margin = new System.Windows.Forms.Padding(2);
             this.quantityTextbox.Name = "quantityTextbox";
-            this.quantityTextbox.Size = new System.Drawing.Size(151, 26);
+            this.quantityTextbox.Size = new System.Drawing.Size(102, 20);
             this.quantityTextbox.TabIndex = 40;
             this.quantityTextbox.TabStop = false;
             // 
@@ -1243,67 +1305,38 @@
             // 
             this.barcodeTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.barcodeTextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.barcodeTextbox.Location = new System.Drawing.Point(357, 625);
-            this.barcodeTextbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.barcodeTextbox.Location = new System.Drawing.Point(238, 394);
             this.barcodeTextbox.Name = "barcodeTextbox";
-            this.barcodeTextbox.Size = new System.Drawing.Size(316, 26);
+            this.barcodeTextbox.Size = new System.Drawing.Size(212, 20);
             this.barcodeTextbox.TabIndex = 38;
             this.barcodeTextbox.TextChanged += new System.EventHandler(this.barcodeTextbox_TextChanged);
-            // 
-            // historyPanel
-            // 
-            this.historyPanel.BackColor = System.Drawing.Color.White;
-            this.historyPanel.Controls.Add(this.HistoryDataGrid);
-            this.historyPanel.Controls.Add(this.label2);
-            this.historyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.historyPanel.Location = new System.Drawing.Point(0, 0);
-            this.historyPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.historyPanel.Name = "historyPanel";
-            this.historyPanel.Size = new System.Drawing.Size(1546, 830);
-            this.historyPanel.TabIndex = 4;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // deleteButton
-            // 
-            this.deleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))));
-            this.deleteButton.Enabled = false;
-            this.deleteButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.ForeColor = System.Drawing.Color.Black;
-            this.deleteButton.Location = new System.Drawing.Point(1353, 731);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(153, 58);
-            this.deleteButton.TabIndex = 102;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1798, 898);
+            this.ClientSize = new System.Drawing.Size(1199, 584);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimumSize = new System.Drawing.Size(1600, 900);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(1067, 586);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Main_Load_1);
             this.inventoryContextMenuStrip.ResumeLayout(false);
             this.projectContextMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.inventoryNewButtonMenuStrip.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1312,14 +1345,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.InventoryDataGrid)).EndInit();
             this.projectsPanel.ResumeLayout(false);
             this.projectsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectsRightDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectsLeftDataGrid)).EndInit();
-            this.barcodePanel.ResumeLayout(false);
-            this.barcodePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.barcodeEquipment)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.barcodeGrid)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).EndInit();
             this.historyPanel.ResumeLayout(false);
             this.historyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).EndInit();
+            this.barcodePanel.ResumeLayout(false);
+            this.barcodePanel.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeEquipment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barcodeGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1330,18 +1369,14 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button projectBackButton;
         private System.Windows.Forms.ContextMenuStrip inventoryNewButtonMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem manuallyInsertToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem barcodeScanToolStripMenuItem;
-        private System.Windows.Forms.Button projectButton;
         private System.Windows.Forms.ContextMenuStrip projectContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem editProjectToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newEquipmentToolStripMenuItem;
-        private System.Windows.Forms.DataGridView HistoryDataGrid;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button InventoryPanelButton;
         private System.Windows.Forms.Label mainClose;
@@ -1363,14 +1398,12 @@
         private System.Windows.Forms.ComboBox CategoryCombobox;
         private System.Windows.Forms.TextBox TermIDTextbox;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button inventoryBackButton;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button newInventoryButton;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView InventoryDataGrid;
         private System.Windows.Forms.ComboBox InventoryFilterCombo;
         private System.Windows.Forms.TextBox InventorySearchTextbox;
-        private System.Windows.Forms.Panel projectsPanel;
         private System.Windows.Forms.Panel historyPanel;
         private System.Windows.Forms.Panel barcodePanel;
         private System.Windows.Forms.DataGridView barcodeGrid;
@@ -1386,18 +1419,26 @@
         private System.Windows.Forms.Button insertBarcodeButton;
         private System.Windows.Forms.Button newEquipment;
         private System.Windows.Forms.TextBox fakeSearchTextbox;
-        private System.Windows.Forms.DataGridView ProjectsRightDataGrid;
-        private System.Windows.Forms.ComboBox pNameCombobox;
-        private System.Windows.Forms.Button leftButton;
-        private System.Windows.Forms.Button rightButton;
-        private System.Windows.Forms.DataGridView ProjectsLeftDataGrid;
-        private System.Windows.Forms.Button projectSaveButton;
-        private System.Windows.Forms.TextBox ticketEditNoTextbox;
-        private System.Windows.Forms.RichTextBox descEditTextbox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel projectsPanel;
+        private System.Windows.Forms.DataGridView projectsDataGrid;
+        private System.Windows.Forms.Button editProjectButton;
+        private System.Windows.Forms.Button newProjectButton;
+        private System.Windows.Forms.RichTextBox projectRichTextbox;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button editEquipmentButton;
+        private System.Windows.Forms.ComboBox projectComboList;
+        private System.Windows.Forms.ToolStripMenuItem moveToToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox ticketTextbox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox projectNameTextbox;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button deleteProjectButton;
+        private System.Windows.Forms.DataGridView HistoryDataGrid;
     }
 }

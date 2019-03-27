@@ -56,21 +56,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Barcode\Barcode.cs" />
+    <Compile Include="Forms\History\History.cs" />
     <Compile Include="Forms\Inventory\Inventory.cs" />
     <Compile Include="Forms\Main\History\HistorySearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main\Inventory\EquipmentNewForm.cs">
+    <Compile Include="Forms\Main\Inventory\EquipmentAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main\Inventory\EquipmentNewForm.Designer.cs">
-      <DependentUpon>EquipmentNewForm.cs</DependentUpon>
+    <Compile Include="Forms\Main\Inventory\EquipmentAddForm.Designer.cs">
+      <DependentUpon>EquipmentAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\Inventory\EquipmentEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\Inventory\EquipmentEditForm.Designer.cs">
+      <DependentUpon>EquipmentEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Main\Inventory\InventoryAddForm.cs">
       <SubType>Form</SubType>
@@ -84,7 +86,6 @@
     <Compile Include="Forms\Main\Inventory\ProjectNewForm.Designer.cs">
       <DependentUpon>ProjectNewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main\MainInterface.cs" />
     <Compile Include="Forms\Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,8 +104,11 @@
     <EmbeddedResource Include="Forms\Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main\Inventory\EquipmentNewForm.resx">
-      <DependentUpon>EquipmentNewForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Main\Inventory\EquipmentAddForm.resx">
+      <DependentUpon>EquipmentAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\Inventory\EquipmentEditForm.resx">
+      <DependentUpon>EquipmentEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main\Inventory\InventoryAddForm.resx">
       <DependentUpon>InventoryAddForm.cs</DependentUpon>
@@ -125,17 +129,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

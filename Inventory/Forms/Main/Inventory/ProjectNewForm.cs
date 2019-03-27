@@ -14,7 +14,11 @@ namespace Inventory
     public partial class ProjectNewForm : Form
     {
         public OracleConnection con = new OracleConnection("Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.20.26.41)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME= Dev.path.med.umich.edu))); USER ID = JONNYV;PASSWORD = AjGoEnvA101");
-        Main main = new Main();
+
+        private bool mouseDown;
+        private Point lastLocation;
+
+        //Main main = new Main();
 
         public ProjectNewForm()
         {
@@ -23,7 +27,8 @@ namespace Inventory
 
         private void createPbutton_Click(object sender, EventArgs e)
         {
-            con.Open();
+            string query = "INSERT INTO PROJECT (PROJECT_NAME, TICKET_NO, PROJECT_DESCRIPTION)" +
+                          "VALUES('" + pNameTextbox.Text + "', '" + ticketNoTextbox.Text + "', '" + descTextbox.Text + "') ";
 
             if (string.IsNullOrEmpty(pNameTextbox.Text))
             {
@@ -31,20 +36,15 @@ namespace Inventory
             }
             else
             {
-                OracleCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "INSERT INTO PROJECT (PROJECT_NAME, TICKET_NO, PROJECT_DESCRIPTION)" +
-                          "VALUES('" + pNameTextbox.Text + "', '" + ticketNoTextbox.Text + "', '" + descTextbox.Text + "') ";
-
-                cmd.ExecuteNonQuery();
-
+                Main.RunSQLQuery(query);
                 MessageBox.Show("New project created!");
-
+                History.HistoryProjectAdd(" ["+pNameTextbox.Text+ "] created. Ticket Number: [" + ticketNoTextbox.Text + "].");
                 pNameTextbox.Text = "";
                 ticketNoTextbox.Text = "";
                 descTextbox.Text = "";
+
+                this.Close();
             }
-            con.Close();
         }
 
         private void mainClose_Click(object sender, EventArgs e)
@@ -52,9 +52,48 @@ namespace Inventory
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label19_MouseMove(object sender, MouseEventArgs e)
         {
-            this.Close();
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void label19_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void label19_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel2_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

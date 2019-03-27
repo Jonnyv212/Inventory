@@ -46,20 +46,20 @@ namespace Inventory
         }
         */
 
-        Main main = new Main();
+       // Main main = new Main();
 
-        public void DisplayRightProjectGrid(ComboBox Project, DataGridView dGridView)
+        public static void DisplayRightProjectGrid(ComboBox Project, DataGridView dGridView)
         {
             string query = "SELECT PROJECT.PROJECT_NAME as Project, INVENTORY.INVENTORY_ID AS ID, EQUIPMENT.EQUIPMENT_NAME as Equipment, CATEGORY.CATEGORY_NAME as Category, INVENTORY.TERM_ID as Term_ID " +
                 "FROM INVENTORY " +
                 "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                 "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
-                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
                 "WHERE INVENTORY.STATUS = '1' AND PROJECT.PROJECT_NAME = '" + Project.Text + "' " +
                 "ORDER BY TERM_ID, TO_NUMBER(INVENTORY_ID) DESC ";
 
             dGridView.DataSource = null;
-            dGridView.DataSource = main.DataTableSQLQuery(query);
+            dGridView.DataSource = Main.DataTableSQLQuery(query);
 
             DataGridViewColumn column1 = dGridView.Columns[0];
             column1.Width = 70;
@@ -71,7 +71,7 @@ namespace Inventory
             column4.Width = 70;
         }
 
-        public void LoadProjectEdit(ComboBox Project, TextBox Ticket, RichTextBox Desc, OracleConnection connection)
+        public static void LoadProjectEdit(ComboBox Project, TextBox Ticket, RichTextBox Desc, OracleConnection connection)
         {
             string query = "SELECT PROJECT.PROJECT_NAME, PROJECT.TICKET_NO, PROJECT.PROJECT_DESCRIPTION FROM PROJECT WHERE PROJECT.PROJECT_NAME = '" + Project.Text + "' ";
             //string pj = "SELECT * FROM PROJECT WHERE PROJECT_NAME != 'Unassigned' ";
@@ -103,7 +103,7 @@ namespace Inventory
             }
         }
 
-        public void MoveToLeft(Button Left, DataGridView dGridViewLeft, DataGridView dGridViewRight, OracleConnection connection)
+        public static void MoveToLeft(Button Left, DataGridView dGridViewLeft, DataGridView dGridViewRight, OracleConnection connection)
         {
             string invenID = dGridViewRight.SelectedRows[0].Cells[1].Value.ToString();
             DataTable rightDataTable = (DataTable)dGridViewRight.DataSource;
@@ -114,7 +114,7 @@ namespace Inventory
             string pjName = "SELECT PROJECT.PROJECT_NAME FROM PROJECT JOIN INVENTORY ON INVENTORY.PROJECT_ID = PROJECT.PROJECT_ID WHERE INVENTORY.INVENTORY_ID = '" + invenID + "' ";
             string tID = "SELECT TERM_ID FROM INVENTORY WHERE INVENTORY_ID = '" + invenID + "' ";
             string q = "SELECT EQUIPMENT_NAME FROM EQUIPMENT JOIN INVENTORY ON INVENTORY.EQUIPMENT_ID = EQUIPMENT.EQUIPMENT_ID WHERE INVENTORY_ID = '" + invenID + "' ";
-            string c = "SELECT CATEGORY_NAME FROM CATEGORY JOIN INVENTORY ON INVENTORY.CATEGORY_ID = CATEGORY.CATEGORY_ID WHERE INVENTORY_ID = '" + invenID + "' ";
+            string c = "SELECT CATEGORY_NAME FROM CATEGORY JOIN EQUIPMENT ON EQUIPMENT.CATEGORY_ID = CATEGORY.CATEGORY_ID JOIN INVENTORY ON INVENTORY.EQUIPMENT_ID = EQUIPMENT.EQUIPMENT_ID WHERE INVENTORY_ID = '" + invenID + "' ";
 
             connection.Open();
             OracleCommand cmd1 = new OracleCommand(pjName, connection);
@@ -161,7 +161,7 @@ namespace Inventory
             }
         }
 
-        public void MoveToRight(ComboBox Project, Button Right, DataGridView dGridViewRight, DataGridView dGridViewLeft, OracleConnection connection)
+        public static void MoveToRight(ComboBox Project, Button Right, DataGridView dGridViewRight, DataGridView dGridViewLeft, OracleConnection connection)
         {
             string invenID = dGridViewLeft.SelectedRows[0].Cells[1].Value.ToString();
             DataTable rightDataTable = (DataTable)dGridViewRight.DataSource;
@@ -169,10 +169,10 @@ namespace Inventory
 
             //string pj = "SELECT PROJECT.PROJECT_NAME FROM PROJECT JOIN INVENTORY ON INVENTORY.PROJECT_ID = PROJECT.PROJECT_ID WHERE INVENTORY_ID = '" + invenID + "' ";
 
-            string pjName = "SELECT PROJECT.PROJECT_NAME FROM PROJECT WHERE PROJECT_NAME = '" + Project.Text + "' ";
+            string pjName = "SELECT PROJECT.PROJECT_NAME FROM PROJECT WHERE PROJECT_NAME = '" + Project.Text + "' AND PROJECT.STATUS = '1' ";
             string tID = "SELECT TERM_ID FROM INVENTORY WHERE INVENTORY_ID = '" + invenID + "' ";
             string q = "SELECT EQUIPMENT_NAME FROM EQUIPMENT JOIN INVENTORY ON INVENTORY.EQUIPMENT_ID = EQUIPMENT.EQUIPMENT_ID WHERE INVENTORY_ID = '" + invenID + "' ";
-            string c = "SELECT CATEGORY_NAME FROM CATEGORY JOIN INVENTORY ON INVENTORY.CATEGORY_ID = CATEGORY.CATEGORY_ID WHERE INVENTORY_ID = '" + invenID + "' ";
+            string c = "SELECT CATEGORY_NAME FROM CATEGORY JOIN EQUIPMENT ON EQUIPMENT.CATEGORY_ID = CATEGORY.CATEGORY_ID JOIN INVENTORY ON INVENTORY.EQUIPMENT_ID = EQUIPMENT.EQUIPMENT_ID WHERE INVENTORY_ID = '" + invenID + "' ";
 
             connection.Open();
             OracleCommand cmd1 = new OracleCommand(pjName, connection);
@@ -218,47 +218,47 @@ namespace Inventory
             }
         }
 
-        public void DisplayProjects(ComboBox Project, DataGridView DataGrid)
+        public static void DisplayEditProjects(ComboBox Project, DataGridView DataGrid)
         {
             string query = "SELECT PROJECT_NAME as Project, TICKET_NO as Ticket, COUNT(INVENTORY.EQUIPMENT_ID) AS Stock " +
                 "FROM PROJECT " +
                 "LEFT JOIN INVENTORY ON INVENTORY.PROJECT_ID = PROJECT.PROJECT_ID " +
-                "WHERE PROJECT.PROJECT_NAME != '" + Project.Text + "' AND INVENTORY.STATUS = '1' " +
+                "WHERE PROJECT.PROJECT_NAME != '" + Project.Text + "' AND INVENTORY.STATUS = '1' AND PROJECT.STATUS = '1' " +
                 "GROUP BY PROJECT.PROJECT_ID, PROJECT_NAME, TICKET_NO " +
                 "ORDER BY PROJECT.PROJECT_ID ";
 
             DataGrid.DataSource = null;
-            DataGrid.DataSource = main.DataTableSQLQuery(query);
+            DataGrid.DataSource = Main.DataTableSQLQuery(query);
             //DataGrid.Refresh();
         }
 
-        public void DisplayProjectStock(string pName, DataGridView dataGrid)
+        public static void DisplayProjectStock(string pName, DataGridView dataGrid)
         {
             string query =  "SELECT PROJECT.PROJECT_NAME as Project, CATEGORY.CATEGORY_NAME as Category, COUNT(INVENTORY.EQUIPMENT_ID) AS Stock " +
                             "FROM INVENTORY " +
                             "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                             "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
-                            "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
-                            "WHERE INVENTORY.STATUS = '1' AND PROJECT.PROJECT_NAME = ('" + pName + "') " +
+                            "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                            "WHERE INVENTORY.STATUS = '1' AND PROJECT.PROJECT_NAME = ('" + pName + "') AND PROJECT.STATUS = '1' " +
                             "GROUP BY PROJECT.PROJECT_NAME, CATEGORY.CATEGORY_NAME " +
                             "ORDER BY STOCK DESC";
 
             dataGrid.DataSource = null;
-            dataGrid.DataSource = main.DataTableSQLQuery(query);
+            dataGrid.DataSource = Main.DataTableSQLQuery(query);
         }
 
-        public void DisplayProjectData(string pName, string catName, DataGridView dataGrid)
+        public static void DisplayEditProjectData(string pName, DataGridView dataGrid)
         {
             string query = "SELECT PROJECT.PROJECT_NAME as Project, INVENTORY.INVENTORY_ID as ID, EQUIPMENT.EQUIPMENT_NAME as Equipment, CATEGORY.CATEGORY_NAME as Category, INVENTORY.TERM_ID as Term_ID " +
                 "FROM INVENTORY " +
                 "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
                 "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
-                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = INVENTORY.CATEGORY_ID " +
-                "WHERE INVENTORY.STATUS = '1' AND PROJECT.PROJECT_NAME = '" + pName + "' AND CATEGORY.CATEGORY_NAME = '" + catName + "' " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                "WHERE INVENTORY.STATUS = '1' AND PROJECT.PROJECT_NAME = '" + pName + "' AND PROJECT.STATUS = '1' " +
                 "ORDER BY INVENTORY_DATE DESC ";
 
             dataGrid.DataSource = null;
-            dataGrid.DataSource = main.DataTableSQLQuery(query);
+            dataGrid.DataSource = Main.DataTableSQLQuery(query);
 
             DataGridViewColumn column1 = dataGrid.Columns[0];
             column1.Width = 70;
@@ -268,6 +268,76 @@ namespace Inventory
             column3.Width = 150;
             DataGridViewColumn column4 = dataGrid.Columns[3];
             column4.Width = 90;
+        }
+
+        public static void DisplayProjects(DataGridView DataGrid)
+        {
+            string query = "SELECT PROJECT_NAME as Project, TICKET_NO as Ticket " +//, COUNT(INVENTORY.EQUIPMENT_ID) AS Stock " +
+                "FROM PROJECT " +
+                "WHERE PROJECT.STATUS = '1' " +
+                "GROUP BY PROJECT.PROJECT_ID, PROJECT_NAME, TICKET_NO " +
+                "ORDER BY TO_NUMBER(PROJECT.PROJECT_ID) ";
+
+            DataGrid.DataSource = null;
+            DataGrid.DataSource = Main.DataTableSQLQuery(query);
+        }
+
+        public static void DisplayProjectData(string pName, DataGridView dataGrid)
+        {
+            string query = "SELECT INVENTORY.INVENTORY_ID as ID, EQUIPMENT.EQUIPMENT_NAME as Equipment, CATEGORY.CATEGORY_NAME as Category, INVENTORY.TERM_ID as TermID " +
+                "FROM INVENTORY " +
+                "JOIN EQUIPMENT ON EQUIPMENT.EQUIPMENT_ID = INVENTORY.EQUIPMENT_ID " +
+                "JOIN PROJECT ON PROJECT.PROJECT_ID = INVENTORY.PROJECT_ID " +
+                "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
+                "WHERE INVENTORY.STATUS = '1' AND PROJECT.PROJECT_NAME = '" + pName + "' " +
+                "ORDER BY INVENTORY_DATE DESC ";
+
+            dataGrid.DataSource = null;
+            dataGrid.DataSource = Main.DataTableSQLQuery(query);
+
+            DataGridViewColumn column1 = dataGrid.Columns[0];
+            column1.Width = 60;
+            DataGridViewColumn column2 = dataGrid.Columns[1];
+            column2.Width = 330;
+            DataGridViewColumn column3 = dataGrid.Columns[2];
+            column3.Width = 100;
+  
+        }
+
+        public static void DeleteProject(ComboBox pNameCombo, DataGridView dGridView)
+        {
+            //Set the inventory's project to Unassigned
+            string queryInv = "UPDATE INVENTORY " +
+                             "SET INVENTORY.PROJECT_ID = '1' " +
+                             "WHERE PROJECT_ID = (SELECT PROJECT_ID FROM PROJECT WHERE PROJECT_NAME = '" + pNameCombo.Text + "' ) ";
+            //Set the selected project status to 0
+            string queryDel = "UPDATE PROJECT " +
+                            "SET PROJECT.STATUS = '0' " +
+                            "WHERE PROJECT.PROJECT_NAME = '" + pNameCombo.Text + "' ";
+
+
+            if (pNameCombo.SelectedIndex == 0)
+            {
+                MessageBox.Show("Cannot delete Unassigned.");
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Are you sure you want to delete this project?",
+                 "Confirm Delete!",
+                 MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    var confirmResult2 = MessageBox.Show("Any inventory in '" + pNameCombo.Text + "' will be set to Unassigned." +
+                        "\nDo you wish to continue?",
+                     "Confirm Delete!",
+                     MessageBoxButtons.YesNo);
+                    if (confirmResult2 == DialogResult.Yes)
+                    {
+                        Main.RunSQLQuery(queryInv);
+                        Main.RunSQLQuery(queryDel);
+                    }
+                }
+            }
         }
     }
 }
