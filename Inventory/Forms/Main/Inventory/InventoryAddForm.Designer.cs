@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryAddForm));
             this.label17 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.addInvenEquipTextbox = new System.Windows.Forms.TextBox();
             this.addInvenQuantityTextbox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.insertAddInventoryButton = new System.Windows.Forms.Button();
@@ -43,6 +42,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainClose = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.addInvenEquipmentCombo = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -67,21 +67,11 @@
             this.label5.TabIndex = 43;
             this.label5.Text = "* Category:";
             // 
-            // addInvenEquipTextbox
-            // 
-            this.addInvenEquipTextbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.addInvenEquipTextbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.addInvenEquipTextbox.Location = new System.Drawing.Point(369, 99);
-            this.addInvenEquipTextbox.Margin = new System.Windows.Forms.Padding(2);
-            this.addInvenEquipTextbox.Name = "addInvenEquipTextbox";
-            this.addInvenEquipTextbox.Size = new System.Drawing.Size(176, 20);
-            this.addInvenEquipTextbox.TabIndex = 39;
-            // 
             // addInvenQuantityTextbox
             // 
             this.addInvenQuantityTextbox.Location = new System.Drawing.Point(84, 163);
             this.addInvenQuantityTextbox.Name = "addInvenQuantityTextbox";
-            this.addInvenQuantityTextbox.Size = new System.Drawing.Size(176, 20);
+            this.addInvenQuantityTextbox.Size = new System.Drawing.Size(194, 20);
             this.addInvenQuantityTextbox.TabIndex = 38;
             // 
             // label16
@@ -138,21 +128,29 @@
             // 
             // addInvenCategoryCombobox
             // 
+            this.addInvenCategoryCombobox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
             this.addInvenCategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addInvenCategoryCombobox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addInvenCategoryCombobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addInvenCategoryCombobox.ForeColor = System.Drawing.Color.White;
             this.addInvenCategoryCombobox.FormattingEnabled = true;
             this.addInvenCategoryCombobox.Location = new System.Drawing.Point(86, 98);
             this.addInvenCategoryCombobox.Name = "addInvenCategoryCombobox";
-            this.addInvenCategoryCombobox.Size = new System.Drawing.Size(176, 21);
+            this.addInvenCategoryCombobox.Size = new System.Drawing.Size(192, 23);
             this.addInvenCategoryCombobox.TabIndex = 63;
             this.addInvenCategoryCombobox.SelectedIndexChanged += new System.EventHandler(this.addInvenCategoryCombobox_SelectedIndexChanged);
             // 
             // addInvenProjectCombobox
             // 
+            this.addInvenProjectCombobox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
             this.addInvenProjectCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addInvenProjectCombobox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addInvenProjectCombobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addInvenProjectCombobox.ForeColor = System.Drawing.Color.White;
             this.addInvenProjectCombobox.FormattingEnabled = true;
             this.addInvenProjectCombobox.Location = new System.Drawing.Point(369, 161);
             this.addInvenProjectCombobox.Name = "addInvenProjectCombobox";
-            this.addInvenProjectCombobox.Size = new System.Drawing.Size(176, 21);
+            this.addInvenProjectCombobox.Size = new System.Drawing.Size(191, 23);
             this.addInvenProjectCombobox.TabIndex = 64;
             // 
             // panel2
@@ -211,6 +209,22 @@
             this.label19.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label19_MouseMove);
             this.label19.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label19_MouseUp);
             // 
+            // addInvenEquipmentCombo
+            // 
+            this.addInvenEquipmentCombo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.addInvenEquipmentCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.addInvenEquipmentCombo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.addInvenEquipmentCombo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addInvenEquipmentCombo.ForeColor = System.Drawing.Color.White;
+            this.addInvenEquipmentCombo.FormattingEnabled = true;
+            this.addInvenEquipmentCombo.Items.AddRange(new object[] {
+            "EQUIPMENT_NAME"});
+            this.addInvenEquipmentCombo.Location = new System.Drawing.Point(366, 96);
+            this.addInvenEquipmentCombo.Margin = new System.Windows.Forms.Padding(2);
+            this.addInvenEquipmentCombo.Name = "addInvenEquipmentCombo";
+            this.addInvenEquipmentCombo.Size = new System.Drawing.Size(194, 23);
+            this.addInvenEquipmentCombo.TabIndex = 83;
+            // 
             // InventoryAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,13 +232,13 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(572, 291);
             this.ControlBox = false;
+            this.Controls.Add(this.addInvenEquipmentCombo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.addInvenProjectCombobox);
             this.Controls.Add(this.addInvenCategoryCombobox);
             this.Controls.Add(this.closeAddInventoryButton);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.addInvenEquipTextbox);
             this.Controls.Add(this.addInvenQuantityTextbox);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.insertAddInventoryButton);
@@ -247,7 +261,6 @@
         #endregion
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox addInvenEquipTextbox;
         public System.Windows.Forms.TextBox addInvenQuantityTextbox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button insertAddInventoryButton;
@@ -259,5 +272,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label mainClose;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox addInvenEquipmentCombo;
     }
 }

@@ -75,7 +75,8 @@ namespace Inventory
         private void InventoryAddForm_Load(object sender, EventArgs e)
         {
 
-            string cat = "SELECT * FROM CATEGORY ORDER BY CATEGORY_NAME ASC";
+            string cat = "SELECT CATEGORY.CATEGORY_NAME FROM CATEGORY JOIN EQUIPMENT ON EQUIPMENT.CATEGORY_ID = CATEGORY.CATEGORY_ID " +
+                "WHERE EQUIPMENT.STATUS = 1 GROUP BY CATEGORY_NAME ORDER BY CATEGORY_NAME ASC";
             string pj = "SELECT * FROM PROJECT WHERE PROJECT.STATUS = '1' ";
 
 
@@ -97,15 +98,25 @@ namespace Inventory
                         "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
                         "WHERE CATEGORY.CATEGORY_NAME = '" + addInvenCategoryCombobox.Text + "' AND EQUIPMENT.STATUS = '1' ";
 
-            Main.AutofillInventoryTextbox(con, eq, "EQUIPMENT_NAME", addInvenEquipTextbox);
+            Main.ComboAddRowData(eq, "EQUIPMENT_NAME", addInvenEquipmentCombo);
+            addInvenEquipmentCombo.SelectedIndex = 0;
+            /*
+            if ((addInvenEquipmentCombo.SelectedIndex == -1))
+            {
+                //addInvenEquipmentCombo.SelectedIndex = 0;
+                MessageBox.Show("Empty");
+            }
+            else
+            {
+                //addInvenEquipmentCombo.SelectedIndex = 0;
+            } */
 
         }
 
 
         public void OnInsertClick()
         {
-            //Main main = new Main();
-            TextBox iEquipText = addInvenEquipTextbox;
+            ComboBox iEquipCombo = addInvenEquipmentCombo;
             TextBox iQuanText = addInvenQuantityTextbox;
             ComboBox iProjectCombo = addInvenProjectCombobox;
             ComboBox iCategoryCombo = addInvenCategoryCombobox;
@@ -117,7 +128,7 @@ namespace Inventory
                             "SELECT " +
                             "(SELECT EQUIPMENT_ID " +
                             "FROM EQUIPMENT " +
-                            "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + iEquipText.Text + "') " +
+                            "WHERE EQUIPMENT.EQUIPMENT_NAME = '" + addInvenEquipmentCombo.Text + "') " +
                             "AS EQUIPMENT_ID," +
 
                             "(SELECT EVENT_ID " +
@@ -134,7 +145,7 @@ namespace Inventory
 
             string queryCheck = "SELECT COUNT(*) FROM EQUIPMENT " +
                                 "JOIN CATEGORY ON CATEGORY.CATEGORY_ID = EQUIPMENT.CATEGORY_ID " +
-                                "WHERE EQUIPMENT_NAME = '" + iEquipText.Text + "' AND CATEGORY.CATEGORY_NAME = '"+ iCategoryCombo.Text +"' AND EQUIPMENT.STATUS = '1' ";
+                                "WHERE EQUIPMENT_NAME = '" + addInvenEquipmentCombo.Text + "' AND CATEGORY.CATEGORY_NAME = '"+ iCategoryCombo.Text +"' AND EQUIPMENT.STATUS = '1' ";
 
 
             DataTable dt = new DataTable();
@@ -143,7 +154,7 @@ namespace Inventory
             {
                 equipCheck = true;
             }
-            if (string.IsNullOrEmpty(iEquipText.Text) || string.IsNullOrEmpty(iQuanText.Text) || equipCheck == false)
+            if (string.IsNullOrEmpty(addInvenEquipmentCombo.Text) || string.IsNullOrEmpty(iQuanText.Text) || equipCheck == false)
             {
                 if(equipCheck == false)
                 {
@@ -182,15 +193,15 @@ namespace Inventory
         {
             //Main main = new Main();
             OnInsertClick();
-            History.HistoryManualInsert(addInvenEquipTextbox, addInvenQuantityTextbox, addInvenProjectCombobox);
-            addInvenEquipTextbox.Text = "";
+            History.HistoryManualInsert(addInvenEquipmentCombo, addInvenQuantityTextbox, addInvenProjectCombobox);
+            addInvenEquipmentCombo.Text = "";
             addInvenQuantityTextbox.Text = "";
             addInvenProjectCombobox.Text = "";
         }
 
         private void clearAddInventoryButton_Click(object sender, EventArgs e)
         {
-          addInvenEquipTextbox.Text = "";
+          addInvenEquipmentCombo.Text = "";
           addInvenQuantityTextbox.Text = "";
         }
 

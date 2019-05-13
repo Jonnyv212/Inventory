@@ -34,6 +34,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,13 +49,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventoryContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,21 +93,6 @@
             this.InventoryDataGrid = new System.Windows.Forms.DataGridView();
             this.InventoryFilterCombo = new System.Windows.Forms.ComboBox();
             this.InventorySearchTextbox = new System.Windows.Forms.TextBox();
-            this.projectsPanel = new System.Windows.Forms.Panel();
-            this.deleteProjectButton = new System.Windows.Forms.Button();
-            this.projectNameTextbox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.ticketTextbox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.projectComboList = new System.Windows.Forms.ComboBox();
-            this.newProjectButton = new System.Windows.Forms.Button();
-            this.projectRichTextbox = new System.Windows.Forms.RichTextBox();
-            this.editProjectButton = new System.Windows.Forms.Button();
-            this.projectsDataGrid = new System.Windows.Forms.DataGridView();
-            this.historyPanel = new System.Windows.Forms.Panel();
-            this.HistoryDataGrid = new System.Windows.Forms.DataGridView();
             this.barcodePanel = new System.Windows.Forms.Panel();
             this.editEquipmentButton = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -124,6 +109,21 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityTextbox = new System.Windows.Forms.TextBox();
             this.barcodeTextbox = new System.Windows.Forms.TextBox();
+            this.projectsPanel = new System.Windows.Forms.Panel();
+            this.deleteProjectButton = new System.Windows.Forms.Button();
+            this.projectNameTextbox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ticketTextbox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.projectComboList = new System.Windows.Forms.ComboBox();
+            this.newProjectButton = new System.Windows.Forms.Button();
+            this.projectRichTextbox = new System.Windows.Forms.RichTextBox();
+            this.editProjectButton = new System.Windows.Forms.Button();
+            this.projectsDataGrid = new System.Windows.Forms.DataGridView();
+            this.historyPanel = new System.Windows.Forms.Panel();
+            this.HistoryDataGrid = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.inventoryContextMenuStrip.SuspendLayout();
             this.projectContextMenuStrip.SuspendLayout();
@@ -134,16 +134,16 @@
             this.panel3.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InventoryDataGrid)).BeginInit();
-            this.projectsPanel.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).BeginInit();
-            this.historyPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).BeginInit();
             this.barcodePanel.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeEquipment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeGrid)).BeginInit();
+            this.projectsPanel.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).BeginInit();
+            this.historyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // inventoryContextMenuStrip
@@ -562,32 +562,45 @@
             // 
             // EquipCombobox
             // 
+            this.EquipCombobox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.EquipCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.EquipCombobox.Enabled = false;
+            this.EquipCombobox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EquipCombobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EquipCombobox.ForeColor = System.Drawing.Color.White;
             this.EquipCombobox.FormattingEnabled = true;
             this.EquipCombobox.Location = new System.Drawing.Point(825, 268);
             this.EquipCombobox.Name = "EquipCombobox";
-            this.EquipCombobox.Size = new System.Drawing.Size(197, 21);
+            this.EquipCombobox.Size = new System.Drawing.Size(197, 23);
             this.EquipCombobox.TabIndex = 91;
             this.EquipCombobox.SelectedIndexChanged += new System.EventHandler(this.EquipCombobox_SelectedIndexChanged);
             // 
             // ProjectCombobox
             // 
+            this.ProjectCombobox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
             this.ProjectCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ProjectCombobox.Enabled = false;
+            this.ProjectCombobox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProjectCombobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectCombobox.ForeColor = System.Drawing.Color.White;
             this.ProjectCombobox.FormattingEnabled = true;
             this.ProjectCombobox.Location = new System.Drawing.Point(825, 156);
             this.ProjectCombobox.Name = "ProjectCombobox";
-            this.ProjectCombobox.Size = new System.Drawing.Size(197, 21);
+            this.ProjectCombobox.Size = new System.Drawing.Size(197, 23);
             this.ProjectCombobox.TabIndex = 90;
             // 
             // CategoryCombobox
             // 
+            this.CategoryCombobox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
             this.CategoryCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryCombobox.Enabled = false;
+            this.CategoryCombobox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CategoryCombobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CategoryCombobox.ForeColor = System.Drawing.Color.White;
             this.CategoryCombobox.FormattingEnabled = true;
             this.CategoryCombobox.Location = new System.Drawing.Point(825, 212);
             this.CategoryCombobox.Name = "CategoryCombobox";
-            this.CategoryCombobox.Size = new System.Drawing.Size(197, 21);
+            this.CategoryCombobox.Size = new System.Drawing.Size(197, 23);
             this.CategoryCombobox.TabIndex = 89;
             this.CategoryCombobox.SelectedIndexChanged += new System.EventHandler(this.CategoryCombobox_SelectedIndexChanged);
             // 
@@ -740,6 +753,280 @@
             this.InventorySearchTextbox.TabIndex = 80;
             this.InventorySearchTextbox.TextChanged += new System.EventHandler(this.InventorySearchTextbox_TextChanged);
             this.InventorySearchTextbox.Leave += new System.EventHandler(this.InventorySearchTextbox_Leave);
+            // 
+            // barcodePanel
+            // 
+            this.barcodePanel.BackColor = System.Drawing.Color.White;
+            this.barcodePanel.Controls.Add(this.editEquipmentButton);
+            this.barcodePanel.Controls.Add(this.panel7);
+            this.barcodePanel.Controls.Add(this.panel6);
+            this.barcodePanel.Controls.Add(this.newEquipment);
+            this.barcodePanel.Controls.Add(this.insertBarcodeButton);
+            this.barcodePanel.Controls.Add(this.barcodeLabel);
+            this.barcodePanel.Controls.Add(this.barcodeEquipment);
+            this.barcodePanel.Controls.Add(this.barcodeGrid);
+            this.barcodePanel.Controls.Add(this.quantityTextbox);
+            this.barcodePanel.Controls.Add(this.barcodeTextbox);
+            this.barcodePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.barcodePanel.Location = new System.Drawing.Point(0, 0);
+            this.barcodePanel.Name = "barcodePanel";
+            this.barcodePanel.Size = new System.Drawing.Size(1030, 527);
+            this.barcodePanel.TabIndex = 101;
+            this.barcodePanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.barcodePanel_MouseClick);
+            // 
+            // editEquipmentButton
+            // 
+            this.editEquipmentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.editEquipmentButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.editEquipmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.editEquipmentButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editEquipmentButton.ForeColor = System.Drawing.Color.White;
+            this.editEquipmentButton.Location = new System.Drawing.Point(837, 478);
+            this.editEquipmentButton.Name = "editEquipmentButton";
+            this.editEquipmentButton.Size = new System.Drawing.Size(114, 38);
+            this.editEquipmentButton.TabIndex = 108;
+            this.editEquipmentButton.Text = "Edit";
+            this.editEquipmentButton.UseVisualStyleBackColor = false;
+            this.editEquipmentButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Location = new System.Drawing.Point(603, 6);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(419, 39);
+            this.panel7.TabIndex = 107;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(115, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 30);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "EQUIPMENT CODES";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Location = new System.Drawing.Point(2, 4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(584, 39);
+            this.panel6.TabIndex = 106;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(190, 3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 30);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "BARCODE SCANS";
+            // 
+            // newEquipment
+            // 
+            this.newEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            this.newEquipment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.newEquipment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.newEquipment.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newEquipment.ForeColor = System.Drawing.Color.White;
+            this.newEquipment.Location = new System.Drawing.Point(673, 478);
+            this.newEquipment.Name = "newEquipment";
+            this.newEquipment.Size = new System.Drawing.Size(114, 38);
+            this.newEquipment.TabIndex = 102;
+            this.newEquipment.Text = "Add";
+            this.newEquipment.UseVisualStyleBackColor = false;
+            this.newEquipment.Click += new System.EventHandler(this.newEquipment_Click);
+            // 
+            // insertBarcodeButton
+            // 
+            this.insertBarcodeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))));
+            this.insertBarcodeButton.Enabled = false;
+            this.insertBarcodeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
+            this.insertBarcodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.insertBarcodeButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insertBarcodeButton.ForeColor = System.Drawing.Color.Black;
+            this.insertBarcodeButton.Location = new System.Drawing.Point(238, 478);
+            this.insertBarcodeButton.Name = "insertBarcodeButton";
+            this.insertBarcodeButton.Size = new System.Drawing.Size(102, 38);
+            this.insertBarcodeButton.TabIndex = 101;
+            this.insertBarcodeButton.Text = "Insert";
+            this.insertBarcodeButton.UseVisualStyleBackColor = false;
+            this.insertBarcodeButton.Click += new System.EventHandler(this.insertBarcodeButton_Click);
+            // 
+            // barcodeLabel
+            // 
+            this.barcodeLabel.AutoSize = true;
+            this.barcodeLabel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.barcodeLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barcodeLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.barcodeLabel.Location = new System.Drawing.Point(82, 256);
+            this.barcodeLabel.Name = "barcodeLabel";
+            this.barcodeLabel.Size = new System.Drawing.Size(414, 37);
+            this.barcodeLabel.TabIndex = 44;
+            this.barcodeLabel.Text = "Barcode Scan Product Numbers";
+            // 
+            // barcodeEquipment
+            // 
+            this.barcodeEquipment.AllowUserToAddRows = false;
+            this.barcodeEquipment.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.AliceBlue;
+            this.barcodeEquipment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.barcodeEquipment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.barcodeEquipment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.barcodeEquipment.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.barcodeEquipment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.barcodeEquipment.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.barcodeEquipment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.barcodeEquipment.ColumnHeadersHeight = 30;
+            this.barcodeEquipment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.barcodeEquipment.DefaultCellStyle = dataGridViewCellStyle7;
+            this.barcodeEquipment.EnableHeadersVisualStyles = false;
+            this.barcodeEquipment.GridColor = System.Drawing.SystemColors.MenuText;
+            this.barcodeEquipment.Location = new System.Drawing.Point(603, 45);
+            this.barcodeEquipment.Margin = new System.Windows.Forms.Padding(2);
+            this.barcodeEquipment.MultiSelect = false;
+            this.barcodeEquipment.Name = "barcodeEquipment";
+            this.barcodeEquipment.ReadOnly = true;
+            this.barcodeEquipment.RowHeadersVisible = false;
+            this.barcodeEquipment.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.barcodeEquipment.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barcodeEquipment.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.barcodeEquipment.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
+            this.barcodeEquipment.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.barcodeEquipment.RowTemplate.Height = 30;
+            this.barcodeEquipment.RowTemplate.ReadOnly = true;
+            this.barcodeEquipment.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.barcodeEquipment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.barcodeEquipment.Size = new System.Drawing.Size(419, 428);
+            this.barcodeEquipment.TabIndex = 43;
+            this.barcodeEquipment.Click += new System.EventHandler(this.barcodeEquipment_Click);
+            // 
+            // barcodeGrid
+            // 
+            this.barcodeGrid.AllowUserToAddRows = false;
+            this.barcodeGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.AliceBlue;
+            this.barcodeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.barcodeGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.barcodeGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.barcodeGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.barcodeGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.barcodeGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.barcodeGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.barcodeGrid.ColumnHeadersHeight = 30;
+            this.barcodeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.barcodeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GrayText;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.barcodeGrid.DefaultCellStyle = dataGridViewCellStyle10;
+            this.barcodeGrid.EnableHeadersVisualStyles = false;
+            this.barcodeGrid.GridColor = System.Drawing.SystemColors.MenuText;
+            this.barcodeGrid.Location = new System.Drawing.Point(2, 42);
+            this.barcodeGrid.Margin = new System.Windows.Forms.Padding(2);
+            this.barcodeGrid.MultiSelect = false;
+            this.barcodeGrid.Name = "barcodeGrid";
+            this.barcodeGrid.ReadOnly = true;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.barcodeGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.barcodeGrid.RowHeadersVisible = false;
+            this.barcodeGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.barcodeGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barcodeGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.barcodeGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
+            this.barcodeGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.barcodeGrid.RowTemplate.Height = 40;
+            this.barcodeGrid.RowTemplate.ReadOnly = true;
+            this.barcodeGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.barcodeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.barcodeGrid.Size = new System.Drawing.Size(584, 431);
+            this.barcodeGrid.TabIndex = 36;
+            this.barcodeGrid.Click += new System.EventHandler(this.barcodeGrid_Click);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Equipment";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Category";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Product #";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // quantityTextbox
+            // 
+            this.quantityTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.quantityTextbox.Location = new System.Drawing.Point(90, 394);
+            this.quantityTextbox.Margin = new System.Windows.Forms.Padding(2);
+            this.quantityTextbox.Name = "quantityTextbox";
+            this.quantityTextbox.Size = new System.Drawing.Size(102, 20);
+            this.quantityTextbox.TabIndex = 40;
+            this.quantityTextbox.TabStop = false;
+            // 
+            // barcodeTextbox
+            // 
+            this.barcodeTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.barcodeTextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.barcodeTextbox.Location = new System.Drawing.Point(238, 394);
+            this.barcodeTextbox.Name = "barcodeTextbox";
+            this.barcodeTextbox.Size = new System.Drawing.Size(212, 20);
+            this.barcodeTextbox.TabIndex = 38;
+            this.barcodeTextbox.TextChanged += new System.EventHandler(this.barcodeTextbox_TextChanged);
             // 
             // projectsPanel
             // 
@@ -1037,280 +1324,6 @@
             this.HistoryDataGrid.Size = new System.Drawing.Size(1018, 467);
             this.HistoryDataGrid.TabIndex = 82;
             // 
-            // barcodePanel
-            // 
-            this.barcodePanel.BackColor = System.Drawing.Color.White;
-            this.barcodePanel.Controls.Add(this.editEquipmentButton);
-            this.barcodePanel.Controls.Add(this.panel7);
-            this.barcodePanel.Controls.Add(this.panel6);
-            this.barcodePanel.Controls.Add(this.newEquipment);
-            this.barcodePanel.Controls.Add(this.insertBarcodeButton);
-            this.barcodePanel.Controls.Add(this.barcodeLabel);
-            this.barcodePanel.Controls.Add(this.barcodeEquipment);
-            this.barcodePanel.Controls.Add(this.barcodeGrid);
-            this.barcodePanel.Controls.Add(this.quantityTextbox);
-            this.barcodePanel.Controls.Add(this.barcodeTextbox);
-            this.barcodePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.barcodePanel.Location = new System.Drawing.Point(0, 0);
-            this.barcodePanel.Name = "barcodePanel";
-            this.barcodePanel.Size = new System.Drawing.Size(1030, 527);
-            this.barcodePanel.TabIndex = 101;
-            this.barcodePanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.barcodePanel_MouseClick);
-            // 
-            // editEquipmentButton
-            // 
-            this.editEquipmentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            this.editEquipmentButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.editEquipmentButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.editEquipmentButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editEquipmentButton.ForeColor = System.Drawing.Color.White;
-            this.editEquipmentButton.Location = new System.Drawing.Point(837, 478);
-            this.editEquipmentButton.Name = "editEquipmentButton";
-            this.editEquipmentButton.Size = new System.Drawing.Size(114, 38);
-            this.editEquipmentButton.TabIndex = 108;
-            this.editEquipmentButton.Text = "Edit";
-            this.editEquipmentButton.UseVisualStyleBackColor = false;
-            this.editEquipmentButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.label1);
-            this.panel7.Location = new System.Drawing.Point(603, 6);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(419, 39);
-            this.panel7.TabIndex = 107;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(115, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 30);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "EQUIPMENT CODES";
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Location = new System.Drawing.Point(2, 4);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(584, 39);
-            this.panel6.TabIndex = 106;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(190, 3);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 30);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "BARCODE SCANS";
-            // 
-            // newEquipment
-            // 
-            this.newEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            this.newEquipment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.newEquipment.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.newEquipment.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newEquipment.ForeColor = System.Drawing.Color.White;
-            this.newEquipment.Location = new System.Drawing.Point(673, 478);
-            this.newEquipment.Name = "newEquipment";
-            this.newEquipment.Size = new System.Drawing.Size(114, 38);
-            this.newEquipment.TabIndex = 102;
-            this.newEquipment.Text = "Add";
-            this.newEquipment.UseVisualStyleBackColor = false;
-            this.newEquipment.Click += new System.EventHandler(this.newEquipment_Click);
-            // 
-            // insertBarcodeButton
-            // 
-            this.insertBarcodeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(115)))), ((int)(((byte)(120)))));
-            this.insertBarcodeButton.Enabled = false;
-            this.insertBarcodeButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(97)))), ((int)(((byte)(158)))));
-            this.insertBarcodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.insertBarcodeButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insertBarcodeButton.ForeColor = System.Drawing.Color.Black;
-            this.insertBarcodeButton.Location = new System.Drawing.Point(238, 478);
-            this.insertBarcodeButton.Name = "insertBarcodeButton";
-            this.insertBarcodeButton.Size = new System.Drawing.Size(102, 38);
-            this.insertBarcodeButton.TabIndex = 101;
-            this.insertBarcodeButton.Text = "Insert";
-            this.insertBarcodeButton.UseVisualStyleBackColor = false;
-            this.insertBarcodeButton.Click += new System.EventHandler(this.insertBarcodeButton_Click);
-            // 
-            // barcodeLabel
-            // 
-            this.barcodeLabel.AutoSize = true;
-            this.barcodeLabel.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.barcodeLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barcodeLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.barcodeLabel.Location = new System.Drawing.Point(82, 256);
-            this.barcodeLabel.Name = "barcodeLabel";
-            this.barcodeLabel.Size = new System.Drawing.Size(414, 37);
-            this.barcodeLabel.TabIndex = 44;
-            this.barcodeLabel.Text = "Barcode Scan Product Numbers";
-            // 
-            // barcodeEquipment
-            // 
-            this.barcodeEquipment.AllowUserToAddRows = false;
-            this.barcodeEquipment.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.AliceBlue;
-            this.barcodeEquipment.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.barcodeEquipment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.barcodeEquipment.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.barcodeEquipment.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.barcodeEquipment.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.barcodeEquipment.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.barcodeEquipment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.barcodeEquipment.ColumnHeadersHeight = 30;
-            this.barcodeEquipment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.barcodeEquipment.DefaultCellStyle = dataGridViewCellStyle7;
-            this.barcodeEquipment.EnableHeadersVisualStyles = false;
-            this.barcodeEquipment.GridColor = System.Drawing.SystemColors.MenuText;
-            this.barcodeEquipment.Location = new System.Drawing.Point(603, 45);
-            this.barcodeEquipment.Margin = new System.Windows.Forms.Padding(2);
-            this.barcodeEquipment.MultiSelect = false;
-            this.barcodeEquipment.Name = "barcodeEquipment";
-            this.barcodeEquipment.ReadOnly = true;
-            this.barcodeEquipment.RowHeadersVisible = false;
-            this.barcodeEquipment.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.barcodeEquipment.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barcodeEquipment.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.barcodeEquipment.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
-            this.barcodeEquipment.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.barcodeEquipment.RowTemplate.Height = 30;
-            this.barcodeEquipment.RowTemplate.ReadOnly = true;
-            this.barcodeEquipment.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.barcodeEquipment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.barcodeEquipment.Size = new System.Drawing.Size(419, 428);
-            this.barcodeEquipment.TabIndex = 43;
-            this.barcodeEquipment.Click += new System.EventHandler(this.barcodeEquipment_Click);
-            // 
-            // barcodeGrid
-            // 
-            this.barcodeGrid.AllowUserToAddRows = false;
-            this.barcodeGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.AliceBlue;
-            this.barcodeGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.barcodeGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.barcodeGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.barcodeGrid.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.barcodeGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.barcodeGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.barcodeGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.barcodeGrid.ColumnHeadersHeight = 30;
-            this.barcodeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.barcodeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GrayText;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.barcodeGrid.DefaultCellStyle = dataGridViewCellStyle10;
-            this.barcodeGrid.EnableHeadersVisualStyles = false;
-            this.barcodeGrid.GridColor = System.Drawing.SystemColors.MenuText;
-            this.barcodeGrid.Location = new System.Drawing.Point(2, 42);
-            this.barcodeGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.barcodeGrid.MultiSelect = false;
-            this.barcodeGrid.Name = "barcodeGrid";
-            this.barcodeGrid.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.barcodeGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.barcodeGrid.RowHeadersVisible = false;
-            this.barcodeGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.barcodeGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barcodeGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.barcodeGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(34)))), ((int)(((byte)(56)))));
-            this.barcodeGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.barcodeGrid.RowTemplate.Height = 40;
-            this.barcodeGrid.RowTemplate.ReadOnly = true;
-            this.barcodeGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.barcodeGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.barcodeGrid.Size = new System.Drawing.Size(584, 431);
-            this.barcodeGrid.TabIndex = 36;
-            this.barcodeGrid.Click += new System.EventHandler(this.barcodeGrid_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Equipment";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Category";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Product #";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // quantityTextbox
-            // 
-            this.quantityTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.quantityTextbox.Location = new System.Drawing.Point(90, 394);
-            this.quantityTextbox.Margin = new System.Windows.Forms.Padding(2);
-            this.quantityTextbox.Name = "quantityTextbox";
-            this.quantityTextbox.Size = new System.Drawing.Size(102, 20);
-            this.quantityTextbox.TabIndex = 40;
-            this.quantityTextbox.TabStop = false;
-            // 
-            // barcodeTextbox
-            // 
-            this.barcodeTextbox.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.barcodeTextbox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.barcodeTextbox.Location = new System.Drawing.Point(238, 394);
-            this.barcodeTextbox.Name = "barcodeTextbox";
-            this.barcodeTextbox.Size = new System.Drawing.Size(212, 20);
-            this.barcodeTextbox.TabIndex = 38;
-            this.barcodeTextbox.TextChanged += new System.EventHandler(this.barcodeTextbox_TextChanged);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
@@ -1343,14 +1356,6 @@
             this.inventoryPanel.ResumeLayout(false);
             this.inventoryPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InventoryDataGrid)).EndInit();
-            this.projectsPanel.ResumeLayout(false);
-            this.projectsPanel.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).EndInit();
-            this.historyPanel.ResumeLayout(false);
-            this.historyPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).EndInit();
             this.barcodePanel.ResumeLayout(false);
             this.barcodePanel.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -1359,6 +1364,14 @@
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeEquipment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barcodeGrid)).EndInit();
+            this.projectsPanel.ResumeLayout(false);
+            this.projectsPanel.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.projectsDataGrid)).EndInit();
+            this.historyPanel.ResumeLayout(false);
+            this.historyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HistoryDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }

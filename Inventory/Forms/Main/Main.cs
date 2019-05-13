@@ -605,7 +605,7 @@ namespace Inventory
         private void ProjectsPanelButton_Click(object sender, EventArgs e)
         {
 
-            string pj = "SELECT * FROM PROJECT WHERE PROJECT_NAME != 'Unassigned' AND PROJECT.STATUS = '1' ";
+            ///string pj = "SELECT * FROM PROJECT WHERE PROJECT_NAME != 'Unassigned' AND PROJECT.STATUS = '1' ";
             string pj2 = "SELECT * FROM PROJECT WHERE PROJECT.STATUS = '1' ORDER BY PROJECT_ID";
 
             //projectsEditPanel.Visible = true;
@@ -1099,5 +1099,6 @@ namespace Inventory
             editProjectButton.Enabled = true;
             ButtonColor(editProjectButton);
         }
+
     }
 }   

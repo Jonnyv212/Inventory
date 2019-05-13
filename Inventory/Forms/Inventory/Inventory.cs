@@ -85,9 +85,22 @@ namespace Inventory
                 "WHERE REGEXP_LIKE((" + iFilterCombo + "), ('" + iSearchText + "'), 'i')  AND " +
                 "INVENTORY.STATUS = '1' " +
                 "ORDER BY cast(INVENTORY_ID AS int) desc ";
+            /*
+            connection.Open();
+            OracleCommand cmd = connection.CreateCommand();
+            String procName = "InvSearchProc";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = procName;
+            cmd.Parameters.Add("filterCombo", OracleDbType.Varchar2).Value = iFilterCombo;
+            cmd.Parameters.Add("searchText", OracleDbType.Varchar2).Value = iSearchText;
+            cmd.ExecuteNonQuery();
+            DataTable dta = new DataTable();
+            OracleDataAdapter dataadp = new OracleDataAdapter(cmd);
+            dataadp.Fill(dta); */
 
             dGridView.DataSource = null;
             dGridView.DataSource = Main.DataTableSQLQuery(query);
+            connection.Close();
             Main.InventoryDataGridAppearance(dGridView);
 
         }

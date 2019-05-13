@@ -29,7 +29,7 @@ namespace Inventory
             column3.Width = 266;
         }
 
-        public static void HistoryManualInsert(TextBox Equipment, TextBox Quantity, ComboBox Project)
+        public static void HistoryManualInsert(ComboBox Equipment, TextBox Quantity, ComboBox Project)
         {
             string query = "INSERT INTO HISTORY (EVENT_ID, HISTORY_DESCRIPTION) VALUES ('1', 'Added "+Quantity.Text+" inventory record(s) of "+Equipment.Text+" into "+Project.Text+". ')";
             Main.RunSQLQuery(query);
